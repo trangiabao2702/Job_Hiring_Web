@@ -1,0 +1,1365 @@
+select {
+    appearance: none;
+}
+
+.header {
+
+    position: relative;
+    left: 0%;
+    right: 0%;
+    top: 0%;
+    height: 72px;
+    background: #FFFFFF;
+    border: 1px solid #CCCCCC;
+}
+
+#logo_web {
+    position: absolute;
+    left: 12.5%;
+    right: 81.04%;
+    top: 18.06%;
+    bottom: 4.91%;
+}
+
+.rectangle_home {
+    position: relative;
+    width: 1920px;
+}
+
+
+#find_job {
+    position: absolute;
+    left: 24.11%;
+    right: 71.09%;
+    top: 36.11%;
+    bottom: 34.72%;
+
+    font-family: 'Poppins', sans-serif;
+    font-style: normal;
+    font-weight: 700;
+    font-size: 14px;
+    line-height: 21px;
+    /* identical to box height */
+
+    text-decoration: none;
+    color: #000000;
+}
+
+#list_company {
+
+    position: absolute;
+    left: 30.47%;
+    right: 62.55%;
+    top: 36.11%;
+    bottom: 34.72%;
+
+    font-family: 'Poppins', sans-serif;
+    font-style: normal;
+    font-weight: 1000;
+    font-size: 14px;
+    line-height: 21px;
+    /* identical to box height */
+    text-decoration: none;
+    color: #000000;
+
+}
+
+#blog {
+    position: absolute;
+    left: 39.01%;
+    right: 59.32%;
+    top: 36.11%;
+    bottom: 34.72%;
+
+    font-family: 'Poppins', sans-serif;
+    font-style: normal;
+    font-weight: 700;
+    font-size: 14px;
+    line-height: 21px;
+    text-decoration: none;
+    /* identical to box height */
+
+
+    color: #000000;
+}
+
+#btn_login {
+
+    box-sizing: border-box;
+    position: absolute;
+    left: 56.88%;
+    right: 36.82%;
+    top: 19.44%;
+    bottom: 19.44%;
+
+    background: #FFFFFF;
+    opacity: 0.9;
+    border: 0.5px solid #0096C7;
+    border-radius: 10px;
+    color: #00B4D8;
+    font-family: 'Poppins', sans-serif;
+}
+
+#btn_signin {
+    position: absolute;
+    left: 65.26%;
+    right: 28.44%;
+    top: 19.44%;
+    bottom: 19.44%;
+    border: 0.5px solid #0096C7;
+    background: #00B4D8;
+    border-radius: 10px;
+    font-family: 'Poppins', sans-serif;
+    color: white;
+
+}
+
+#btn_switch_recruiter {
+    position: absolute;
+    left: 73.7%;
+    right: 10%;
+    top: 19.44%;
+    bottom: 19.44%;
+    border: 0.5px solid #0096C7;
+    background: #0096C7;
+    border-radius: 10px;
+    font-family: 'Poppins', sans-serif;
+    color: white;
+}
+
+#ic_right_arrow {
+    position: absolute;
+    left: 86.21%;
+    right: 13.7%;
+    top: 29%;
+    bottom: 34.72%;
+
+}
+
+.rectangle_mid {
+    position: relative;
+    width: 100%;
+    height: 277px;
+    left: 0px;
+    top: 0px;
+
+    background: #00B4D8;
+}
+
+#welcome {
+    position: absolute;
+    width: 34.27%;
+    height: 22.74%;
+    left: 32.86%;
+    top: 11.19%;
+
+    /* identical to box height */
+
+}
+
+#search {
+    position: absolute;
+    width: 730px;
+    height: 72px;
+    left: 342px;
+    top: 131px;
+    border: 0.5px solid white;
+    background: #FFFFFF;
+    border-radius: 10px;
+    padding-left: 85px;
+    line-height: 72px;
+    font-family: 'Poppins', sans-serif;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 24px;
+    line-height: 36px;
+    /* identical to box height */
+
+
+    color: #494848;
+}
+
+#ic_search {
+
+    position: absolute;
+    width: 36px;
+    height: 36px;
+    left: 362px;
+    top: 149px;
+
+}
+
+#select_province {
+    position: absolute;
+    width: 240px;
+    height: 72px;
+    padding-left: 70px;
+    left: 1092px;
+    top: 131px;
+    border: 0.5px solid white;
+    background: #FFFFFF;
+    border-radius: 10px;
+    font-family: 'Poppins', sans-serif;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 24px;
+    line-height: 72px;
+    color: #494848;
+}
+
+#ic_select_province {
+    position: absolute;
+    width: 27px;
+    height: 36px;
+    left: 1119px;
+    top: 149px;
+
+}
+
+#btn_search {
+    position: absolute;
+    width: 223px;
+    height: 72px;
+    left: 1350px;
+    top: 131px;
+
+    background: #0077B6;
+    border-radius: 10px;
+
+    border: 0.5px solid #0096C7;
+    font-family: 'Poppins', sans-serif;
+    color: white;
+
+    font-style: normal;
+    font-weight: 700;
+    font-size: 24px;
+    line-height: 72px;
+}
+
+.footer {
+    position: relative;
+    width: 1920px;
+    height: 339px;
+    margin-top: 0px;
+    background: #221F20;
+}
+
+#logo_web_footer {
+    position: absolute;
+    left: 12.71%;
+    right: 75.65%;
+    top: 11.21%;
+    bottom: 59.29%;
+}
+
+#text_info_footer {
+    position: absolute;
+    left: 12.71%;
+    right: 70.59%;
+    top: 30.85%;
+    bottom: 16.52%;
+
+    font-family: 'Poppins', sans-serif;
+    font-style: normal;
+    font-weight: 700;
+    font-size: 14px;
+    line-height: 21px;
+
+    color: #FFFFFF;
+}
+
+.rectangle_mid_2 {
+    position: relative;
+    width: 100%;
+    height: 729px;
+    top: 0px;
+    background-color: rgba(0, 180, 216, 0.06);
+}
+
+.rectangle_content_home {
+    position: absolute;
+    width: 1436px;
+    height: 645px;
+    left: 242px;
+    top: 43px;
+    background: white;
+    border-radius: 10px;
+}
+
+#text_info_content_home {
+    position: absolute;
+    width: 550px;
+    height: 36px;
+    left: 47px;
+    top: 30px;
+    font-family: 'Poppins', sans-serif;
+    font-style: normal;
+    font-weight: 700;
+    font-size: 24px;
+    line-height: 36px;
+    /* identical to box height */
+
+
+    color: #00B4D8;
+
+}
+
+.card_company {
+    position: absolute;
+    top: 85px;
+    left: 40px;
+    right: 40px;
+    bottom: 20px;
+}
+
+.item_company {
+    position: relative;
+    width: 434px;
+    height: 164px;
+    background: white;
+    box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.25);
+}
+
+.logo_company_home {
+    box-sizing: border-box;
+    position: absolute;
+
+    width: 77px;
+    height: 77px;
+    left: 17px;
+    top: 17px;
+
+    border: 1px solid #D7E4E8;
+    border-radius: 10px;
+}
+
+.title_recuit_company_home {
+    position: absolute;
+
+    width: 238px;
+    height: 27px;
+    left: 110px;
+    top: 17px;
+
+    font-family: 'Poppins', sans-serif;
+    font-style: normal;
+    font-weight: 700;
+    font-size: 18px;
+    line-height: 27px;
+    /* identical to box height */
+    color: #29333F;
+
+}
+
+.name_company_home {
+    position: absolute;
+
+    width: 111px;
+    height: 27px;
+    left: 111px;
+    top: 55px;
+
+    font-family: 'Poppins', sans-serif;
+    font-style: normal;
+    font-weight: 700;
+    font-size: 18px;
+    line-height: 27px;
+    /* identical to box height */
+
+
+    color: #BBBCC0;
+}
+
+.wage_copany_home {
+    position: absolute;
+
+    width: 103px;
+    height: 25px;
+    left: 53px;
+    top: 119px;
+    text-align: center;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 25px;
+    color: white;
+    background: #00B4D8;
+    border-radius: 5px;
+}
+
+.address_company_home {
+    position: absolute;
+
+    height: 25px;
+    left: 182px;
+    top: 119px;
+    padding: 0 10px;
+    text-align: center;
+    font-weight: 500;
+    font-size: 14px;
+    color: white;
+    line-height: 25px;
+    background: #00B4D8;
+    border-radius: 5px;
+}
+
+
+
+/*Trang dang nhap*/
+#rectangle_mid_login {
+    position: relative;
+    width: 1920px;
+    height: 665px;
+    left: 0px;
+    top: 0px;
+    background: #F2F2F2;
+
+}
+
+#rectangle_form_login {
+    position: absolute;
+    width: 710px;
+    height: 665px;
+    left: 240px;
+
+    background: #FFFFFF;
+}
+
+#rectangle_image_login {
+    position: relative;
+    width: 730px;
+    height: 669px;
+    left: 950px;
+    top: 0px;
+
+    background: #E2ECEF;
+}
+
+#side_login {
+    position: absolute;
+    width: 637px;
+    height: 381px;
+    left: 47px;
+    top: 144px;
+
+}
+
+#text_welcome_login {
+    position: absolute;
+    width: 343px;
+    height: 45px;
+    left: 100px;
+    top: 51px;
+
+    font-family: 'Poppins', sans-serif;
+    font-style: normal;
+    font-weight: 700;
+    font-size: 30px;
+    line-height: 45px;
+    /* identical to box height */
+
+
+    color: #00B4D8;
+}
+
+#text_login_by_account {
+    position: absolute;
+    width: 314px;
+    height: 24px;
+    left: 102px;
+    top: 107px;
+
+}
+
+#label_email {
+    position: absolute;
+    width: 49px;
+    height: 27px;
+    left: 102px;
+    top: 148px;
+
+    font-family: 'Poppins', sans-serif;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 18px;
+    line-height: 27px;
+    /* identical to box height */
+
+
+    color: #000000;
+
+}
+
+#email_login {
+    box-sizing: border-box;
+
+    position: absolute;
+    width: 506px;
+    height: 56px;
+    left: 102px;
+    top: 179px;
+
+    background: #FFFFFF;
+    border: 1px solid #939598;
+    border-radius: 10px;
+
+
+    padding-left: 67px;
+    line-height: 56px;
+    font-family: 'Poppins', sans-serif;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 18px;
+}
+#logo_email{
+    position: absolute;
+left: 122px;
+top: 198px;
+width: 24px;
+height: 18px;
+
+}
+#label_password{
+position: absolute;
+width: 80px;
+height: 27px;
+left: 100px;
+top: 258px;
+
+font-family: 'Poppins', sans-serif;
+font-style: normal;
+font-weight: 400;
+font-size: 18px;
+line-height: 27px;
+/* identical to box height */
+
+
+color: #000000;
+
+
+}
+#password_login{
+    box-sizing: border-box;
+
+position: absolute;
+width: 506px;
+height: 56px;
+left: 100px;
+top: 291px;
+
+background: #FFFFFF;
+border: 1px solid #939598;
+border-radius: 10px;
+
+padding-left: 67px;
+line-height: 56px;
+font-family: 'Poppins', sans-serif;
+font-style: normal;
+font-weight: 400;
+font-size: 18px;
+}
+
+#logo_password{
+    position: absolute;
+    left: 122px;
+    top: 306px;
+    width: 24px;
+    height: 25px;
+
+}
+#eye_slash_password{
+    position: absolute;
+    left: 549px;
+    top: 306px;
+    width: 24px;
+    height: 25px;
+    color: #939598; 
+
+}
+#submit_form_login{
+    position: absolute;
+    width: 506px;
+    height: 56px;
+    left: 102px;
+    top: 362px;
+    border:none;
+    background: #00B4D8;
+    border-radius: 10px;
+    text-align: center;
+
+    line-height: 56px;
+    font-family: 'Poppins', sans-serif;
+    font-style: normal;
+    font-weight: 600;
+    font-size: 18px;
+    color: white;
+}
+#or{
+    position: absolute;
+width: 45px;
+height: 27px;
+left: 330px;
+top: 443px;
+
+font-family: 'Poppins', sans-serif;
+font-style: normal;
+font-weight: 400;
+font-size: 18px;
+line-height: 27px;
+/* identical to box height */
+color: #3D3D3D;
+}
+#submit_login_facebook{
+    position: absolute;
+width: 243px;
+height: 56px;
+left: 102px;
+top: 485px;
+
+background: #365899;
+border-radius: 10px;
+border: none;
+}
+#ic_facebook{
+    
+position: absolute;
+width: 122px;
+height: 27px;
+left: 163px;
+top: 500px;
+
+}
+#submit_login_google{
+    position: absolute;
+width: 243px;
+height: 56px;
+left: 375px;
+top: 485px;
+
+background: #EA4335;
+border-radius: 10px;
+border: none;
+}
+#ic_google{
+    position: absolute;
+width: 97px;
+height: 27px;
+left: 438px;
+top: 500px;
+}
+#text_No_Account{
+    position: absolute;
+width: 308px;
+height: 24px;
+left: 102px;
+top: 550px;
+
+font-family: 'Poppins', sans-serif;
+font-style: normal;
+font-weight: 500;
+font-size: 16px;
+line-height: 24px;
+/* identical to box height */
+color: #000000;
+}
+#signin_now{
+ 
+
+font-family: 'Poppins', sans-serif;
+font-style: normal;
+font-weight: 700;
+font-size: 16px;
+line-height: 24px;
+/* identical to box height */
+
+text-decoration: none;
+color: #00B4D8;
+
+}
+#forget_password{
+    position: absolute;
+width: 126px;
+height: 24px;
+left: 483px;
+top: 550px;
+
+font-family: 'Poppins', sans-serif;
+font-style: normal;
+font-weight: 700;
+font-size: 16px;
+line-height: 24px;
+/* identical to box height */
+color: #00B4D8;
+text-decoration: none;
+}
+
+
+
+/*Trang dang ki*/
+
+
+#rectangle_form_signin{
+    position: absolute;
+    width: 710px;
+    height: 729px;
+    left: 240px;
+    background: #FFFFFF;
+}
+#rectangle_mid_signin{
+    position: relative;
+    width: 1920px;
+    height: 729px;
+    left: 0px;
+    top: 0px;
+    background: #F2F2F2;
+}
+
+#welcome_signin{
+position: absolute;
+width: 452px;
+height: 45px;
+left: 100px;
+top: 51px;
+
+}
+#text_create_account{
+    position: absolute;
+width: 341px;
+height: 24px;
+left: 102px;
+top: 107px;
+
+font-family: 'Poppins', sans-serif;
+font-style: normal;
+font-weight: 500;
+font-size: 16px;
+line-height: 24px;
+/* identical to box height */
+
+
+color: #939598;
+}
+#label_fullname{
+    position: absolute;
+width: 85px;
+height: 27px;
+left: 102px;
+top: 156px;
+
+font-family: 'Poppins', sans-serif;
+font-style: normal;
+font-weight: 400;
+font-size: 18px;
+line-height: 27px;
+/* identical to box height */
+
+
+color: #3D3D3D;
+}
+#fullname_signin{
+    box-sizing: border-box;
+
+position: absolute;
+width: 506px;
+height: 56px;
+left: 102px;
+top: 187px;
+
+background: #FFFFFF;
+border: 1px solid #939598;
+border-radius: 10px;
+
+padding-left: 67px;
+line-height: 56px;
+font-family: 'Poppins', sans-serif;
+font-style: normal;
+font-weight: 400;
+font-size: 18px;
+}
+#logo_person{
+    position: absolute;
+width: 24px;
+height: 24px;
+left: 122px;
+top: 203px;
+
+}
+#label_email_signin{
+    position: absolute;
+    width: 49px;
+    height: 27px;
+    left: 102px;
+    top: 258px;
+    
+    font-family: 'Poppins', sans-serif;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 18px;
+    line-height: 27px;
+    /* identical to box height */
+    
+    
+    color: #3D3D3D;
+}
+#email_signin{
+    box-sizing: border-box;
+
+position: absolute;
+width: 506px;
+height: 56px;
+left: 102px;
+top: 289px;
+
+background: #FFFFFF;
+border: 1px solid #939598;
+border-radius: 10px;
+
+padding-left: 67px;
+line-height: 56px;
+font-family: 'Poppins', sans-serif;
+font-style: normal;
+font-weight: 400;
+font-size: 18px;
+}
+#logo_email_signin{
+    position: absolute;
+width: 24px;
+height: 18px;
+left: 122px;
+top: 308px;
+
+}
+#label_password_signin{
+    position: absolute;
+width: 80px;
+height: 27px;
+left: 100px;
+top: 360px;
+
+font-family: 'Poppins', sans-serif;
+font-style: normal;
+font-weight: 400;
+font-size: 18px;
+line-height: 27px;
+/* identical to box height */
+
+
+color: #3D3D3D;
+}
+#password_signin{
+box-sizing: border-box;
+
+position: absolute;
+width: 506px;
+height: 56px;
+left: 100px;
+top: 393px;
+
+background: #FFFFFF;
+border: 1px solid #939598;
+border-radius: 10px;
+
+padding-left: 67px;
+line-height: 56px;
+font-family: 'Poppins', sans-serif;
+font-style: normal;
+font-weight: 400;
+font-size: 18px;
+}
+#logo_password_signin{
+    position: absolute;
+width: 24px;
+height: 25.6px;
+left: 122px;
+top: 408px;
+
+}
+#eye_slash_signin{
+    position: absolute;
+    width: 30px;
+    height: 24px;
+    left: 549px;
+    top: 408px;
+
+}
+#label_confirm_password_signin{
+    position: absolute;
+    width: 171px;
+    height: 27px;
+    left: 100px;
+    top: 464px;
+    
+    font-family: 'Poppins', sans-serif;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 18px;
+    line-height: 27px;
+    /* identical to box height */
+    
+    
+    color: #3D3D3D;
+
+}
+#confirm_password_signin{
+box-sizing: border-box;
+
+position: absolute;
+width: 506px;
+height: 56px;
+left: 100px;
+top: 497px;
+
+background: #FFFFFF;
+border: 1px solid #939598;
+border-radius: 10px;
+
+padding-left: 67px;
+line-height: 56px;
+font-family: 'Poppins', sans-serif;
+font-style: normal;
+font-weight: 400;
+font-size: 18px;
+}
+
+#logo_confirm_password_signin{
+    position: absolute;
+    width: 24px;
+    height: 25.6px;
+    left: 122px;
+    top: 512px;
+
+}
+#eye_slash_confirm_signin{
+    position: absolute;
+    width: 30px;
+    height: 24px;
+    left: 549px;
+    top: 512px;
+}
+#submit_signin{
+    position: absolute;
+width: 506px;
+height: 56px;
+left: 102px;
+top: 578px;
+
+background: #00B4D8;
+border-radius: 10px;
+border: none;
+font-family: 'Poppins', sans-serif;
+font-style: normal;
+font-weight: 600;
+font-size: 18px;
+line-height: 56px;
+text-align: center;
+/* identical to box height */
+
+
+color: #FFFFFF;
+
+}
+#text_have_Account{
+    position: absolute;
+width: 310px;
+height: 24px;
+left: 102px;
+top: 649px;
+
+font-family: 'Poppins', sans-serif;
+font-style: normal;
+font-weight: 500;
+font-size: 16px;
+line-height: 24px;
+/* identical to box height */
+
+
+color: #000000;
+}
+#login_now{
+    
+font-family: 'Poppins', sans-serif;
+font-style: normal;
+font-weight: 700;
+font-size: 16px;
+line-height: 24px;
+/* identical to box height */
+
+text-decoration: none;
+color: #00B4D8;
+
+}
+#rectangle_image_signin {
+    position: relative;
+    width: 730px;
+    height: 733px;
+    left: 950px;
+    top: 0px;
+
+    background: #E2ECEF;
+}
+#side_signin{
+    
+position: absolute;
+width: 606px;
+height: 364px;
+left: 62px;
+top: 185px;
+
+}
+#rectangle_mid_forget_password
+{
+    position: relative;
+    width: 1920px;
+    height: 729px;
+    left: 0px;
+    top: 0px;
+    background: #F2F2F2;
+}
+#rectangle_form_reset_password{
+position: absolute;
+width: 710px;
+height: 729px;
+left: 240px;
+
+background: #FFFFFF;
+}
+#text_setup_password{
+position: absolute;
+width: 376px;
+height: 45px;
+left: 100px;
+top: 51px;
+
+font-family: 'Poppins', sans-serif;
+font-style: normal;
+font-weight: 700;
+font-size: 30px;
+line-height: 45px;
+/* identical to box height */
+
+color: #00B4D8;
+}
+#text_please_fill{
+    
+position: absolute;
+width: 473px;
+height: 24px;
+left: 102px;
+top: 107px;
+
+font-family: 'Poppins', sans-serif;
+font-style: normal;
+font-weight: 500;
+font-size: 16px;
+line-height: 24px;
+/* identical to box height */
+
+
+color: #939598;
+
+}
+#label_email_forget_password{
+    position: absolute;
+width: 49px;
+height: 27px;
+left: 102px;
+top: 151px;
+
+font-family: 'Poppins';
+font-style: normal;
+font-weight: 400;
+font-size: 18px;
+line-height: 27px;
+/* identical to box height */
+
+
+color: #3D3D3D;
+}
+#email_forget_password{
+    box-sizing: border-box;
+
+position: absolute;
+width: 506px;
+height: 56px;
+left: 102px;
+top: 182px;
+
+background: #FFFFFF;
+border: 1px solid #939598;
+border-radius: 10px;
+    padding-left: 67px;
+line-height: 56px;
+font-family: 'Poppins', sans-serif;
+font-style: normal;
+font-weight: 400;
+font-size: 18px;
+
+}
+#logo_email_forget_password{
+    position: absolute;
+width: 24px;
+height: 18px;
+left: 122px;
+top: 201px;
+
+
+}
+#submit_forget_password{
+    position: absolute;
+width: 506px;
+height: 56px;
+left: 103px;
+top: 276px;
+
+background: #00B4D8;
+border-radius: 10px;
+border: none;
+font-family: 'Poppins', sans-serif;
+font-style: normal;
+font-weight: 600;
+font-size: 18px;
+line-height: 56px;
+/* identical to box height */
+
+
+color: #FFFFFF;
+
+}
+#rectangle_image_forget_password{
+    position: relative;
+width: 730px;
+height: 733px;
+left: 950px;
+top: 0px;
+
+background: #E2ECEF;
+}
+#side_forget_password{
+    position: absolute;
+width: 502px;
+height: 333px;
+left: 114px;
+top: 200px;
+
+
+}
+#rectangle_mid_account_authe{
+    position: relative;
+width: 1920px;
+height: 729px;
+left: 0px;
+top: 0px;
+background: #F2F2F2;
+
+
+}
+#rectangle_form_account_authe{
+    position: absolute;
+width: 710px;
+height: 729px;
+left: 240px;
+top: 0px;
+
+background: #FFFFFF;
+}
+#text_account_authe{
+    position: absolute;
+width: 290px;
+height: 45px;
+left: 100px;
+top: 51px;
+
+font-family: 'Poppins', sans-serif;
+font-style: normal;
+font-weight: 700;
+font-size: 30px;
+line-height: 45px;
+/* identical to box height */
+
+
+color: #00B4D8;
+}
+#text_please_fill_code_confirm{
+    
+position: absolute;
+width: 414px;
+height: 24px;
+left: 102px;
+top: 107px;
+
+font-family: 'Poppins', sans-serif;
+font-style: normal;
+font-weight: 500;
+font-size: 16px;
+line-height: 24px;
+/* identical to box height */
+
+
+color: #939598;
+}
+#label_code_confirm{
+    position: absolute;
+width: 114px;
+height: 27px;
+left: 102px;
+top: 151px;
+
+font-family: 'Poppins', sans-serif;
+font-style: normal;
+font-weight: 400;
+font-size: 18px;
+line-height: 27px;
+/* identical to box height */
+
+
+color: #3D3D3D;
+
+}
+#code_confirm_account{
+    box-sizing: border-box;
+
+position: absolute;
+width: 506px;
+height: 56px;
+left: 102px;
+top: 182px;
+
+background: #FFFFFF;
+border: 1px solid #939598;
+border-radius: 10px;
+
+padding-left: 67px;
+line-height: 56px;
+font-family: 'Poppins', sans-serif;
+font-style: normal;
+font-weight: 400;
+font-size: 18px;
+}
+#submit_account_authe{
+    position: absolute;
+width: 506px;
+height: 56px;
+left: 103px;
+top: 276px;
+
+background: #00B4D8;
+border-radius: 10px;
+font-family: 'Poppins';
+font-style: normal;
+font-weight: 600;
+font-size: 18px;
+line-height: 27px;
+/* identical to box height */
+
+border: none;
+color: #FFFFFF;
+}
+#rectangle_image_account_authe{
+    position: relative;
+width: 730px;
+height: 733px;
+left: 950px;
+top: 0px;
+
+background: #E2ECEF;    
+}
+#side_account_authe{
+    position: absolute;
+width: 548px;
+height: 382px;
+left: 91px;
+top: 176px;
+
+}
+#rectangle_mid_reset_password{
+    position: relative;
+width: 1920px;
+height: 729px;
+left: 0px;
+top: 0px;
+background: #F2F2F2;
+
+
+}
+#rectangle_form_reset_password{
+    position: absolute;
+    width: 710px;
+    height: 729px;
+    left: 240px;
+    top: 0px;
+    
+    background: #FFFFFF;
+}
+#text_reset_password{
+    position: absolute;
+    width: 376px;
+    height: 45px;
+    left: 100px;
+    top: 51px;
+    
+    font-family: 'Poppins', sans-serif;
+    font-style: normal;
+    font-weight: 700;
+    font-size: 30px;
+    line-height: 45px;
+    /* identical to box height */
+    
+    
+    color: #00B4D8;
+}
+#label_new_password{
+    position: absolute;
+    width: 114px;
+    height: 27px;
+    left: 101px;
+    top: 135px;
+    
+    font-family: 'Poppins', sans-serif;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 18px;
+    line-height: 27px;
+    /* identical to box height */
+    
+    
+    color: #3D3D3D;
+}
+#new_password{
+    box-sizing: border-box;
+
+    position: absolute;
+    width: 506px;
+    height: 56px;
+    left: 102px;
+    top: 168px;
+    
+    background: #FFFFFF;
+    border: 1px solid #939598;
+    border-radius: 10px;
+    
+    padding-left: 67px;
+    line-height: 56px;
+    font-family: 'Poppins', sans-serif;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 18px;
+}
+#submit_new_password{
+    position: absolute;
+    width: 506px;
+    height: 56px;
+    left: 103px;
+    top: 387px;
+    
+    background: #00B4D8;
+    border-radius: 10px;
+    font-family: 'Poppins';
+    font-style: normal;
+    font-weight: 600;
+    font-size: 18px;
+    line-height: 27px;
+    /* identical to box height */
+    
+    border: none;
+    color: #FFFFFF;
+}
+/*reset_password
