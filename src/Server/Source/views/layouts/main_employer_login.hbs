@@ -20,14 +20,18 @@
         crossorigin="anonymous"></script>
 
     <script src="https://code.jquery.com/jquery-3.6.1.js"></script>
-    <title>Jore</title>
+    <title>Jore Business</title>
 </head>
 
 <body>
     <div class="rectangle_home">
         {{> header_employer_login}}
 
-        {{{body}}}
+        <div class="rectangle_mid_news_home_recruit">
+            {{> menu}}
+            {{{body}}}
+        </div>
+
 
         {{> footer}}
     </div>
