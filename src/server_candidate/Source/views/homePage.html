@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./style/css/css.css">
+    <link href='https://fonts.googleapis.com/css?family=Poppins' rel='stylesheet'>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.6.1.js"></script>
+    <title>Document</title>
+</head>
+
+<body>
+    <div class="rectangle_home">
+        <nav class="navbar navbar-expand-lg navbar-light header">
+            <img id="logo_web" src="./style/image/logo_web.svg" alt="logoweb">
+            <a href="#" id="find_job">Tìm việc làm</a>
+            <a href="#" id="list_company">Danh sách công ty</a>
+            <a href="#" id="blog">Blog</a>
+            <button id="btn_login">Đăng nhập</button>
+            <button id="btn_signin">Đăng ký</button>
+            <button id="btn_switch_recruiter">Dành cho nhà tuyển dụng
+                <img src="./style/image/right_arrow.svg" id="ic_right_arrow" alt="go">
+            </button>
+        </nav>
+        <div class="rectangle_mid">
+            <img src="./style/image/welcome to JORE.svg" alt="welcome" id="welcome">
+            <form action="">
+                <input type="search" name="search" id="search" placeholder="Tìm kiếm việc làm">
+                <img src="./style/image/ic_search.svg" alt="ic_search" id="ic_search">
+                <select name="select_province" id="select_province" required="">
+                    <option value="" class="op_select_province">Hồ Chí Minh</option>
+                    <option value="" class="op_select_province">Hà Nội</option>
+                </select>
+                <img src="./style/image/ic_select_province.svg" alt="ic_select_province" id="ic_select_province">
+                <input id="address_work" name="address_work" type="hidden" value="">
+                <button type="submit" id="btn_search">Tìm việc ngay</button>
+            </form>
+        </div>
+        <div class="rectangle_mid_2">
+            <div class="rectangle_content_home">
+                <h4 id="text_info_content_home">Tin tuyển dụng, việc làm được quan tâm nhất</h4>
+                <div class="d-flex flex-wrap card_company">
+                    <div class="item_company p-2 m-2">
+                        <img src="./style/image/logo_web.svg" alt="logo" class="logo_company_home">
+                        <div class="title_recuit_company_home">Front-End Web Developer</div>
+                        <div class="name_company_home">VNG Games</div>
+                        <div class="wage_copany_home">12-20 triệu</div>
+                        <div class="address_company_home">Hà Nội, Trường Sa</div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="footer">
+            <img id="logo_web_footer" src="./style/image/logo_web.svg" alt="logoweb">
+            <p id="text_info_footer">Chúng tôi là JORE hệ thống tìm kiếm việc làm uy tính tại Việt Nam</p>
+        </div>
+
+    </div>
+
+
+
+
+
+
+</body>
+
+</html>
