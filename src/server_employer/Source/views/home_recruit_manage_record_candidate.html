@@ -59,7 +59,7 @@
                 </div>
             </div>
         </nav>
-        <div class="rectangle_mid_edit_home_recruit">
+        <div class="rectangle_mid_news_home_recruit">
             <div class="side_left_home_recruit">
                 <a id="menu_news_home_recruit" href="#">Bảng tin
                     <img src="./style/image/ic_news.svg" id="ic_news_home_recruit" alt="ic_news_home_recruit">
@@ -75,61 +75,111 @@
                 <div id="line"></div>
                 <div id="text_version">©️2022 JORE. All rights reversed.</div>
             </div>
-            <div id="content_edit_news_home_recruit">
-                <div id="text_edit_news">Chỉnh sửa tin tuyển dụng</div>
-                <div id="please_enter_edit">Vui lòng nhập thông tin cần chỉnh sửa</div>
-                <form action="">
-                    <div id="label_title">Tiêu đề</div>
-                    <input type="text" name="title_edit_news" id="title_edit_news"  required placeholder="Nhập tiêu đề tin tuyển dụng">
-                    <div id="text_info_general">Thông tin chung</div>
-                    <div id="salary_edit_news">Mức lương</div>
-                    <input type="number" name="min_salary_edit_news" id="min_salary_edit_news"  required placeholder="Tối thiểu">
-                    <div id="line_edit_news"></div>
-                    <input type="number" name="max_salary_edit_news" id="max_salary_edit_news"  required placeholder="Tối đa">
-                    <div id="text_quantity_edit_news">Số lượng</div>
-                    <input type="number" name="quantity_edit_news" id="quantity_edit_news"  required placeholder="Số lượng">
-                    <div id="text_method_word_edit_news">Hình thức làm việc</div>
-
-                    <select name="method_work_edit_news" id="method_work_edit_news" required="">
-                        <option disabled selected value> Hình thức làm việc </option>
-                        <option value="" class="op_select_method_work">Full Time</option>
-                        <option value="" class="op_select_method_work">Part Time</option>
-                        <option value="" class="op_select_method_work">Remote</option>
-                    </select>
-                    <input id="method_work_edit_news" name="method_work_edit_news" type="hidden" value="">
-                    <div id="text_sex_edit_news">Giới tính</div>
-
-                    <select name="sex_edit_news" id="sex_edit_news" required="">
-                        <option disabled selected value>Giới tính</option>
-                        <option value="" class="op_select_method_work">Nam</option>
-                        <option value="" class="op_select_method_work">Nữ</option>
-                    </select>
-                    <input id="sex_edit_news" name="sex_edit_news" type="hidden" value="">
-
-                    <div id="text_experience_edit_news">Kinh nghiệm</div>
-
-                    <select name="experience_edit_news" id="experience_edit_news" required="">
-                        <option disabled selected value>Kinh nghiệm</option>
-                        <option value="" class="op_select_method_work">Chưa có</option>
-                        <option value="" class="op_select_method_work">1 năm</option>
-                        <option value="" class="op_select_method_work">2 năm</option>
-                        <option value="" class="op_select_method_work">3 năm</option>
-                        <option value="" class="op_select_method_work">Hơn 3 năm</option>
-                    </select>
-                    <input id="experience_edit_news" name="experience_edit_news" type="hidden" value="">
-                    <div id="text_deadline_submit_record_edit_news">Hạn nộp hồ sơ</div>
-                    <input type="date" name="deadline_submit_record_edit_news" id="deadline_submit_record_edit_news"  required placeholder="Hạn nộp hồ sơ">
-                    <div id="text_work_locatio_edit_news">Địa điểm làm việc</div>
-                    <input type="text" name="word_location_edit_news" id="word_location_edit_news"  required placeholder="Nhập địa điểm làm việc">
-                    <div id="text_job_describe">Mô tả công việc</div>
-                    <textarea type="text" name="job_describe_edit_news" id="job_describe_edit_news"  required></textarea>
-                    <div id="text_require_candidate_edit_news">Yêu cầu ứng viên</div>
-                    <textarea type="text" name="require_candidate_edit_news" id="require_candidate_edit_news"  required></textarea>
-                    <div id="text_benefit_edit_news">Quyền lợi</div>
-                    <textarea type="text" name="benefit_edit_news" id="benefit_edit_news"  required></textarea>
-                    <button type="submit" id="submit_edit_news">Cập nhật</button>
-                </form>
-                <a id="cancle_edit_news" href="#">Hủy bỏ</a>
+            <div id="content_news_home_recruit">
+                <div id="text_recruitment_efficiency">Số hồ sơ đã nộp: 5</div>
+                <table id="table_mamage_recruit" style="width: 1333px;" rules="rows">
+                    <tr class="title_table_recruit">
+                        <th>ID</th>
+                        <th>Họ và tên</th>
+                        <th>Giới tính</th>
+                        <th>Ngày sinh</th>
+                        <th>Địa chỉ</th>
+                        <th>Ngày nộp</th>
+                        <th>Trạng thái hồ sơ</th>
+                    </tr>
+                    <tr>
+                        <td>20120433</td>
+                        <td>Hồ Duy Bảo</td>
+                        <td>Nam</td>
+                        <td>31/11/2022</td>
+                        <td>Hồ Chí Minh</td>
+                        <td>31/12/2022</td>
+                        <td>Đã duyệt</td>
+                    </tr>
+                    <tr>
+                        <td>20120433</td>
+                        <td>Hồ Duy Bảo</td>
+                        <td>Nam</td>
+                        <td>31/11/2022</td>
+                        <td>Hồ Chí Minh</td>
+                        <td>31/12/2022</td>
+                        <td>Đã duyệt</td>
+                    </tr>
+                    <tr>
+                        <td>20120433</td>
+                        <td>Hồ Duy Bảo</td>
+                        <td>Nam</td>
+                        <td>31/11/2022</td>
+                        <td>Hồ Chí Minh</td>
+                        <td>31/12/2022</td>
+                        <td>Đã duyệt</td>
+                    </tr>
+                    <tr>
+                        <td>20120433</td>
+                        <td>Hồ Duy Bảo</td>
+                        <td>Nam</td>
+                        <td>31/11/2022</td>
+                        <td>Hồ Chí Minh</td>
+                        <td>31/12/2022</td>
+                        <td>Đã duyệt</td>
+                    </tr>
+                    <tr>
+                        <td>20120433</td>
+                        <td>Hồ Duy Bảo</td>
+                        <td>Nam</td>
+                        <td>31/11/2022</td>
+                        <td>Hồ Chí Minh</td>
+                        <td>31/12/2022</td>
+                        <td>Đã duyệt</td>
+                    </tr>
+                    <tr>
+                        <td>20120433</td>
+                        <td>Hồ Duy Bảo</td>
+                        <td>Nam</td>
+                        <td>31/11/2022</td>
+                        <td>Hồ Chí Minh</td>
+                        <td>31/12/2022</td>
+                        <td>Đã duyệt</td>
+                    </tr>
+                    <tr>
+                        <td>20120433</td>
+                        <td>Hồ Duy Bảo</td>
+                        <td>Nam</td>
+                        <td>31/11/2022</td>
+                        <td>Hồ Chí Minh</td>
+                        <td>31/12/2022</td>
+                        <td>Đã duyệt</td>
+                    </tr>
+                    <tr>
+                        <td>20120433</td>
+                        <td>Hồ Duy Bảo</td>
+                        <td>Nam</td>
+                        <td>31/11/2022</td>
+                        <td>Hồ Chí Minh</td>
+                        <td>31/12/2022</td>
+                        <td>Đã duyệt</td>
+                    </tr>
+              
+                </table>
+                <nav aria-label="Page navigation example" id="nav_page_home_manage_recruit">
+                    <ul class="pagination">
+                      <li class="page-item">
+                        <a class="page-link" href="#" aria-label="Previous">
+                          <span aria-hidden="true">&laquo;</span>
+                          <span class="sr-only">Previous</span>
+                        </a>
+                      </li>
+                      <li class="page-item"><a class="page-link" href="#">1</a></li>
+                      <li class="page-item"><a class="page-link" href="#">2</a></li>
+                      <li class="page-item"><a class="page-link" href="#">3</a></li>
+                      <li class="page-item">
+                        <a class="page-link" href="#" aria-label="Next">
+                          <span aria-hidden="true">&raquo;</span>
+                          <span class="sr-only">Next</span>
+                        </a>
+                      </li>
+                    </ul>
+                  </nav>
 
             </div>
         </div>

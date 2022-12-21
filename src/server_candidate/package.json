@@ -1,7 +1,6 @@
 {
   "name": "server",
   "version": "1.0.0",
-  "description": "",
   "main": "Source/server.js",
   "scripts": {
     "start": "nodemon --inspect Source/server.js",
@@ -27,5 +26,6 @@
   },
   "devDependencies": {
     "nodemon": "^2.0.20"
-  }
+  },
+  "description": ""
 }
