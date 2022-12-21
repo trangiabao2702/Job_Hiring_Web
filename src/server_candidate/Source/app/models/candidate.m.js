@@ -9,14 +9,25 @@ module.exports = {
         return rs;
     },
     addACandidate: async (user) => {
-        const candidatesCollection =  db.collection('candidates');
+        const candidatesCollection = db.collection('candidates');
         const checkuser = await candidatesCollection.where('email', '==', user.email).get();
-        if(checkuser.empty){
+        if (checkuser.empty) {
             const rs = candidatesCollection.add(user);
             return rs;
         } else {
             return null;
         }
     },
+    getByEmail: async (email) => {
+        const candidatesCollection = db.collection('candidates');
+        const snapshot = await candidatesCollection.where('email', '==', email).get();
+
+        var user = null;
+        snapshot.forEach(doc => {
+            user = doc.data();
+        });
+
+        return user;
+    }
 
 }

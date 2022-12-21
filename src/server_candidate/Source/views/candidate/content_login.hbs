@@ -14,12 +14,12 @@
             {{messageDanger}}
         </div>
         {{/if}}
-        <form action="">
+        <form method="post" action="/candidate/login">
             <div id="label_email">Email</div>
-            <input type="email" name="email_login" id="email_login" required placeholder="Nhập email của bạn">
+            <input type="email" name="email" id="email_login" required placeholder="Nhập email của bạn">
             <img src="/css/style/image/logo_email.svg" id="logo_email" alt="logo_email">
             <div id="label_password">Mật khẩu</div>
-            <input type="password" name="password_login" id="password_login" required placeholder="Nhập mật khẩu">
+            <input type="password" name="password" id="password_login" required placeholder="Nhập mật khẩu">
             <img src="/css/style/image/logo_password.svg" id="logo_password" alt="logo_password">
             <img src="/css/style/image/eye-slash.svg" id="eye_slash_password" alt="eye_slash_password">
             <button type="submit" id="submit_form_login">Đăng nhập</button>
@@ -27,7 +27,7 @@
         </form>
         <button type="submit" id="submit_login_facebook"></button>
         <img src="/css/style/image/ic_facebook.svg" id="ic_facebook" alt="ic_facebook">
-        <button type="submit" id="submit_login_google"></button>
+        <a type="submit" id="submit_login_google" href="/candidate/auth/google"></a>
         <img src="/css/style/image/ic_google.svg" id="ic_google" alt="ic_google">
         <div id="text_No_Account">Bạn chưa có tài khoản?
             <a id="signin_now" href="/candidate/signup">Đăng ký ngay</a>

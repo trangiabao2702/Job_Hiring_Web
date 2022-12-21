@@ -5,7 +5,10 @@ const hbs = require("./config/hbs");
 const session = require("express-session");
 const route = require("./routers");
 const flush = require("connect-flash");
-const passport = require("./app/middlewares/passportLocalStrategy");
+const passportLocalStrategy = require("./app/middlewares/passportLocalStrategy");
+const passportGoogleStrategy = require("./app/middlewares/passportGoogle");
+
+
 
 // port number
 const port = 3032;
@@ -36,8 +39,8 @@ bodyParser(app);
 hbs(app);
 
 //passport
-//passport(app);
-
+passportLocalStrategy(app);
+passportGoogleStrategy(app);
 // router
 route(app);
 

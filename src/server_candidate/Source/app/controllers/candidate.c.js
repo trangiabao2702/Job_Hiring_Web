@@ -9,7 +9,7 @@ class Candidate {
 
         try {
             res.render('candidate/content_login.hbs', { message: req.flash('message'), messageDanger: req.flash('messageDanger') });
-            
+
         } catch (error) {
             next(error);
         }
@@ -17,8 +17,8 @@ class Candidate {
     }
     signup(req, res, next) {
         try {
-            
-            res.render('candidate/content_signup.hbs',  { message: req.flash('message'), messageDanger: req.flash('messageDanger') });
+
+            res.render('candidate/content_signup.hbs', { message: req.flash('message'), messageDanger: req.flash('messageDanger') });
         } catch (error) {
             next(error);
         }
@@ -36,9 +36,20 @@ class Candidate {
 
     }
     home(req, res, next) {
-        res.render('candidate/content_home.hbs', {
-            layout: 'main_candidate_login'
-        });
+
+
+        try {
+            if (req.isAuthenticated()) {
+                res.render('candidate/content_home.hbs', {
+                    layout: 'main_candidate_login'
+                });
+            } else {
+                res.redirect('/candidate/login');
+            }
+        }
+        catch (error) {
+            next(error);
+        }
 
     }
     detail_job(req, res, next) {
@@ -56,7 +67,7 @@ class Candidate {
 
 
     // [POST] /signup
-    async postSignup(req, res, next){
+    async postSignup(req, res, next) {
 
         const name = req.body.name;
         const email = req.body.email;
@@ -65,8 +76,8 @@ class Candidate {
         const salt = bcrypt.genSaltSync(saltRounds);
         const pwHashed = bcrypt.hashSync(password, salt);
 
-        const user =  {
-            name: name, 
+        const user = {
+            name: name,
             email: email,
             password: pwHashed,
             avatar: null,
@@ -87,7 +98,7 @@ class Candidate {
     // [POST] /login
     async postLogin(req, res, next) {
         try {
-            
+
         } catch (error) {
             next(error);
         }
