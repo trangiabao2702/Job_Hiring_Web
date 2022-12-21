@@ -2,7 +2,7 @@
   "name": "server",
   "version": "1.0.0",
   "description": "",
-  "main": "server.js",
+  "main": "Source/server.js",
   "scripts": {
     "start": "nodemon --inspect Source/server.js",
     "test": "echo \"Error: no test specified\" && exit 1"

@@ -1,0 +1,160 @@
+<div class="modal fade" id="modal_apply_company" tabindex="-1" aria-labelledby="modal_updateLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <span class="modal-title" id="exampleModalLabel">Ứng tuyển:&nbsp;<span
+                        id="name_job_modal_apply_company">Front-End Web Developer</span> </span>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <form action="#" method="post" enctype="multipart/form-data">
+                <div class="modal-body">
+                    <div id="text_CV_me">CV của bạn:</div>
+                    <img src="/css/style/image/ic_upload.svg" id="ic_upload_CV" alt="ic_upload_CV">
+
+                    <input type="file" name="file" id="file" class="inputfile" />
+                    <label for="file" id="label_file">Tải CV</label>
+                    <div id="text_fullname_CV">Họ và tên:</div>
+                    <input type="text" name="fullname_cv" id="fullname_cv" required placeholder="Nhập đầy đủ họ tên">
+                    <div id="text_email_CV">Email:</div>
+                    <input type="email" name="email_cv" id="email_cv" required placeholder="Nhập email">
+                    <div id="text_phone_CV">Số điện thoại</div>
+                    <input type="text" name="phone_cv" id="phone_cv" required placeholder="Nhập số điện thoại">
+                    <div id="text_introduce_CV">Giới thiệu:</div>
+                    <textarea name="introduce_cv" class="form-control" id="introduce_cv" required
+                        placeholder="Một vài lời giới thiệu với nhà tuyển dụng"></textarea>
+                    <button type="button" id="close_cv" data-bs-dismiss="modal">Đóng</button>
+                    <button type="submit" id="submit_cv">Nộp</button>
+                </div>
+
+
+            </form>
+        </div>
+    </div>
+</div>
+<div class="rectangle_mid_2_detail_job">
+    <div class="header_company_detail_job">
+        <img src="/css/style/image/logo_company.svg" alt="logo_company" class="logo_company_detail_job">
+        <div class="name_job_detail_job">Front-End Web Developer</div>
+        <div class="name_company_detail_job">VNG Games</div>
+        <img src="/css/style/image/ic_time.svg" alt="ic_time" class="ic_time_detail_job">
+        <div class="deadline_submit_record_detail_job">Hạn nộp hồ sơ: 12-12-2022 </div>
+        <button type="button" class="btn_apply_to_company_detail_job" data-bs-toggle="modal"
+            data-bs-target="#modal_apply_company">Ứng tuyển</button>
+        <button type="button" class="btn_save_job_detail_job">Lưu tin</button>
+    </div>
+    <div id="detail_recruit_detail_job">
+        <div id="text_detail_recruit_detail_job">Chi tiết tuyển dụng</div>
+        <div id="rectangle_general_information_detail_job">
+            <div id="text_general_information_detail_job">Thông tin chung</div>
+            <div class="circle_icon" id="circle_icon_salary_detail_job"></div>
+            <div id="text_salary_detail_job">Mức lương</div>
+            <div id="value_salary_detail_job">10-12 triệu</div>
+            <img src="/css/style/image/ic_cash.svg" alt="ic_cash" id="ic_salary_detail_job">
+
+            <div class="circle_icon" id="circle_icon_persons_detail_job"></div>
+            <div id="text_number_person_detail_job">Số lượng</div>
+            <div id="value_number_person_detail_job">10 người</div>
+            <img src="/css/style/image/ic_persons.svg" alt="ic_person" id="ic_persons_detail_job">
+
+            <div class="circle_icon" id="circle_icon_method_work_detail_job"></div>
+            <div id="text_method_work_detail_job">Hình thức làm việc</div>
+            <div id="value_method_work_detail_job">Fulltime</div>
+            <img src="/css/style/image/ic_bag.svg" alt="ic_method_work" id="ic_method_work_detail_job">
+            <div class="circle_icon" id="circle_icon_rank_detail_job"></div>
+            <div id="text_rank_detail_job">Cấp bậc</div>
+            <div id="value_rank_detail_job">Nhân viên</div>
+            <img src="/css/style/image/ic_rank.svg" alt="ic_rank" id="ic_rank_detail_job">
+            <div class="circle_icon" id="circle_icon_gender_detail_job"></div>
+            <div id="text_gender_detail_job">Giới tính</div>
+            <div id="value_gender_detail_job">Không yêu cầu</div>
+            <img src="/css/style/image/ic_gender.svg" alt="ic_gender" id="ic_gender_detail_job">
+            <div class="circle_icon" id="circle_icon_experience_detail_job"></div>
+            <div id="text_experience_detail_job">Kinh nghiệm</div>
+            <div id="value_experience_detail_job">1 năm</div>
+            <img src="/css/style/image/ic_experience.svg" alt="ic_experience" id="ic_experience_detail_job">
+
+            <div id="text_adress_work_detail_job">Địa điểm làm việc</div>
+            <div id="value_adress_work_detail_job">KTX khu A, phường Linh Trung,Thành phố Thủ Đức, Thành phố Hồ Chí Minh
+            </div>
+        </div>
+        <div id="rectangle_share_recruit_detail_job">
+            <div id="text_share_recuit_detail_job">Chia sẻ tin tuyển dụng</div>
+            <div id="text_copy_link_detail_job">Sao chép đường dẫn</div>
+            <input type="text" value="file:///D:/Nhap%20mon%20CNPM/DO%20AN/detail_job_candidate.html" disabled
+                name="link_detail_job" id="link_detail_job">
+
+            <div id="circle_copy_link_detail_job">
+                <img src="/css/style/image/ic_copy.svg" alt="ic_copy" id="ic_copy_link_detail_job">
+            </div>
+        </div>
+        <div id="rectangle_report_recruit_detail_job">
+            <div id="text_report_recuit_detail_job">Báo cáo tin tuyển dụng</div>
+            <div id="text_describe_report_detail_job">Nếu bạn thấy rằng tin tuyển dụng này không đúng hoặc có một trong
+                các dấu hiệu xấu, hãy phản ánh với chúng tôi.
+            </div>
+            <button type="button" id="btn_report_detail_job">Báo cáo</button>
+
+        </div>
+
+        <div id="text_describe_job_detail_job">Mô tả công việc</div>
+        <pre id="value_describe_job_detail_job">
+                    - Lập trình phần frontend bằng JavaScript/TypeScript sử dụng thư viện VueJS, GraphQL 
+                    - Thiết kế, sửa đổi giao diện người dùng theo yêu cầu khách hàng
+                    - Sửa lỗi, viết unit test, cải tiến code nếu cần
+                    - Hỗ trợ, phối hợp với các thành viên trong nhóm trong các công việc liên quan đến VueJS
+                    - Thực hiện các nhiệm vụ do trưởng nhóm giao
+                    - Địa điểm làm việc: Cầu Giấy, Hà Nội
+                    - Hình thức làm việc: Fulltime T2-T7 hàng tuần
+                </pre>
+        <div id="text_require_candidate_detail_job">Yêu cầu ứng viên</div>
+        <pre id="value_require_candidate_detail_job">
+                    - Thành thạo HTML/CSS, Javascript (ES6, ES7)
+                    - Có kinh nghiệm làm việc với Typescript
+                    - Có kinh nghiệm làm việc thực tế một trong các framework của Javascript như Vuejs, Reactjs, Angular (ưu tiên Vuejs)
+                    - Đã làm việc với Restful, Graphql
+                    - Sử dụng thành thạo Git
+                    - Tối thiểu 6 tháng kinh nghiệm
+                </pre>
+        <div id="text_benefit_detail_job">Quyền lợi</div>
+        <pre id="value_benefit_detail_job">
+                    - Mức lương: $500 - $1,000 Gross
+                    - Đóng BHXH, BHYT, BHTN, thưởng tháng 13, thưởng Project,...
+                    - Môi trường năng động, chuyên nghiệp có nhiều cơ hội thăng tiến
+                    - Cung cấp trang thiết bị đầy đủ để phục vụ công việc
+                    - Được đào tạo về kiến thức, kỹ năng phục vụ công việc
+                    - Cơ hội học hỏi những công nghệ khác
+                    - Được tham gia các hoạt động, chương trình, dự án, sự kiện của công ty 
+                </pre>
+
+    </div>
+    <div id="rectangle_infor_recruit">
+        <div id="title_infor_company_detail_job">Thông tin chi tiết</div>
+        <a href="#" id="btn_see_company_detail_job">Xem công ty</a>
+        <div class="circle_icon" id="circle_house_company_detail_job"></div>
+        <img src="/css/style/image/ic_house.svg" alt="ic_house" id="ic_house_company_detail_job">
+        <div id="text_introduce_company_detail_job">Giới thiệu</div>
+        <pre id="introduce_company_detail_job">
+Korea - Vietnam IT Outsourcing Frontier!
+We are a startup established to provide Vietnamese IT technology and software development technology 
+to Korean companies. We aim to grow into an IT software outsourcing company with more than 300
+employees within the next 5 years
+Web or Mobile Applications
+We develop web or mobile applications requested by Korean companies. It is mainly software for
+accounting, payroll, healthcare, and apartment management business.
+ 
+                </pre>
+        <div id="rectangle_scale_compayny">
+            <div class="circle_icon" id="circle_person_company_detail_job"></div>
+            <img src="/css/style/image/ic_persons.svg" alt="ic_persons" id="ic_persons_company_detail_job">
+            <div id="text_scale_company_detail_job">Quy mô</div>
+            <div id="value_scale_company_detail_job">25 nhân viên</div>
+        </div>
+        <div id="rectangle_address_compayny">
+            <div class="circle_icon" id="circle_address_company_detail_job"></div>
+            <img src="/css/style/image/ic_select_province.svg" alt="ic_province" id="ic_province_company_detail_job">
+            <div id="text_province_company_detail_job">Địa điểm</div>
+            <div id="value_province_company_detail_job">Linh Trung, Thủ Đức, Hồ Chí Minh</div>
+        </div>
+
+    </div>
+</div>
