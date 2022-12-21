@@ -106,7 +106,22 @@ pre {
     color: #00B4D8;
     font-family: 'Poppins', sans-serif;
 }
+#btn_login_candidate{
+    position: absolute;
+    width: 90%;
+    left: 5px;
+    top: 4%;
+    padding-top: 8px;
+    height: 90%;
+font-family: 'Poppins', sans-serif;
+font-style: normal;
+font-weight: 700;
+font-size: 14px;
 
+
+text-decoration: none;
+color: #00B4D8;
+}
 #btn_signin {
     position: absolute;
     left: 65.26%;
@@ -120,11 +135,27 @@ pre {
     color: white;
 
 }
+#btn_signin_candidate{
+    position: absolute;
+    width: 90%;
+    left: 5px;
+    top: 4%;
+    padding-top: 8px;
+    height: 90%;
+    font-family: 'Poppins', sans-serif;
+font-style: normal;
+font-weight: 700;
+font-size: 14px;
+line-height: 21px;
+text-decoration: none;
+color:white;
+}
 
 #btn_switch_recruiter {
     position: absolute;
     left: 73.7%;
     right: 10%;
+    height: 40px;
     top: 19.44%;
     bottom: 19.44%;
     border: 0.5px solid #0096C7;
@@ -132,13 +163,16 @@ pre {
     border-radius: 10px;
     font-family: 'Poppins', sans-serif;
     color: white;
+    text-decoration: none;
+    line-height: 40px;
+    padding-left: 30px;
 }
 
 #ic_right_arrow {
     position: absolute;
-    left: 86.21%;
+    left: 87.21%;
     right: 13.7%;
-    top: 29%;
+    top: 35%;
     bottom: 34.72%;
 
 }
@@ -1555,7 +1589,24 @@ pre {
 
     color: #FFFFFF;
 }
+#menu_account_recruit {
+    position: relative;
+    height: 50px;
+    left: 0px;
+    top: 0px;
+    padding-left: 65px;
+    background: #88C2DB;
+    border: none;
 
+    font-family: 'Poppins', sans-serif;
+    font-style: normal;
+    font-weight: 600;
+    font-size: 14px;
+    /* identical to box height */
+
+
+    color: #FFFFFF;
+}
 #avatar_candidate {
     position: absolute;
     width: 40px;
@@ -1565,8 +1616,25 @@ pre {
 
     border-radius: 227px;
 }
+#avatar_recruit {
+    position: absolute;
+    width: 40px;
+    height: 40px;
+    left: 14px;
+    top: 5px;
 
+    border-radius: 227px;
+}
 #dropdown_menu_candidate {
+    position: absolute;
+    width: 300px;
+    height: 180px;
+    top: 50px;
+    background: #FFFFFF;
+    box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.25);
+    border-radius: 3px;
+}
+#dropdown_menu_recruit {
     position: absolute;
     width: 300px;
     height: 135px;
@@ -1576,7 +1644,21 @@ pre {
     border-radius: 3px;
 }
 
-#setting_account_candidate {
+#setting_account_candidate{
+    position: relative;
+    height: 37px;
+    background: #D7E4E8;
+    font-family: 'Poppins', sans-serif;
+    font-style: normal;
+    font-weight: 600;
+    font-size: 14px;
+    line-height: 30px;
+    /* identical to box height */
+    color: #3D3D3D;
+    padding-left: 60px;
+}
+
+#setting_account_recruit {
     position: relative;
     height: 37px;
     background: #D7E4E8;
@@ -1623,6 +1705,38 @@ pre {
 #logout_candidate {
     position: relative;
     height: 37px;
+    top: 15px;
+    background: #D7E4E8;
+
+    font-family: 'Poppins', sans-serif;
+    font-style: normal;
+    font-weight: 600;
+    font-size: 14px;
+    line-height: 30px;
+    /* identical to box height */
+    color: #EA4335;
+    padding-left: 60px;
+}
+#change_password_candidate
+{
+    position: relative;
+    height: 37px;
+    top: 10px;
+    background: #D7E4E8;
+
+    font-family: 'Poppins', sans-serif;
+    font-style: normal;
+    font-weight: 600;
+    font-size: 14px;
+    line-height: 30px;
+    /* identical to box height */
+    color: #3D3D3D;
+    padding-left: 60px;
+}
+
+#logout_recruit {
+    position: relative;
+    height: 37px;
     top: 10px;
     background: #D7E4E8;
 
@@ -1635,7 +1749,12 @@ pre {
     color: #EA4335;
     padding-left: 60px;
 }
+#ic_reset_password {
+    position: absolute;
+    left: 20px;
+    top: 7px;
 
+}
 #ic_logout_candidate {
     position: absolute;
     left: 20px;
@@ -3368,11 +3487,13 @@ pre {
     font-style: normal;
     font-weight: 700;
     font-size: 22px;
-    line-height: 52x;
+    line-height: 52px;
     /* identical to box height */
     border:hidden;
 
     color: #00B4D8;
+    text-decoration: none;
+
 }
 
 #btn_pending_application_management_candidate {
@@ -3388,9 +3509,11 @@ pre {
     font-style: normal;
     font-weight: 700;
     font-size: 22px;
-    line-height: 52x;
+    line-height: 52px;
     /* identical to box height */
     border: none;
+    text-decoration: none;
+
 
 }
 
@@ -3407,9 +3530,11 @@ pre {
     font-style: normal;
     font-weight: 700;
     font-size: 22px;
-    line-height: 52x;
+    line-height: 52px;
     /* identical to box height */
     border: none;
+    text-decoration: none;
+
 
 }
 
@@ -3427,8 +3552,9 @@ pre {
     font-style: normal;
     font-weight: 700;
     font-size: 22px;
-    line-height: 52x;
+    line-height: 52px;
     /* identical to box height */
+    text-decoration: none;
     border: none;
 
 }

@@ -26,7 +26,9 @@
 <body>
     <div class="rectangle_home">
         {{> header_candidate_login}}
+        {{#if not_record}}
         {{>search_job}}
+        {{/if}}
         {{{body}}}
 
         {{> footer}}

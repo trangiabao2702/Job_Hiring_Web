@@ -158,3 +158,23 @@ accounting, payroll, healthcare, and apartment management business.
 
     </div>
 </div>
+<script>
+    var inputs = document.querySelectorAll( '.inputfile' );
+Array.prototype.forEach.call( inputs, function( input )
+{
+	var label	 = input.nextElementSibling,
+		labelVal = document.getElementById("label_file").innerHTML;
+
+	input.addEventListener( 'change', function( e )
+	{
+		var fileName = '';
+		fileName = e.target.value.split( '\\' ).pop()
+
+		if( fileName )
+        document.getElementById("label_file").innerHTML = fileName;
+		else
+        document.getElementById("label_file").innerHTML =labelVal;
+	});
+});
+
+</script>
