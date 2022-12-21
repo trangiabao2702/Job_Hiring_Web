@@ -1,11 +1,7 @@
-const userRouter = require("./user.r");
-// const homeRouter = require("./home.r");
-// const productRouter = require("./product.r");
+const employerRouter = require("./employer.r");
 
 function router(app) {
-  app.use("/user", userRouter);
-  app.use("/product", productRouter);
-  app.use("/", homeRouter);
+  app.use("/employer", employerRouter);
 }
 
 module.exports = router;

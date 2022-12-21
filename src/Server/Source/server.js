@@ -2,7 +2,7 @@ const express = require("express");
 const path = require("path");
 const bodyParser = require("./config/bodyParser");
 const session = require("express-session");
-const route = require("./routers/index");
+const route = require("./routers");
 const flush = require("connect-flash");
 const passport = require("./app/middlewares/passport");
 
@@ -14,6 +14,10 @@ const app = express();
 
 // Set dung tai nguyen he thong
 app.use(express.static(path.join(__dirname + "/public")));
+app.use(express.urlencoded({ extended: true }));
+app.use(express.json());
+
+require("./config/hbs")(app);
 
 // session
 app.use(
