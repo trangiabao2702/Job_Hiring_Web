@@ -1,6 +1,7 @@
 const express = require("express");
 const path = require("path");
 const bodyParser = require("./config/bodyParser");
+const hbs = require("./config/hbs");
 const session = require("express-session");
 const route = require("./routers");
 const flush = require("connect-flash");
@@ -14,8 +15,6 @@ const app = express();
 
 // Set dung tai nguyen he thong
 app.use(express.static(path.join(__dirname + "/public")));
-app.use(express.urlencoded({ extended: true }));
-app.use(express.json());
 
 require("./config/hbs")(app);
 
@@ -28,10 +27,15 @@ app.use(
   })
 );
 
+
+// flash messages
 app.use(flush());
 
 // bodyparser
 bodyParser(app);
+
+// handlebars
+hbs(app);
 
 //passport
 //passport(app);

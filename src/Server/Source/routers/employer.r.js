@@ -3,18 +3,18 @@ const router = express.Router();
 
 const employerController = require("../app/controllers/employer.c");
 
-router.use("/sign_up", employerController.sign_up);
-router.use("/sign_in", employerController.sign_in);
-router.use("/forgot_pw", employerController.forgot_pw);
-router.use("/account_authentication", employerController.account_authentication);
-router.use("/reset_pw", employerController.reset_pw);
-router.use("/homepage", employerController.homepage);
-router.use("/manage_recruitments", employerController.manage_recruitments);
-router.use("/detail_recruitment", employerController.detail_recruitment);
-router.use("/edit_recruitment", employerController.edit_recruitment);
-router.use("/manage_candidates_cvs", employerController.manage_candidates_cvs);
-router.use("/detail_candidate", employerController.detail_candidate);
+router.get("/sign_up", employerController.sign_up);
+router.get("/sign_in", employerController.sign_in);
+router.get("/forgot_pw", employerController.forgot_pw);
+router.get("/account_authentication", employerController.account_authentication);
+router.get("/reset_pw", employerController.reset_pw);
+router.get("/homepage", employerController.homepage);
+router.get("/manage_recruitments", employerController.manage_recruitments);
+router.get("/detail_recruitment", employerController.detail_recruitment);
+router.get("/edit_recruitment", employerController.edit_recruitment);
+router.get("/manage_candidates_cvs", employerController.manage_candidates_cvs);
+router.get("/detail_candidate", employerController.detail_candidate);
 
-router.use("/", employerController.homepage);
+router.get("/", employerController.homepage);
 
 module.exports = router;
