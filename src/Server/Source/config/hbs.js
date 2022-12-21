@@ -1,3 +1,4 @@
+
 const exphbs = require("express-handlebars"),
   path = require("path");
 
@@ -6,7 +7,7 @@ module.exports = (app) => {
     "hbs",
     exphbs.engine({
       layoutsDir: "Source/views/layouts",
-      defaultLayout: "main_employer_not_login.hbs",
+      defaultLayout: "main_candidate_not_login.hbs",
       extname: ".hbs",
     })
   );
