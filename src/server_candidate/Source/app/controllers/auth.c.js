@@ -9,8 +9,22 @@ class Authencation {
     //
     login(req, res, next) {
 
+        
         try {
-            res.render('candidate/content_login.hbs', { message: req.flash('message'), messageDanger: req.flash('messageDanger') });
+            if (req.isAuthenticated()) {
+                var user = req.session.passport.user;
+
+                res.render('candidate/content_home.hbs', {
+                    layout: 'main_candidate_login',
+                    data: {
+                        user: user
+                    },
+                    not_record:true
+
+                });
+            } else {
+                res.render('candidate/content_login.hbs', { message: req.flash('message'), messageDanger: req.flash('messageDanger') });
+            }
 
         } catch (error) {
             next(error);
@@ -19,7 +33,6 @@ class Authencation {
     }
     signup(req, res, next) {
         try {
-
             res.render('candidate/content_signup.hbs', { message: req.flash('message'), messageDanger: req.flash('messageDanger') });
         } catch (error) {
             next(error);
@@ -74,7 +87,7 @@ class Authencation {
     // [POST] /login
     async postLogin(req, res, next) {
         try {
-
+            
         } catch (error) {
             next(error);
         }

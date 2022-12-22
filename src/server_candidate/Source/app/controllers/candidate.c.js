@@ -15,7 +15,9 @@ class Candidate {
                     layout: 'main_candidate_login',
                     data: {
                         user: user
-                    }
+                    },
+                    not_record:true
+
                 });
             } else {
                 res.redirect('/auth/login');
@@ -27,14 +29,27 @@ class Candidate {
 
     }
     detail_job(req, res, next) {
+        var user = req.session.passport.user;
+
         res.render('candidate/content_detail_job.hbs', {
-            layout: 'main_candidate_login'
+
+            layout: 'main_candidate_login',
+            data: {
+                user: user
+            },
+            not_record:true
+
+
         });
 
     }
     manage_record(req, res, next) {
+        var user = req.session.passport.user;
+
         res.render('candidate/content_manage_record.hbs', {
-            layout: 'main_candidate_login'
+            layout: 'main_candidate_login',  data: {
+                user: user
+            }
         });
 
     }
