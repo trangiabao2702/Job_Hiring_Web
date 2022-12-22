@@ -7,7 +7,7 @@ module.exports = (app) => {
     "hbs",
     exphbs.engine({
       layoutsDir: "Source/views/layouts",
-      defaultLayout: "main_candidate_not_login.hbs",
+      defaultLayout: "main_admin_not_login.hbs",
       extname: ".hbs",
     })
   );

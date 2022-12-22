@@ -20,22 +20,24 @@
         crossorigin="anonymous"></script>
 
     <script src="https://code.jquery.com/jquery-3.6.1.js"></script>
-    <title>Jore</title>
+    <title>Jore Business</title>
 </head>
 
 <body>
     <div class="rectangle_home">
-        {{> header_candidate_login}}
-        {{#if not_record}}
-        {{>search_job}}
-        {{/if}}
-        {{{body}}}
+        {{> header_admin_login}}
 
-        {{> footer}}
-    </div>
-     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.min.js"
-    integrity="sha384-IDwe1+LCz02ROU9k972gdyvl+AESN10+x7tBKgc9I5HFtuNz0wWnPclzo6p9vxnk"
-    crossorigin="anonymous"></script>
+        {{#if isDetailNews}}
+            <div class="rectangle_content_detail_news_admin">
+        {{else}}
+            <div class="rectangle_mid_news_home_recruit">
+        {{/if}}
+                {{>menu}}
+                {{{body}}}
+            </div>
+
+            {{> footer}}
+        </div>
 </body>
 
 </html>
