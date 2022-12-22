@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./style/css/css.css">
+    <link href='https://fonts.googleapis.com/css?family=Poppins' rel='stylesheet'>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+        integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.14.7/dist/umd/popper.min.js"
+        integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/js/bootstrap.min.js"
+        integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+        crossorigin="anonymous"></script>
+
+    <script src="https://code.jquery.com/jquery-3.6.1.js"></script>
+    <title>Document</title>
+</head>
+
+<body>
+    <div class="rectangle_home">
+        <nav class="navbar navbar-expand-lg navbar-light header">
+            <img id="logo_web_home_recruit" src="./style/image/logo_web.svg" alt="logoweb">
+            <a id="chat_recruit" href="#">Kết nối
+                <img src="./style/image/ic_chat.svg" id="ic_chat_home_recruit" alt="ic_chat_home_recruit">
+            </a>
+            <div class="circle_icon_recruit">
+                <img src="./style/image/ic_notify_white.svg" id="ic_notify_recruit" alt="ic_notify_candidate">
+            </div>
+            <div class="dropdown">
+                <button class="btn btn-secondary dropdown-toggle" type="button" id="menu_account_candidate"
+                    data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Dương Minh Hiếu
+                    <img src="./style/image/avatar_candidate.svg" id="avatar_candidate" alt="avatar_candidate">
+                </button>
+                <div class="dropdown-menu" id="dropdown_menu_candidate" aria-labelledby="menu_account_candidate">
+                    <a class="dropdown-item" id="setting_account_candidate" href="#">Cài đặt tài khoản
+                        <img src="./style/image/ic_setting_account.svg" id="ic_setting_account_candidate"
+                            alt="ic_setting_account_candidate">
+                    </a>
+                    <a class="dropdown-item" id="application_management_candidate" href="#">Đổi mật khẩu
+                        <img src="./style/image/logo_password.svg" id="ic_application_management_candidate"
+                            alt="ic_application_management_candidate">
+                    </a>
+                    <a class="dropdown-item" id="logout_candidate" href="#">Đăng xuất
+                        <img src="./style/image/ic_logout.svg" id="ic_logout_candidate" alt="ic_logout_candidate">
+                    </a>
+
+                </div>
+            </div>
+        </nav>
+        <div class="rectangle_mid_news_home_recruit">
+            <div class="side_left_home_admin">
+                <a id="menu_manage_account_user_admin" href="#">Quản lý tài khoản người dùng
+                    <img src="./style/image/ic_management_record.svg" id="ic_news_home_recruit" alt="ic_news_home_recruit">
+                </a>
+                <a id="menu_manage_news_home_admin" href="#">Quản lý tin tuyển dụng
+                    <img src="./style/image/ic_management_recruit.svg" id="ic_manage_recruit_home_recruit"
+                        alt="ic_manage_recruit_home_recruit">
+                </a>
+                <a id="menu_manage_report_home_admin" href="#">Quản lý báo cáo tin tuyển dụng
+                    <img src="./style/image/ic_report.svg" id="ic_manage_record_home_recruit"
+                        alt="ic_manage_record_home_recruit">
+                </a>
+                <div id="line"></div>
+                <div id="text_version">©️2022 JORE. All rights reversed.</div>
+            </div>
+            <div id="content_detail_account_admin">
+
+                <!-- thông tin toàn khoản ứng viên -->
+               <!-- <div id="head_profie_candidate_recruit">
+                    <img src="./style/image/avatar_candidate.svg" id="avatar_profile_candidate_recruit"
+                    alt="avatar_profile_candidate_recruit">
+                    <div id="name_candidate_recruit">Hồ Duy Bảo</div>
+                    <div id="status_profile_candidate_recruit">Trạng thái: Chờ duyệt</div>
+                    <div id="date_submit_profile_candidate_recruit">Ngày tạo tài khoản: 22/01/2022</div>
+                    <a id="btn_accept_candidate" href="#">Khóa</a>
+                </div>
+                <div id="info_profile_candidate_recruit">
+                    <div id="text_info_personal">Thông tin cá nhân</div>
+                    <div id="date_of_birth_profile_candidate_recruit">Ngày sinh: 27/08/2002</div>
+                    <div id="sex_profile_candidate_recruit">Giới tính: Nam</div>
+                    <div id="phone_profile_candidate_recruit">SĐT: 0823304385</div>
+                    <div id="email_profile_candidate_recruit">Email: 20120420@student.hcmus.edu.vn</div>
+                    <div id="address_profile_candidate_recruit">Địa chỉ: KTX khu B, Đông Hòa, Dĩ An, Bình Dương</div>
+         
+                </div> -->
+
+                <!-- Thông tin nhà tuyển dụng-->
+                <div id="head_profie_candidate_recruit">
+                    <img src="./style/image/avatar_candidate.svg" id="avatar_profile_candidate_recruit"
+                    alt="avatar_profile_candidate_recruit">
+                    <div id="name_candidate_recruit">Hồ Duy Bảo</div>
+                    <div id="status_profile_candidate_recruit">Trạng thái: Chờ duyệt</div>
+                    <div id="date_submit_profile_candidate_recruit">Ngày tạo tài khoản: 22/01/2022</div>
+                    <a id="btn_accept_candidate" href="#">Khóa</a>
+                    <a id="btn_reject_candidate" href="#">Duyệt</a>
+                </div>
+                <div id="info_profile_candidate_recruit">
+                    <div id="text_info_personal">Thông tin công ty</div>
+                    <div id="scale_employer">Quy mô: 20 - 30 nhân viên</div>
+                    <div id="phone_emplouer">SĐT: 0823304385</div>
+                    <div id="email_employer">Email: 20120420@student.hcmus.edu.vn</div>
+                    <div id="address_employer">Địa chỉ: KTX khu B, Đông Hòa, Dĩ An, Bình Dương</div>
+                    <div id="rectangle_evaluate_detail_account">
+                        <div id="text_evaluate_total">
+                            Đánh giá tổng thể
+                            
+                        </div>
+                        <div id="value_evaluate_total">3,5</div>
+                        <img src="./style/image/ic_star.svg" id="evaluate_star1"
+                        alt="evaluate_star1">
+                        <img src="./style/image/ic_star.svg" id="evaluate_star2"
+                        alt="evaluate_star2">
+                        <img src="./style/image/ic_star.svg" id="evaluate_star3"
+                        alt="evaluate_star3">
+                        <img src="./style/image/ic_star.svg" id="evaluate_star4"
+                        alt="evaluate_star4">
+                        <img src="./style/image/ic_star.svg" id="evaluate_star5"
+                        alt="evaluate_star5">
+
+                    </div>
+                </div>
+               
+
+              
+           </div>
+        </div>
+
+        <div class="footer">
+            <img id="logo_web_footer" src="./style/image/logo_web.svg" alt="logoweb">
+            <p id="text_info_footer">Chúng tôi là JORE hệ thống tìm kiếm việc làm uy tính tại Việt Nam</p>
+        </div>
+
+    </div>
+
+
+</body>
+
+</html>
