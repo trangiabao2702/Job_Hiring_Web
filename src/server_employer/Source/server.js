@@ -8,7 +8,7 @@ const flush = require("connect-flash");
 const passport = require("./app/middlewares/passportLocalStrategy");
 
 // port number
-const port = 3032;
+const port = 3034;
 
 // init application
 const app = express();

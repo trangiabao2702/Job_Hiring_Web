@@ -5,7 +5,8 @@
         <img src="/css/style/image/text_introduct_signin_recruit.svg" id="text_introduce_signin_recruit"
             alt="text_introduce_signin_recruit">
 
-        <form action="">
+        <form method="post" action="/auth/sign_up" class="needs-validation"
+            oninput='confirm_password_signin_recruit.setCustomValidity(confirm_password_signin_recruit.value != password_signin_recruit.value ? "Mật khẩu nhập lại không đúng !" : "")'>
             <div id="text_account_login">Tài khoản đăng nhập</div>
             <div id="label_email_signin_recruit">Email</div>
             <input type="email" name="email_signin_recuit" id="email_signin_recuit" required
@@ -13,15 +14,16 @@
             <input type="password" name="password_signin_recruit" id="password_signin_recuit" required
                 placeholder="Nhập mật khẩu">
             <div id="label_password_signin_recruit">Mật khẩu</div>
-            <img src="/css/style/image/eye-slash.svg" id="logo_password_signin_recruit" alt="logo_password">
+            {{!-- <img src="/css/style/image/eye-slash.svg" id="logo_password_signin_recruit" alt="logo_password"> --}}
             <input type="password" name="confirm_password_signin_recruit" id="confirm_password_signin_recuit" required
                 placeholder="Nhập lại mật khẩu">
             <div id="label_confirm_password_signin_recruit">Xác nhận mật khẩu</div>
-            <img src="/css/style/image/eye-slash.svg" id="logo_confirm_password_signin_recruit" alt="logo_password">
+            {{!-- <img src="/css/style/image/eye-slash.svg" id="logo_confirm_password_signin_recruit"
+                alt="logo_password"> --}}
             <div id="text_info_recruit">Thông tin nhà tuyển dụng</div>
-            <div id="label_fullname_signin_recruit">Họ và tên</div>
+            {{!-- <div id="label_fullname_signin_recruit">Họ và tên</div>
             <input type="text" name="fullname_signin_recuit" id="fullname_signin_recuit" required
-                placeholder="Nhập họ tên của bạn">
+                placeholder="Nhập họ tên của bạn"> --}}
             <div id="label_phone_signin_recruit">Số điện thoại</div>
             <input type="text" name="phone_signin_recuit" id="phone_signin_recuit" required
                 placeholder="Nhập số điện thoại">
@@ -31,21 +33,18 @@
             <div id="label_address_company_signin_recruit">Địa điểm làm việc</div>
             <select name="select_province_signin_recruit" id="select_province_signin_recruit" required="">
                 <option disabled selected value>Tỉnh/Thành phố</option>
-                <option value="" class="op_select_province">Hồ Chí Minh</option>
-                <option value="" class="op_select_province">Hà Nội</option>
             </select>
             <img src="/css/style/image/arrow_down.svg" alt="arrow_down" id="arrow_down_province_signin_recuit">
 
-            <input id="province_company_recruit" name="address_company_recruit" type="hidden" value="">
-            <select name="select_district_signin_recruit" id="select_district_signin_recruit" required="">
+            {{!-- <input id="province_company_recruit" name="address_company_recruit" type="hidden" value=""> --}}
+            <select name="select_district_signin_recruit" id="select_district_signin_recruit" required="" disabled>
                 <option disabled selected value>Quận/Huyện</option>
-                <option value="" class="op_select_province">Quận 9</option>
-                <option value="" class="op_select_province">Quận 10</option>
             </select>
             <img src="/css/style/image/arrow_down.svg" alt="arrow_down" id="arrow_down_district_signin_recuit">
 
-            <input id="district_company_recruit" name="address_company_recruit" type="hidden" value="">
-            <input type="checkbox" name="agree_signin_recruit" id="agree_signin_recruit">
+            {{!-- <input id="district_company_recruit" name="address_company_recruit" type="hidden" value=""> --}}
+            <input type="checkbox" name="agree_signin_recruit" id="agree_signin_recruit"
+                onchange="this.setCustomValidity(validity.valueMissing ? 'Hãy đồng ý với điều khoản của chúng tôi để tạo tài khoản!' : '');">
             <img src="/css/style/image/agree_require.svg" alt="agree_require" id="agree_require_signin_recruit">
             <button type="submit" id="submit_signin_recruit">Đăng ký</button>
 
@@ -54,3 +53,68 @@
     </div>
 
 </div>
+
+<script>
+    const urlProvice = 'https://provinces.open-api.vn/api/';
+    const urlDistrict = "https://provinces.open-api.vn/api/d/";
+
+    fetch(urlProvice)
+        .then((response) => {
+            return response.json();
+        })
+        .then((data) => {
+            let items = data;
+
+            $.each(items, function (i, item) {
+                $('#select_province_signin_recruit').append($('<option>', {
+                    value: item.name,
+                    text: item.name,
+                    code: item.code,
+                    class: 'op_select_province'
+                }));
+            });
+        })
+        .catch(function (error) {
+            console.log(error);
+        });
+
+    $('#select_province_signin_recruit').on('change', function () {
+        fetch(urlDistrict)
+            .then((response) => {
+                return response.json();
+            })
+            .then((data) => {
+
+                $("#select_district_signin_recruit option[class='op_select_province']").each(function () {
+                    $(this).remove();
+                });
+
+                let items = data;
+                let _this = this;
+                console.log($(_this))
+                let result = items.filter(function (item) {
+                    return parseInt(item.province_code) === parseInt($('option:selected', _this).attr("code"));
+                })
+
+                $('#select_district_signin_recruit').prop("disabled", false);
+                $.each(result, function (i, item) {
+                    $('#select_district_signin_recruit').append($('<option>', {
+                        value: item.name,
+                        text: item.name,
+                        code: item.code,
+                        class: 'op_select_province'
+                    }));
+                });
+            })
+            .catch(function (error) {
+                console.log(error);
+            });
+
+    });
+
+
+  document.getElementById("agree_signin_recruit").setCustomValidity("Vui lòng cho biết rằng bạn chấp nhận các điều khoản và điều kiện!");
+
+
+
+</script>

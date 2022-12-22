@@ -1,40 +1,6 @@
 const employerModel = require("../models/employer.m");
 
 class EmployerController {
-  // [GET] /sign_up
-  sign_up(req, res, next) {
-    res.render("contents/sign_up", {
-      layout: "main_employer_not_login",
-    });
-  }
-
-  // [GET] /sign_in
-  sign_in(req, res, next) {
-    res.render("contents/sign_in", {
-      layout: "main_employer_not_login",
-    });
-  }
-
-  // [GET] /forgot_pw
-  forgot_pw(req, res, next) {
-    res.render("contents/forgot_pw", {
-      layout: "main_employer_not_login",
-    });
-  }
-
-  // [GET] /account_authentication
-  account_authentication(req, res, next) {
-    res.render("contents/account_authentication", {
-      layout: "main_employer_not_login",
-    });
-  }
-
-  // [GET] /reset_pw
-  reset_pw(req, res, next) {
-    res.render("contents/reset_pw", {
-      layout: "main_employer_not_login",
-    });
-  }
 
   // [GET] /homepage
   homepage(req, res, next) {
