@@ -7,6 +7,19 @@
 
         <form method="post" action="/auth/sign_up" class="needs-validation"
             oninput='confirm_password_signin_recruit.setCustomValidity(confirm_password_signin_recruit.value != password_signin_recruit.value ? "Mật khẩu nhập lại không đúng !" : "")'>
+
+            {{#if message}}
+            <div class="alert alert-success mt-2">
+                {{message}}
+            </div>
+            {{/if}}
+
+            {{#if messageDanger}}
+            <div class="alert alert-danger mt-2">
+                {{messageDanger}}
+            </div>
+            {{/if}}
+
             <div id="text_account_login">Tài khoản đăng nhập</div>
             <div id="label_email_signin_recruit">Email</div>
             <input type="email" name="email_signin_recuit" id="email_signin_recuit" required
@@ -113,7 +126,7 @@
     });
 
 
-  document.getElementById("agree_signin_recruit").setCustomValidity("Vui lòng cho biết rằng bạn chấp nhận các điều khoản và điều kiện!");
+    document.getElementById("agree_signin_recruit").setCustomValidity("Vui lòng cho biết rằng bạn chấp nhận các điều khoản và điều kiện!");
 
 
 

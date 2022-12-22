@@ -49,11 +49,13 @@ class Authencation {
         const salt = bcrypt.genSaltSync(saltRounds);
         const pwHashed = bcrypt.hashSync(password, salt);
 
+        const defaultAvt = await candidateModel.getAvatarFromStorage('avatarDefault.png');
+
         const user = {
             name: name,
             email: email,
             password: pwHashed,
-            avatar: null,
+            avatar: defaultAvt,
             state: 'login'
         }
 

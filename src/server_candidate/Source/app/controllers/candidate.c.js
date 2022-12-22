@@ -18,7 +18,7 @@ class Candidate {
                     }
                 });
             } else {
-                res.redirect('/candidate/login');
+                res.redirect('/auth/login');
             }
         }
         catch (error) {

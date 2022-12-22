@@ -34,8 +34,8 @@ bodyParser(app);
 // handlebars
 hbs(app);
 
-//passport
-//passport(app);
+passport
+passport(app);
 
 // router
 route(app);

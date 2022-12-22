@@ -1,5 +1,6 @@
 
 const db = require('../../config/db/index'); // getDatabase
+const storage = require('../../config/db/storage'); // getStorage
 
 
 module.exports = {
@@ -61,6 +62,12 @@ module.exports = {
 
         return user;
     },
-    
+    getAvatarFromStorage: async (nameImage) => {
+        const file = storage.bucket().file(`avatars/${nameImage}`);
+        const signedURLconfig = { action: 'read', expires: '01-01-2030'  };
+
+        const signedURLArray = await file.getSignedUrl(signedURLconfig);
+        return signedURLArray[0];
+    }
 
 }
