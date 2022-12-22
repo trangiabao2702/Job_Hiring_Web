@@ -14,7 +14,7 @@
             {{messageDanger}}
         </div>
         {{/if}}
-        <form method="post" action="/candidate/login">
+        <form method="post" action="/auth/login">
             <div id="label_email">Email</div>
             <input type="email" name="email" id="email_login" required placeholder="Nhập email của bạn">
             <img src="/css/style/image/logo_email.svg" id="logo_email" alt="logo_email">
@@ -25,14 +25,14 @@
             <button type="submit" id="submit_form_login">Đăng nhập</button>
             <div id="or">Hoặc</div>
         </form>
-        <a type="submit" id="submit_login_facebook" href="/candidate/auth/facebook"></a>
+        <a type="submit" id="submit_login_facebook" href="/auth/facebook"></a>
         <img src="/css/style/image/ic_facebook.svg" id="ic_facebook" alt="ic_facebook">
-        <a type="submit" id="submit_login_google" href="/candidate/auth/google"></a>
+        <a type="submit" id="submit_login_google" href="/auth/google"></a>
         <img src="/css/style/image/ic_google.svg" id="ic_google" alt="ic_google">
         <div id="text_No_Account">Bạn chưa có tài khoản?
-            <a id="signin_now" href="/candidate/signup">Đăng ký ngay</a>
+            <a id="signin_now" href="/auth/signup">Đăng ký ngay</a>
         </div>
-        <a href="/candidate/forget_password" id="forget_password">Quên mật khẩu</a>
+        <a href="/auth/forget_password" id="forget_password">Quên mật khẩu</a>
     </div>
     <div id="rectangle_image_login">
         <img src="/css/style/image/side_login.svg" id="side_login" alt="login">

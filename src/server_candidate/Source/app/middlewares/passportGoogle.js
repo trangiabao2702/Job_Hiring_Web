@@ -24,7 +24,7 @@ module.exports = app => {
             {
                 clientID: '937613699644-5qq1gd3kji3isuij0c1gcbkkt6eu4v7b.apps.googleusercontent.com',
                 clientSecret: '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',
-                callbackURL: '/candidate/auth/google/callback',
+                callbackURL: '/auth/google/callback',
                 scope: ['profile', 'email'],
                 state: true
             },
