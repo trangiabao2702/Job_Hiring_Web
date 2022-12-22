@@ -7,7 +7,7 @@ const route = require("./routers");
 const flush = require("connect-flash");
 const passportLocalStrategy = require("./app/middlewares/passportLocalStrategy");
 const passportGoogleStrategy = require("./app/middlewares/passportGoogle");
-
+const passportFacebookStrategy = require("./app/middlewares/passportFacebook");
 
 
 // port number
@@ -41,6 +41,8 @@ hbs(app);
 //passport
 passportLocalStrategy(app);
 passportGoogleStrategy(app);
+passportFacebookStrategy(app);
+
 // router
 route(app);
 

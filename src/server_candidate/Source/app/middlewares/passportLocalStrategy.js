@@ -25,7 +25,7 @@ module.exports = app => {
     },
         async (email, password, done) => {
             try {
-                const user = await candidateModel.getByEmail(email);
+                const user = await candidateModel.getUserByEmailLogin(email);
                 if (!user) { return done(null, false); }
                 const cmp = await bcrypt.compare(password, user.password);
                 if (!cmp) {

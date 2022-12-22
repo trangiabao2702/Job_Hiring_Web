@@ -40,8 +40,13 @@ class Candidate {
 
         try {
             if (req.isAuthenticated()) {
+                var user = req.session.passport.user;
+
                 res.render('candidate/content_home.hbs', {
-                    layout: 'main_candidate_login'
+                    layout: 'main_candidate_login',
+                    data: {
+                        user: user
+                    }
                 });
             } else {
                 res.redirect('/candidate/login');
@@ -81,6 +86,7 @@ class Candidate {
             email: email,
             password: pwHashed,
             avatar: null,
+            state: 'login'
         }
 
         const userNew = await candidateModel.addACandidate(user);

@@ -13,7 +13,6 @@ module.exports = app => {
     });
     passport.deserializeUser(async function (user, done) {
         try {
-            //const user = await userModel.getByUserName(username);
             done(null, user);
         } catch (err) {
             done(err, null);
@@ -29,15 +28,21 @@ module.exports = app => {
                 scope: ['profile', 'email'],
                 state: true
             },
-            function verify(accessToken, refreshToken, profile, cb) {
+            async function verify(accessToken, refreshToken, profile, cb) {
 
                 // Check if google profile exist.
                 if (profile.id) {
                     let user = {};
+                    user.idGoogle = profile.id;
                     user.email = profile.emails[0].value;
-                    user.password = 'google';
-                    user.name = profile.name;
+                    user.name = profile.displayName;
+                    user.given_name = profile.name.givenName;
+                    user.familyName = profile.name.familyName;
+                    user.state = 'google';
+                    user.avatar = profile.photos[0].value;
 
+                    user = await candidateModel.addACandidate(user);
+                    user = await candidateModel.getByEmail(profile.emails[0].value);
                     //console.log(user);
                     return cb(null, user);
 

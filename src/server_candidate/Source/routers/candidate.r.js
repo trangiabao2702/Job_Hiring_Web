@@ -22,9 +22,14 @@ router.post('/login', passport.authenticate('local', {
 router.get('/auth/google',
     passport.authenticate('google', { failureRedirect: '/candidate/login', successRedirect: '/candidate/home', failureMessage: true }));
 
-    router.get('/auth/google/callback',
+router.get('/auth/google/callback',
     passport.authenticate('google', { failureRedirect: '/candidate/login', successRedirect: '/candidate/home', failureMessage: true }));
 
+router.get('/auth/facebook',
+    passport.authenticate('facebook', { scope: ['public_profile', 'email'] }));
+
+router.get('/auth/facebook/callback',
+    passport.authenticate('facebook', { failureRedirect: '/candidate/login', successRedirect: '/candidate/home', failureMessage: true }));
 
 //router.all('*', UserController.notFoundPage);
 
