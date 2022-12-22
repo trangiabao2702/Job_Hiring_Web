@@ -16,8 +16,6 @@ const app = express();
 // Set dung tai nguyen he thong
 app.use(express.static(path.join(__dirname + "/public")));
 
-require("./config/hbs")(app);
-
 // session
 app.use(
   session({
@@ -26,7 +24,6 @@ app.use(
     saveUninitialized: false,
   })
 );
-
 
 // flash messages
 app.use(flush());
@@ -42,7 +39,6 @@ hbs(app);
 
 // router
 route(app);
-
 
 app.listen(port, () => {
   console.log(`App listening at http://localhost:${port}`);
