@@ -41,8 +41,10 @@ module.exports = {
 
     return recruitment.data();
   },
-  updateListRecruitment: async (id_recruitment) => {
-    const employers_collection = db.collection("employers");
+  updateListRecruitment: async (id_employer, id_recruitment) => {
+    const FieldValue = require("firebase-admin").firestore.FieldValue;
+
+    const employers_collection = db.collection("employers").doc(id_employer);
     const rs = await employers_collection.update({
       list_recruitments: FieldValue.arrayUnion(id_recruitment),
     });
