@@ -1,106 +1,46 @@
- <div class="rectangle_mid_2_candidate">
-            <div class="rectangle_content_job_search">
-                <div id="text_number_job_searched">Tìm thấy <div id="number_job_searched">120</div>  công việc phù hợp với yêu cầu của bạn.</div>
-                <div class="d-flex flex-wrap card_company_searched_candidate">
-                    <div class="item_company_candidate p-2 m-2">
-                        <img src="/css/style/image/logo_web.svg" alt="logo" class="logo_company_home_candidate">
-                        <a class="title_recuit_company_home_candidate" href="/candidate/detail_job">Front-End Web Developer</a>
-                        <div class="name_company_home_candidate">VNG Games</div>
-                        <div class="wage_copany_home_candidate">12-20 triệu</div>
-                        <div class="address_company_home_candidate">Hà Nội, Trường Sa</div>
-                        <div class="experience_company_home_candidate">3-5 năm</div>
-                        <img src="/css/style/image/ic_time.svg" alt="ic_time" class="ic_time_card_company">
-                        <img src="/css/style/image/ic_heart_empty.svg" alt="ic_heart" class="ic_heart_card_company">
+<div class="rectangle_mid_2_candidate">
+  <div class="rectangle_content_job_search">
+    {{#if topJob}}
+       <div id="text_number_job_searched">Top công việc được quan tâm nhất</div>
+    {{else}}
+        <div id="text_number_job_searched">Tìm thấy <div id="number_job_searched">120</div> công việc phù hợp với yêu cầu
+      của bạn.</div>
+      {{/if}}
+    <div class="d-flex flex-wrap card_company_searched_candidate">
+      {{#each topJob}}
+      <div class="item_company_candidate p-2 m-2">
+        <img src="/css/style/image/logo_web.svg" alt="logo" class="logo_company_home_candidate">
+        <a class="title_recuit_company_home_candidate" href="/candidate/detail_job?doc={{this.doc}}">{{this.title}}</a>
+        <div class="name_company_home_candidate">{{this.nameEmployer}}</div>
+        <div class="wage_copany_home_candidate">{{this.max_salary}}-{{this.min_salary}} triệu</div>
+        <div class="address_company_home_candidate">{{this.location}}</div>
+        <div class="experience_company_home_candidate">3-5 năm</div>
+        <img src="/css/style/image/ic_time.svg" alt="ic_time" class="ic_time_card_company">
+        <img src="/css/style/image/ic_heart_empty.svg" alt="ic_heart" class="ic_heart_card_company">
+      </div>
+      {{/each}}
+   
 
-                        <div class="time_card_company">Cập nhật 3 tiếng trước</div>
+    </div>
 
-                    </div>
-                      <div class="item_company_candidate p-2 m-2">
-                        <img src="/css/style/image/logo_web.svg" alt="logo" class="logo_company_home_candidate">
-                        <a class="title_recuit_company_home_candidate" href="/candidate/detail_job">Front-End Web Developer</a>
-                        <div class="name_company_home_candidate">VNG Games</div>
-                        <div class="wage_copany_home_candidate">12-20 triệu</div>
-                        <div class="address_company_home_candidate">Hà Nội, Trường Sa</div>
-                        <div class="experience_company_home_candidate">3-5 năm</div>
-                        <img src="/css/style/image/ic_time.svg" alt="ic_time" class="ic_time_card_company">
-                        <img src="/css/style/image/ic_heart_empty.svg" alt="ic_heart" class="ic_heart_card_company">
-
-                        <div class="time_card_company">Cập nhật 3 tiếng trước</div>
-
-                    </div>
-                       <div class="item_company_candidate p-2 m-2">
-                        <img src="/css/style/image/logo_web.svg" alt="logo" class="logo_company_home_candidate">
-                        <a class="title_recuit_company_home_candidate" href="/candidate/detail_job">Front-End Web Developer</a>
-                        <div class="name_company_home_candidate">VNG Games</div>
-                        <div class="wage_copany_home_candidate">12-20 triệu</div>
-                        <div class="address_company_home_candidate">Hà Nội, Trường Sa</div>
-                        <div class="experience_company_home_candidate">3-5 năm</div>
-                        <img src="/css/style/image/ic_time.svg" alt="ic_time" class="ic_time_card_company">
-                        <img src="/css/style/image/ic_heart_empty.svg" alt="ic_heart" class="ic_heart_card_company">
-
-                        <div class="time_card_company">Cập nhật 3 tiếng trước</div>
-
-                    </div>
-                       <div class="item_company_candidate p-2 m-2">
-                        <img src="/css/style/image/logo_web.svg" alt="logo" class="logo_company_home_candidate">
-                        <a class="title_recuit_company_home_candidate" href="/candidate/detail_job">Front-End Web Developer</a>
-                        <div class="name_company_home_candidate">VNG Games</div>
-                        <div class="wage_copany_home_candidate">12-20 triệu</div>
-                        <div class="address_company_home_candidate">Hà Nội, Trường Sa</div>
-                        <div class="experience_company_home_candidate">3-5 năm</div>
-                        <img src="/css/style/image/ic_time.svg" alt="ic_time" class="ic_time_card_company">
-                        <img src="/css/style/image/ic_heart_empty.svg" alt="ic_heart" class="ic_heart_card_company">
-
-                        <div class="time_card_company">Cập nhật 3 tiếng trước</div>
-
-                    </div>
-                       <div class="item_company_candidate p-2 m-2">
-                        <img src="/css/style/image/logo_web.svg" alt="logo" class="logo_company_home_candidate">
-                        <a class="title_recuit_company_home_candidate" href="/candidate/detail_job">Front-End Web Developer</a>
-                        <div class="name_company_home_candidate">VNG Games</div>
-                        <div class="wage_copany_home_candidate">12-20 triệu</div>
-                        <div class="address_company_home_candidate">Hà Nội, Trường Sa</div>
-                        <div class="experience_company_home_candidate">3-5 năm</div>
-                        <img src="/css/style/image/ic_time.svg" alt="ic_time" class="ic_time_card_company">
-                        <img src="/css/style/image/ic_heart_empty.svg" alt="ic_heart" class="ic_heart_card_company">
-
-                        <div class="time_card_company">Cập nhật 3 tiếng trước</div>
-
-                    </div>
-                       <div class="item_company_candidate p-2 m-2">
-                        <img src="/css/style/image/logo_web.svg" alt="logo" class="logo_company_home_candidate">
-                        <a class="title_recuit_company_home_candidate" href="/candidate/detail_job">Front-End Web Developer</a>
-                        <div class="name_company_home_candidate">VNG Games</div>
-                        <div class="wage_copany_home_candidate">12-20 triệu</div>
-                        <div class="address_company_home_candidate">Hà Nội, Trường Sa</div>
-                        <div class="experience_company_home_candidate">3-5 năm</div>
-                        <img src="/css/style/image/ic_time.svg" alt="ic_time" class="ic_time_card_company">
-                        <img src="/css/style/image/ic_heart_empty.svg" alt="ic_heart" class="ic_heart_card_company">
-
-                        <div class="time_card_company">Cập nhật 3 tiếng trước</div>
-
-                    </div>
-                    
-                </div>
-                
-                <nav aria-label="Page navigation example" id="nav_page_home_candidate">
-                    <ul class="pagination">
-                      <li class="page-item">
-                        <a class="page-link" href="#" aria-label="Previous">
-                          <span aria-hidden="true">&laquo;</span>
-                          <span class="sr-only">Previous</span>
-                        </a>
-                      </li>
-                      <li class="page-item"><a class="page-link" href="#">1</a></li>
-                      <li class="page-item"><a class="page-link" href="#">2</a></li>
-                      <li class="page-item"><a class="page-link" href="#">3</a></li>
-                      <li class="page-item">
-                        <a class="page-link" href="#" aria-label="Next">
-                          <span aria-hidden="true">&raquo;</span>
-                          <span class="sr-only">Next</span>
-                        </a>
-                      </li>
-                    </ul>
-                  </nav>
-            </div>
-        </div>
+    <nav aria-label="Page navigation example" id="nav_page_home_candidate">
+      <ul class="pagination">
+        <li class="page-item">
+          <a class="page-link" href="#" aria-label="Previous">
+            <span aria-hidden="true">&laquo;</span>
+            <span class="sr-only">Previous</span>
+          </a>
+        </li>
+        <li class="page-item"><a class="page-link" href="#">1</a></li>
+        <li class="page-item"><a class="page-link" href="#">2</a></li>
+        <li class="page-item"><a class="page-link" href="#">3</a></li>
+        <li class="page-item">
+          <a class="page-link" href="#" aria-label="Next">
+            <span aria-hidden="true">&raquo;</span>
+            <span class="sr-only">Next</span>
+          </a>
+        </li>
+      </ul>
+    </nav>
+  </div>
+</div>

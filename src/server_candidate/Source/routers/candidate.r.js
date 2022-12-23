@@ -6,6 +6,7 @@ const passport = require('passport');
 router.get('/home', CandidaterController.home);
 router.get('/detail_job', CandidaterController.detail_job);
 router.get('/manage_record', CandidaterController.manage_record);
+router.post('/search_job', CandidaterController.postSearchJob);
 
 
 

@@ -68,6 +68,55 @@ module.exports = {
 
         const signedURLArray = await file.getSignedUrl(signedURLconfig);
         return signedURLArray[0];
+    },
+    topJob: async number =>{
+        // const employer = await db.collection('employers');
+        const recruitment = await db.collection('recruitments');
+        const list = await recruitment.get();
+        var listJob=[];
+        var user = null;
+        list.forEach(doc => {
+            user = doc.data(); 
+            user.doc=doc.id;           
+            listJob.push(user);
+        });  
+        for(let i=0;i<listJob.length-1;i++)
+        {
+            for(let j=i+1;j<listJob.length;j++)
+            {
+                if(listJob[i].views<listJob[j].views)
+                {
+                    let temp=listJob[i];
+                    listJob[i]=listJob[j];
+                    listJob[j]=temp;
+                }
+            }
+        }
+     
+        listJob.slice(0,number);
+        for(let j=0;j<listJob.length;j++)
+        {
+            var rs = await db.collection('employers').doc(listJob[j].belong_employer).get();    
+            listJob[j].nameEmployer=rs.data().name;
+        }
+
+
+
+
+        return listJob;
+    },
+    getDetailJob: async id =>{
+        const candidatesCollection = await db.collection('recruitments').doc(id).get();
+        var job = candidatesCollection.data();
+        if (!job.empty) {
+            var rs = await db.collection('employers').doc(job.belong_employer).get();    
+            job.nameEmployer=rs.data().name;  
+            job.doc=id;          
+            return job;
+        } else {
+            return null;
+        }
+        
     }
 
 }

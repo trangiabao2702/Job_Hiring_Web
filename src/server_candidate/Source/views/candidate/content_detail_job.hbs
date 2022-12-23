@@ -34,10 +34,10 @@
 <div class="rectangle_mid_2_detail_job">
     <div class="header_company_detail_job">
         <img src="/css/style/image/logo_company.svg" alt="logo_company" class="logo_company_detail_job">
-        <div class="name_job_detail_job">Front-End Web Developer</div>
-        <div class="name_company_detail_job">VNG Games</div>
+        <div class="name_job_detail_job">{{data.job.title}}</div>
+        <div class="name_company_detail_job">{{data.job.nameEmployer}}</div>
         <img src="/css/style/image/ic_time.svg" alt="ic_time" class="ic_time_detail_job">
-        <div class="deadline_submit_record_detail_job">Hạn nộp hồ sơ: 12-12-2022 </div>
+        <div class="deadline_submit_record_detail_job">{{data.job.due_date}}</div>
         <button type="button" class="btn_apply_to_company_detail_job" data-bs-toggle="modal"
             data-bs-target="#modal_apply_company">Ứng tuyển</button>
         <button type="button" class="btn_save_job_detail_job">Lưu tin</button>
@@ -48,33 +48,30 @@
             <div id="text_general_information_detail_job">Thông tin chung</div>
             <div class="circle_icon" id="circle_icon_salary_detail_job"></div>
             <div id="text_salary_detail_job">Mức lương</div>
-            <div id="value_salary_detail_job">10-12 triệu</div>
+            <div id="value_salary_detail_job">{{data.job.min_salary}}-{{data.job.max_salary}} triệu </div>
             <img src="/css/style/image/ic_cash.svg" alt="ic_cash" id="ic_salary_detail_job">
 
             <div class="circle_icon" id="circle_icon_persons_detail_job"></div>
             <div id="text_number_person_detail_job">Số lượng</div>
-            <div id="value_number_person_detail_job">10 người</div>
+            <div id="value_number_person_detail_job">{{data.job.number_of_candidates}} người</div>
             <img src="/css/style/image/ic_persons.svg" alt="ic_person" id="ic_persons_detail_job">
 
             <div class="circle_icon" id="circle_icon_method_work_detail_job"></div>
             <div id="text_method_work_detail_job">Hình thức làm việc</div>
-            <div id="value_method_work_detail_job">Fulltime</div>
+            <div id="value_method_work_detail_job">{{data.job.working_form}}</div>
             <img src="/css/style/image/ic_bag.svg" alt="ic_method_work" id="ic_method_work_detail_job">
-            <div class="circle_icon" id="circle_icon_rank_detail_job"></div>
-            <div id="text_rank_detail_job">Cấp bậc</div>
-            <div id="value_rank_detail_job">Nhân viên</div>
-            <img src="/css/style/image/ic_rank.svg" alt="ic_rank" id="ic_rank_detail_job">
+       
             <div class="circle_icon" id="circle_icon_gender_detail_job"></div>
             <div id="text_gender_detail_job">Giới tính</div>
-            <div id="value_gender_detail_job">Không yêu cầu</div>
+            <div id="value_gender_detail_job">{{data.job.gender}}</div>
             <img src="/css/style/image/ic_gender.svg" alt="ic_gender" id="ic_gender_detail_job">
             <div class="circle_icon" id="circle_icon_experience_detail_job"></div>
             <div id="text_experience_detail_job">Kinh nghiệm</div>
-            <div id="value_experience_detail_job">1 năm</div>
+            <div id="value_experience_detail_job">{{data.job.experience}}</div>
             <img src="/css/style/image/ic_experience.svg" alt="ic_experience" id="ic_experience_detail_job">
 
             <div id="text_adress_work_detail_job">Địa điểm làm việc</div>
-            <div id="value_adress_work_detail_job">KTX khu A, phường Linh Trung,Thành phố Thủ Đức, Thành phố Hồ Chí Minh
+            <div id="value_adress_work_detail_job">{{data.job.location}}
             </div>
         </div>
         <div id="rectangle_share_recruit_detail_job">
@@ -98,32 +95,15 @@
 
         <div id="text_describe_job_detail_job">Mô tả công việc</div>
         <pre id="value_describe_job_detail_job">
-                    - Lập trình phần frontend bằng JavaScript/TypeScript sử dụng thư viện VueJS, GraphQL 
-                    - Thiết kế, sửa đổi giao diện người dùng theo yêu cầu khách hàng
-                    - Sửa lỗi, viết unit test, cải tiến code nếu cần
-                    - Hỗ trợ, phối hợp với các thành viên trong nhóm trong các công việc liên quan đến VueJS
-                    - Thực hiện các nhiệm vụ do trưởng nhóm giao
-                    - Địa điểm làm việc: Cầu Giấy, Hà Nội
-                    - Hình thức làm việc: Fulltime T2-T7 hàng tuần
+                   {{data.job.description}}
                 </pre>
         <div id="text_require_candidate_detail_job">Yêu cầu ứng viên</div>
         <pre id="value_require_candidate_detail_job">
-                    - Thành thạo HTML/CSS, Javascript (ES6, ES7)
-                    - Có kinh nghiệm làm việc với Typescript
-                    - Có kinh nghiệm làm việc thực tế một trong các framework của Javascript như Vuejs, Reactjs, Angular (ưu tiên Vuejs)
-                    - Đã làm việc với Restful, Graphql
-                    - Sử dụng thành thạo Git
-                    - Tối thiểu 6 tháng kinh nghiệm
+                  {{data.job.requirements}}
                 </pre>
         <div id="text_benefit_detail_job">Quyền lợi</div>
         <pre id="value_benefit_detail_job">
-                    - Mức lương: $500 - $1,000 Gross
-                    - Đóng BHXH, BHYT, BHTN, thưởng tháng 13, thưởng Project,...
-                    - Môi trường năng động, chuyên nghiệp có nhiều cơ hội thăng tiến
-                    - Cung cấp trang thiết bị đầy đủ để phục vụ công việc
-                    - Được đào tạo về kiến thức, kỹ năng phục vụ công việc
-                    - Cơ hội học hỏi những công nghệ khác
-                    - Được tham gia các hoạt động, chương trình, dự án, sự kiện của công ty 
+                   {{data.job.benefits}}
                 </pre>
 
     </div>

@@ -4,18 +4,19 @@ const candidateModel = require('../models/candidate.m');
 
 
 class Candidate {
-    home(req, res, next) {
+    async home(req, res, next) {
 
 
         try {
             if (req.isAuthenticated()) {
                 var user = req.session.passport.user;
-
+                var topJob= await candidateModel.topJob(6);
                 res.render('candidate/content_home.hbs', {
                     layout: 'main_candidate_login',
                     data: {
                         user: user
                     },
+                    topJob,
                     not_record:true
 
                 });
@@ -28,14 +29,16 @@ class Candidate {
         }
 
     }
-    detail_job(req, res, next) {
-        var user = req.session.passport.user;
-
+    async detail_job(req, res, next) {
+        var docId=req.query.doc;
+       // var user = req.session.passport.user;
+        var job= await candidateModel.getDetailJob(docId);
+        console.log(job);
         res.render('candidate/content_detail_job.hbs', {
 
             layout: 'main_candidate_login',
             data: {
-                user: user
+                job:job,
             },
             not_record:true
 
@@ -51,6 +54,20 @@ class Candidate {
                 user: user
             }
         });
+
+    }
+    postSearchJob(req, res, next) {
+      //  var user = req.session.passport.user;
+        console.log(req.body);
+
+        if(req.body.search!=""){
+
+        }
+        // res.render('candidate/content_manage_record.hbs', {
+        //     layout: 'main_candidate_login',  data: {
+        //         user: user
+        //     }
+        // });
 
     }
 
