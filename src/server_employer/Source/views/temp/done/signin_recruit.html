@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="./style/css/css.css" />
+    <link href="https://fonts.googleapis.com/css?family=Poppins" rel="stylesheet" />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous" />
+    <script src="https://code.jquery.com/jquery-3.6.1.js"></script>
+    <title>Document</title>
+  </head>
+
+  <body>
+    <div class="rectangle_home">
+      <nav class="navbar navbar-expand-lg navbar-light header">
+        <img id="logo_web" src="./style/image/logo_web.svg" alt="logoweb" />
+        <a href="#" id="find_job">Tìm việc làm</a>
+        <a href="#" id="list_company">Danh sách công ty</a>
+        <a href="#" id="blog">Blog</a>
+        <button id="btn_login"><a id="btn_login_recruit" href="#">Đăng nhập</a></button>
+        <button id="btn_signin"><a id="btn_signin_recruit" href="#">Đăng ký</a></button>
+      </nav>
+
+      <div id="rectangle_mid_signin_recruit">
+        <div id="rectangle_form_signin_recruit">
+          <img src="./style/image/welcome_signin_recruit.svg" id="text_welcome_signin_recruit" alt="text_welcome_signin_recruit" />
+          <img src="./style/image/text_introduct_signin_recruit.svg" id="text_introduce_signin_recruit" alt="text_introduce_signin_recruit" />
+
+          <form action="">
+            <div id="text_account_login">Tài khoản đăng nhập</div>
+            <div id="label_email_signin_recruit">Email</div>
+            <input type="email" name="email_signin_recuit" id="email_signin_recuit" required placeholder="Nhập email của bạn" />
+            <input type="password" name="password_signin_recruit" id="password_signin_recuit" required placeholder="Nhập mật khẩu" />
+            <div id="label_password_signin_recruit">Mật khẩu</div>
+            <img src="./style/image/eye-slash.svg" id="logo_password_signin_recruit" alt="logo_password" />
+            <input type="password" name="confirm_password_signin_recruit" id="confirm_password_signin_recuit" required placeholder="Nhập lại mật khẩu" />
+            <div id="label_confirm_password_signin_recruit">Xác nhận mật khẩu</div>
+            <img src="./style/image/eye-slash.svg" id="logo_confirm_password_signin_recruit" alt="logo_password" />
+            <div id="text_info_recruit">Thông tin nhà tuyển dụng</div>
+            <div id="label_fullname_signin_recruit">Họ và tên</div>
+            <input type="text" name="fullname_signin_recuit" id="fullname_signin_recuit" required placeholder="Nhập họ tên của bạn" />
+            <div id="label_phone_signin_recruit">Số điện thoại</div>
+            <input type="text" name="phone_signin_recuit" id="phone_signin_recuit" required placeholder="Nhập số điện thoại" />
+            <div id="label_name_company_signin_recruit">Tên công ty</div>
+            <input type="text" name="name_company_signin_recuit" id="name_company_signin_recuit" required placeholder="Tên công ty" />
+            <div id="label_address_company_signin_recruit">Địa điểm làm việc</div>
+            <select name="select_province_signin_recruit" id="select_province_signin_recruit" required="">
+              <option disabled selected value>Tỉnh/Thành phố</option>
+              <option value="" class="op_select_province">Hồ Chí Minh</option>
+              <option value="" class="op_select_province">Hà Nội</option>
+            </select>
+            <img src="./style/image/arrow_down.svg" alt="arrow_down" id="arrow_down_province_signin_recuit" />
+
+            <input id="province_company_recruit" name="address_company_recruit" type="hidden" value="" />
+            <select name="select_district_signin_recruit" id="select_district_signin_recruit" required="">
+              <option disabled selected value>Quận/Huyện</option>
+              <option value="" class="op_select_province">Quận 9</option>
+              <option value="" class="op_select_province">Quận 10</option>
+            </select>
+            <img src="./style/image/arrow_down.svg" alt="arrow_down" id="arrow_down_district_signin_recuit" />
+
+            <input id="district_company_recruit" name="address_company_recruit" type="hidden" value="" />
+            <input type="checkbox" name="agree_signin_recruit" id="agree_signin_recruit" />
+            <img src="./style/image/agree_require.svg" alt="agree_require" id="agree_require_signin_recruit" />
+            <button type="submit" id="submit_signin_recruit">Đăng ký</button>
+          </form>
+        </div>
+      </div>
+
+      <div class="footer">
+        <img id="logo_web_footer" src="./style/image/logo_web.svg" alt="logoweb" />
+        <p id="text_info_footer">Chúng tôi là JORE hệ thống tìm kiếm việc làm uy tính tại Việt Nam</p>
+      </div>
+    </div>
+  </body>
+</html>

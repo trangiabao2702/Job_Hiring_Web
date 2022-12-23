@@ -1,18 +1,43 @@
 const employerModel = require("../models/employer.m");
 
 class EmployerController {
-
     // [GET] /homepage
     homepage(req, res, next) {
         try {
             if (req.isAuthenticated()) {
+                // get employer by email
+                const _email = "employer_kms@gmail.com";
+                const _employer = await employerModel.getEmployerByEmail(_email);
+
+                // calculate the total number of candidates and the number of approved candidates
+                let total_candidates = 0;
+                let approved_candidates = 0;
+                let denied_candidates = 0;
+
+                for (const id_recruitment of _employer.list_recruitments) {
+                  const _recruitment = await employerModel.getRecruitmentByID(id_recruitment);
+
+                  total_candidates += _recruitment.list_cvs.length;
+                  for (const id_cv of _recruitment.list_cvs) {
+                    const _cv = await employerModel.getCVByID(id_cv);
+                    if (_cv.status == "approved") {
+                      approved_candidates += 1;
+                    } else if (_cv == "denied") {
+                      denied_candidates += 1;
+                    } else {
+                    }
+                  }
+                }
                 var user = req.session.passport.user;
 
                 res.render("contents/homepage", {
                     layout: "main_employer_login",
                     data: {
                         user: user
-                    }
+                    },
+                    number_of_recruitments: _employer.list_recruitments.length,
+                    number_of_approved_candidates: approved_candidates,
+                    number_of_new_candidates: total_candidates - approved_candidates,
                 });
             } else {
                 res.redirect('/auth/sign_in');
