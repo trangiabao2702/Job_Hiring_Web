@@ -1907,7 +1907,7 @@ color:white;
     width: 256px;
     height: 60px;
     padding-left: 15px;
-    left: 778px;
+    left: 509px;
     top: 111px;
     border: 0.5px solid white;
     background: #FFFFFF;
@@ -1925,7 +1925,7 @@ color:white;
     position: absolute;
     width: 15px;
     height: 9px;
-    left: 1001px;
+    left: 732px;
     top: 140px;
 }
 
@@ -1934,7 +1934,7 @@ color:white;
     width: 256px;
     height: 60px;
     padding-left: 15px;
-    left: 1047px;
+    left: 778px;
     top: 111px;
     border: 0.5px solid white;
     background: #FFFFFF;
@@ -1950,7 +1950,7 @@ color:white;
     position: absolute;
     width: 15px;
     height: 9px;
-    left: 1270px;
+    left: 1001px;
     top: 140px;
 }
 
@@ -2030,15 +2030,14 @@ color:white;
 
 .title_recuit_company_home_candidate {
     position: absolute;
-    width: 317px;
+    width: 480px;
     height: 36px;
-    left: 182px;
-    top: 20px;
-
+    left: 140px;
+    top: 10px;
     font-family: 'Poppins', sans-serif;
     font-style: normal;
-    font-weight: 700;
-    font-size: 24px;
+    font-weight: 600;
+    font-size: 22px;
     line-height: 36px;
     /* identical to box height */
 
@@ -2049,10 +2048,9 @@ color:white;
 
 .name_company_home_candidate {
     position: absolute;
-    width: 111px;
     height: 27px;
-    left: 184px;
-    top: 64px;
+    left: 145px;
+    top: 80px;
 
     font-family: 'Poppins', sans-serif;
     font-style: normal;
@@ -2084,9 +2082,11 @@ color:white;
 
 .address_company_home_candidate {
     position: absolute;
-    width: 154px;
-    height: 25px;
-    left: 152px;
+    max-width:300px;
+    word-wrap: break-word;
+    max-height: 25px;
+    padding: 0 10px;
+    left: 260px;
     top: 119px;
 
     text-align: center;
@@ -2096,13 +2096,16 @@ color:white;
     color: white;
     background: #00B4D8;
     border-radius: 5px;
+    text-overflow: ellipsis;
+white-space: nowrap;
+overflow: hidden;
 }
 
 .experience_company_home_candidate {
     position: absolute;
     width: 90px;
     height: 25px;
-    left: 318px;
+    left: 152px;
     top: 119px;
 
 
@@ -2150,7 +2153,7 @@ color:white;
     width: 34px;
     height: 31px;
     left: 601px;
-    top: 30px;
+    top: 50px;
 
 }
 
@@ -2198,7 +2201,7 @@ color:white;
 
 .name_job_detail_job {
     position: absolute;
-    width: 317px;
+    width: 650px;
     height: 36px;
     left: 295px;
     top: 67px;
@@ -2396,12 +2399,7 @@ color:white;
     top: 177px;
 }
 
-#circle_icon_rank_detail_job {
-    position: absolute;
 
-    left: 527px;
-    top: 175px;
-}
 
 #circle_icon_gender_detail_job {
     position: absolute;
@@ -2414,7 +2412,7 @@ color:white;
     position: absolute;
 
     left: 527px;
-    top: 271px;
+    top: 175px;
 }
 
 #text_salary_detail_job {
@@ -2634,7 +2632,7 @@ color:white;
     position: absolute;
     height: 30px;
     left: 606px;
-    top: 270px;
+    top: 185px;
 
     font-family: 'Poppins', sans-serif;
     font-style: normal;
@@ -2652,7 +2650,7 @@ color:white;
     position: absolute;
     height: 30px;
     left: 606px;
-    top: 300px;
+    top: 212px;
 
     font-family: 'Poppins', sans-serif;
     font-style: normal;
@@ -2668,7 +2666,7 @@ color:white;
 #ic_experience_detail_job {
     position: absolute;
     left: 540px;
-    top: 285px;
+    top: 188px;
 
 }
 

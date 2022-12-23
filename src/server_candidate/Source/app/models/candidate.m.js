@@ -72,13 +72,49 @@ module.exports = {
     getRecruitment: async (idDocRecruitment) => {
         const candidatesCollection = db.collection('recruitments');
         const docSnap = await candidatesCollection.doc(idDocRecruitment).get();
-        return docSnap.data();
+        var recruitment = docSnap.data();
+        recruitment.due_date = new Date(recruitment.due_date.toDate().toDateString()).toLocaleString('VN');
+        return recruitment;
     },
     getEmployer: async (idEmployer) => {
         const employers_collection = db.collection("employers");
         const docSnap = await employers_collection.doc(idEmployer).get();
 
         return docSnap.data();
-    }
+    },
+    topJob: async number =>{
+        // const employer = await db.collection('employers');
+        const recruitment = await db.collection('recruitments');
+        const list = await recruitment.get();
+        var listJob=[];
+        var user = null;
+        list.forEach(doc => {
+            user = doc.data(); 
+            user.doc=doc.id;           
+            listJob.push(user);
+        });  
+        for(let i=0;i<listJob.length-1;i++)
+        {
+            for(let j=i+1;j<listJob.length;j++)
+            {
+                if(listJob[i].views<listJob[j].views)
+                {
+                    let temp=listJob[i];
+                    listJob[i]=listJob[j];
+                    listJob[j]=temp;
+                }
+            }
+        }
+     
+        listJob.slice(0,number);
+        for(let j=0;j<listJob.length;j++)
+        {
+            var rs = await db.collection('employers').doc(listJob[j].belong_employer).get();    
+            listJob[j].nameEmployer= rs.data().name;
+            listJob[j].avatarEmployer = rs.data().avatar;
+        }
+
+        return listJob;
+    },
 
 }

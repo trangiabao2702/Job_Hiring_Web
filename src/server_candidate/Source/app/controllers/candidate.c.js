@@ -4,19 +4,20 @@ const candidateModel = require('../models/candidate.m');
 
 
 class Candidate {
-    home(req, res, next) {
+    async home(req, res, next) {
 
 
         try {
             if (req.isAuthenticated()) {
                 var user = req.session.passport.user;
-
+                var topJob= await candidateModel.topJob(6);
                 res.render('candidate/content_home.hbs', {
                     layout: 'main_candidate_login',
                     data: {
                         user: user
                     },
-                    not_record: true
+                    topJob,
+                    not_record:true
 
                 });
             } else {
@@ -66,6 +67,20 @@ class Candidate {
                 user: user
             }
         });
+
+    }
+    postSearchJob(req, res, next) {
+      //  var user = req.session.passport.user;
+        console.log(req.body);
+
+        if(req.body.search!=""){
+
+        }
+        // res.render('candidate/content_manage_record.hbs', {
+        //     layout: 'main_candidate_login',  data: {
+        //         user: user
+        //     }
+        // });
 
     }
 
