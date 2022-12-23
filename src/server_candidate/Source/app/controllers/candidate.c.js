@@ -16,7 +16,7 @@ class Candidate {
                     data: {
                         user: user
                     },
-                    not_record:true
+                    not_record: true
 
                 });
             } else {
@@ -28,26 +28,41 @@ class Candidate {
         }
 
     }
-    detail_job(req, res, next) {
-        var user = req.session.passport.user;
+    async detail_job(req, res, next) {
 
-        res.render('candidate/content_detail_job.hbs', {
+        try {
+            if (req.isAuthenticated()) {
+                var user = req.session.passport.user;
+                var idDocRecruitment = req.params.id;
+                var recruitment = await candidateModel.getRecruitment(idDocRecruitment);
+                var belongEmployer = await candidateModel.getEmployer(recruitment.belong_employer);
+                res.render('candidate/content_detail_job.hbs', {
 
-            layout: 'main_candidate_login',
-            data: {
-                user: user
-            },
-            not_record:true
+                    layout: 'main_candidate_login',
+                    data: {
+                        user: user,
+                        recruitment: recruitment,
+                        belongEmployer: belongEmployer,
+                        idDocRecruitment: idDocRecruitment
+                    },
+                    not_record: true
 
 
-        });
+                });
+            } else {
+                res.redirect('/auth/login');
+            }
+        } catch (error) {
+            next(error);
+        }
+
 
     }
     manage_record(req, res, next) {
         var user = req.session.passport.user;
 
         res.render('candidate/content_manage_record.hbs', {
-            layout: 'main_candidate_login',  data: {
+            layout: 'main_candidate_login', data: {
                 user: user
             }
         });

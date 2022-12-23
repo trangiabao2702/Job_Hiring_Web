@@ -4,11 +4,12 @@ const CandidaterController = require('../app/controllers/candidate.c');
 const passport = require('passport');
 
 router.get('/home', CandidaterController.home);
-router.get('/detail_job', CandidaterController.detail_job);
+router.get('/detail_job/:id', CandidaterController.detail_job);
 router.get('/manage_record', CandidaterController.manage_record);
 
 
-
-//router.all('*', UserController.notFoundPage);
-
+// 404
+router.get('*', function (req, res) {
+    res.send('JORE 404 !', 404);
+});
 module.exports = router;
