@@ -41,7 +41,8 @@
     $("#menu_manage_recruit_home_recruit").addClass("is_selected")
 
     const list_recruitments = {{{ data.list_recruitments }}}
-    console.log(list_recruitments)
+    const id_recruitments = {{{ data.id_recruitments }}}
+
     for (let i = 0; i < list_recruitments.length; i++) {
         let _date = new Date(list_recruitments[i].due_date._seconds * 1000);
         let due_date = _date.getDate() + "/" + _date.getMonth() + "/" + _date.getFullYear()
@@ -64,7 +65,7 @@
         }
 
         $("#table_mamage_recruit").append(`
-            <tr>
+            <tr id="${id_recruitments[i]}" class="table_item">
                 <td>${i + 1}</td>
                 <td>${list_recruitments[i].title}</td>
                 <td>${creation_date}</td>
@@ -75,4 +76,8 @@
             </tr>
         `)
     }
+
+    $(".table_item").click(function () {
+        $(location).attr("href", "/employer/detail_recruitment?id=" + $(this).attr("id"))
+    })
 </script>

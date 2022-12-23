@@ -60,12 +60,13 @@ class EmployerController {
           const _recruitment = await employerModel.getRecruitmentByID(id_recruitment);
           _recruitments.push(_recruitment);
         }
-        console.log(_recruitments);
+
         res.render("contents/manage_recruitments", {
           layout: "main_employer_login",
           data: {
             user: _employer,
             list_recruitments: JSON.stringify(_recruitments),
+            id_recruitments: JSON.stringify(_employer.list_recruitments),
           },
         });
       } else {
