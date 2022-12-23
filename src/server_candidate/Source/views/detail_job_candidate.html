@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./style/css/css.css">
+    <link href='https://fonts.googleapis.com/css?family=Poppins' rel='stylesheet'>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+        integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.14.7/dist/umd/popper.min.js"
+        integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/js/bootstrap.min.js"
+        integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+        crossorigin="anonymous"></script>
+
+    <script src="https://code.jquery.com/jquery-3.6.1.js"></script>
+    <title>Document</title>
+    <style>
+
+    </style>
+</head>
+
+<body>
+    <div class="rectangle_home">
+        <div class="modal fade" id="modal_apply_company" tabindex="-1" aria-labelledby="modal_updateLabel"
+            aria-hidden="true">
+            <div class="modal-dialog modal-lg">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <span class="modal-title" id="exampleModalLabel">Ứng tuyển:&nbsp;<span
+                                id="name_job_modal_apply_company">Front-End Web Developer</span> </span>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <form action="#" method="post" enctype="multipart/form-data">
+                        <div class="modal-body">
+                            <div id="text_CV_me">CV của bạn:</div>
+                            <img src="./style/image/ic_upload.svg" id="ic_upload_CV" alt="ic_upload_CV">
+
+                            <input type="file" name="file" id="file" class="inputfile" required/>
+                            <label for="file" id="label_file">Tải CV</label>
+                            <div id="text_fullname_CV">Họ và tên:</div>
+                            <input type="text" name="fullname_cv" id="fullname_cv" required
+                                placeholder="Nhập đầy đủ họ tên">
+                            <div id="text_email_CV">Email:</div>
+                            <input type="email" name="email_cv" id="email_cv" required placeholder="Nhập email">
+                            <div id="text_phone_CV">Số điện thoại</div>
+                            <input type="text" name="phone_cv" id="phone_cv" required placeholder="Nhập số điện thoại">
+                            <div id="text_introduce_CV">Giới thiệu:</div>
+                            <textarea name="introduce_cv" class="form-control" id="introduce_cv" required
+                                placeholder="Một vài lời giới thiệu với nhà tuyển dụng"></textarea>
+                            <button type="button" id="close_cv" data-bs-dismiss="modal">Đóng</button>
+                            <button type="submit" id="submit_cv">Nộp</button>
+                        </div>
+
+
+                    </form>
+                </div>
+            </div>
+        </div>
+        <nav class="navbar navbar-expand-lg navbar-light header">
+            <img id="logo_web" src="./style/image/logo_web.svg" alt="logoweb">
+            <a href="#" id="find_job">Tìm việc làm</a>
+            <a href="#" id="list_company">Danh sách công ty</a>
+            <a href="#" id="blog">Blog</a>
+            <img src="./style/image/notify_candidate.svg" id="ic_notify_candidate" alt="ic_notify_candidate">
+            <div class="dropdown">
+                <button class="btn btn-secondary dropdown-toggle" type="button" id="menu_account_candidate"
+                    data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Dương Minh Hiếu
+                    <img src="./style/image/avatar_candidate.svg" id="avatar_candidate" alt="avatar_candidate">
+                </button>
+                <div class="dropdown-menu" id="dropdown_menu_candidate" aria-labelledby="menu_account_candidate">
+                    <a class="dropdown-item" id="setting_account_candidate" href="#">Cài đặt tài khoản
+                        <img src="./style/image/ic_setting_account.svg" id="ic_setting_account_candidate"
+                            alt="ic_setting_account_candidate">
+                    </a>
+                    <a class="dropdown-item" id="application_management_candidate" href="#">Quản lý hồ sơ ứng tuyển
+                        <img src="./style/image/ic_managed_application.svg" id="ic_application_management_candidate"
+                            alt="ic_application_management_candidate">
+                    </a>
+                    <a class="dropdown-item" id="logout_candidate" href="#">Đăng xuất
+                        <img src="./style/image/ic_logout.svg" id="ic_logout_candidate" alt="ic_logout_candidate">
+                    </a>
+
+                </div>
+            </div>
+        </nav>
+        <div class="rectangle_mid_1_candidate">
+            <form action="">
+                <input type="search" name="search" id="search_job_candidate" placeholder="Tên công việc">
+                <img src="./style/image/ic_search.svg" alt="ic_search_job_candidate" id="ic_search_job_candidate">
+                <select name="select_province" id="select_province_candidate" required="">
+                    <option value="" class="op_select_province">Hồ Chí Minh</option>
+                    <option value="" class="op_select_province">Hà Nội</option>
+                </select>
+                <img src="./style/image/ic_select_province.svg" alt="ic_select_province_candidate"
+                    id="ic_select_province_candidate">
+                <input id="address_work_candidate" name="address_work_candidate" type="hidden" value="">
+                <select name="select_method_work" id="select_method_work_candidate" required="">
+                    <option disabled selected value> Hình thức làm việc </option>
+                    <option value="" class="op_select_method_work">Full Time</option>
+                    <option value="" class="op_select_method_work">Part Time</option>
+                </select>
+                <img src="./style/image/arrow_down.svg" alt="arrow_down" id="arrow_down_medthod_work">
+
+                <select name="select_level" id="select_level_candidate" required="">
+                    <option disabled selected value> Cấp bậc </option>
+                    <option value="" class="op_select_level_work">Senior</option>
+                    <option value="" class="op_select_level_work">Intern</option>
+                </select>
+                <img src="./style/image/arrow_down.svg" alt="arrow_down" id="arrow_down_level_work">
+
+                <select name="select_experience" id="select_experience_candidate" required="">
+                    <option disabled selected value>Kinh nghiệm</option>
+                    <option value="" class="op_select_experience_work">Chưa có</option>
+                    <option value="" class="op_select_experience_work">1 năm</option>
+                </select>
+                <img src="./style/image/arrow_down.svg" alt="arrow_down" id="arrow_down_experience_work">
+                <select name="select_salary" id="select_salary_candidate" required="">
+                    <option disabled selected value>Mức lương</option>
+                    <option value="" class="op_select_salary_work">&#8805; 5 triệu</option>
+                    <option value="" class="op_select_salary_work">&#8805; 10 triệu</option>
+                </select>
+                <img src="./style/image/arrow_down.svg" alt="arrow_down" id="arrow_down_salary_work">
+                <button type="submit" id="btn_search_candidate">Tìm kiếm</button>
+            </form>
+        </div>
+
+        <div class="rectangle_mid_2_detail_job">
+            <div class="header_company_detail_job">
+                <img src="./style/image/logo_company.svg" alt="logo_company" class="logo_company_detail_job">
+                <div class="name_job_detail_job">Front-End Web Developer</div>
+                <div class="name_company_detail_job">VNG Games</div>
+                <img src="./style/image/ic_time.svg" alt="ic_time" class="ic_time_detail_job">
+                <div class="deadline_submit_record_detail_job">Hạn nộp hồ sơ: 12-12-2022 </div>
+                <button type="button" class="btn_apply_to_company_detail_job" data-bs-toggle="modal"
+                    data-bs-target="#modal_apply_company">Ứng tuyển</button>
+                <button type="button" class="btn_save_job_detail_job">Lưu tin</button>
+            </div>
+            <div id="detail_recruit_detail_job">
+                <div id="text_detail_recruit_detail_job">Chi tiết tuyển dụng</div>
+                <div id="rectangle_general_information_detail_job">
+                    <div id="text_general_information_detail_job">Thông tin chung</div>
+                    <div class="circle_icon" id="circle_icon_salary_detail_job"></div>
+                    <div id="text_salary_detail_job">Mức lương</div>
+                    <div id="value_salary_detail_job">10-12 triệu</div>
+                    <img src="./style/image/ic_cash.svg" alt="ic_cash" id="ic_salary_detail_job">
+
+                    <div class="circle_icon" id="circle_icon_persons_detail_job"></div>
+                    <div id="text_number_person_detail_job">Số lượng</div>
+                    <div id="value_number_person_detail_job">10 người</div>
+                    <img src="./style/image/ic_persons.svg" alt="ic_person" id="ic_persons_detail_job">
+
+                    <div class="circle_icon" id="circle_icon_method_work_detail_job"></div>
+                    <div id="text_method_work_detail_job">Hình thức làm việc</div>
+                    <div id="value_method_work_detail_job">Fulltime</div>
+                    <img src="./style/image/ic_bag.svg" alt="ic_method_work" id="ic_method_work_detail_job">
+                    <div class="circle_icon" id="circle_icon_rank_detail_job"></div>
+                    <div id="text_rank_detail_job">Cấp bậc</div>
+                    <div id="value_rank_detail_job">Nhân viên</div>
+                    <img src="./style/image/ic_rank.svg" alt="ic_rank" id="ic_rank_detail_job">
+                    <div class="circle_icon" id="circle_icon_gender_detail_job"></div>
+                    <div id="text_gender_detail_job">Giới tính</div>
+                    <div id="value_gender_detail_job">Không yêu cầu</div>
+                    <img src="./style/image/ic_gender.svg" alt="ic_gender" id="ic_gender_detail_job">
+                    <div class="circle_icon" id="circle_icon_experience_detail_job"></div>
+                    <div id="text_experience_detail_job">Kinh nghiệm</div>
+                    <div id="value_experience_detail_job">1 năm</div>
+                    <img src="./style/image/ic_experience.svg" alt="ic_experience" id="ic_experience_detail_job">
+
+                    <div id="text_adress_work_detail_job">Địa điểm làm việc</div>
+                    <div id="value_adress_work_detail_job">KTX khu A, phường Linh Trung,Thành phố Thủ Đức, Thành phố Hồ
+                        Chí Minh</div>
+                </div>
+                <div id="rectangle_share_recruit_detail_job">
+                    <div id="text_share_recuit_detail_job">Chia sẻ tin tuyển dụng</div>
+                    <div id="text_copy_link_detail_job">Sao chép đường dẫn</div>
+                    <input type="text" value="file:///D:/Nhap%20mon%20CNPM/DO%20AN/detail_job_candidate.html" disabled
+                        name="link_detail_job" id="link_detail_job">
+
+                    <div id="circle_copy_link_detail_job">
+                        <img src="./style/image/ic_copy.svg" alt="ic_copy" id="ic_copy_link_detail_job">
+                    </div>
+                </div>
+                <div id="rectangle_report_recruit_detail_job">
+                    <div id="text_report_recuit_detail_job">Báo cáo tin tuyển dụng</div>
+                    <div id="text_describe_report_detail_job">Nếu bạn thấy rằng tin tuyển dụng này không đúng hoặc có
+                        một trong các dấu hiệu xấu, hãy phản ánh với chúng tôi.
+                    </div>
+                    <button type="button" id="btn_report_detail_job">Báo cáo</button>
+
+                </div>
+
+                <div id="text_describe_job_detail_job">Mô tả công việc</div>
+                <pre id="value_describe_job_detail_job">
+                    - Lập trình phần frontend bằng JavaScript/TypeScript sử dụng thư viện VueJS, GraphQL 
+                    - Thiết kế, sửa đổi giao diện người dùng theo yêu cầu khách hàng
+                    - Sửa lỗi, viết unit test, cải tiến code nếu cần
+                    - Hỗ trợ, phối hợp với các thành viên trong nhóm trong các công việc liên quan đến VueJS
+                    - Thực hiện các nhiệm vụ do trưởng nhóm giao
+                    - Địa điểm làm việc: Cầu Giấy, Hà Nội
+                    - Hình thức làm việc: Fulltime T2-T7 hàng tuần
+                </pre>
+                <div id="text_require_candidate_detail_job">Yêu cầu ứng viên</div>
+                <pre id="value_require_candidate_detail_job">
+                    - Thành thạo HTML/CSS, Javascript (ES6, ES7)
+                    - Có kinh nghiệm làm việc với Typescript
+                    - Có kinh nghiệm làm việc thực tế một trong các framework của Javascript như Vuejs, Reactjs, Angular (ưu tiên Vuejs)
+                    - Đã làm việc với Restful, Graphql
+                    - Sử dụng thành thạo Git
+                    - Tối thiểu 6 tháng kinh nghiệm
+                </pre>
+                <div id="text_benefit_detail_job">Quyền lợi</div>
+                <pre id="value_benefit_detail_job">
+                    - Mức lương: $500 - $1,000 Gross
+                    - Đóng BHXH, BHYT, BHTN, thưởng tháng 13, thưởng Project,...
+                    - Môi trường năng động, chuyên nghiệp có nhiều cơ hội thăng tiến
+                    - Cung cấp trang thiết bị đầy đủ để phục vụ công việc
+                    - Được đào tạo về kiến thức, kỹ năng phục vụ công việc
+                    - Cơ hội học hỏi những công nghệ khác
+                    - Được tham gia các hoạt động, chương trình, dự án, sự kiện của công ty 
+                </pre>
+
+            </div>
+            <div id="rectangle_infor_recruit">
+                <div id="title_infor_company_detail_job">Thông tin chi tiết</div>
+                <a href="#" id="btn_see_company_detail_job">Xem công ty</a>
+                <div class="circle_icon" id="circle_house_company_detail_job"></div>
+                <img src="./style/image/ic_house.svg" alt="ic_house" id="ic_house_company_detail_job">
+                <div id="text_introduce_company_detail_job">Giới thiệu</div>
+                <pre id="introduce_company_detail_job">
+Korea - Vietnam IT Outsourcing Frontier!
+We are a startup established to provide Vietnamese IT technology and software development technology 
+to Korean companies. We aim to grow into an IT software outsourcing company with more than 300
+employees within the next 5 years
+Web or Mobile Applications
+We develop web or mobile applications requested by Korean companies. It is mainly software for
+accounting, payroll, healthcare, and apartment management business.
+ 
+                </pre>
+                <div id="rectangle_scale_compayny">
+                    <div class="circle_icon" id="circle_person_company_detail_job"></div>
+                    <img src="./style/image/ic_persons.svg" alt="ic_persons" id="ic_persons_company_detail_job">
+                    <div id="text_scale_company_detail_job">Quy mô</div>
+                    <div id="value_scale_company_detail_job">25 nhân viên</div>
+                </div>
+                <div id="rectangle_address_compayny">
+                    <div class="circle_icon" id="circle_address_company_detail_job"></div>
+                    <img src="./style/image/ic_select_province.svg" alt="ic_province"
+                        id="ic_province_company_detail_job">
+                    <div id="text_province_company_detail_job">Địa điểm</div>
+                    <div id="value_province_company_detail_job">Linh Trung, Thủ Đức, Hồ Chí Minh</div>
+                </div>
+
+            </div>
+        </div>
+
+        <div class="footer">
+            <img id="logo_web_footer" src="./style/image/logo_web.svg" alt="logoweb">
+            <p id="text_info_footer">Chúng tôi là JORE hệ thống tìm kiếm việc làm uy tính tại Việt Nam</p>
+        </div>
+
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.min.js"
+        integrity="sha384-IDwe1+LCz02ROU9k972gdyvl+AESN10+x7tBKgc9I5HFtuNz0wWnPclzo6p9vxnk"
+        crossorigin="anonymous"></script>
+
+</body>
+<script>
+    var inputs = document.querySelectorAll('.inputfile');
+    Array.prototype.forEach.call(inputs, function (input) {
+        var label = input.nextElementSibling,
+            labelVal = document.getElementById("label_file").innerHTML;
+
+        input.addEventListener('change', function (e) {
+            var fileName = '';
+            fileName = e.target.value.split('\\').pop()
+
+            if (fileName)
+                document.getElementById("label_file").innerHTML = fileName;
+            else
+                document.getElementById("label_file").innerHTML = labelVal;
+        });
+    });
+
+</script>
+
+</html>

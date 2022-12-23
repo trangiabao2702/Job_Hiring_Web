@@ -147,12 +147,38 @@ class EmployerController {
   }
 
   // [POST] /post_add_recruitment
-  post_add_recruitment(req, res, next) {
+  async post_add_recruitment(req, res, next) {
     try {
       if (req.isAuthenticated()) {
         // get information of employer
         const _employer = req.session.passport.user;
-        console.log(req.body);
+        const _current_date = new Date().getTime();
+
+        // create new recruitment
+        const _new_recruitment = {
+          belong_employer: _employer.id,
+          benefits: req.body.benefit_recruitment,
+          creation_date: _current_date,
+          description: req.body.job_describe_recruitment,
+          due_date: req.body.deadline_submit_record_recruitment,
+          experience: req.body.experience_recruitment,
+          gender: req.body.sex_recruitment,
+          list_cvs: [],
+          location: req.body.word_location_recruitment,
+          max_salary: req.body.max_salary_recruitment,
+          min_salary: req.body.min_salary_recruitment,
+          number_of_candidates: req.body.quantity_recruitment,
+          requirements: req.body.require_candidate_recruitment,
+          status: "pending",
+          title: req.body.quantity_recruitment,
+          views: 0,
+          working_form: req.body.method_work_recruitment,
+        };
+
+        // add new recruitment to db
+        const _add_new_recruitment = await employerModel.addRecruitment(_new_recruitment);
+        const _update_list_recruitment_of_employer = await employerModel.updateListRecruitment(_new_recruitment);
+
         res.redirect("/employer/manage_recruitments");
       } else {
         res.redirect("/auth/sign_in");

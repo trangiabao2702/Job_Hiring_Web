@@ -15,6 +15,7 @@ router.get("/manage_recruitments", employerController.manage_recruitments);
 router.get("/detail_recruitment", employerController.detail_recruitment);
 router.post("/post_detail_recruitment", employerController.post_detail_recruitment);
 router.get("/add_recruitment", employerController.add_recruitment);
+router.post("/post_add_recruitment", employerController.post_add_recruitment);
 router.get("/edit_recruitment", employerController.edit_recruitment);
 
 router.get("/", employerController.homepage);

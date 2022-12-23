@@ -1,0 +1,51 @@
+<div id="rectangle_mid_signin">
+    <div id="rectangle_form_signin">
+        <img src="/css/style/image/welcome to JORE signin.svg" id="welcome_signin" alt="welcome_signin">
+        <div id="text_create_account">Hãy tạo tài khoản để cùng sử dụng dịch vụ </div>
+
+
+
+        <form method="post" action="/auth/signup" class="needs-validation"
+            oninput='confirm_password_signin.setCustomValidity(confirm_password_signin.value != password_signin.value ? "Mật khẩu nhập lại không đúng !" : "")'>
+
+            {{#if message}}
+            <div class="alert alert-success mt-2">
+                {{message}}
+            </div>
+            {{/if}}
+
+            {{#if messageDanger}}
+            <div class="alert alert-danger mt-2">
+                {{messageDanger}}
+            </div>
+            {{/if}}
+
+            <div id="label_fullname">Họ và tên</div>
+            <input type="text" name="name" id="fullname_signin" required placeholder="Nhập họ và tên của bạn">
+            <img src="/css/style/image/ic_person.svg" id="logo_person" alt="logo_person">
+
+            <div id="label_email_signin">Email</div>
+            <input type="email" name="email" id="email_signin" required placeholder="Nhập email của bạn">
+            <img src="/css/style/image/logo_email.svg" id="logo_email_signin" alt="logo_email_signin">
+
+            <div id="label_password_signin">Mật khẩu</div>
+            <input type="password" name="password" id="password_signin" required placeholder="Nhập mật khẩu">
+            <img src="/css/style/image/logo_password.svg" id="logo_password_signin" alt="logo_password_signin">
+            {{!-- <img src="/css/style/image/eye-slash.svg" id="eye_slash_signin" alt="eye_slash_signin"> --}}
+
+            <div id="label_confirm_password_signin">Xác nhận mật khẩu</div>
+            <input type="password" name="confirm_password_signin" id="confirm_password_signin" required
+                placeholder="Nhập lại mật khẩu">
+            <img src="/css/style/image/logo_password.svg" id="logo_confirm_password_signin"
+                alt="logo_confirm_password_signin">
+            {{!-- <img src="/css/style/image/eye-slash.svg" id="eye_slash_confirm_signin"
+                alt="eye_slash_confirm_signin"> --}}
+
+            <button type="submit" id="submit_signin">Đăng ký</button>
+        </form>
+
+        <div id="text_have_Account">Bạn đã có tài khoản?
+            <a id="login_now" href="/auth/login">Đăng nhập ngay</a>
+        </div>
+    </div>
+</div>

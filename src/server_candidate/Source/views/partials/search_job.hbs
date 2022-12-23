@@ -1,0 +1,66 @@
+<div class="rectangle_mid_1_candidate">
+    <form action="/candidate/search_job" method="post">
+        <input type="search" name="search" id="search_job_candidate" placeholder="Tên công việc">
+        <img src="/css/style/image/ic_search.svg" alt="ic_search_job_candidate" id="ic_search_job_candidate">
+        <select name="select_province" id="select_province_candidate">
+            <option disabled selected value>Tỉnh/Thành phố</option>
+        </select>
+        <img src="/css/style/image/ic_select_province.svg" alt="ic_select_province_candidate"
+            id="ic_select_province_candidate">
+        <select name="select_method_work" id="select_method_work_candidate">
+            <option disabled selected value> Hình thức làm việc </option>
+            <option value="" class="op_select_method_work">Full Time</option>
+            <option value="" class="op_select_method_work">Part Time</option>
+            <option value="" class="op_select_method_work">Remote</option>
+        </select>
+        <img src="/css/style/image/arrow_down.svg" alt="arrow_down" id="arrow_down_medthod_work">
+
+
+
+        <select name="select_experience" id="select_experience_candidate">
+            <option disabled selected value>Kinh nghiệm</option>
+            <option value="" class="op_select_experience_work">Chưa có</option>
+            <option value="" class="op_select_experience_work">1 năm</option>
+            <option value="" class="op_select_experience_work">2 năm</option>
+            <option value="" class="op_select_experience_work">3 năm</option>
+            <option value="" class="op_select_experience_work">Hơn 3 năm</option>
+
+        </select>
+        <img src="/css/style/image/arrow_down.svg" alt="arrow_down" id="arrow_down_experience_work">
+        <select name="select_salary" id="select_salary_candidate">
+            <option disabled selected value>Mức lương</option>
+            <option value="" class="op_select_salary_work">&#8805; 5 triệu</option>
+            <option value="" class="op_select_salary_work">&#8805; 10 triệu</option>
+            <option value="" class="op_select_salary_work">&#8805; 15 triệu</option>
+            <option value="" class="op_select_salary_work">&#8805; 20 triệu</option>
+
+
+        </select>
+        <img src="/css/style/image/arrow_down.svg" alt="arrow_down" id="arrow_down_salary_work">
+        <button type="submit" id="btn_search_candidate">Tìm kiếm</button>
+    </form>
+</div>
+<script>
+    const urlProvice = 'https://provinces.open-api.vn/api/';
+
+    fetch(urlProvice)
+        .then((response) => {
+            return response.json();
+        })
+        .then((data) => {
+            let items = data;
+
+            $.each(items, function (i, item) {
+                $('#select_province_candidate').append($('<option>', {
+                    value: item.name,
+                    text: item.name,
+                    code: item.code,
+                    class: 'op_select_province'
+                }));
+            });
+        })
+        .catch(function (error) {
+            console.log(error);
+        });
+
+</script>
