@@ -5167,3 +5167,133 @@ tr:nth-child(odd) {
 
   color: #ffffff;
 }
+/*employer*/
+#info_profile_company_recruit {
+     
+  position: relative;
+  width: 1500px;
+  margin-top: 10px;
+  border-radius: 10px;
+  border: 1px solid #FFFFFF;
+  background-color: #FFFFFF;
+  min-height: 900px;
+
+
+}
+#content_profile_company_recruit {
+position: relative;
+width: 1500px;
+left: 370px;
+top: 20px;
+background: #F2F2F2;
+}
+#btn_list_evaluate_company {
+position: absolute;
+height: 60px;
+left: 10px;
+top: 185px;
+padding: 0 10px;
+background: #0077B6;
+border-radius: 10px;
+font-family: 'Poppins', sans-serif;
+font-style: normal;
+font-weight: 700;
+font-size: 18px;
+line-height: 60px;
+text-align: center;
+/* identical to box height */
+text-decoration: none;
+
+
+color: #FFFFFF;
+}
+.item_evaluate{
+position: relative;
+width: 1500px;
+margin-top: 20px;
+margin-left: 30px;
+padding-top: 90px;
+}
+
+.ic_avatar_evaluate{
+position:absolute;
+top: 0px;
+left:15px;
+}
+.name_candidate_evaluate{
+position: absolute;
+left: 80px;
+font-family: 'Poppins', sans-serif;
+font-style: normal;
+font-weight: 500;
+font-size: 20px;
+top:10px;
+/* identical to box height */
+color: #000000;
+
+}
+.value_evaluate{
+width: 800px;
+word-wrap: break-word;
+margin-left: 15px;
+font-family: 'Poppins', sans-serif;
+font-style: normal;
+font-weight: 400;
+font-size: 18px;
+/* identical to box height */
+
+
+color: #000000;
+
+}
+#evaluate_candidate_star1{
+position: absolute;
+top:60px;
+left:15px;
+}
+#evaluate_candidate_star2{
+position: absolute;
+top:60px;
+left:40px;
+}
+#evaluate_candidate_star3{
+position: absolute;
+top:60px;
+left:65px;
+}
+
+#evaluate_candidate_star4{
+position: absolute;
+top:60px;
+left:90px;
+}
+
+#evaluate_candidate_star5{
+position: absolute;
+top:60px;
+left:115px;
+}
+
+#text_number_evaluate_company {
+position: absolute;
+display: inline-block;
+width: 470px;
+height: 40px;
+left: 600px;
+top: 10px;
+
+font-family: 'Poppins', sans-serif;
+font-style: normal;
+font-weight: 500;
+font-size: 18px;
+line-height: 27px;
+/* identical to box height */
+
+color: #58595B;
+}
+
+#nav_page_list_evaluate_company {
+position: absolute;
+top: 750px;
+left: 600px;
+}
