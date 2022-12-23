@@ -30,9 +30,29 @@ module.exports = {
     let employer = null;
     snapshot.forEach((doc) => {
       employer = doc.data();
+      employer.id = doc.id;
     });
 
     return employer;
+  },
+  getIDEmployer: async (id) => {
+    const recruitments_collection = db.collection("recruitments");
+    const recruitment = await recruitments_collection.doc(id).get();
+
+    return recruitment.data();
+  },
+  updateListRecruitment: async (id_recruitment) => {
+    const employers_collection = db.collection("employers");
+    const rs = await employers_collection.update({
+      list_recruitments: FieldValue.arrayUnion(id_recruitment),
+    });
+
+    return rs;
+  },
+  addRecruitment: async (recruitment) => {
+    const recruitmentCollection = db.collection("recruitments");
+    const rs = recruitmentCollection.add(recruitment);
+    return rs;
   },
   getRecruitmentByID: async (id) => {
     const recruitments_collection = db.collection("recruitments");
