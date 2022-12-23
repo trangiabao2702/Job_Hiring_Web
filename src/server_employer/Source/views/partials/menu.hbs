@@ -1,15 +1,30 @@
 <div class="side_left_home_recruit">
-    <a id="menu_news_home_recruit" href="/employer">Bảng tin
+    <a id="menu_news_home_recruit" href="/employer" class="menu_item is_selected">Bảng tin
         <img src="/css/style/image/ic_news.svg" id="ic_news_home_recruit" alt="ic_news_home_recruit">
     </a>
-    <a id="menu_manage_recruit_home_recruit" href="/employer/manage_recruitments">Quản lý tin tuyển dụng
+    <a id="menu_manage_recruit_home_recruit" href="/employer/manage_recruitments" class="menu_item">Quản lý tin tuyển
+        dụng
         <img src="/css/style/image/ic_management_recruit.svg" id="ic_manage_recruit_home_recruit"
             alt="ic_manage_recruit_home_recruit">
     </a>
-    <a id="menu_manage_record_home_recruit" href="/employer/manage_candidates_cvs">Quản lý hồ sơ ứng viên
+    <a id="menu_manage_record_home_recruit" href="/employer/manage_candidates_cvs" class="menu_item">Quản lý hồ sơ ứng
+        viên
         <img src="/css/style/image/ic_management_record.svg" id="ic_manage_record_home_recruit"
             alt="ic_manage_record_home_recruit">
     </a>
     <div id="line"></div>
     <div id="text_version">©️2022 JORE. All rights reversed.</div>
 </div>
+
+<style>
+    .is_selected {
+        color: #00B4D8 !important;
+    }
+</style>
+
+<script>
+    $(".menu_item").click(function () {
+        $(".menu_item").toggleClass("is_selected")
+        $(this).toggleClass("is_selected")
+    })
+</script>
