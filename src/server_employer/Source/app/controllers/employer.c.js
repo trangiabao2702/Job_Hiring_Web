@@ -170,14 +170,14 @@ class EmployerController {
           number_of_candidates: req.body.quantity_recruitment,
           requirements: req.body.require_candidate_recruitment,
           status: "pending",
-          title: req.body.quantity_recruitment,
+          title: req.body.title_recruitment,
           views: 0,
           working_form: req.body.method_work_recruitment,
         };
 
         // add new recruitment to db
         const _add_new_recruitment = await employerModel.addRecruitment(_new_recruitment);
-        const _update_list_recruitment_of_employer = await employerModel.updateListRecruitment(_new_recruitment);
+        const _update_list_recruitment_of_employer = await employerModel.updateListRecruitment(_employer.id, _add_new_recruitment.id);
 
         res.redirect("/employer/manage_recruitments");
       } else {
