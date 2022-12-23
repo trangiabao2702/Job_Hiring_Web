@@ -6,22 +6,23 @@
                         id="name_job_modal_apply_company">{{data.recruitment.title}}</span> </span>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
-            <form action="#" method="post" enctype="multipart/form-data">
+            <form action="/candidate/detail_job/upload_cv" method="post" enctype="multipart/form-data">
                 <div class="modal-body">
                     <div id="text_CV_me">CV của bạn:</div>
                     <img src="/css/style/image/ic_upload.svg" id="ic_upload_CV" alt="ic_upload_CV">
 
-                    <input type="file" name="file" id="file" class="inputfile" />
+                    <input type="file" name="file" id="file" class="inputfile" required />
                     <label for="file" id="label_file">Tải CV</label>
                     <div id="text_fullname_CV">Họ và tên:</div>
-                    <input type="text" name="fullname_cv" id="fullname_cv" required placeholder="Nhập đầy đủ họ tên">
+                    <input type="text" name="name" id="fullname_cv" required placeholder="Nhập đầy đủ họ tên">
                     <div id="text_email_CV">Email:</div>
-                    <input type="email" name="email_cv" id="email_cv" required placeholder="Nhập email">
+                    <input type="email" name="email" id="email_cv" required placeholder="Nhập email">
                     <div id="text_phone_CV">Số điện thoại</div>
-                    <input type="text" name="phone_cv" id="phone_cv" required placeholder="Nhập số điện thoại">
+                    <input type="text" name="phone" id="phone_cv" required placeholder="Nhập số điện thoại">
                     <div id="text_introduce_CV">Giới thiệu:</div>
-                    <textarea name="introduce_cv" class="form-control" id="introduce_cv" required
+                    <textarea name="introduce" class="form-control" id="introduce_cv" required
                         placeholder="Một vài lời giới thiệu với nhà tuyển dụng"></textarea>
+                    <input type="text" name="id_recruitment" value="{{data.idDocRecruitment}}" style="display: none;">
                     <button type="button" id="close_cv" data-bs-dismiss="modal">Đóng</button>
                     <button type="submit" id="submit_cv">Nộp</button>
                 </div>
@@ -38,8 +39,15 @@
         <div class="name_company_detail_job">{{data.belongEmployer.name}}</div>
         <img src="/css/style/image/ic_time.svg" alt="ic_time" class="ic_time_detail_job">
         <div class="deadline_submit_record_detail_job">Hạn nộp hồ sơ: {{data.recruitment.due_date}}</div>
+
+
+        {{#if data.isApplied}}
+        <button type="button" class="btn_apply_to_company_detail_job" data-bs-toggle="modal"
+            data-bs-target="#modal_apply_company" disabled>Đã ứng tuyển</button>
+        {{else}}
         <button type="button" class="btn_apply_to_company_detail_job" data-bs-toggle="modal"
             data-bs-target="#modal_apply_company">Ứng tuyển</button>
+        {{/if}}
         <button type="button" class="btn_save_job_detail_job">Lưu tin</button>
     </div>
     <div id="detail_recruit_detail_job">
@@ -130,7 +138,8 @@
             <div class="circle_icon" id="circle_address_company_detail_job"></div>
             <img src="/css/style/image/ic_select_province.svg" alt="ic_province" id="ic_province_company_detail_job">
             <div id="text_province_company_detail_job">Địa điểm</div>
-            <div id="value_province_company_detail_job">{{data.belongEmployer.district}}, {{data.belongEmployer.province}}</div>
+            <div id="value_province_company_detail_job">{{data.belongEmployer.district}},
+                {{data.belongEmployer.province}}</div>
         </div>
 
     </div>

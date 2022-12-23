@@ -1,7 +1,7 @@
 
 const db = require('../../config/db/index'); // getDatabase
 const storage = require('../../config/db/storage'); // getStorage
-
+const path = require('path');
 
 module.exports = {
 
@@ -79,42 +79,80 @@ module.exports = {
     getEmployer: async (idEmployer) => {
         const employers_collection = db.collection("employers");
         const docSnap = await employers_collection.doc(idEmployer).get();
-
-        return docSnap.data();
+        const employer = { idEmployer, ...docSnap.data() }
+        return employer;
     },
-    topJob: async number =>{
+    getIDDocumentCandidates: async (email) => {
+        const candidatesCollection = db.collection('candidates');
+        const snapshot = await candidatesCollection.where('email', '==', email).get();
+        var docId = null;
+        snapshot.forEach(doc => {
+            docId = doc.id;
+        });
+
+        return docId;
+    },
+    topJob: async number => {
         // const employer = await db.collection('employers');
         const recruitment = await db.collection('recruitments');
         const list = await recruitment.get();
-        var listJob=[];
+        var listJob = [];
         var user = null;
         list.forEach(doc => {
-            user = doc.data(); 
-            user.doc=doc.id;           
+            user = doc.data();
+            user.doc = doc.id;
             listJob.push(user);
-        });  
-        for(let i=0;i<listJob.length-1;i++)
-        {
-            for(let j=i+1;j<listJob.length;j++)
-            {
-                if(listJob[i].views<listJob[j].views)
-                {
-                    let temp=listJob[i];
-                    listJob[i]=listJob[j];
-                    listJob[j]=temp;
+        });
+        for (let i = 0; i < listJob.length - 1; i++) {
+            for (let j = i + 1; j < listJob.length; j++) {
+                if (listJob[i].views < listJob[j].views) {
+                    let temp = listJob[i];
+                    listJob[i] = listJob[j];
+                    listJob[j] = temp;
                 }
             }
         }
-     
-        listJob.slice(0,number);
-        for(let j=0;j<listJob.length;j++)
-        {
-            var rs = await db.collection('employers').doc(listJob[j].belong_employer).get();    
-            listJob[j].nameEmployer= rs.data().name;
+
+        listJob.slice(0, number);
+        for (let j = 0; j < listJob.length; j++) {
+            var rs = await db.collection('employers').doc(listJob[j].belong_employer).get();
+            listJob[j].nameEmployer = rs.data().name;
             listJob[j].avatarEmployer = rs.data().avatar;
         }
 
         return listJob;
     },
+    uploadCurriculumVitae: async (curriculumVitae, fileCV) => {
+        const fileName = curriculumVitae.id_recruitment + "--" + curriculumVitae.email + path.extname(fileCV.originalname)
+        await storage.bucket().file(`cvs_candidates/${fileName}`).createWriteStream().end(fileCV.buffer);
+
+        const file = storage.bucket().file(`cvs_candidates/${fileName}`);
+        const signedURLconfig = { action: 'read', expires: '01-01-2030' };
+        const signedURLArray = await file.getSignedUrl(signedURLconfig);
+
+        // them link file cv
+        curriculumVitae.file_cv = signedURLArray[0];
+
+        const curriculumVitaeCollection = db.collection('curriculum_vitaes');
+        const rs = curriculumVitaeCollection.add(curriculumVitae);
+
+        return rs;
+    },
+    checkApplied: async (id_recruitment, id_candidate) => {
+
+        console.log(id_recruitment, id_candidate);
+
+        const curriculumVitaeCollection = db.collection('curriculum_vitaes');
+        const checkApplied = await curriculumVitaeCollection.where('id_recruitment','==', id_recruitment).where('id_candidate','==', id_candidate).get();
+
+        
+
+        if(checkApplied.empty){
+            return false;
+        }
+        return true;
+    }
+
+
 
 }
