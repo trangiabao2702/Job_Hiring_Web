@@ -48,22 +48,25 @@ class EmployerController {
   }
 
   // [GET] /manage_recruitments
-  manage_recruitments(req, res, next) {
+  async manage_recruitments(req, res, next) {
     try {
       if (req.isAuthenticated()) {
         // get information of employer
         const _employer = req.session.passport.user;
 
-        // TODO
-
+        // get list of recruitments
+        let _recruitments = [];
+        for (const id_recruitment of _employer.list_recruitments) {
+          const _recruitment = await employerModel.getRecruitmentByID(id_recruitment);
+          _recruitments.push(_recruitment);
+        }
+        console.log(_recruitments);
         res.render("contents/manage_recruitments", {
           layout: "main_employer_login",
           data: {
             user: _employer,
+            list_recruitments: JSON.stringify(_recruitments),
           },
-          number_of_recruitments: _employer.list_recruitments.length,
-          number_of_approved_candidates: approved_candidates,
-          number_of_new_candidates: total_candidates - approved_candidates,
         });
       } else {
         res.redirect("/auth/sign_in");
@@ -87,9 +90,6 @@ class EmployerController {
           data: {
             user: _employer,
           },
-          number_of_recruitments: _employer.list_recruitments.length,
-          number_of_approved_candidates: approved_candidates,
-          number_of_new_candidates: total_candidates - approved_candidates,
         });
       } else {
         res.redirect("/auth/sign_in");
@@ -113,9 +113,6 @@ class EmployerController {
           data: {
             user: _employer,
           },
-          number_of_recruitments: _employer.list_recruitments.length,
-          number_of_approved_candidates: approved_candidates,
-          number_of_new_candidates: total_candidates - approved_candidates,
         });
       } else {
         res.redirect("/auth/sign_in");
@@ -139,9 +136,6 @@ class EmployerController {
           data: {
             user: _employer,
           },
-          number_of_recruitments: _employer.list_recruitments.length,
-          number_of_approved_candidates: approved_candidates,
-          number_of_new_candidates: total_candidates - approved_candidates,
         });
       } else {
         res.redirect("/auth/sign_in");
@@ -165,9 +159,6 @@ class EmployerController {
           data: {
             user: _employer,
           },
-          number_of_recruitments: _employer.list_recruitments.length,
-          number_of_approved_candidates: approved_candidates,
-          number_of_new_candidates: total_candidates - approved_candidates,
         });
       } else {
         res.redirect("/auth/sign_in");

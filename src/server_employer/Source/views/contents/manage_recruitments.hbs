@@ -5,85 +5,13 @@
         <div id="text_recruitment_efficiency">Tổng số tin đã đăng: 5</div>
         <table id="table_mamage_recruit" style="width: 1333px" rules="rows">
             <tr class="title_table_recruit">
-                <th>Mã tin</th>
+                <th>STT</th>
                 <th>Tên tin tuyển dụng</th>
                 <th>Ngày tạo tin</th>
                 <th>Hạn nộp nồ sơ</th>
                 <th>Lượt nộp</th>
                 <th>Số báo cáo</th>
                 <th>Trạng thái tin</th>
-            </tr>
-            <tr>
-                <td>20120433</td>
-                <td>Front-End Web developer</td>
-                <td>31/11/2022</td>
-                <td>31/11/2022</td>
-                <td>10</td>
-                <td>10</td>
-                <td>Đã duyệt</td>
-            </tr>
-            <tr>
-                <td>20120433</td>
-                <td>Front-End Web developer</td>
-                <td>31/11/2022</td>
-                <td>31/11/2022</td>
-                <td>10</td>
-                <td>10</td>
-                <td>Đã duyệt</td>
-            </tr>
-            <tr>
-                <td>20120433</td>
-                <td>Front-End Web developer</td>
-                <td>31/11/2022</td>
-                <td>31/11/2022</td>
-                <td>10</td>
-                <td>10</td>
-                <td>Đã duyệt</td>
-            </tr>
-            <tr>
-                <td>20120433</td>
-                <td>Front-End Web developer</td>
-                <td>31/11/2022</td>
-                <td>31/11/2022</td>
-                <td>10</td>
-                <td>10</td>
-                <td>Đã duyệt</td>
-            </tr>
-            <tr>
-                <td>20120433</td>
-                <td>Front-End Web developer</td>
-                <td>31/11/2022</td>
-                <td>31/11/2022</td>
-                <td>10</td>
-                <td>10</td>
-                <td>Đã duyệt</td>
-            </tr>
-            <tr>
-                <td>20120433</td>
-                <td>Front-End Web developer</td>
-                <td>31/11/2022</td>
-                <td>31/11/2022</td>
-                <td>10</td>
-                <td>10</td>
-                <td>Đã duyệt</td>
-            </tr>
-            <tr>
-                <td>20120433</td>
-                <td>Front-End Web developer</td>
-                <td>31/11/2022</td>
-                <td>31/11/2022</td>
-                <td>10</td>
-                <td>10</td>
-                <td>Đã duyệt</td>
-            </tr>
-            <tr>
-                <td>20120433</td>
-                <td>Front-End Web developer</td>
-                <td>31/11/2022</td>
-                <td>31/11/2022</td>
-                <td>10</td>
-                <td>10</td>
-                <td>Đã duyệt</td>
             </tr>
         </table>
         <nav aria-label="Page navigation example" id="nav_page_home_manage_recruit">
@@ -107,3 +35,44 @@
         </nav>
     </div>
 </div>
+
+<script>
+    $(".menu_item").removeClass("is_selected")
+    $("#menu_manage_recruit_home_recruit").addClass("is_selected")
+
+    const list_recruitments = {{{ data.list_recruitments }}}
+    console.log(list_recruitments)
+    for (let i = 0; i < list_recruitments.length; i++) {
+        let _date = new Date(list_recruitments[i].due_date._seconds * 1000);
+        let due_date = _date.getDate() + "/" + _date.getMonth() + "/" + _date.getFullYear()
+
+        _date = new Date(list_recruitments[i].creation_date._seconds * 1000);
+        let creation_date = _date.getDate() + "/" + _date.getMonth() + "/" + _date.getFullYear()
+
+        let _status = "Chờ duyệt"
+        if (list_recruitments[i].status == "approved") {
+            _status = "Đã duyệt"
+        }
+        else if (list_recruitments[i].status == "locked") {
+            _status = "Bị khóa"
+        }
+        else if (list_recruitments[i].status == "deleted") {
+            _status = "Bị xóa"
+        }
+        else {
+            _status = "???"
+        }
+
+        $("#table_mamage_recruit").append(`
+            <tr>
+                <td>${i + 1}</td>
+                <td>${list_recruitments[i].title}</td>
+                <td>${creation_date}</td>
+                <td>${due_date}</td>
+                <td>${list_recruitments[i].list_cvs.length}</td>
+                <td>number reports</td>
+                <td>${_status}</td>
+            </tr>
+        `)
+    }
+</script>
