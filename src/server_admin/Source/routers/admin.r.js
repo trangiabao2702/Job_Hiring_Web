@@ -1,12 +1,9 @@
 const express = require("express");
 const router = express.Router();
 
-const admin = require("../app/controllers/admin");
+const admin = require("../app/controllers/admin.c");
 
-router.get("/sign_in", admin.sign_in);
-router.get("/forgot_pw", admin.forgot_pw);
-router.get("/account_authentication", admin.account_authentication);
-router.get("/reset_pw", admin.reset_pw);
+
 router.get("/manage_account/list_account_approved", admin.list_account_appvoved);
 router.get("/manage_account/list_account_pending", admin.list_account_pending);
 router.get("/manage_account/list_account_locked", admin.list_account_locked);
