@@ -43,6 +43,8 @@
     const list_recruitments = {{{ data.list_recruitments }}}
     const id_recruitments = {{{ data.id_recruitments }}}
 
+    $("#text_recruitment_efficiency").html("Tổng số tin đã đăng: " + list_recruitments.length)
+
     for (let i = 0; i < list_recruitments.length; i++) {
         let _date = new Date(list_recruitments[i].due_date._seconds * 1000);
         let due_date = _date.getDate() + "/" + (_date.getMonth() + 1) + "/" + _date.getFullYear()

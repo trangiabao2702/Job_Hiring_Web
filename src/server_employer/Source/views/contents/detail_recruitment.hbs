@@ -11,9 +11,13 @@
             <img src="/css/style/image/ic_calendar.svg" alt="ic_calendar" class="ic_calendar_detail_job" />
             <div class="date_post_news_detail_job"></div>
 
-            <button type="button" class="edit_news_recruit">Chỉnh sửa</button>
-            <button type="button" class="delete_news_recruit">Xóa</button>
-            <button type="button" class="list_candidate_submit_recruit">Danh sách ứng viên</button>
+            <form action="/employer/post_detail_recruitment" method="POST">
+                <input type="hidden" id="id_recruitment" name="id_recruitment" value="5WmkSXKnRftGyJMHAiXoy" />
+                <input type="submit" class="edit_news_recruit" name="post_type" value="Chỉnh sửa" />
+                <input type="submit" class="delete_news_recruit" name="post_type" value="Xóa" />
+                <input type="submit" class="list_candidate_submit_recruit" name="post_type"
+                    value="Danh sách ứng viên" />
+            </form>
         </div>
 
         <div id="rectangle_require_recruit">
@@ -134,14 +138,5 @@
 
     const current_url = $(location).attr("href")
     const id_recruitment = current_url.slice(current_url.indexOf("?id=") + 4)
-    $(".edit_news_recruit").click(function () {
-        $(location).attr("href", "/employer/edit_recruitment?id=" + id_recruitment)
-    })
-    $(".delete_news_recruit").click(function () {
-        console.log("delete = change status of recruitment to 'deleted', remove id of this recruitment from list_recruitments")
-        $(location).attr("href", "/employer/")
-    })
-    $(".list_candidate_submit_recruit").click(function () {
-        $(location).attr("href", "/employer/manage_candidates_cvs?id_recruitment=" + id_recruitment)
-    })
+    $("#id_recruitment").val(id_recruitment)
 </script>

@@ -7,8 +7,6 @@ class EmployerController {
       if (req.isAuthenticated()) {
         // get information of employer
         const _employer = req.session.passport.user;
-        // const _email = "employer_kms@gmail.com";
-        // const _employer = await employerModel.getEmployerByEmail(_email);
 
         // calculate the total number of candidates and the number of approved candidates
         let total_candidates = 0;
@@ -84,7 +82,7 @@ class EmployerController {
         // get information of employer
         const _employer = req.session.passport.user;
 
-        // TODO
+        // get information of recruitment
         const _recruitment = await employerModel.getRecruitmentByID(req.query.id);
 
         res.render("contents/detail_recruitment", {
@@ -94,6 +92,68 @@ class EmployerController {
             recruitment: JSON.stringify(_recruitment),
           },
         });
+      } else {
+        res.redirect("/auth/sign_in");
+      }
+    } catch (error) {
+      next(error);
+    }
+  }
+
+  // [POST] /post_detail_recruitment
+  post_detail_recruitment(req, res, next) {
+    try {
+      if (req.isAuthenticated()) {
+        // get information of employer
+        const _employer = req.session.passport.user;
+
+        // check type of post method then redirect to correct page
+        if (req.body.post_type == "Chỉnh sửa") {
+          res.redirect("/employer/detail_recruitment?id=" + req.body.id_recruitment);
+        } else if (req.body.post_type == "Xóa") {
+          res.redirect("/employer/manage_recruitments");
+        } else if (req.body.post_type == "Danh sách ứng viên") {
+          res.redirect("/employer/manage_candidates_cvs?id_recruitment=" + req.body.id_recruitment);
+        } else {
+          // do nothing
+        }
+      } else {
+        res.redirect("/auth/sign_in");
+      }
+    } catch (error) {
+      next(error);
+    }
+  }
+
+  // [GET] /add_recruitment
+  add_recruitment(req, res, next) {
+    try {
+      if (req.isAuthenticated()) {
+        // get information of employer
+        const _employer = req.session.passport.user;
+
+        res.render("contents/add_recruitment", {
+          layout: "main_employer_login",
+          data: {
+            user: _employer,
+          },
+        });
+      } else {
+        res.redirect("/auth/sign_in");
+      }
+    } catch (error) {
+      next(error);
+    }
+  }
+
+  // [POST] /post_add_recruitment
+  post_add_recruitment(req, res, next) {
+    try {
+      if (req.isAuthenticated()) {
+        // get information of employer
+        const _employer = req.session.passport.user;
+        console.log(req.body);
+        res.redirect("/employer/manage_recruitments");
       } else {
         res.redirect("/auth/sign_in");
       }

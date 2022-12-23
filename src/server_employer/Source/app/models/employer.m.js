@@ -46,4 +46,9 @@ module.exports = {
 
     return curriculum_vitae.data();
   },
+  addRecruitment: async (recruitment) => {
+    const recruitmentCollection = db.collection("recruitments");
+    const rs = recruitmentCollection.add(recruitment);
+    return rs;
+  },
 };
