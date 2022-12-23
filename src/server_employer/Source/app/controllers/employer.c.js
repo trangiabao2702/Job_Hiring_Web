@@ -78,18 +78,20 @@ class EmployerController {
   }
 
   // [GET] /detail_recruitment
-  detail_recruitment(req, res, next) {
+  async detail_recruitment(req, res, next) {
     try {
       if (req.isAuthenticated()) {
         // get information of employer
         const _employer = req.session.passport.user;
 
         // TODO
+        const _recruitment = await employerModel.getRecruitmentByID(req.query.id);
 
         res.render("contents/detail_recruitment", {
           layout: "main_employer_login",
           data: {
             user: _employer,
+            recruitment: JSON.stringify(_recruitment),
           },
         });
       } else {
