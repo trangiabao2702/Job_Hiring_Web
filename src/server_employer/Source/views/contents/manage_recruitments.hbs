@@ -45,10 +45,10 @@
 
     for (let i = 0; i < list_recruitments.length; i++) {
         let _date = new Date(list_recruitments[i].due_date._seconds * 1000);
-        let due_date = _date.getDate() + "/" + _date.getMonth() + "/" + _date.getFullYear()
+        let due_date = _date.getDate() + "/" + (_date.getMonth() + 1) + "/" + _date.getFullYear()
 
         _date = new Date(list_recruitments[i].creation_date._seconds * 1000);
-        let creation_date = _date.getDate() + "/" + _date.getMonth() + "/" + _date.getFullYear()
+        let creation_date = _date.getDate() + "/" + (_date.getMonth() + 1) + "/" + _date.getFullYear()
 
         let _status = "Chờ duyệt"
         if (list_recruitments[i].status == "approved") {

@@ -3,19 +3,19 @@
 
     <div class="rectangle_content_detail_news_home_recruit">
         <div class="header_company_detail_job_recruit">
-            <img src="/css/style/image/logo_company.svg" alt="logo_company_recruit"
-                class="logo_company_detail_job_recruit" />
-            <div class="name_job_detail_job">Front-End Web Developer</div>
-            <div class="name_company_detail_job">VNG Games</div>
+            <img src="{{{data.user.avatar}}}" alt="logo_company_recruit" class="logo_company_detail_job_recruit" />
+            <div class="name_job_detail_job"></div>
+            <div class="name_company_detail_job">{{{data.user.office}}}</div>
             <img src="/css/style/image/ic_time.svg" alt="ic_time" class="ic_time_detail_job" />
-            <div class="deadline_submit_record_detail_job">Hạn nộp hồ sơ: 12-12-2022</div>
+            <div class="deadline_submit_record_detail_job"></div>
             <img src="/css/style/image/ic_calendar.svg" alt="ic_calendar" class="ic_calendar_detail_job" />
-            <div class="date_post_news_detail_job">Ngày đăng tin: 5-11-2022</div>
+            <div class="date_post_news_detail_job"></div>
 
             <button type="button" class="edit_news_recruit">Chỉnh sửa</button>
             <button type="button" class="delete_news_recruit">Xóa</button>
             <button type="button" class="list_candidate_submit_recruit">Danh sách ứng viên</button>
         </div>
+
         <div id="rectangle_require_recruit">
             <div id="text_detail_recruit_detail_job">Chi tiết tuyển dụng</div>
             <div id="rectangle_general_information_detail_job">
@@ -34,10 +34,10 @@
                 <div id="text_method_work_detail_job">Hình thức làm việc</div>
                 <div id="value_method_work_detail_job">Fulltime</div>
                 <img src="/css/style/image/ic_bag.svg" alt="ic_method_work" id="ic_method_work_detail_job" />
-                <div class="circle_icon" id="circle_icon_rank_detail_job"></div>
+                {{!-- <div class="circle_icon" id="circle_icon_rank_detail_job"></div>
                 <div id="text_rank_detail_job">Cấp bậc</div>
                 <div id="value_rank_detail_job">Nhân viên</div>
-                <img src="/css/style/image/ic_rank.svg" alt="ic_rank" id="ic_rank_detail_job" />
+                <img src="/css/style/image/ic_rank.svg" alt="ic_rank" id="ic_rank_detail_job" /> --}}
                 <div class="circle_icon" id="circle_icon_gender_detail_job"></div>
                 <div id="text_gender_detail_job">Giới tính</div>
                 <div id="value_gender_detail_job">Không yêu cầu</div>
@@ -51,6 +51,7 @@
                 <div id="value_adress_work_detail_job">KTX khu A, phường Linh Trung,Thành phố Thủ Đức, Thành phố Hồ Chí
                     Minh</div>
             </div>
+
             <div id="rectangle_share_recruit_detail_job">
                 <div id="text_share_recuit_detail_job">Chia sẻ tin tuyển dụng</div>
                 <div id="text_copy_link_detail_job">Sao chép đường dẫn</div>
@@ -71,7 +72,8 @@
                     - Thực hiện các nhiệm vụ do trưởng nhóm giao
                     - Địa điểm làm việc: Cầu Giấy, Hà Nội
                     - Hình thức làm việc: Fulltime T2-T7 hàng tuần
-                </pre>
+            </pre>
+
             <div id="text_require_candidate_detail_job">Yêu cầu ứng viên</div>
             <pre id="value_require_candidate_detail_job">
                     - Thành thạo HTML/CSS, Javascript (ES6, ES7)
@@ -80,7 +82,8 @@
                     - Đã làm việc với Restful, Graphql
                     - Sử dụng thành thạo Git
                     - Tối thiểu 6 tháng kinh nghiệm
-                </pre>
+            </pre>
+
             <div id="text_benefit_detail_job">Quyền lợi</div>
             <pre id="value_benefit_detail_job">
                     - Mức lương: $500 - $1,000 Gross
@@ -90,7 +93,55 @@
                     - Được đào tạo về kiến thức, kỹ năng phục vụ công việc
                     - Cơ hội học hỏi những công nghệ khác
                     - Được tham gia các hoạt động, chương trình, dự án, sự kiện của công ty 
-                </pre>
+            </pre>
         </div>
     </div>
 </div>
+
+<script>
+    $(".menu_item").removeClass("is_selected")
+    $("#menu_manage_recruit_home_recruit").addClass("is_selected")
+
+    const _recruitment = {{{ data.recruitment }}}
+
+    $(".name_job_detail_job").html(_recruitment.title)
+
+    let _date = new Date(_recruitment.due_date._seconds * 1000);
+    let due_date = _date.getDate() + "/" + (_date.getMonth() + 1) + "/" + _date.getFullYear()
+    $(".deadline_submit_record_detail_job").html("Hạn nộp hồ sơ: " + due_date)
+
+    _date = new Date(_recruitment.creation_date._seconds * 1000);
+    let creation_date = _date.getDate() + "/" + (_date.getMonth() + 1) + "/" + _date.getFullYear()
+    $(".date_post_news_detail_job").html("Ngày đăng tin: " + creation_date)
+
+    $("#value_salary_detail_job").html(_recruitment.min_salary + " - " + _recruitment.max_salary + " triệu")
+
+    $("#value_number_person_detail_job").html(_recruitment.number_of_candidates + " người")
+
+    $("#value_method_work_detail_job").html(_recruitment.working_form)
+
+    $("#value_gender_detail_job").html(_recruitment.gender)
+
+    $("#value_experience_detail_job").html(_recruitment.experience)
+
+    $("#value_adress_work_detail_job").html(_recruitment.location)
+
+    $("#value_describe_job_detail_job").html(_recruitment.description)
+
+    $("#value_require_candidate_detail_job").html(_recruitment.requirements)
+
+    $("#value_benefit_detail_job").html(_recruitment.benefits)
+
+    const current_url = $(location).attr("href")
+    const id_recruitment = current_url.slice(current_url.indexOf("?id=") + 4)
+    $(".edit_news_recruit").click(function () {
+        $(location).attr("href", "/employer/edit_recruitment?id=" + id_recruitment)
+    })
+    $(".delete_news_recruit").click(function () {
+        console.log("delete = change status of recruitment to 'deleted', remove id of this recruitment from list_recruitments")
+        $(location).attr("href", "/employer/")
+    })
+    $(".list_candidate_submit_recruit").click(function () {
+        $(location).attr("href", "/employer/manage_candidates_cvs?id_recruitment=" + id_recruitment)
+    })
+</script>
