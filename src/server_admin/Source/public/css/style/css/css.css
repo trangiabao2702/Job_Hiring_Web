@@ -106,6 +106,23 @@ pre {
     color: #00B4D8;
     font-family: 'Poppins', sans-serif;
 }
+
+#btn_login_admin
+{
+
+    box-sizing: border-box;
+    position: absolute;
+    left: 80.88%;
+    right: 13.82%;
+    top: 19.44%;
+    bottom: 19.44%;
+
+    background: #FFFFFF;
+    border: 0.5px solid #0096C7;
+    border-radius: 10px;
+    color: #00B4D8;
+    font-family: 'Poppins', sans-serif;
+}
 #btn_login_candidate{
     position: absolute;
     width: 90%;
@@ -624,7 +641,7 @@ color:white;
     width: 506px;
     height: 56px;
     left: 102px;
-    top: 362px;
+    top: 380px;
     border: none;
     background: #00B4D8;
     border-radius: 10px;
@@ -727,12 +744,12 @@ color:white;
 
 }
 
-#forget_password {
+#forget_password_admin
+{
     position: absolute;
-    width: 126px;
     height: 24px;
     left: 483px;
-    top: 550px;
+    top: 460px;
 
     font-family: 'Poppins', sans-serif;
     font-style: normal;
@@ -1637,7 +1654,7 @@ color:white;
 #dropdown_menu_recruit {
     position: absolute;
     width: 300px;
-    height: 135px;
+    height: 100px;
     top: 50px;
     background: #FFFFFF;
     box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.25);
@@ -4199,7 +4216,7 @@ border-radius: 50px;
 }
 .rectangle_mid_news_home_recruit{
     position: relative;
-width: 100%px;
+width: 100%;
 height:791px;
 left: 0px;
 top: 0px;

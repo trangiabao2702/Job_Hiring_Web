@@ -2,15 +2,27 @@
     <div id="rectangle_form_login">
         <div id="text_welcome_login">Chào mừng bạn trở lại</div>
         <img src="/css/style/image/text_login_by_account.svg" id="text_login_by_account" alt="text_login_by_account">
-        <form action="">
+        <form method="post" action="/auth/sign_in">
+
+            {{#if message}}
+            <div class="alert alert-success mt-2">
+                {{message}}
+            </div>
+            {{/if}}
+
+            {{#if messageDanger}}
+            <div class="alert alert-danger mt-2">
+                {{messageDanger}}
+            </div>
+            {{/if}}
+
             <div id="label_email">Email</div>
-            <input type="email" name="email_login_recuit" id="email_login" required placeholder="Nhập email của bạn">
+            <input type="email" name="email" id="email_login" required placeholder="Nhập email của bạn">
             <img src="/css/style/image/logo_email.svg" id="logo_email" alt="logo_email">
             <div id="label_password">Mật khẩu</div>
-            <input type="password" name="password_login_recruit" id="password_login" required
-                placeholder="Nhập mật khẩu">
+            <input type="password" name="password" id="password_login" required placeholder="Nhập mật khẩu">
             <img src="/css/style/image/logo_password.svg" id="logo_password" alt="logo_password">
-            <img src="/css/style/image/eye-slash.svg" id="eye_slash_password" alt="eye_slash_password">
+            {{!-- <img src="/css/style/image/eye-slash.svg" id="eye_slash_password" alt="eye_slash_password"> --}}
             <button type="submit" id="submit_form_login">Đăng nhập</button>
             <div id="or">Hoặc</div>
         </form>

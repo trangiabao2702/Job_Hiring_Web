@@ -1,7 +1,7 @@
 const bcrypt = require("bcrypt");
 const passport = require("passport");
 const LocalStrategy = require("passport-local").Strategy;
-// const candidateModel = require('../models/candidate.m');
+const employerModel = require('../models/employer.m');
 
 module.exports = (app) => {
   app.use(passport.initialize());
@@ -27,11 +27,11 @@ module.exports = (app) => {
       },
       async (email, password, done) => {
         try {
-          const user = await userModel.getByUserName(email);
+          const user = await employerModel.getEmployerByEmail(email);
           if (!user) {
             return done(null, false);
           }
-          const cmp = await bcrypt.compare(password, user.f_Password);
+          const cmp = await bcrypt.compare(password, user.password);
           if (!cmp) {
             return done(null, false, { messageDanger: "Password entered is incorrect." });
           }
