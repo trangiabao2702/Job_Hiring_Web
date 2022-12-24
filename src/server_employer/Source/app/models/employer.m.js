@@ -68,6 +68,29 @@ module.exports = {
     const rs = recruitmentDoc.delete();
     return recruitmentDoc.id;
   },
+  updateRecruitment: async (new_info) => {
+    const recruitmentDoc = db.collection("recruitments").doc(new_info.id_recruitment);
+
+    const _date_path = new_info.deadline_submit_record_recruitment.split("-");
+    const _due_date = require("firebase-admin").firestore.Timestamp.fromDate(new Date(parseInt(_date_path[0]), parseInt(_date_path[1]) - 1, parseInt(_date_path[2])));
+
+    const rs = await recruitmentDoc.update({
+      title: new_info.title_recruitment,
+      min_salary: parseInt(new_info.min_salary_recruitment),
+      max_salary: parseInt(new_info.max_salary_recruitment),
+      number_of_candidates: parseInt(new_info.quantity_recruitment),
+      working_form: new_info.method_work_recruitment,
+      gender: new_info.sex_recruitment,
+      experience: new_info.experience_recruitment,
+      due_date: _due_date,
+      location: new_info.word_location_recruitment,
+      description: new_info.job_describe_recruitment,
+      requirements: new_info.require_candidate_recruitment,
+      benefits: new_info.benefit_recruitment,
+    });
+
+    return recruitmentDoc.id;
+  },
   getRecruitmentByID: async (id) => {
     const recruitments_collection = db.collection("recruitments");
     const recruitment = await recruitments_collection.doc(id).get();

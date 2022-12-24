@@ -109,7 +109,7 @@ class EmployerController {
 
         // check type of post method then redirect to correct page
         if (req.body.post_type == "Chỉnh sửa") {
-          res.redirect("/employer/detail_recruitment?id=" + req.body.id_recruitment);
+          res.redirect("/employer/edit_recruitment?id=" + req.body.id_recruitment);
         } else if (req.body.post_type == "Xóa") {
           const _id_remove_recruitment = await employerModel.removeRecruitment(req.body.id_recruitment);
           const _update_list_recruitment_of_employer = await employerModel.updateListRecruitment(_employer.id, _id_remove_recruitment, "remove");
@@ -197,20 +197,41 @@ class EmployerController {
   }
 
   // [GET] /edit_recruitment
-  edit_recruitment(req, res, next) {
+  async edit_recruitment(req, res, next) {
     try {
       if (req.isAuthenticated()) {
         // get information of employer
         const _employer = req.session.passport.user;
 
-        // TODO
+        // get information of recruitment
+        const _recruitment = await employerModel.getRecruitmentByID(req.query.id);
 
         res.render("contents/edit_recruitment", {
           layout: "main_employer_login",
           data: {
             user: _employer,
+            recruitment: JSON.stringify(_recruitment),
           },
         });
+      } else {
+        res.redirect("/auth/sign_in");
+      }
+    } catch (error) {
+      next(error);
+    }
+  }
+
+  // [POST] /post_edit_recruitment
+  async post_edit_recruitment(req, res, next) {
+    try {
+      if (req.isAuthenticated()) {
+        // get information of employer
+        const _employer = req.session.passport.user;
+
+        // update information of recruitment
+        const _id_recruitment = await employerModel.updateRecruitment(req.body);
+
+        res.redirect("/employer/detail_recruitment?id=" + req.body.id_recruitment);
       } else {
         res.redirect("/auth/sign_in");
       }
