@@ -1,40 +1,122 @@
 <div id="content_detail_account_admin">
-
-    <!-- thông tin toàn khoản ứng viên -->
-    <!-- <div id="head_profie_candidate_recruit">
-                    <img src="/css/style/image/avatar_candidate.svg" id="avatar_profile_candidate_recruit"
-                    alt="avatar_profile_candidate_recruit">
-                    <div id="name_candidate_recruit">Hồ Duy Bảo</div>
-                    <div id="status_profile_candidate_recruit">Trạng thái: Chờ duyệt</div>
-                    <div id="date_submit_profile_candidate_recruit">Ngày tạo tài khoản: 22/01/2022</div>
-                    <a id="btn_accept_candidate" href="#">Khóa</a>
+    <div class="modal fade" id="modal_delete" tabindex="-1" aria-labelledby="modal_deleteLabel"
+        aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Bạn có muốn xóa vĩnh viễn tài khoản này?
+                    </h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
-                <div id="info_profile_candidate_recruit">
-                    <div id="text_info_personal">Thông tin cá nhân</div>
-                    <div id="date_of_birth_profile_candidate_recruit">Ngày sinh: 27/08/2002</div>
-                    <div id="sex_profile_candidate_recruit">Giới tính: Nam</div>
-                    <div id="phone_profile_candidate_recruit">SĐT: 0823304385</div>
-                    <div id="email_profile_candidate_recruit">Email: 20120420@student.hcmus.edu.vn</div>
-                    <div id="address_profile_candidate_recruit">Địa chỉ: KTX khu B, Đông Hòa, Dĩ An, Bình Dương</div>
-         
-                </div> -->
+                <form action="/admin/delete_account" method="post">
+                        <input type="text" class="form-control" name="id"  value="{{account.id}}"
+                            style="display: none;">
+                            <input type="text" class="form-control" name="type"  value="{{account.type}}"
+                            style="display: none;">
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Hủy</button>
+                        <button type="submit" id="submit_delete" class="btn btn-primary">Xóa</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+     <div class="modal fade" id="modal_lock" tabindex="-1" aria-labelledby="modal_deleteLabel"
+        aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Bạn có muốn khóa tài khoản này?
+                    </h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <form action="/admin/lock_account" method="post">
+                        <input type="text" class="form-control" name="id"  value="{{account.id}}"
+                            style="display: none;">
+                            <input type="text" class="form-control" name="type"  value="{{account.type}}"
+                            style="display: none;">
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Hủy</button>
+                        <button type="submit" id="submit_delete" class="btn btn-primary">Khóa</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+     <div class="modal fade" id="modal_unlock" tabindex="-1" aria-labelledby="modal_deleteLabel"
+        aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Bạn có muốn mở khóa tài khoản này?
+                    </h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <form action="/admin/unlock_account" method="post">
+                        <input type="text" class="form-control" name="id"  value="{{account.id}}"
+                            style="display: none;">
+                            <input type="text" class="form-control" name="type"  value="{{account.type}}"
+                            style="display: none;">
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Hủy</button>
+                        <button type="submit" id="submit_delete" class="btn btn-primary">Mở khóa</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+     <div class="modal fade" id="modal_approve" tabindex="-1" aria-labelledby="modal_deleteLabel"
+        aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Bạn có muốn duyệt tài khoản này?
+                    </h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <form action="/admin/approve_account" method="post">
+                        <input type="text" class="form-control" name="id"  value="{{account.id}}"
+                            style="display: none;">
+                            <input type="text" class="form-control" name="type"  value="{{account.type}}"
+                            style="display: none;">
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Hủy</button>
+                        <button type="submit" id="submit_delete" class="btn btn-primary">Duyệt</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
 
+    {{#if isEmployer}}
     <!-- Thông tin nhà tuyển dụng-->
     <div id="head_profie_candidate_recruit">
-        <img src="/css/style/image/avatar_candidate.svg" id="avatar_profile_candidate_recruit"
+        <img src="{{account.avatar}}" id="avatar_profile_candidate_recruit"
             alt="avatar_profile_candidate_recruit">
-        <div id="name_candidate_recruit">Hồ Duy Bảo</div>
-        <div id="status_profile_candidate_recruit">Trạng thái: Chờ duyệt</div>
-        <div id="date_submit_profile_candidate_recruit">Ngày tạo tài khoản: 22/01/2022</div>
-        <a id="btn_accept_candidate" href="#">Khóa</a>
-        <a id="btn_reject_candidate" href="#">Duyệt</a>
+        <div id="name_candidate_recruit">{{account.name}}</div>
+        <div id="status_profile_candidate_recruit">Trạng thái: {{account.state}}</div>
+        <div id="date_submit_profile_candidate_recruit">Ngày tạo tài khoản: {{account.creation_date}}</div>
+
+        {{#if data.isApproved}}
+        <button class="btn_accept_candidate" id="locked_account" data-bs-toggle="modal" data-bs-target="#modal_lock">Khóa</button>
+        <button class="btn_reject_candidate" id="remove_account" data-bs-toggle="modal" data-bs-target="#modal_delete">Xóa</button>
+        {{/if}}
+        {{#if data.isPending}}
+        <button class="btn_accept_candidate" id="approve_account" data-bs-toggle="modal" data-bs-target="#modal_approve">Duyệt</button>
+        {{/if}}
+        {{#if data.isLocked}}
+        <button class="btn_accept_candidate" id="unlocked_account" data-bs-toggle="modal" data-bs-target="#modal_unlock">Mở khóa</button >
+        <button class="btn_reject_candidate" id="remove_account" data-bs-toggle="modal" data-bs-target="#modal_delete">Xóa</button>
+        {{/if}}
+
+
     </div>
     <div id="info_profile_candidate_recruit">
         <div id="text_info_personal">Thông tin công ty</div>
         <div id="scale_employer">Quy mô: 20 - 30 nhân viên</div>
-        <div id="phone_emplouer">SĐT: 0823304385</div>
-        <div id="email_employer">Email: 20120420@student.hcmus.edu.vn</div>
-        <div id="address_employer">Địa chỉ: KTX khu B, Đông Hòa, Dĩ An, Bình Dương</div>
+        <div id="phone_emplouer">SĐT: {{account.phone}} </div>
+        <div id="email_employer">Email: {{account.email}}</div>
+        <div id="address_employer">Địa chỉ: {{account.district}}, {{account.province}}</div>
         <div id="rectangle_evaluate_detail_account">
             <div id="text_evaluate_total">
                 Đánh giá tổng thể
@@ -49,4 +131,33 @@
 
         </div>
     </div>
+    {{else}}
+    <!-- thông tin toàn khoản ứng viên -->
+    <div id="head_profie_candidate_recruit">
+        <img src="{{account.avatar}}" id="avatar_profile_candidate_recruit"
+            alt="avatar_profile_candidate_recruit">
+        <div id="name_candidate_recruit">{{account.name}}</div>
+        <div id="status_profile_candidate_recruit">Trạng thái: {{account.state}}</div>
+        <div id="date_submit_profile_candidate_recruit">Ngày tạo tài khoản: {{account.creation_date}}</div>
+        
+         {{#if data.isApproved}}
+        <button class="btn_accept_candidate" id="locked_account" data-bs-toggle="modal" data-bs-target="#modal_lock">Khóa</button>
+        <button class="btn_reject_candidate" id="remove_account" data-bs-toggle="modal" data-bs-target="#modal_delete">Xóa</button>
+        {{/if}}
+        {{#if data.isLocked}}
+        <button class="btn_accept_candidate" id="unlocked_account" data-bs-toggle="modal" data-bs-target="#modal_unlock">Mở khóa</button >
+        <button class="btn_reject_candidate" id="remove_account" data-bs-toggle="modal" data-bs-target="#modal_delete">Xóa</button>
+        {{/if}}
+
     </div>
+    <div id="info_profile_candidate_recruit">
+        <div id="text_info_personal">Thông tin cá nhân</div>
+        <div id="date_of_birth_profile_candidate_recruit">Ngày sinh: 27/08/2002</div>
+        <div id="sex_profile_candidate_recruit">Giới tính: Nam</div>
+        <div id="phone_profile_candidate_recruit">SĐT: 0823304385</div>
+        <div id="email_profile_candidate_recruit">Email: {{account.email}}</div>
+        <div id="address_profile_candidate_recruit">Địa chỉ: KTX khu B, Đông Hòa, Dĩ An, Bình Dương</div>
+
+    </div>
+    {{/if}}
+</div>

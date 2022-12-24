@@ -15,6 +15,12 @@ router.get("/manage_news/detail_news", admin.detail_news);
 
 router.get("/manage_account", admin.homepage);
 router.get("/manage_news", admin.manage_news);
+router.post("/approve_account", admin.approve_account);
+router.post("/lock_account", admin.lock_account);
+router.post("/unlock_account", admin.unlock_account);
+router.post("/delete_account", admin.delete_account);
+
+
 
 router.get("/", admin.homepage);
 

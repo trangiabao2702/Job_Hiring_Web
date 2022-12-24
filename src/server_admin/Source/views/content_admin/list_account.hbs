@@ -8,7 +8,7 @@
             <th>Loại người dùng</th>
         </tr>
         {{#each list}}
-        <tr onclick="window.location.href='http://localhost:3035/admin/manage_account/detail_account?id={{this.doc}}'">
+        <tr onclick="window.location.href='http://localhost:3035/admin/manage_account/detail_account?id={{this.doc}}&&type={{this.type}}'">
             <td>{{this.stt}}</td>
             <td>{{this.name}}</td>
             <td>{{this.email}}</td>

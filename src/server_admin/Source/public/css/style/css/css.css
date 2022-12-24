@@ -3159,7 +3159,7 @@ color:white;
 
     color: #3D3D3D;
 }
-
+/*
 .modal-dialog {
     width: 953px;
     margin: auto;
@@ -3180,12 +3180,10 @@ color:white;
     font-weight: 500;
     font-size: 22px;
     line-height: 36px;
-    /* identical to box height */
-
-
+    /* identical to box height 
     color: #3D3D3D;
 
-}
+}*/
 
 #name_job_modal_apply_company {
     font-family: 'Poppins', sans-serif;
@@ -3194,9 +3192,9 @@ color:white;
     color: #00B4D8;
 }
 
-.modal-body {
+/* .modal-body {
     height: 633px;
-}
+} */
 
 #text_CV_me {
     position: absolute;
@@ -5268,7 +5266,7 @@ border-radius: 90px;
 }
 #name_candidate_recruit{
     position: absolute;
-width: 241px;
+width: 600px;
 height: 45px;
 left: 330px;
 top: 40px;
@@ -5276,7 +5274,7 @@ top: 40px;
 font-family: 'Poppins', sans-serif;
 font-style: normal;
 font-weight: 700;
-font-size: 30px;
+font-size: 26px;
 line-height: 45px;
 /* identical to box height */
 
@@ -5316,7 +5314,7 @@ color: #000000;
     
     color: #000000;
 }
-#btn_accept_candidate{
+.btn_accept_candidate{
     position: absolute;
 width: 200px;
 height: 60px;
@@ -5333,11 +5331,11 @@ line-height: 60px;
 text-align: center;
 /* identical to box height */
 text-decoration: none;
-
+border: none;
 
 color: #FFFFFF;
 }
-#btn_reject_candidate{
+.btn_reject_candidate{
     position: absolute;
     width: 200px;
     height: 60px;

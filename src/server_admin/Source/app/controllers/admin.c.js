@@ -79,11 +79,66 @@ class Admin {
             list
         });
     }
-    detail_account(req, res, next) {
-        res.render("content_admin/detail_account", {
-            layout: "main_admin_login",
-        });
+    async detail_account(req, res, next) {
+        var id=req.query.id;
+        var type=req.query.type;
+        var account=await adminModel.getAccountByID(id,type);
+        var isApproved=false,isPending=false,isLocked=false;
+        if(account.status=="approved")
+        {
+            isApproved=true;
+        }
+        else if(account.status=="locked"){
+            isLocked=true;
+        }
+        else{
+            isPending=true;
+        }
+        var data={isApproved,isPending,isLocked}
+        if(type=="employer")
+        {
+            res.render("content_admin/detail_account", {
+                layout: "main_admin_login",
+                account,
+                isEmployer:true,
+                data
+            });
+        }
+        else{
+            res.render("content_admin/detail_account", {
+                layout: "main_admin_login",
+                account,
+                data
+            });
+        }
+   
     }
+    async approve_account(req,res,next){
+        var id=req.body.id;
+        var type=req.body.type;
+        await adminModel.status_account(id,"approved",type);
+        res.redirect('back');
+    }
+    async lock_account(req,res,next){
+        var id=req.body.id;
+        var type=req.body.type;
+
+        await adminModel.status_account(id,"locked",type);
+        res.redirect('back');
+    }
+    async unlock_account(req,res,next){
+        var id=req.body.id;
+        var type=req.body.type;
+        await adminModel.status_account(id,"approved",type);
+        res.redirect('back');
+    }
+    async delete_account(req,res,next){
+        var id=req.body.id;
+        var type=req.body.type;
+        await adminModel.delete_account(id,type);
+        res.redirect('/admin/manage_account');
+    }
+
     // [GET] /forgot_pw
 
 }

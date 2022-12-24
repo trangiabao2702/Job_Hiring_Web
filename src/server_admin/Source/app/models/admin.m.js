@@ -63,22 +63,50 @@ module.exports = {
             user = doc.data();
             stt++;
             user.typeAccount="Ứng viên tìm việc";
+            user.type="candidate";
             user.creation_date = new Date(user.creation_date.toDate().toDateString()).toLocaleString('VN');
             user.stt=stt;
             user.doc=doc.id;
-           
             list.push(user);
         });
         employer.forEach(doc => {
             user = doc.data();
             stt++;
             user.typeAccount="Nhà tuyển dụng";
+            user.type="employer";
             user.stt=stt;
+            user.doc=doc.id;
             list.push(user);
         });
 
         return list;
     },
-    
+    getAccountByID: async (id,type) =>{
+        const accountCollection = db.collection(type+"s");
+        const docSnap = await accountCollection.doc(id).get();
+        var state="";
+        if(docSnap.data().status=="approved")
+        {
+            state="Đã duyệt";
+        }
+        else if(docSnap.data().status=="pending"){
+            state="Chờ duyệt";
+
+        }
+        else{
+            state="Đã khóa";
+
+        }
+        var user=docSnap.data();
+        user.creation_date = new Date(user.creation_date.toDate().toDateString()).toLocaleString('VN');
+        var account = { id,type,state, ...user};
+        return account;
+    },
+    status_account: async (id,state,type) =>{
+        db.collection( type+"s").doc(id).update({status: state});
+    },
+    delete_account: async (id,type) =>{
+        db.collection( type+"s").doc(id).delete();
+    }
 
 }
