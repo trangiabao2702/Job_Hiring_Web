@@ -52,7 +52,7 @@
         _date = new Date(list_recruitments[i].creation_date._seconds * 1000);
         let creation_date = _date.getDate() + "/" + (_date.getMonth() + 1) + "/" + _date.getFullYear()
 
-        let _status = "Chờ duyệt"
+        let _status = ""
         if (list_recruitments[i].status == "approved") {
             _status = "Đã duyệt"
         }
@@ -63,7 +63,7 @@
             _status = "Bị xóa"
         }
         else {
-            _status = "???"
+            _status = "Chờ duyệt"
         }
 
         $("#table_mamage_recruit").append(`
