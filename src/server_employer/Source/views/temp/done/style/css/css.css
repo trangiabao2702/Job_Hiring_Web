@@ -3998,7 +3998,8 @@ pre {
   line-height: 50px;
   /* identical to box height */
   padding-left: 90px;
-  /* color: #00B4D8; */
+  /* color: #00b4d8; */
+  color: gray;
   text-decoration: none;
 }
 #ic_news_home_recruit {
@@ -4027,6 +4028,7 @@ pre {
   /* identical to box height */
   padding-left: 90px;
   /* color: #00b4d8; */
+  color: gray;
   text-decoration: none;
 }
 #ic_manage_recruit_home_recruit {
@@ -4048,6 +4050,7 @@ pre {
   /* identical to box height */
   padding-left: 90px;
   /* color: #00b4d8; */
+  color: gray;
   text-decoration: none;
 }
 #ic_manage_record_home_recruit {
@@ -5163,4 +5166,199 @@ tr:nth-child(odd) {
   text-decoration: none;
 
   color: #ffffff;
+}
+/*employer*/
+#info_profile_company_recruit {
+  position: relative;
+  width: 1500px;
+  margin-top: 10px;
+  border-radius: 10px;
+  border: 1px solid #ffffff;
+  background-color: #ffffff;
+  min-height: 900px;
+}
+#content_profile_company_recruit {
+  position: relative;
+  width: 1500px;
+  left: 370px;
+  top: 20px;
+  background: #f2f2f2;
+}
+#btn_list_evaluate_company {
+  position: absolute;
+  height: 60px;
+  left: 10px;
+  top: 185px;
+  padding: 0 10px;
+  background: #0077b6;
+  border-radius: 10px;
+  font-family: "Poppins", sans-serif;
+  font-style: normal;
+  font-weight: 700;
+  font-size: 18px;
+  line-height: 60px;
+  text-align: center;
+  /* identical to box height */
+  text-decoration: none;
+
+  color: #ffffff;
+}
+.item_evaluate {
+  position: relative;
+  width: 1500px;
+  margin-top: 20px;
+  margin-left: 30px;
+  padding-top: 90px;
+}
+
+.ic_avatar_evaluate {
+  position: absolute;
+  top: 0px;
+  left: 15px;
+}
+.name_candidate_evaluate {
+  position: absolute;
+  left: 80px;
+  font-family: "Poppins", sans-serif;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 20px;
+  top: 10px;
+  /* identical to box height */
+  color: #000000;
+}
+.value_evaluate {
+  width: 800px;
+  word-wrap: break-word;
+  margin-left: 15px;
+  font-family: "Poppins", sans-serif;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 18px;
+  /* identical to box height */
+
+  color: #000000;
+}
+#evaluate_candidate_star1 {
+  position: absolute;
+  top: 60px;
+  left: 15px;
+}
+#evaluate_candidate_star2 {
+  position: absolute;
+  top: 60px;
+  left: 40px;
+}
+#evaluate_candidate_star3 {
+  position: absolute;
+  top: 60px;
+  left: 65px;
+}
+
+#evaluate_candidate_star4 {
+  position: absolute;
+  top: 60px;
+  left: 90px;
+}
+
+#evaluate_candidate_star5 {
+  position: absolute;
+  top: 60px;
+  left: 115px;
+}
+
+#text_number_evaluate_company {
+  position: absolute;
+  display: inline-block;
+  width: 470px;
+  height: 40px;
+  left: 600px;
+  top: 10px;
+
+  font-family: "Poppins", sans-serif;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 18px;
+  line-height: 27px;
+  /* identical to box height */
+
+  color: #58595b;
+}
+
+#nav_page_list_evaluate_company {
+  position: absolute;
+  top: 750px;
+  left: 600px;
+}
+
+#rectangle_evaluate_detail_account {
+  position: absolute;
+  width: 300px;
+  left: 950px;
+  top: 45px;
+  height: 200px;
+
+  border-radius: 10px;
+}
+#text_evaluate_total {
+  position: absolute;
+  width: 292px;
+  height: 48px;
+  left: 0px;
+  top: 0px;
+
+  font-family: "Poppins", sans-serif;
+  font-style: normal;
+  font-weight: 700;
+  font-size: 24px;
+  line-height: 48px;
+  /* identical to box height */
+
+  color: #0077b6;
+}
+#value_evaluate_total {
+  position: absolute;
+  width: 149px;
+  height: 139px;
+  left: 30px;
+  top: 20px;
+
+  font-family: "Poppins", sans-serif;
+  font-style: normal;
+  font-weight: 700;
+  font-size: 80px;
+  line-height: 144px;
+  text-align: center;
+
+  color: #00b4d8;
+}
+#evaluate_star1 {
+  position: absolute;
+
+  left: 40px;
+  top: 150px;
+}
+#evaluate_star2 {
+  position: absolute;
+
+  left: 70px;
+  top: 150px;
+}
+#evaluate_star3 {
+  position: absolute;
+
+  left: 100px;
+  top: 150px;
+}
+#evaluate_star4 {
+  position: absolute;
+
+  left: 130px;
+  top: 150px;
+}
+#evaluate_star5 {
+  position: absolute;
+
+  left: 160px;
+  top: 150px;
 }

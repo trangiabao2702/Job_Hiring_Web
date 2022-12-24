@@ -45,6 +45,60 @@ class EmployerController {
     }
   }
 
+  // [GET] /profile
+  async profile(req, res, next) {
+    try {
+      if (req.isAuthenticated()) {
+        // get information of employer
+        const _employer = req.session.passport.user;
+
+        res.render("contents/profile", {
+          layout: "main_employer_login",
+          data: {
+            user: _employer,
+          },
+        });
+      } else {
+        res.redirect("/auth/sign_in");
+      }
+    } catch (error) {
+      next(error);
+    }
+  }
+
+  // [GET] /list_rating
+  async list_rating(req, res, next) {
+    try {
+      if (req.isAuthenticated()) {
+        // get information of employer
+        const _employer = req.session.passport.user;
+
+        // get all rating
+        let list_reviews = [];
+        for (const _id_review of _employer.list_reviews) {
+          let _review = await employerModel.getReviewByID(_id_review);
+          const _belong_to = await employerModel.getCandidateByID(_review.belong_candidate);
+          _review.name_candidate = _belong_to.name;
+          _review.avatar_candidate = _belong_to.avatar;
+
+          list_reviews.push(_review);
+        }
+
+        res.render("contents/list_rating", {
+          layout: "main_employer_login",
+          data: {
+            user: _employer,
+            list_rating: JSON.stringify(list_reviews),
+          },
+        });
+      } else {
+        res.redirect("/auth/sign_in");
+      }
+    } catch (error) {
+      next(error);
+    }
+  }
+
   // [GET] /manage_recruitments
   async manage_recruitments(req, res, next) {
     try {

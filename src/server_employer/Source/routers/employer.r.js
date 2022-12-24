@@ -4,8 +4,9 @@ const router = express.Router();
 const employerController = require("../app/controllers/employer.c");
 
 router.get("/homepage", employerController.homepage);
-// router.get("/profile", employerController.profile);
+router.get("/profile", employerController.profile);
 // router.get("/edit_profile", employerController.edit_profile);
+router.get("/list_rating", employerController.list_rating);
 
 router.get("/manage_candidates_cvs", employerController.manage_candidates_cvs);
 // router.get("/detail_cv", employerController.detail_cv);
