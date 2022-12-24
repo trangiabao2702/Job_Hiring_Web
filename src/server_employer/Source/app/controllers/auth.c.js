@@ -58,6 +58,8 @@ class AuthController {
 
       const defaultAvt = await employerModel.getAvatarFromStorage("avatarDefault.png");
 
+      const _current_date = require("firebase-admin").firestore.Timestamp.fromDate(new Date());
+
       const user = {
         name: name,
         email: email,
@@ -71,6 +73,7 @@ class AuthController {
         list_reviews: [],
         office: "",
         rating: 0,
+        creation_date: _current_date,
       };
 
       const userNew = await employerModel.addEmployer(user);
