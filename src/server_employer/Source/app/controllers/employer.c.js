@@ -156,7 +156,10 @@ class EmployerController {
       if (req.isAuthenticated()) {
         // get information of employer
         const _employer = req.session.passport.user;
-        const _current_date = new Date().getTime();
+        // const _current_date = new Date().getTime();
+        const _current_date = require("firebase-admin").firestore.Timestamp.fromDate(new Date());
+        const _date_path = req.body.deadline_submit_record_recruitment.split("-");
+        const _due_date = require("firebase-admin").firestore.Timestamp.fromDate(new Date(parseInt(_date_path[0]), parseInt(_date_path[1]) - 1, parseInt(_date_path[2])));
 
         // create new recruitment
         const _new_recruitment = {
@@ -164,7 +167,7 @@ class EmployerController {
           benefits: req.body.benefit_recruitment,
           creation_date: _current_date,
           description: req.body.job_describe_recruitment,
-          due_date: req.body.deadline_submit_record_recruitment,
+          due_date: _due_date,
           experience: req.body.experience_recruitment,
           gender: req.body.sex_recruitment,
           list_cvs: [],
