@@ -47,6 +47,7 @@ module.exports = {
         var user = null;
         snapshot.forEach(doc => {
             user = doc.data();
+            user.id = doc.id;
         });
 
         return user;
@@ -161,7 +162,19 @@ module.exports = {
         var userUpdate = db.collection('candidates').doc(docId);
         var updateData = userUpdate.update({ status: "approved", verified_date: new Date() });
         result(null, {email: email});
-    }
+    },
+    resetPassword: async (email, password, result) => {
+        const candidatesCollection = db.collection('candidates');
+        const snapshot = await candidatesCollection.where('email', '==', email).get();
+        var docId = null;
+        snapshot.forEach(doc => {
+            docId = doc.id;
+        });
+
+        var userUpdate = db.collection('candidates').doc(docId);
+        var updateData = userUpdate.update({ password: password });
+        result(null, {email: email});
+    }   
 
 
 

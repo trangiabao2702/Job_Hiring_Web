@@ -8,7 +8,9 @@ router.get('/login', authController.login);
 router.get('/signup', authController.signup);
 router.get('/forget_password', authController.forget_password);
 router.get('/authentication', authController.authentication);
-router.get('/reset_password', authController.reset_password);
+router.get('/reset_password/:email', authController.reset_password);
+router.get('/verify', authController.verify);
+
 
 router.post('/logout', authController.postLogout);
 router.post('/signup', authController.postSignup);
@@ -16,8 +18,8 @@ router.post('/login', passport.authenticate('local', {
     failureRedirect: '/auth/login',
     successRedirect: '/candidate/home'
 }), authController.postLogin);
-router.get('/verify', authController.verify);
-
+router.post('/forget_password', authController.post_forget_password);
+router.post('/reset_password', authController.post_reset_password);
 
 // Authencation
 router.get('/google',
