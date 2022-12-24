@@ -143,14 +143,24 @@ module.exports = {
         console.log(id_recruitment, id_candidate);
 
         const curriculumVitaeCollection = db.collection('curriculum_vitaes');
-        const checkApplied = await curriculumVitaeCollection.where('id_recruitment','==', id_recruitment).where('id_candidate','==', id_candidate).get();
+        const checkApplied = await curriculumVitaeCollection.where('id_recruitment', '==', id_recruitment).where('id_candidate', '==', id_candidate).get();
 
-        
-
-        if(checkApplied.empty){
+        if (checkApplied.empty) {
             return false;
         }
         return true;
+    },
+    verify: async (email, result) => {
+        const candidatesCollection = db.collection('candidates');
+        const snapshot = await candidatesCollection.where('email', '==', email).get();
+        var docId = null;
+        snapshot.forEach(doc => {
+            docId = doc.id;
+        });
+
+        var userUpdate = db.collection('candidates').doc(docId);
+        var updateData = userUpdate.update({ status: "approved", verified_date: new Date() });
+        result(null, {email: email});
     }
 
 

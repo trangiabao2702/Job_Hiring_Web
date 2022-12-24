@@ -16,7 +16,7 @@ router.post('/login', passport.authenticate('local', {
     failureRedirect: '/auth/login',
     successRedirect: '/candidate/home'
 }), authController.postLogin);
-
+router.get('/verify', authController.verify);
 
 
 // Authencation
