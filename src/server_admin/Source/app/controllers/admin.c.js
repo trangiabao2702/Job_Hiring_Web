@@ -1,13 +1,15 @@
-//const employerModel = require("../models/employer.m");
+const adminModel = require("../models/admin.m");
 
 class Admin {
 
     // [GET] /sign_in
-    homepage(req, res, next) {
+    async homepage(req, res, next) {
         try {
             if (req.isAuthenticated()) {
+                var numberAccount=await adminModel.getNumberAccount();
                 res.render("content_admin/manage_account", {
                     layout: "main_admin_login",
+                    numberAccount
                 });
             } else {
                 res.redirect('/auth/sign_in');
@@ -35,11 +37,6 @@ class Admin {
         }
 
     }
-    manage_account(req, res, next) {
-        res.render("content_admin/manage_account", {
-            layout: "main_admin_login",
-        });
-    }
     manage_news(req, res, next) {
         res.render("content_admin/manage_news", {
             layout: "main_admin_login",
@@ -61,19 +58,25 @@ class Admin {
             layout: "main_admin_login",
         });
     }
-    list_account_appvoved(req, res, next) {
+    async list_account_appvoved(req, res, next) {
+        var list=await adminModel.getListAccount("approved");
         res.render("content_admin/list_account", {
             layout: "main_admin_login",
+            list
         });
     }
-    list_account_pending(req, res, next) {
+    async list_account_pending(req, res, next) {
+        var list=await adminModel.getListAccount("pending");
         res.render("content_admin/list_account", {
             layout: "main_admin_login",
+            list
         });
     }
-    list_account_locked(req, res, next) {
+    async list_account_locked(req, res, next) {
+        var list=await adminModel.getListAccount("locked");
         res.render("content_admin/list_account", {
             layout: "main_admin_login",
+            list
         });
     }
     detail_account(req, res, next) {

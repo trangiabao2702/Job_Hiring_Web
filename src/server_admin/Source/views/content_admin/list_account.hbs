@@ -1,70 +1,22 @@
 <div id="content_home_admin">
-    <div id="text_recruitment_efficiency">Số lượng tài khoản: 5</div>
     <table id="table_mamage_recruit" style="width: 1333px;" rules="rows">
         <tr class="title_table_recruit">
             <th>STT</th>
-            <th>Họ và tên</th>
-            <th>Địa chỉ</th>
+            <th>Tên người dùng</th>
+            <th>Email</th>
             <th>Ngày tạo</th>
             <th>Loại người dùng</th>
         </tr>
-        <tr onclick="window.location.href='http://localhost:3032/admin/manage_account/detail_account'">
-            <td>1</td>
-            <td>Hồ Duy Bảo</td>
-            <td>Hồ Chí Minh</td>
-            <td>31/12/2022</td>
-            <td>Nhà tuyển dụng</td>
+        {{#each list}}
+        <tr onclick="window.location.href='http://localhost:3035/admin/manage_account/detail_account?id={{this.doc}}'">
+            <td>{{this.stt}}</td>
+            <td>{{this.name}}</td>
+            <td>{{this.email}}</td>
+            <td>{{this.creation_date}}</td>
+            <td>{{this.typeAccount}}</td>
         </tr>
-        <tr onclick="window.location.href='http://localhost:3032/admin/manage_account/detail_account'">
-            <td>2</td>
-            <td>Hồ Duy Bảo</td>
-            <td>Hồ Chí Minh</td>
-            <td>31/12/2022</td>
-            <td>Ứng viên tìm việc</td>
-        </tr>
-        <tr onclick="window.location.href='http://localhost:3032/admin/manage_account/detail_account'">
-            <td>1</td>
-            <td>Hồ Duy Bảo</td>
-            <td>Hồ Chí Minh</td>
-            <td>31/12/2022</td>
-            <td>Nhà tuyển dụng</td>
-        </tr>
-        <tr onclick="window.location.href='http://localhost:3032/admin/manage_account/detail_account'">
-            <td>2</td>
-            <td>Hồ Duy Bảo</td>
-            <td>Hồ Chí Minh</td>
-            <td>31/12/2022</td>
-            <td>Ứng viên tìm việc</td>
-        </tr>
-        <tr onclick="window.location.href='http://localhost:3032/admin/manage_account/detail_account'">
-            <td>1</td>
-            <td>Hồ Duy Bảo</td>
-            <td>Hồ Chí Minh</td>
-            <td>31/12/2022</td>
-            <td>Nhà tuyển dụng</td>
-        </tr>
-        <tr onclick="window.location.href='http://localhost:3032/admin/manage_account/detail_account'">
-            <td>2</td>
-            <td>Hồ Duy Bảo</td>
-            <td>Hồ Chí Minh</td>
-            <td>31/12/2022</td>
-            <td>Ứng viên tìm việc</td>
-        </tr>
-        <tr onclick="window.location.href='http://localhost:3032/admin/manage_account/detail_account'">
-            <td>1</td>
-            <td>Hồ Duy Bảo</td>
-            <td>Hồ Chí Minh</td>
-            <td>31/12/2022</td>
-            <td>Nhà tuyển dụng</td>
-        </tr>
-        <tr onclick="window.location.href='http://localhost:3032/admin/manage_account/detail_account'">
-            <td>2</td>
-            <td>Hồ Duy Bảo</td>
-            <td>Hồ Chí Minh</td>
-            <td>31/12/2022</td>
-            <td>Ứng viên tìm việc</td>
-        </tr>
-
+        {{/each}}
+       
 
     </table>
     <nav aria-label="Page navigation example" id="nav_page_home_manage_recruit">
