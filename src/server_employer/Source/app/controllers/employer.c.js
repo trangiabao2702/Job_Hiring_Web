@@ -101,7 +101,7 @@ class EmployerController {
   }
 
   // [POST] /post_detail_recruitment
-  post_detail_recruitment(req, res, next) {
+  async post_detail_recruitment(req, res, next) {
     try {
       if (req.isAuthenticated()) {
         // get information of employer
@@ -111,6 +111,10 @@ class EmployerController {
         if (req.body.post_type == "Chỉnh sửa") {
           res.redirect("/employer/detail_recruitment?id=" + req.body.id_recruitment);
         } else if (req.body.post_type == "Xóa") {
+          const _id_remove_recruitment = await employerModel.removeRecruitment(req.body.id_recruitment);
+          const _update_list_recruitment_of_employer = await employerModel.updateListRecruitment(_employer.id, _id_remove_recruitment, "remove");
+          req.session.passport.user.list_recruitments.slice(_employer.list_recruitments.indexOf(_id_remove_recruitment), 1);
+
           res.redirect("/employer/manage_recruitments");
         } else if (req.body.post_type == "Danh sách ứng viên") {
           res.redirect("/employer/manage_candidates_cvs?id_recruitment=" + req.body.id_recruitment);
@@ -177,7 +181,8 @@ class EmployerController {
 
         // add new recruitment to db
         const _add_new_recruitment = await employerModel.addRecruitment(_new_recruitment);
-        const _update_list_recruitment_of_employer = await employerModel.updateListRecruitment(_employer.id, _add_new_recruitment.id);
+        const _update_list_recruitment_of_employer = await employerModel.updateListRecruitment(_employer.id, _add_new_recruitment.id, "add");
+        req.session.passport.user.list_recruitments.push(_add_new_recruitment.id);
 
         res.redirect("/employer/manage_recruitments");
       } else {
