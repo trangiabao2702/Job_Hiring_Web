@@ -41,13 +41,20 @@ module.exports = {
 
     return recruitment.data();
   },
-  updateListRecruitment: async (id_employer, id_recruitment) => {
+  updateListRecruitment: async (id_employer, id_recruitment, type) => {
     const FieldValue = require("firebase-admin").firestore.FieldValue;
-
     const employers_collection = db.collection("employers").doc(id_employer);
-    const rs = await employers_collection.update({
-      list_recruitments: FieldValue.arrayUnion(id_recruitment),
-    });
+
+    let rs = null;
+    if (type == "add") {
+      rs = await employers_collection.update({
+        list_recruitments: FieldValue.arrayUnion(id_recruitment),
+      });
+    } else if (type == "remove") {
+      rs = await employers_collection.update({
+        list_recruitments: FieldValue.arrayRemove(id_recruitment),
+      });
+    }
 
     return rs;
   },
@@ -55,6 +62,11 @@ module.exports = {
     const recruitmentCollection = db.collection("recruitments");
     const rs = recruitmentCollection.add(recruitment);
     return rs;
+  },
+  removeRecruitment: async (recruitment) => {
+    const recruitmentDoc = db.collection("recruitments").doc(recruitment);
+    const rs = recruitmentDoc.delete();
+    return recruitmentDoc.id;
   },
   getRecruitmentByID: async (id) => {
     const recruitments_collection = db.collection("recruitments");
