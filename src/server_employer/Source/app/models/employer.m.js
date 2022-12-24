@@ -103,4 +103,16 @@ module.exports = {
 
     return curriculum_vitae.data();
   },
+  getReviewByID: async (id) => {
+    const reviews_collection = db.collection("reviews");
+    const review = await reviews_collection.doc(id).get();
+
+    return review.data();
+  },
+  getCandidateByID: async (id) => {
+    const candidates_collection = db.collection("candidates");
+    const candidate = await candidates_collection.doc(id).get();
+
+    return candidate.data();
+  },
 };
