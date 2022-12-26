@@ -2,90 +2,19 @@
     {{> menu}}
 
     <div id="content_news_home_recruit">
-        <div id="text_recruitment_efficiency">Số hồ sơ đã nộp: 5</div>
-        <table id="table_mamage_recruit" style="width: 1333px" rules="rows">
+        <div id="text_recruitment_efficiency">Số hồ sơ đã nộp: </div>
+        <table id="table_mamage_recruit" style="width: 1333px; table-layout:fixed; " rules="rows">
             <tr class="title_table_recruit">
-                <th>ID</th>
-                <th>Họ và tên</th>
-                <th>Giới tính</th>
-                <th>Ngày sinh</th>
-                <th>Địa chỉ</th>
-                <th>Ngày nộp</th>
-                <th>Trạng thái hồ sơ</th>
+                <th style="width: 5%;">STT</th>
+                <th style="width: 20%; text-align: left;">Họ và tên</th>
+                <th style="width: 20%; text-align: left;">Email</th>
+                <th style="width: 10%; text-align: left;">Số điện thoại</th>
+                <th style="width: 35%; text-align: left;">Giới thiệu</th>
+                <th style="text-align: left;">Trạng thái</th>
             </tr>
-            <tr>
-                <td>20120433</td>
-                <td>Hồ Duy Bảo</td>
-                <td>Nam</td>
-                <td>31/11/2022</td>
-                <td>Hồ Chí Minh</td>
-                <td>31/12/2022</td>
-                <td>Đã duyệt</td>
-            </tr>
-            <tr>
-                <td>20120433</td>
-                <td>Hồ Duy Bảo</td>
-                <td>Nam</td>
-                <td>31/11/2022</td>
-                <td>Hồ Chí Minh</td>
-                <td>31/12/2022</td>
-                <td>Đã duyệt</td>
-            </tr>
-            <tr>
-                <td>20120433</td>
-                <td>Hồ Duy Bảo</td>
-                <td>Nam</td>
-                <td>31/11/2022</td>
-                <td>Hồ Chí Minh</td>
-                <td>31/12/2022</td>
-                <td>Đã duyệt</td>
-            </tr>
-            <tr>
-                <td>20120433</td>
-                <td>Hồ Duy Bảo</td>
-                <td>Nam</td>
-                <td>31/11/2022</td>
-                <td>Hồ Chí Minh</td>
-                <td>31/12/2022</td>
-                <td>Đã duyệt</td>
-            </tr>
-            <tr>
-                <td>20120433</td>
-                <td>Hồ Duy Bảo</td>
-                <td>Nam</td>
-                <td>31/11/2022</td>
-                <td>Hồ Chí Minh</td>
-                <td>31/12/2022</td>
-                <td>Đã duyệt</td>
-            </tr>
-            <tr>
-                <td>20120433</td>
-                <td>Hồ Duy Bảo</td>
-                <td>Nam</td>
-                <td>31/11/2022</td>
-                <td>Hồ Chí Minh</td>
-                <td>31/12/2022</td>
-                <td>Đã duyệt</td>
-            </tr>
-            <tr>
-                <td>20120433</td>
-                <td>Hồ Duy Bảo</td>
-                <td>Nam</td>
-                <td>31/11/2022</td>
-                <td>Hồ Chí Minh</td>
-                <td>31/12/2022</td>
-                <td>Đã duyệt</td>
-            </tr>
-            <tr>
-                <td>20120433</td>
-                <td>Hồ Duy Bảo</td>
-                <td>Nam</td>
-                <td>31/11/2022</td>
-                <td>Hồ Chí Minh</td>
-                <td>31/12/2022</td>
-                <td>Đã duyệt</td>
-            </tr>
+
         </table>
+
         <nav aria-label="Page navigation example" id="nav_page_home_manage_recruit">
             <ul class="pagination">
                 <li class="page-item">
@@ -111,4 +40,40 @@
 <script>
     $(".menu_item").removeClass("is_selected")
     $("#menu_manage_record_home_recruit").addClass("is_selected")
+
+    const _list_cvs = {{{ data.list_cvs }}}
+    $("#text_recruitment_efficiency").html(`Số hồ sơ đã nộp: ${_list_cvs.length}`)
+    for (let i = 0; i < _list_cvs.length; i++) {
+        let _status = ""
+        if (_list_cvs[i].status == "pending") {
+            _status = "Chờ duyệt"
+        } else if (_list_cvs[i].status == "approved") {
+            _status = "Đã duyệt"
+        } else if (_list_cvs[i].status == "denied") {
+            _status = "Đã từ chối"
+        } else {
+            // do nothing
+        }
+
+        $("#table_mamage_recruit").append(`
+            <tr id="${_list_cvs[i].id_cv}" class="cv_row">
+                <td style="white-space: nowrap; overflow: hidden; text-overflow: ellipsis; ">${i + 1}</td>
+                <td style="white-space: nowrap; overflow: hidden; text-overflow: ellipsis; text-align: left;">${_list_cvs[i].name}</td>
+                <td style="white-space: nowrap; overflow: hidden; text-overflow: ellipsis; text-align: left;">${_list_cvs[i].email}</td>
+                <td style="white-space: nowrap; overflow: hidden; text-overflow: ellipsis; text-align: left;">${_list_cvs[i].phone}</td>
+                <td style="white-space: nowrap; overflow: hidden; text-overflow: ellipsis; text-align: left;">${_list_cvs[i].introduce}aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa</td>
+                <td style="white-space: nowrap; overflow: hidden; text-overflow: ellipsis; text-align: left;">${_status}</td>
+            </tr>
+        `)
+    }
+
+    $(".cv_row").click(function () {
+        $(location).attr("href", "/employer/detail_cv_candidate?id_cv_candidate=" + $(this).attr("id"))
+    })
 </script>
+
+<style>
+    td:hover {
+        overflow: visible !important;
+    }
+</style>

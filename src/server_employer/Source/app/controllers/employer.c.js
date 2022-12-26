@@ -295,18 +295,28 @@ class EmployerController {
   }
 
   // [GET] /manage_candidates_cvs
-  manage_candidates_cvs(req, res, next) {
+  async manage_candidates_cvs(req, res, next) {
     try {
       if (req.isAuthenticated()) {
         // get information of employer
         const _employer = req.session.passport.user;
 
-        // TODO
+        // get all csv by id of recruitment
+        const _id_recruitment = req.query.id_recruitment;
+        const _list_cvs = await employerModel.getCVsByIDRecruitment(_id_recruitment);
+        let _candidate_cvs = [];
+        let _index = 0;
+        _list_cvs.forEach((doc) => {
+          _candidate_cvs.push(doc.data());
+          _candidate_cvs[_index].id_cv = doc.id;
+          _index += 1;
+        });
 
         res.render("contents/manage_candidates_cvs", {
           layout: "main_employer_login",
           data: {
             user: _employer,
+            list_cvs: JSON.stringify(_candidate_cvs),
           },
         });
       } else {
@@ -317,16 +327,45 @@ class EmployerController {
     }
   }
 
-  // [GET] /detail_candidate
-  detail_candidate(req, res, next) {
+  // [GET] /detail_cv_candidate
+  async detail_cv_candidate(req, res, next) {
     try {
       if (req.isAuthenticated()) {
         // get information of employer
         const _employer = req.session.passport.user;
 
+        // get information of cv
+        const _id_cv = req.query.id_cv_candidate;
+        const _info_cv = await employerModel.getCVByID(_id_cv);
+        const _info_candidate = await employerModel.getCandidateByID(_info_cv.id_candidate);
+        _info_cv.avatar_candidate = _info_candidate.avatar;
+
+        res.render("contents/detail_cv_candidate", {
+          layout: "main_employer_login",
+          data: {
+            user: _employer,
+            cv: JSON.stringify(_info_cv),
+          },
+        });
+      } else {
+        res.redirect("/auth/sign_in");
+      }
+    } catch (error) {
+      next(error);
+    }
+  }
+
+  // [GET] /profile_candidate          // is this need to do????
+  async profile_candidate(req, res, next) {
+    try {
+      if (req.isAuthenticated()) {
+        // get information of employer
+        const _employer = req.session.passport.user;
+
+        // get information of candidate
         // TODO
 
-        res.render("contents/detail_candidate", {
+        res.render("contents/profile_candidate", {
           layout: "main_employer_login",
           data: {
             user: _employer,
