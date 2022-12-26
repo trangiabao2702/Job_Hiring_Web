@@ -1,5 +1,5 @@
 <div id="content_home_admin">
-    <div id="text_recruitment_efficiency">Số lượng tin tuyển dụng: 5</div>
+    <div id="text_recruitment_efficiency">Số lượng tin tuyển dụng: {{length}}</div>
     <table id="table_mamage_recruit" style="width: 1333px;" rules="rows">
         <tr class="title_table_recruit">
             <th>STT</th>
@@ -7,73 +7,17 @@
             <th>Nhà tuyển dụng</th>
             <th>Ngày tạo</th>
             <th>Lượt nộp</th>
-            <th>Lượt báo cáo</th>
         </tr>
-        <tr onclick="window.location.href='http://localhost:3032/admin/manage_news/detail_news'">
-            <td>1</td>
-            <td>Front-End Web developer</td>
-            <td>VNG Games</td>
-            <td>31/12/2022</td>
-            <td>10</td>
-            <td>10</td>
+        {{#each list}}
+        <tr onclick="window.location.href='http://localhost:3035/admin/manage_news/detail_news?id={{this.doc}}'">
+            <td>{{this.stt}}</td>
+            <td>{{this.title}}</td>
+            <td>{{this.nameEmployer}}</td>
+            <td>{{this.creation_date}}</td>
+            <td>{{this.numberCV}}</td>
         </tr>
-        <tr onclick="window.location.href='http://localhost:3032/admin/manage_news/detail_news'">
-            <td>1</td>
-            <td>Front-End Web developer</td>
-            <td>VNG Games</td>
-            <td>31/12/2022</td>
-            <td>10</td>
-            <td>10</td>
-        </tr>
-        <tr onclick="window.location.href='http://localhost:3032/admin/manage_news/detail_news'">
-            <td>1</td>
-            <td>Front-End Web developer</td>
-            <td>VNG Games</td>
-            <td>31/12/2022</td>
-            <td>10</td>
-            <td>10</td>
-        </tr>
-        <tr onclick="window.location.href='http://localhost:3032/admin/manage_news/detail_news'">
-            <td>1</td>
-            <td>Front-End Web developer</td>
-            <td>VNG Games</td>
-            <td>31/12/2022</td>
-            <td>10</td>
-            <td>10</td>
-        </tr>
-        <tr onclick="window.location.href='http://localhost:3032/admin/manage_news/detail_news'">
-            <td>1</td>
-            <td>Front-End Web developer</td>
-            <td>VNG Games</td>
-            <td>31/12/2022</td>
-            <td>10</td>
-            <td>10</td>
-        </tr>
-        <tr onclick="window.location.href='http://localhost:3032/admin/manage_news/detail_news'">
-            <td>1</td>
-            <td>Front-End Web developer</td>
-            <td>VNG Games</td>
-            <td>31/12/2022</td>
-            <td>10</td>
-            <td>10</td>
-        </tr>
-        <tr onclick="window.location.href='http://localhost:3032/admin/manage_news/detail_news'">
-            <td>1</td>
-            <td>Front-End Web developer</td>
-            <td>VNG Games</td>
-            <td>31/12/2022</td>
-            <td>10</td>
-            <td>10</td>
-        </tr>
-        <tr onclick="window.location.href='http://localhost:3032/admin/manage_news/detail_news'">
-            <td>1</td>
-            <td>Front-End Web developer</td>
-            <td>VNG Games</td>
-            <td>31/12/2022</td>
-            <td>10</td>
-            <td>10</td>
-        </tr>
-
+        {{/each}}
+      
 
 
     </table>

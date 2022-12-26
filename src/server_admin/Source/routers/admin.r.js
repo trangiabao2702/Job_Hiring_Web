@@ -11,6 +11,9 @@ router.get("/manage_account/detail_account", admin.detail_account);
 
 router.get("/manage_news/list_news_approved", admin.list_news_approved);
 router.get("/manage_news/list_news_pending", admin.list_news_pending);
+router.get("/manage_news/list_news_locked", admin.list_news_locked);
+router.get("/manage_news/list_news_removed", admin.list_news_removed);
+
 router.get("/manage_news/detail_news", admin.detail_news);
 
 router.get("/manage_account", admin.homepage);

@@ -37,25 +37,76 @@ class Admin {
         }
 
     }
-    manage_news(req, res, next) {
+    async manage_news(req, res, next) {
+        var numberNews=await adminModel.getNumberNews();
         res.render("content_admin/manage_news", {
             layout: "main_admin_login",
+            numberNews
         });
     }
-    list_news_approved(req, res, next) {
+    async list_news_approved(req, res, next) {
+        var list=await adminModel.getListNew("approved");
+        var length=list.length;
+
         res.render("content_admin/list_news", {
             layout: "main_admin_login",
+            list,
+            length
         });
     }
-    list_news_pending(req, res, next) {
+    async list_news_pending(req, res, next) {
+        var list=await adminModel.getListNew("pending");
+        var length=list.length;
+
         res.render("content_admin/list_news", {
             layout: "main_admin_login",
+            list,
+            length
         });
     }
-    detail_news(req, res, next) {
+    async list_news_locked(req, res, next) {
+        var list=await adminModel.getListNew("locked");
+        var length=list.length;
+
+        res.render("content_admin/list_news", {
+            layout: "main_admin_login",
+            list,
+            length
+        });
+    }
+    async list_news_removed(req, res, next) {
+        var list=await adminModel.getListNew("deleted");
+        var length=list.length;
+        res.render("content_admin/list_news", {
+            layout: "main_admin_login",
+            list,
+            length
+        });
+    }
+    async detail_news(req, res, next) {
+        var id=req.query.id;
+        var news=await adminModel.detail_news(id);
+        var isApproved=false,isPending=false,isLocked=false,isDeleted=false;
+        if(news.status=="approved")
+        {
+            isApproved=true;
+        }
+        else if(news.status=="locked"){
+            isLocked=true;
+        }
+        else if(news.status=="pending"){
+            isPending=true;
+        }
+        else{
+            isDeleted=true;
+        }
+        var data={isApproved,isPending,isLocked,isDeleted}
         res.render("content_admin/detail_news", {
             isDetailNews: true,
             layout: "main_admin_login",
+            news,
+            data
+
         });
     }
     async list_account_appvoved(req, res, next) {
