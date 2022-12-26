@@ -103,6 +103,12 @@ module.exports = {
 
     return curriculum_vitae.data();
   },
+  getCVsByIDRecruitment: async (id_recruitment) => {
+    const curriculum_vitaes_collection = db.collection("curriculum_vitaes");
+    const curriculum_vitaes = await curriculum_vitaes_collection.where("id_recruitment", "==", id_recruitment).get();
+
+    return curriculum_vitaes;
+  },
   getReviewByID: async (id) => {
     const reviews_collection = db.collection("reviews");
     const review = await reviews_collection.doc(id).get();
