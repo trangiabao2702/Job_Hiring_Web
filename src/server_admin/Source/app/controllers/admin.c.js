@@ -189,7 +189,43 @@ class Admin {
         await adminModel.delete_account(id,type);
         res.redirect('/admin/manage_account');
     }
+    async status_recruitment(req,res,next){
+        var id=req.body.id;
+        var type=req.body.type;
+        if(type=="deleted")
+        {
+            await adminModel.status_recruitment(id,type);
+           return res.redirect('/admin/manage_news');
+        }
+        else if(type=="locked")
+        {
+            await adminModel.status_recruitment(id,type);
+            return res.redirect('back');
 
+
+        }
+        else if(type=="unlock")
+        {
+            type="approved";
+            await adminModel.status_recruitment(id,type);
+            return res.redirect('back');
+
+
+        }
+        else{
+            await adminModel.status_recruitment(id,type);
+           return res.redirect('back');
+
+        }
+    }
+    // async list_applied(req, res, next) {
+    //     var id=req.query.id;
+    //     var list=await adminModel.getListApplied(id);
+    //     res.render("content_admin/list_account", {
+    //         layout: "main_admin_login",
+    //         list
+    //     });
+    // }
     // [GET] /forgot_pw
 
 }

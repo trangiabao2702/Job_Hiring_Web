@@ -203,6 +203,9 @@ module.exports = {
     },
     delete_account: async (id,type) =>{
         db.collection( type+"s").doc(id).delete();
+    },
+    status_recruitment:async(id,type) =>{
+        db.collection("recruitments").doc(id).update({status: type});
     }
 
 }

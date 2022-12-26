@@ -15,6 +15,8 @@ router.get("/manage_news/list_news_locked", admin.list_news_locked);
 router.get("/manage_news/list_news_removed", admin.list_news_removed);
 
 router.get("/manage_news/detail_news", admin.detail_news);
+// router.get("/manage_news/list_candidates", admin.list_applied);
+
 
 router.get("/manage_account", admin.homepage);
 router.get("/manage_news", admin.manage_news);
@@ -22,6 +24,9 @@ router.post("/approve_account", admin.approve_account);
 router.post("/lock_account", admin.lock_account);
 router.post("/unlock_account", admin.unlock_account);
 router.post("/delete_account", admin.delete_account);
+router.post("/status_recruitment", admin.status_recruitment);
+
+
 
 
 

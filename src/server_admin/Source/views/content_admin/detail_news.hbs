@@ -1,4 +1,96 @@
 <div class="rectangle_content_detail_news_home_recruit">
+    <div class="modal fade" id="modal_delete_recruitment" tabindex="-1" aria-labelledby="modal_deleteLabel"
+        aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Bạn có muốn xóa tin tuyển dụng này?
+                    </h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <form action="/admin/status_recruitment" method="post">
+                        <input type="text" class="form-control" name="id"  value="{{news.id}}"
+                            style="display: none;">
+                             <input type="text" class="form-control" name="type"  value="deleted"
+                            style="display: none;">
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Hủy</button>
+                        <button type="submit" id="submit_delete" class="btn btn-primary">Xóa</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+     <div class="modal fade" id="modal_lock_recruitment" tabindex="-1" aria-labelledby="modal_deleteLabel"
+        aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Bạn có muốn khóa tin tuyển dụng này?
+                    </h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <form action="/admin/status_recruitment" method="post">
+                        <input type="text" class="form-control" name="id"  value="{{news.id}}"
+                            style="display: none;">
+                           <input type="text" class="form-control" name="type"  value="locked"
+                            style="display: none;">
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Hủy</button>
+                        <button type="submit" id="submit_delete" class="btn btn-primary">Khóa</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+     <div class="modal fade" id="modal_unlock_recruitment" tabindex="-1" aria-labelledby="modal_deleteLabel"
+        aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Bạn có muốn mở khóa tin tuyển dụng này?
+                    </h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <form action="/admin/status_recruitment" method="post">
+                        <input type="text" class="form-control" name="id"  value="{{news.id}}"
+                            style="display: none;">
+                           <input type="text" class="form-control" name="type"  value="unlock"
+                            style="display: none;">
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Hủy</button>
+                        <button type="submit" id="submit_delete" class="btn btn-primary">Mở khóa</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+     <div class="modal fade" id="modal_approved_recruitment" tabindex="-1" aria-labelledby="modal_deleteLabel"
+        aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Bạn có muốn duyệt tài khoản này?
+                    </h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <form action="/admin/status_recruitment" method="post">
+                        <input type="text" class="form-control" name="id"  value="{{news.id}}"
+                            style="display: none;">
+                             <input type="text" class="form-control" name="type"  value="approved"
+                            style="display: none;">
+                        
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Hủy</button>
+                        <button type="submit" id="submit_delete" class="btn btn-primary">Duyệt</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+
+
     <div class="header_company_detail_job_recruit">
         <img src="{{news.avatar}}" alt="logo_company_recruit" class="logo_company_detail_job_recruit">
         <div class="name_job_detail_job">{{news.title}}</div>
@@ -10,16 +102,16 @@
         <div id="status_recruitment">Trạng thái: {{news.state}}</div>
 
         {{#if data.isApproved}}
-        <button type="button" class="btn_accept_candidate" id="locked_account">Khóa</button>
-        <button type="button" class="btn_reject_candidate" id="remove_account">Xóa</button>
+        <button type="button" class="btn_accept_candidate" id="locked_account" data-bs-toggle="modal" data-bs-target="#modal_lock_recruitment">Khóa</button>
+        <button type="button" class="btn_reject_candidate" id="remove_account" data-bs-toggle="modal" data-bs-target="#modal_delete_recruitment">Xóa</button>
         {{/if}}
         {{#if data.isPending}}
-        <button type="button" class="btn_accept_candidate" id="locked_account">Duyệt</button>
-        <button type="button" class="btn_reject_candidate" id="remove_account">Xóa</button>
+        <button type="button" class="btn_accept_candidate" id="locked_account" data-bs-toggle="modal" data-bs-target="#modal_approved_recruitment">Duyệt</button>
+        <button type="button" class="btn_reject_candidate" id="remove_account" data-bs-toggle="modal" data-bs-target="#modal_delete_recruitment">Xóa</button>
         {{/if}}
         {{#if data.isLocked}}
-        <button type="button" class="btn_accept_candidate" id="locked_account">Mở khóa</button>
-        <button type="button" class="btn_reject_candidate" id="remove_account">Xóa</button>
+        <button type="button" class="btn_accept_candidate" id="locked_account" data-bs-toggle="modal" data-bs-target="#modal_unlock_recruitment">Mở khóa</button>
+        <button type="button" class="btn_reject_candidate" id="remove_account" data-bs-toggle="modal" data-bs-target="#modal_delete_recruitment">Xóa</button>
         {{/if}}
  
 
@@ -66,6 +158,14 @@
                 <img src="/css/style/image/ic_copy.svg" alt="ic_copy" id="ic_copy_link_detail_job" onclick="share_link()">
             </div>
         </div>
+        {{!-- {{#if data.isApproved}}
+          <div id="rectangle_report_recruit_detail_job">
+                <div id="text_report_recuit_detail_job">Danh sách ứng tuyển</div>
+            <div id="text_describe_report_detail_job">Dưới đây là danh sách ứng viên đã ứng tuyển vào tin tuyển dụng này
+            </div>
+            <a type="button" id="btn_report_detail_job" href="http://localhost:3035/admin/manage_news/list_candidates?id={{news.id}}">Xem danh sách ứng tuyển</a>
+        </div>
+        {{/if}} --}}
 
 
         <div id="text_describe_job_detail_job">Mô tả công việc</div>
