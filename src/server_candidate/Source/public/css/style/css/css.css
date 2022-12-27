@@ -5466,3 +5466,330 @@ color: #3D3D3D;
     
     color: #FFFFFF;
     }
+/*Moi*/
+.name_employer_view_profile {
+    position: absolute;
+    height: 36px;
+    left: 295px;
+    top: 70px;
+
+    font-family: 'Poppins', sans-serif;
+    font-style: normal;
+    font-weight: 700;
+    font-size: 24px;
+    line-height: 36px;
+    /* identical to box height */
+
+
+    color: #0077B6;
+
+}
+.header_employer_view_profile {
+    position: relative;
+    width: 1436px;
+    height: 216px;
+    left: 242px;
+    top: 20px;
+
+    background: #FFFFFF;
+    border-radius: 10px;
+}
+.detail_profile_employer {
+    position: relative;
+    margin-left: 242px;
+    width: 1436px;
+    margin-top: 30px;
+    border-radius: 10px;
+    border: 1px solid #FFFFFF;
+    background-color: #FFFFFF;
+}
+.logo_employer_view_profile {
+    box-sizing: border-box;
+
+    position: absolute;
+    width: 180px;
+    height: 180px;
+    left: 71px;
+    top: 20px;
+
+    border: 1px solid #D7E4E8;
+    border-radius: 90px;
+}
+#text_list_news_view_profile{
+    height: 48px;
+    margin-left: 55px;
+    margin-top: 24px;
+
+    font-family: 'Poppins', sans-serif;
+    font-style: normal;
+    font-weight: 700;
+    font-size: 24px;
+    line-height: 48px;
+    /* identical to box height */
+    color: #0077B6;
+}
+.item_news_view_profile {
+    box-sizing: border-box;
+    position: relative;
+    margin-top: 10px;
+    width: 650px;
+    height: 206px;
+    border: 1px solid #BBBCC0;
+    box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.25);
+    background: white;
+}
+#rectangle_list_news{
+    margin-top:20px;
+    margin-left: 50px;
+
+}
+#rectangle_infor_recruit {
+    position: relative;
+    margin-left: 0px;
+    width: 1436px;
+    margin-top: 10px;
+    border-radius: 10px;
+    border: 1px solid #FFFFFF;
+    background-color: #FFFFFF;
+
+}
+
+#nav_page_profile_employer {
+    margin-left: 55px;
+    margin-top: 30px;
+
+}
+.hotline_profile_employer {
+    position: absolute;
+    height: 27px;
+    left: 300px;
+    top: 115px;
+
+    font-family: 'Poppins', sans-serif;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 20px;
+    line-height: 27px;
+    /* identical to box height */
+
+
+    color: #58595B;
+}
+.logo_employer_modal_evaluate {
+    box-sizing: border-box;
+
+    position: absolute;
+    width: 180px;
+    height: 180px;
+    left: 25px;
+    top: 20px;
+    width: 60px;
+    height: 60px;
+
+    border: 1px solid #D7E4E8;
+    border-radius: 90px;
+}
+.name_employer_modal_evaluate {
+    position: absolute;
+    height: 36px;
+    left: 110px;
+    top: 33px;
+
+    font-family: 'Poppins', sans-serif;
+    font-style: normal;
+    font-weight: 700;
+    font-size: 24px;
+    line-height: 36px;
+    /* identical to box height */
+
+
+    color: #0077B6;
+
+}
+#text_evaluate_quality {
+    position: absolute;
+    height: 27px;
+    left: 60px;
+    top: 35px;
+
+    font-family: 'Poppins', sans-serif;
+    font-style: normal;
+    font-weight: 600;
+    font-size: 20px;
+    line-height: 27px;
+    /* identical to box height */
+
+
+    color: #3D3D3D;
+
+}
+#evaluate_modal_star1{
+    position: absolute;
+    left: 300px;
+    top: 30px;
+    width: 30px;
+    height: 30px;
+}
+#evaluate_modal_star2{
+    position: absolute;
+    left: 340px;
+    top: 30px;
+    width: 30px;
+    height: 30px;
+}
+#evaluate_modal_star3{
+    position: absolute;
+    left: 380px;
+    top: 30px;
+    width: 30px;
+    height: 30px;
+}
+#evaluate_modal_star4{
+    position: absolute;
+    left: 420px;
+    top: 30px;
+    width: 30px;
+    height: 30px;
+}
+#evaluate_modal_star5{
+    position: absolute;
+    left: 460px;
+    top: 30px;
+    width: 30px;
+    height: 30px;
+}
+#text_content_modal_evaluate {
+    position: absolute;
+    height: 27px;
+    left: 60px;
+    top: 80px;
+
+    font-family: 'Poppins', sans-serif;
+    font-style: normal;
+    font-weight: 600;
+    font-size: 20px;
+    line-height: 27px;
+    /* identical to box height */
+
+
+    color: #3D3D3D;
+}
+#content_evaluate {
+    position: absolute;
+    width: 600px;
+    height: 160px;
+    left: 65px;
+    top: 120px;
+    border: 0.5px solid black;
+    background: #FFFFFF;
+    border-radius: 10px;
+    padding: 10px;
+    font-family: 'Poppins', sans-serif;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 18px;
+    overflow-wrap: break-word;
+    /* identical to box height */
+
+
+    color: #494848;
+}
+.modal_body_evaluate{
+    height: 380px;
+}
+
+#close_modal_evaluate {
+    position: absolute;
+    width: 80px;
+    height: 45px;
+    left: 490px;
+    top: 300px;
+
+    background: #6D6E71;
+    border-radius: 5px;
+
+    font-size: 18px;
+    font-weight: 700;
+    line-height: 45px;
+    color: white;
+    border: none;
+}
+
+#submit_modal_evaluate{
+    position: absolute;
+    width: 80px;
+    height: 45px;
+    left: 580px;
+    top: 300px;
+
+    background: #00B4D8;
+    border-radius: 5px;
+
+    font-size: 18px;
+    font-weight: 700;
+    line-height: 45px;
+    color: white;
+    border: none;
+}
+#rectangle_evaluate_detail_account{
+    position: absolute;
+width: 300px;
+left: 950px;
+top: 45px;
+height: 200px;
+
+border-radius: 10px;
+}
+#text_evaluate_total{
+    position: absolute;
+width: 292px;
+height: 48px;
+left: 0px;
+top: 0px;
+
+font-family: 'Poppins', sans-serif;
+font-style: normal;
+font-weight: 700;
+font-size: 24px;
+line-height: 48px;
+/* identical to box height */
+
+
+color: #0077B6;
+} 
+#value_evaluate_total{
+    position: absolute;
+width: 149px;
+height: 139px;
+left: 30px;
+top: 20px;
+
+font-family: 'Poppins', sans-serif;
+font-style: normal;
+font-weight: 700;
+font-size: 80px;
+line-height: 144px;
+text-align: center;
+
+color: #00B4D8;
+}
+#btn_list_evaluate_company {
+    position: absolute;
+    height: 60px;
+    left: 10px;
+    top: 185px;
+    padding: 0 10px;
+    background: #0077B6;
+    border-radius: 10px;
+    font-family: 'Poppins', sans-serif;
+    font-style: normal;
+    font-weight: 700;
+    font-size: 18px;
+    line-height: 60px;
+    text-align: center;
+    /* identical to box height */
+    text-decoration: none;
+
+
+    color: #FFFFFF;
+}
