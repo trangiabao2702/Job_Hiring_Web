@@ -2,27 +2,45 @@
   <div class="rectangle_content_job_search">
     {{#if topJob}}
        <div id="text_number_job_searched">Top công việc được quan tâm nhất</div>
-    {{else}}
-        <div id="text_number_job_searched">Tìm thấy <div id="number_job_searched">120</div> công việc phù hợp với yêu cầu
-      của bạn.</div>
-      {{/if}}
     <div class="d-flex flex-wrap card_company_searched_candidate">
       {{#each topJob}}
       <div class="item_company_candidate p-2 m-2">
         <img src="{{this.avatarEmployer}}" alt="logo" class="logo_company_home_candidate">
         <a class="title_recuit_company_home_candidate" href="/candidate/detail_job/{{this.doc}}">{{this.title}}</a>
         <div class="name_company_home_candidate">{{this.nameEmployer}}</div>
-        <div class="wage_copany_home_candidate">{{this.max_salary}}-{{this.min_salary}} triệu</div>
+        <div class="wage_copany_home_candidate">{{this.min_salary}}-{{this.max_salary}} triệu</div>
         <div class="address_company_home_candidate">{{this.location}}</div>
         <div class="experience_company_home_candidate">3-5 năm</div>
         <img src="/css/style/image/ic_time.svg" alt="ic_time" class="ic_time_card_company">
+        <div class="time_card_company">Cập nhật gần nhất: {{this.creation_date}}</div>
+
         <img src="/css/style/image/ic_heart_empty.svg" alt="ic_heart" class="ic_heart_card_company">
       </div>
       {{/each}}
    
 
     </div>
+    {{else}}
+        <div id="text_number_job_searched">Tìm thấy <div id="number_job_searched">{{length}}</div> công việc phù hợp với yêu cầu
+      của bạn.</div>
+         <div class="d-flex flex-wrap card_company_searched_candidate">
+      {{#each listjob}}
+      <div class="item_company_candidate p-2 m-2">
+        <img src="{{this.avatarEmployer}}" alt="logo" class="logo_company_home_candidate">
+        <a class="title_recuit_company_home_candidate" href="/candidate/detail_job/{{this.doc}}">{{this.title}}</a>
+        <div class="name_company_home_candidate">{{this.nameEmployer}}</div>
+        <div class="wage_copany_home_candidate">{{this.min_salary}}-{{this.max_salary}} triệu</div>
+        <div class="address_company_home_candidate">{{this.location}}</div>
+        <div class="experience_company_home_candidate">3-5 năm</div>
+        <img src="/css/style/image/ic_time.svg" alt="ic_time" class="ic_time_card_company">
+          <div class="time_card_company">Cập nhật gần nhất: {{this.creation_date}}</div>
 
+        <img src="/css/style/image/ic_heart_empty.svg" alt="ic_heart" class="ic_heart_card_company">
+      </div>
+      {{/each}}
+   
+
+    </div>
     <nav aria-label="Page navigation example" id="nav_page_home_candidate">
       <ul class="pagination">
         <li class="page-item">
@@ -42,5 +60,6 @@
         </li>
       </ul>
     </nav>
+     {{/if}}
   </div>
 </div>

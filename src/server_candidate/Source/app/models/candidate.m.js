@@ -112,10 +112,11 @@ module.exports = {
       }
     }
 
-    listJob.slice(0, number);
+    listJob=listJob.slice(0, number);
     for (let j = 0; j < listJob.length; j++) {
       var rs = await db.collection("employers").doc(listJob[j].belong_employer).get();
       listJob[j].nameEmployer = rs.data().name;
+      listJob[j].creation_date=new Date(listJob[j].creation_date.toDate().toDateString()).toLocaleString("VN");
       listJob[j].avatarEmployer = rs.data().avatar;
     }
 
@@ -190,4 +191,58 @@ module.exports = {
 
     return curriculum_vitae.data();
   },
+  //moi
+  getAllRecruitment: async (data) => {
+    // const employer = await db.collection('employers');
+    const recruitment = await db.collection('recruitments');
+    var list = await recruitment.get();
+    var listJob = [];
+    var job = null;
+    list.forEach(doc => {
+      job = doc.data();
+      job.doc = doc.id;
+
+      var arr = job.experience.split(' ');
+      job.experience = arr[0].toString();
+
+
+
+      listJob.push(job);
+    });
+
+    for (let j = 0; j < listJob.length; j++) {
+      var rs = await db.collection('employers').doc(listJob[j].belong_employer).get();
+      listJob[j].nameEmployer = rs.data().name;
+      listJob[j].avatarEmployer = rs.data().avatar;
+      listJob[j].creation_date=new Date(listJob[j].creation_date.toDate().toDateString()).toLocaleString("VN");
+      listJob[j].province = rs.data().province;
+    }
+    for (let i = 0; i < listJob.length; i++) {
+      if (!listJob[i].title.includes(data.search)) {
+        const removed = listJob.splice(i, 1);
+        continue;
+      }
+      if (!listJob[i].province.includes(data.select_province)) {
+        const removed = listJob.splice(i, 1);
+        continue;
+      }
+      if (!listJob[i].working_form.includes(data.select_method_work)) {
+        const removed = listJob.splice(i, 1);
+        continue;
+      }
+      if (data.select_experience < listJob[i].experience) {
+        const removed = listJob.splice(i, 1);
+        continue;
+      }
+      if (data.select_salary > listJob[i].max_salary) {
+        const removed = listJob.splice(i, 1);
+        continue;
+      }
+    }
+
+    return listJob;
+  },
+
+
+
 };

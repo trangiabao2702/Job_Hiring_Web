@@ -89,18 +89,24 @@ class Candidate {
       next(error);
     }
   }
-  postSearchJob(req, res, next) {
-    //  var user = req.session.passport.user;
-    console.log(req.body);
 
-    if (req.body.search != "") {
-    }
-    // res.render('candidate/content_manage_record.hbs', {
-    //     layout: 'main_candidate_login',  data: {
-    //         user: user
-    //     }
-    // });
-  }
+  async postSearchJob(req, res, next) {
+    console.log(req.body);
+    var listjob=await candidateModel.getAllRecruitment(req.body);
+
+    console.log(listjob);
+    var user = req.session.passport.user;
+    res.render('candidate/content_home.hbs', {
+        layout: 'main_candidate_login',  data: {
+            user: user
+        },
+        listjob,
+        not_record: true,
+        length: listjob.length
+        
+    });
+
+}
   async uploadCV(req, res, next) {
     try {
       if (req.isAuthenticated()) {
@@ -135,6 +141,8 @@ class Candidate {
           data: {
             user: user,
             cv: JSON.stringify(_info_cv),
+            not_record: true,
+
           },
         });
       } else {

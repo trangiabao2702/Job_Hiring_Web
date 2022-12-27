@@ -2033,14 +2033,13 @@ color:white;
     width: 480px;
     height: 36px;
     left: 140px;
-    top: 10px;
+    top: 20px;
     font-family: 'Poppins', sans-serif;
     font-style: normal;
     font-weight: 600;
-    font-size: 22px;
+    font-size: 20px;
     line-height: 36px;
     /* identical to box height */
-
 
     color: #29333F;
 
@@ -2049,12 +2048,12 @@ color:white;
 .name_company_home_candidate {
     position: absolute;
     height: 27px;
-    left: 145px;
-    top: 80px;
+    left: 142px;
+    top: 64px;
 
     font-family: 'Poppins', sans-serif;
     font-style: normal;
-    font-weight: 700;
+    font-weight: 600;
     font-size: 18px;
     line-height: 27px;
     /* identical to box height */
@@ -2130,7 +2129,6 @@ overflow: hidden;
 
 .time_card_company {
     position: absolute;
-    width: 150px;
     height: 20px;
     left: 55px;
     top: 168px;
@@ -3569,7 +3567,6 @@ border-radius: 10px;
     position: absolute;
     display: inline-block;
 
-width: 197px;
 height: 36px;
 left: 45px;
 top: 31px;

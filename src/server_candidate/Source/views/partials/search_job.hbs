@@ -1,40 +1,40 @@
 <div class="rectangle_mid_1_candidate">
     <form action="/candidate/search_job" method="post">
         <input type="search" name="search" id="search_job_candidate" placeholder="Tên công việc">
-        <img src="/css/style/image/ic_search.svg" alt="ic_search_job_candidate" id="ic_search_job_candidate">
+        <img src="/css/style/image/ic_search.svg" alt="ic_search_job_candidate" id="ic_search_job_candidate" required>
         <select name="select_province" id="select_province_candidate">
             <option disabled selected value>Tỉnh/Thành phố</option>
         </select>
         <img src="/css/style/image/ic_select_province.svg" alt="ic_select_province_candidate"
             id="ic_select_province_candidate">
-        <select name="select_method_work" id="select_method_work_candidate">
+        <select name="select_method_work" id="select_method_work_candidate" required>
             <option disabled selected value> Hình thức làm việc </option>
-            <option value="" class="op_select_method_work">Full Time</option>
-            <option value="" class="op_select_method_work">Part Time</option>
-            <option value="" class="op_select_method_work">Remote</option>
+            <option value="Full Time" class="op_select_method_work">Full Time</option>
+            <option value="Part Time" class="op_select_method_work">Part Time</option>
+            <option value="Remote" class="op_select_method_work">Remote</option>
+            <option value="all" class="op_select_method_work">Tất cả</option>
+
         </select>
         <img src="/css/style/image/arrow_down.svg" alt="arrow_down" id="arrow_down_medthod_work">
 
 
 
-        <select name="select_experience" id="select_experience_candidate">
+        <select name="select_experience" id="select_experience_candidate" required>
             <option disabled selected value>Kinh nghiệm</option>
-            <option value="" class="op_select_experience_work">Chưa có</option>
-            <option value="" class="op_select_experience_work">1 năm</option>
-            <option value="" class="op_select_experience_work">2 năm</option>
-            <option value="" class="op_select_experience_work">3 năm</option>
-            <option value="" class="op_select_experience_work">Hơn 3 năm</option>
-
+            <option value="0" class="op_select_experience_work">Chưa có</option>
+            <option value="1" class="op_select_experience_work">1 năm</option>
+            <option value="2" class="op_select_experience_work">2 năm</option>
+            <option value="3" class="op_select_experience_work">3 năm</option>
+            <option value="4" class="op_select_experience_work">Hơn 3 năm</option>
         </select>
         <img src="/css/style/image/arrow_down.svg" alt="arrow_down" id="arrow_down_experience_work">
-        <select name="select_salary" id="select_salary_candidate">
+        <select name="select_salary" id="select_salary_candidate" required>
             <option disabled selected value>Mức lương</option>
-            <option value="" class="op_select_salary_work">&#8805; 5 triệu</option>
-            <option value="" class="op_select_salary_work">&#8805; 10 triệu</option>
-            <option value="" class="op_select_salary_work">&#8805; 15 triệu</option>
-            <option value="" class="op_select_salary_work">&#8805; 20 triệu</option>
-
-
+            <option value="5" class="op_select_salary_work">&#8805; 5 triệu</option>
+            <option value="10" class="op_select_salary_work">&#8805; 10 triệu</option>
+            <option value="15" class="op_select_salary_work">&#8805; 15 triệu</option>
+            <option value="20" class="op_select_salary_work">&#8805; 20 triệu</option>
+            <option value="0" class="op_select_salary_work">Tất cả</option>
         </select>
         <img src="/css/style/image/arrow_down.svg" alt="arrow_down" id="arrow_down_salary_work">
         <button type="submit" id="btn_search_candidate">Tìm kiếm</button>
@@ -49,7 +49,12 @@
         })
         .then((data) => {
             let items = data;
-
+             $('#select_province_candidate').append($('<option>', {
+                    value: "Tất cả",
+                    class: 'op_select_province',
+                    text: "Tất cả"
+                    
+                }));
             $.each(items, function (i, item) {
                 $('#select_province_candidate').append($('<option>', {
                     value: item.name,
