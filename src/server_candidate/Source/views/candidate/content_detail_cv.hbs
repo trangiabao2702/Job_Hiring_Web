@@ -1,0 +1,62 @@
+<div class="rectangle_mid_news_home_recruit">
+
+
+    <div id="content_profile_candidate_recruit">
+        <div id="head_profie_candidate_recruit">
+            <img src="/css/style/image/avatar_candidate.svg" id="avatar_profile_candidate_recruit"
+                alt="avatar_profile_candidate_recruit" />
+            <div id="name_candidate_recruit" style="cursor: pointer;">Tên</div>
+            <div id="status_profile_candidate_recruit">Trạng thái: Chờ duyệt</div>
+            <div id="date_submit_profile_candidate_recruit">Ngày nộp hồ sơ: 22/01/2022</div>
+            <div id="button_change_status">
+                <input id="btn_accept_candidate" value="Chấp nhận" />
+                <input id="btn_reject_candidate" value="Từ chối" />
+            </div>
+        </div>
+        <div id="info_profile_candidate_recruit">
+            <div id="text_info_personal">Thông tin cá nhân</div>
+            <div id="date_of_birth_profile_candidate_recruit">Ngày sinh: </div>
+            <div id="sex_profile_candidate_recruit">Giới tính: Nam</div>
+            {{!-- <div id="phone_profile_candidate_recruit">SĐT: 0823304385</div> --}}
+            <div id="email_profile_candidate_recruit">Email: 20120420@student.hcmus.edu.vn</div>
+            {{!-- <div id="address_profile_candidate_recruit">Địa chỉ: KTX khu B, Đông Hòa, Dĩ An, Bình Dương</div> --}}
+
+            {{!-- Chinh cai duoi nay thanh anh download + dua file cv cua ung vien vao --}}
+            <img src="/css/style/image/ic_upload.svg" id="ic_CV" alt="ic_CV" />
+            <a id="CV_profile_candidate" href="b.docx">CV</a>
+        </div>
+    </div>
+</div>
+
+<script>
+    const cv_info = {{{ data.cv }}}
+    $("#avatar_profile_candidate_recruit").attr("src", `${cv_info.avatar_candidate}`)
+    $("#name_candidate_recruit").html(`${cv_info.name}`)
+
+    if (cv_info.status == "pending") {
+        $("#status_profile_candidate_recruit").html("Trạng thái: Chờ duyệt")
+    } else if (cv_info.status == "approved") {
+        $("#status_profile_candidate_recruit").html("Trạng thái: Đã duyệt")
+        $("#button_change_status").hide()
+    } else if (cv_info.status == "denied") {
+        $("#status_profile_candidate_recruit").html("Trạng thái: Đã từ chối")
+        $("#button_change_status").hide()
+    } else {
+        // do nothing
+    }
+
+    $("#date_submit_profile_candidate_recruit").html(`Ngày nộp hồ sơ: ${cv_info.name}`)
+
+    $("#date_of_birth_profile_candidate_recruit").html(`Email: ${cv_info.email}`)
+    $("#sex_profile_candidate_recruit").html(`SĐT: ${cv_info.phone}`)
+    // $("#phone_profile_candidate_recruit").html(`${cv_info.name}`)
+    $("#email_profile_candidate_recruit").html(`Giới thiệu: ${cv_info.introduce}`)
+    // $("#address_profile_candidate_recruit").html(`${cv_info.name}`)
+    // $("#name_candidate_recruit").html(`${cv_info.name}`)
+
+    // handle when click name of candidate -> go to profile of candidate
+    $("#name_candidate_recruit").click(function () {
+        $(location).attr("href", "/employer/profile_candidate?id_candidate=" + cv_info.id_candidate)
+    })
+
+</script>
