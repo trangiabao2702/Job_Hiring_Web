@@ -9,6 +9,7 @@ router.get("/detail_job/:id", CandidaterController.detail_job);
 router.get("/manage_record", CandidaterController.manage_record);
 router.get("/detail_cv", CandidaterController.detail_cv);
 router.get("/profile_employer", CandidaterController.profile_employer);
+router.get("/view_rating", CandidaterController.view_rating);
 
 // post
 router.post("/search_job", CandidaterController.postSearchJob);

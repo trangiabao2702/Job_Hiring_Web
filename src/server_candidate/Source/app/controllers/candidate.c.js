@@ -180,6 +180,36 @@ class Candidate {
       next(error);
     }
   }
+  async view_rating(req, res, next) {
+    try {
+      if (req.isAuthenticated()) {
+        var user = req.session.passport.user;
+
+        // get information of employer
+        const _id_employer = req.query.id;
+        const _info_employer = await candidateModel.getEmployer(_id_employer);
+        console.log(_info_employer);
+        let _list_reviews = [];
+        for (let i = 0; i < _info_employer.list_reviews.length; i++) {
+          _list_reviews.push(await candidateModel.getReviewByID(_info_employer.list_reviews[i]));
+          _list_reviews[i].id = _info_employer.list_reviews[i];
+        }
+
+        res.render("candidate/content_view_rating.hbs", {
+          layout: "main_candidate_login",
+          data: {
+            user: user,
+            list_reviews: JSON.stringify(_list_reviews),
+            not_record: true,
+          },
+        });
+      } else {
+        res.redirect("/auth/login");
+      }
+    } catch (error) {
+      next(error);
+    }
+  }
 }
 
 module.exports = new Candidate();
