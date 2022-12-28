@@ -1,0 +1,47 @@
+<form id="content_home_admin" method="POST" action="/admin/list_reports">
+    <div id="rectangle_news_posted">
+        <input type="hidden" name="list_approved_reports" id="list_approved_reports" value="">
+        <div id="quantity_account_approved">0</div>
+        <div id="text_account_approved">Báo cáo đã được xử lý</div>
+        <img src="/css/style/image/ic_megaphone.svg" id="ic_megaphone_home_recruit" alt="ic_megaphone_home_recruit">
+    </div>
+    <div id="rectangle_candidate_received">
+        <input type="hidden" name="list_pending_reports" id="list_pending_reports" value="">
+        <div id="quantity_account_unapproved">0</div>
+        <div id="text_account_unapproved">Báo cáo chưa được xử lý</div>
+        <img src="/css/style/image/ic_candidate_recieve.svg" id="ic_receive_home_recruit" alt="ic_receive_home_recruit">
+    </div>
+</form>
+
+<script>
+    const _list_reports = {{{ data.manage_reports }}}
+    let _count_approved = 0
+    let _count_pending = 0
+    let _list_approved = []
+    let _list_pending = []
+
+    for (let i = 0; i < _list_reports.length; i++) {
+        if (_list_reports[i].id_reporter != "") {
+            if (_list_reports[i].status == "approved") {
+                _count_approved += 1
+                _list_approved.push(_list_reports[i])
+            }
+            else {
+                _count_pending += 1
+                _list_pending.push(_list_reports[i])
+            }
+        }
+    }
+
+    $("#quantity_account_approved").html(_count_approved)
+    $("#quantity_account_unapproved").html(_count_pending)
+
+    $("#rectangle_news_posted").click(function () {
+        $("#list_approved_reports").val(JSON.stringify(_list_approved))
+        $("#content_home_admin").submit()
+    })
+    $("#rectangle_candidate_received").click(function () {
+        $("#list_pending_reports").val(JSON.stringify(_list_pending))
+        $("#content_home_admin").submit()
+    })
+</script>
