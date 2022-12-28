@@ -388,17 +388,17 @@ class EmployerController {
         const _employer = req.session.passport.user;
 
         // get status of cv
-        const _status_cv = req.body.status_cv;
+        const _status_cv = req.body.approved_cv;
         const _id_cv = req.body.id_cv;
         let _new_status = "denied";
-        if ((_status_cv[0] = "C")) {
+        if (_status_cv != "") {
           _new_status = "approved";
         }
 
         // update status of cv
         const _update_status_cv = await employerModel.updateStatusCV(_id_cv, _new_status);
-
-        res.redirect("/employer/manage_candidates_cvs");
+        console.log(_update_status_cv);
+        res.redirect("/employer/manage_candidates_cvs?id_recruitment=" + _update_status_cv);
       } else {
         res.redirect("/auth/sign_in");
       }

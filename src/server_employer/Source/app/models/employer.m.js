@@ -110,13 +110,13 @@ module.exports = {
     return curriculum_vitaes;
   },
   updateStatusCV: async (id_cv, new_status) => {
-    const cvDoc = db.collection("curriculumn_vitaes").doc(id_cv);
+    const cvDoc = db.collection("curriculum_vitaes").doc(id_cv);
 
     const rs = await cvDoc.update({
       status: new_status,
     });
 
-    return rs;
+    return (await cvDoc.get()).data().id_recruitment;
   },
   getReviewByID: async (id) => {
     const reviews_collection = db.collection("reviews");
