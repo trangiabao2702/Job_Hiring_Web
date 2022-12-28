@@ -50,7 +50,7 @@ class AuthController {
       const email = req.body.email_signin_recuit;
       const password = req.body.password_signin_recruit;
       const phone = req.body.phone_signin_recuit;
-      const province = req.body.select_province_signin_recruit;
+      const province_code = req.body.select_province_signin_recruit.split("|||");
       const district = req.body.select_district_signin_recruit;
 
       const salt = bcrypt.genSaltSync(saltRounds);
@@ -66,7 +66,7 @@ class AuthController {
         password: pwHashed,
         avatar: defaultAvt,
         phone: phone,
-        province: province,
+        province: province_code[1],
         district: district,
         status: "pending",
         list_recruitments: [],
@@ -74,6 +74,7 @@ class AuthController {
         office: "",
         rating: 0,
         creation_date: _current_date,
+        code_province: province_code[0],
       };
 
       const userNew = await employerModel.addEmployer(user);

@@ -339,6 +339,7 @@ class EmployerController {
         const _info_cv = await employerModel.getCVByID(_id_cv);
         const _info_candidate = await employerModel.getCandidateByID(_info_cv.id_candidate);
         _info_cv.avatar_candidate = _info_candidate.avatar;
+        _info_cv.id = _id_cv;
 
         res.render("contents/detail_cv_candidate", {
           layout: "main_employer_login",
@@ -371,6 +372,33 @@ class EmployerController {
             user: _employer,
           },
         });
+      } else {
+        res.redirect("/auth/sign_in");
+      }
+    } catch (error) {
+      next(error);
+    }
+  }
+
+  // [GET] /post_detail_cv_candidate
+  async post_detail_cv_candidate(req, res, next) {
+    try {
+      if (req.isAuthenticated()) {
+        // get information of employer
+        const _employer = req.session.passport.user;
+
+        // get status of cv
+        const _status_cv = req.body.status_cv;
+        const _id_cv = req.body.id_cv;
+        let _new_status = "denied";
+        if ((_status_cv[0] = "C")) {
+          _new_status = "approved";
+        }
+
+        // update status of cv
+        const _update_status_cv = await employerModel.updateStatusCV(_id_cv, _new_status);
+
+        res.redirect("/employer/manage_candidates_cvs");
       } else {
         res.redirect("/auth/sign_in");
       }
