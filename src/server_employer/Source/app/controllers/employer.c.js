@@ -397,7 +397,7 @@ class EmployerController {
 
         // update status of cv
         const _update_status_cv = await employerModel.updateStatusCV(_id_cv, _new_status);
-        console.log(_update_status_cv);
+
         res.redirect("/employer/manage_candidates_cvs?id_recruitment=" + _update_status_cv);
       } else {
         res.redirect("/auth/sign_in");

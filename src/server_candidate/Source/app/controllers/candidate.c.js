@@ -89,24 +89,22 @@ class Candidate {
       next(error);
     }
   }
-
   async postSearchJob(req, res, next) {
     console.log(req.body);
-    var listjob=await candidateModel.getAllRecruitment(req.body);
+    var listjob = await candidateModel.getAllRecruitment(req.body);
 
     console.log(listjob);
     var user = req.session.passport.user;
-    res.render('candidate/content_home.hbs', {
-        layout: 'main_candidate_login',  data: {
-            user: user
-        },
-        listjob,
-        not_record: true,
-        length: listjob.length
-        
+    res.render("candidate/content_home.hbs", {
+      layout: "main_candidate_login",
+      data: {
+        user: user,
+      },
+      listjob,
+      not_record: true,
+      length: listjob.length,
     });
-
-}
+  }
   async uploadCV(req, res, next) {
     try {
       if (req.isAuthenticated()) {
@@ -142,7 +140,37 @@ class Candidate {
             user: user,
             cv: JSON.stringify(_info_cv),
             not_record: true,
+          },
+        });
+      } else {
+        res.redirect("/auth/login");
+      }
+    } catch (error) {
+      next(error);
+    }
+  }
+  async profile_employer(req, res, next) {
+    try {
+      if (req.isAuthenticated()) {
+        var user = req.session.passport.user;
 
+        // get information of employer
+        const _id_employer = req.query.id_employer || "mNywprvxNQ0Ook97wBkP";
+        const _info_employer = await candidateModel.getEmployer(_id_employer);
+
+        let _list_recruitments = [];
+        for (let i = 0; i < _info_employer.list_recruitments.length; i++) {
+          _list_recruitments.push(await candidateModel.getDetailRecruitment(_info_employer.list_recruitments[i]));
+          _list_recruitments[i].id = _info_employer.list_recruitments[i];
+        }
+
+        res.render("candidate/content_profile_employer.hbs", {
+          layout: "main_candidate_login",
+          data: {
+            user: user,
+            info_employer: JSON.stringify(_info_employer),
+            list_recruitments: JSON.stringify(_list_recruitments),
+            not_record: true,
           },
         });
       } else {
