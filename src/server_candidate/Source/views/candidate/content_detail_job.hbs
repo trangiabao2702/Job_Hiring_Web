@@ -31,12 +31,36 @@
             </form>
         </div>
     </div>
+
+</div>
+<div class="modal fade" id="modal_report_recruitment" tabindex="-1" aria-labelledby="modal_updateLabel"
+    aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <span class="modal-title" id="exampleModalLabel">Báo cáo:&nbsp;<span
+                        id="name_job_modal_apply_company">{{data.recruitment.title}}</span> </span>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <form action="/candidate/report_recruitment" method="post">
+                <div class="modal-body modal_body_evaluate">
+                    <div id="text_content_modal_report">Nội dung báo cáo:</div>
+                    <textarea name="content" class="form-control" id="content_report" required
+                        placeholder="Hãy ghi rõ lý do báo cáo"></textarea>
+                    <input type="text" name="id_recruitments" value="{{data.idDocRecruitment}}" style="display: none;">
+                    <button type="button" id="close_modal_report" data-bs-dismiss="modal">Hủy</button>
+                    <button type="submit" id="submit_modal_report">Gửi</button>
+                </div>
+            </form>
+        </div>
+    </div>
 </div>
 <div class="rectangle_mid_2_detail_job">
     <div class="header_company_detail_job">
         <img src="{{data.belongEmployer.avatar}}" alt="logo_company" class="logo_company_detail_job">
         <div class="name_job_detail_job">{{data.recruitment.title}}</div>
-        <div class="name_company_detail_job">{{data.belongEmployer.name}}</div>
+        <a class="name_company_detail_job"
+            href="http://localhost:3032/candidate/profile_employer?id={{data.belongEmployer.idEmployer}}">{{data.belongEmployer.name}}</a>
         <img src="/css/style/image/ic_time.svg" alt="ic_time" class="ic_time_detail_job">
         <div class="deadline_submit_record_detail_job">Hạn nộp hồ sơ: {{data.recruitment.due_date}}</div>
 
@@ -100,7 +124,8 @@
             <div id="text_describe_report_detail_job">Nếu bạn thấy rằng tin tuyển dụng này không đúng hoặc có một trong
                 các dấu hiệu xấu, hãy phản ánh với chúng tôi.
             </div>
-            <button type="button" id="btn_report_detail_job">Báo cáo</button>
+            <button type="button" id="btn_report_detail_job" data-bs-toggle="modal"
+                data-bs-target="#modal_report_recruitment">Báo cáo</button>
 
         </div>
 

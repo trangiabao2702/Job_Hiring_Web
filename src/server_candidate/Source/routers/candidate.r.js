@@ -14,6 +14,10 @@ router.get("/view_rating", CandidaterController.view_rating);
 // post
 router.post("/search_job", CandidaterController.postSearchJob);
 router.post("/detail_job/upload_cv", upload.single("file"), CandidaterController.uploadCV);
+router.post("/evaluate_employer", CandidaterController.evaluate_employer);
+router.post("/report_recruitment", CandidaterController.report_recruitment);
+
+
 
 // 404
 router.get("*", function (req, res) {

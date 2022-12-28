@@ -1,6 +1,7 @@
 const db = require("../../config/db/index"); // getDatabase
 const storage = require("../../config/db/storage"); // getStorage
 const path = require("path");
+const { FieldValue } = require('firebase-admin/firestore');
 
 module.exports = {
   getAllCandidate: async () => {
@@ -139,7 +140,6 @@ module.exports = {
     return rs;
   },
   checkApplied: async (id_recruitment, id_candidate) => {
-    console.log(id_recruitment, id_candidate);
 
     const curriculumVitaeCollection = db.collection("curriculum_vitaes");
     const checkApplied = await curriculumVitaeCollection.where("id_recruitment", "==", id_recruitment).where("id_candidate", "==", id_candidate).get();
@@ -193,9 +193,16 @@ module.exports = {
   },
   getReviewByID: async (id) => {
     const reviews_collection = db.collection("reviews");
+    const candidate_collection = db.collection("candidates");
+
     const review = await reviews_collection.doc(id).get();
 
-    return review.data();
+    const candidate = await candidate_collection.doc(review.data().belong_candidate).get();
+    var reviews = review.data();
+    reviews.avatar = candidate.data().avatar;
+    reviews.name = candidate.data().name;
+
+    return reviews;
   },
   //moi
   getAllRecruitment: async (data) => {
@@ -246,4 +253,27 @@ module.exports = {
 
     return listJob;
   },
+  addReviews: async (e, id_employer) => {
+    const collection_reviews = await db.collection("reviews");
+    
+    collection_reviews.add(e)
+      .then(function (docRef) {
+
+        db.collection("employers").doc(id_employer).update({
+          list_reviews: FieldValue.arrayUnion(docRef.id)
+        });
+      });
+
+    return 1;
+  },
+  addReport: async (report)=>{
+    const collection_report = await db.collection("reports");
+    
+    collection_report.add(report)
+      .then(function (docRef) {
+        console.log("aaa",docRef.id);
+      });
+
+    return 1;
+  }
 };

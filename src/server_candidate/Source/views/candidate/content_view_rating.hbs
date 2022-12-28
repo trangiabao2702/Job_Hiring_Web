@@ -3,8 +3,7 @@
         <div id="info_profile_company_recruit">
             <div id="text_number_evaluate_company">
                 Tất cả
-                <div id="number_job_searched">{{{data.user.list_reviews.length}}}</div>
-                lượt đánh giá
+                <div id="number_job_searched">{{length}} đánh giá</div>
             </div>
 
             <div id="list_item_rating">
@@ -41,8 +40,8 @@
     for (let i = 0; i < list_rating.length; i++) {
         $("#list_item_rating").append(`
             <div class="item_evaluate">
-                <img src="${list_rating[i].avatar_candidate}" class="ic_avatar_evaluate" alt="ic_avatar_evaluate" />
-                <div class="name_candidate_evaluate" id="${list_rating[i].belong_candidate}">${list_rating[i].name_candidate}</div>
+                <img src="${list_rating[i].avatar}" class="ic_avatar_evaluate" alt="ic_avatar_evaluate" />
+                <div class="name_candidate_evaluate" id="${list_rating[i].belong_candidate}">${list_rating[i].name}</div>
                 <img src="/css/style/image/ic_star.svg" id="evaluate_candidate_star1" alt="evaluate_star1" />
                 <img src="/css/style/image/ic_star.svg" id="evaluate_candidate_star2" alt="evaluate_star2" />
                 <img src="/css/style/image/ic_star.svg" id="evaluate_candidate_star3" alt="evaluate_star3" />

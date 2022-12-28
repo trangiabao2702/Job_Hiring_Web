@@ -2044,13 +2044,45 @@ color:white;
     color: #29333F;
 
 }
+.title_recuit_company_manage_record {
+    position: absolute;
+    width: 480px;
+    height: 36px;
+    left: 177px;
+    top: 20px;
+    font-family: 'Poppins', sans-serif;
+    font-style: normal;
+    font-weight: 600;
+    font-size: 20px;
+    line-height: 36px;
+    /* identical to box height */
 
+    color: #29333F;
+
+}
+.name_company_manage_record {
+    position: absolute;
+    height: 27px;
+    left: 179px;
+    top: 64px;
+    text-decoration: none;
+    font-family: 'Poppins', sans-serif;
+    font-style: normal;
+    font-weight: 600;
+    font-size: 18px;
+    line-height: 27px;
+    /* identical to box height */
+
+
+    color: #00B4D8;
+
+}
 .name_company_home_candidate {
     position: absolute;
     height: 27px;
     left: 142px;
     top: 64px;
-
+    text-decoration: none;
     font-family: 'Poppins', sans-serif;
     font-style: normal;
     font-weight: 600;
@@ -5674,12 +5706,48 @@ color: #3D3D3D;
 
     color: #3D3D3D;
 }
+#text_content_modal_report {
+    position: absolute;
+    height: 27px;
+    left: 60px;
+    top: 40px;
+
+    font-family: 'Poppins', sans-serif;
+    font-style: normal;
+    font-weight: 600;
+    font-size: 20px;
+    line-height: 27px;
+    /* identical to box height */
+
+
+    color: #3D3D3D;
+}
 #content_evaluate {
     position: absolute;
     width: 600px;
     height: 160px;
     left: 65px;
     top: 120px;
+    border: 0.5px solid black;
+    background: #FFFFFF;
+    border-radius: 10px;
+    padding: 10px;
+    font-family: 'Poppins', sans-serif;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 18px;
+    overflow-wrap: break-word;
+    /* identical to box height */
+
+
+    color: #494848;
+}
+#content_report {
+    position: absolute;
+    width: 600px;
+    height: 160px;
+    left: 65px;
+    top: 80px;
     border: 0.5px solid black;
     background: #FFFFFF;
     border-radius: 10px;
@@ -5714,6 +5782,23 @@ color: #3D3D3D;
     color: white;
     border: none;
 }
+#close_modal_report {
+    position: absolute;
+    width: 80px;
+    height: 45px;
+    left: 490px;
+    top: 260px;
+
+    background: #6D6E71;
+    border-radius: 5px;
+
+    font-size: 18px;
+    font-weight: 700;
+    line-height: 45px;
+    color: white;
+    border: none;
+}
+
 
 #submit_modal_evaluate{
     position: absolute;
@@ -5721,6 +5806,22 @@ color: #3D3D3D;
     height: 45px;
     left: 580px;
     top: 300px;
+
+    background: #00B4D8;
+    border-radius: 5px;
+
+    font-size: 18px;
+    font-weight: 700;
+    line-height: 45px;
+    color: white;
+    border: none;
+}
+#submit_modal_report{
+    position: absolute;
+    width: 80px;
+    height: 45px;
+    left: 580px;
+    top: 260px;
 
     background: #00B4D8;
     border-radius: 5px;
@@ -5793,3 +5894,141 @@ color: #00B4D8;
 
     color: #FFFFFF;
 }
+
+#evaluate_star1 {
+    position: absolute;
+  
+    left: 40px;
+    top: 150px;
+  }
+  #evaluate_star2 {
+    position: absolute;
+  
+    left: 70px;
+    top: 150px;
+  }
+  #evaluate_star3 {
+    position: absolute;
+  
+    left: 100px;
+    top: 150px;
+  }
+  #evaluate_star4 {
+    position: absolute;
+  
+    left: 130px;
+    top: 150px;
+  }
+  #evaluate_star5 {
+    position: absolute;
+  
+    left: 160px;
+    top: 150px;
+  }
+
+
+  /*Moi*/
+  #content_profile_company_recruit {
+    position: relative;
+    width: 1500px;
+    left: 200px;
+    top: 20px;
+    background: #f2f2f2;
+  }
+  #info_profile_company_recruit {
+    position: relative;
+    width: 1500px;
+    margin-top: 10px;
+    border-radius: 10px;
+    border: 1px solid #ffffff;
+    background-color: #ffffff;
+    min-height: 900px;
+  }
+  #text_number_evaluate_company {
+    position: absolute;
+    display: inline-block;
+    width: 470px;
+    height: 40px;
+    left: 600px;
+    top: 10px;
+  
+    font-family: "Poppins", sans-serif;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 18px;
+    line-height: 27px;
+    /* identical to box height */
+  
+    color: #58595b;
+  }
+  #evaluate_candidate_star1 {
+    position: absolute;
+    top: 60px;
+    left: 15px;
+  }
+  #evaluate_candidate_star2 {
+    position: absolute;
+    top: 60px;
+    left: 40px;
+  }
+  #evaluate_candidate_star3 {
+    position: absolute;
+    top: 60px;
+    left: 65px;
+  }
+  
+  #evaluate_candidate_star4 {
+    position: absolute;
+    top: 60px;
+    left: 90px;
+  }
+  
+  #evaluate_candidate_star5 {
+    position: absolute;
+    top: 60px;
+    left: 115px;
+  }
+  
+  .ic_avatar_evaluate {
+    position: absolute;
+    width: 40px;
+    height: 40px;
+    top: 0px;
+    left: 15px;
+  }
+  .name_candidate_evaluate {
+    position: absolute;
+    left: 75px;
+    font-family: "Poppins", sans-serif;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 20px;
+    top: 5px;
+    /* identical to box height */
+    color: #000000;
+  }
+  .value_evaluate {
+    width: 800px;
+    word-wrap: break-word;
+    margin-left: 15px;
+    font-family: "Poppins", sans-serif;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 18px;
+    /* identical to box height */
+  
+    color: #000000;
+  }
+  .item_evaluate {
+    position: relative;
+    width: 1500px;
+    margin-top: 20px;
+    margin-left: 30px;
+    padding-top: 90px;
+  }
+  #nav_page_list_evaluate_company {
+    margin-top: 30px;
+    margin-left: 50px;
+
+  }
+  

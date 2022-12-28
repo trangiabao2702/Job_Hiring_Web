@@ -9,18 +9,20 @@
                     <div class="name_employer_modal_evaluate">VNG Games</div>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
-                <form action="/candidate/detail_job/upload_cv" method="post" enctype="multipart/form-data">
+                <form action="/candidate/evaluate_employer" method="post" >
                     <div class="modal-body modal_body_evaluate">
                         <div id="text_evaluate_quality">Đánh giá chất lượng: </div>
-                        <img src="/css/style/image/ic_star_empty.svg" id="evaluate_modal_star1" alt="evaluate_star1">
-                        <img src="/css/style/image/ic_star_empty.svg" id="evaluate_modal_star2" alt="evaluate_star2">
-                        <img src="/css/style/image/ic_star_empty.svg" id="evaluate_modal_star3" alt="evaluate_star3">
-                        <img src="/css/style/image/ic_star_empty.svg" id="evaluate_modal_star4" alt="evaluate_star4">
-                        <img src="/css/style/image/ic_star_empty.svg" id="evaluate_modal_star5" alt="evaluate_star5">
+                        <img src="/css/style/image/ic_star_empty.svg" id="evaluate_modal_star1" alt="evaluate_star1" onclick="s(this.id)">
+                        <img src="/css/style/image/ic_star_empty.svg" id="evaluate_modal_star2" alt="evaluate_star2" onclick="s(this.id)">
+                        <img src="/css/style/image/ic_star_empty.svg" id="evaluate_modal_star3" alt="evaluate_star3" onclick="s(this.id)">
+                        <img src="/css/style/image/ic_star_empty.svg" id="evaluate_modal_star4" alt="evaluate_star4" onclick="s(this.id)">
+                        <img src="/css/style/image/ic_star_empty.svg" id="evaluate_modal_star5" alt="evaluate_star5" onclick="s(this.id)">
+                        <input type="text" name="star" value="5" id="result_star"
+                            style="display: none;">
                         <div id="text_content_modal_evaluate">Nội dung:</div>
-                        <textarea name="introduce" class="form-control" id="content_evaluate" required
+                        <textarea name="content" class="form-control" id="content_evaluate" required
                             placeholder="Đánh giá của bạn về nhà tuyển dụng"></textarea>
-                        <input type="text" name="id_recruitment" value="{{data.idDocRecruitment}}"
+                        <input type="text" name="id_employer" value="{{_id_employer}}"
                             style="display: none;">
                         <button type="button" id="close_modal_evaluate" data-bs-dismiss="modal">Hủy</button>
                         <button type="submit" id="submit_modal_evaluate">Gửi</button>
@@ -114,6 +116,25 @@ accounting, payroll, healthcare, and apartment management business.
     crossorigin="anonymous"></script>
 
 <script>
+    function s(id){
+        console.log(id);
+        var temp=id[id.length-1];
+        var s=id.slice(0,id.length-1);
+        var x=parseInt(temp);
+        for(let i=1;i<=x;i++)
+        {
+            $("#"+s+i.toString()).attr("src", "/css/style/image/ic_star.svg");
+        }
+        for(let j=5;j>x;j--)
+        {
+                        $("#"+s+j.toString()).attr("src", "/css/style/image/ic_star_empty.svg");
+
+        }
+         $("#result_star").attr("value", x);
+
+        
+    }
+
     var inputs = document.querySelectorAll('.inputfile');
     Array.prototype.forEach.call(inputs, function (input) {
         var label = input.nextElementSibling,
@@ -162,7 +183,7 @@ accounting, payroll, healthcare, and apartment management business.
                     <a class="title_recuit_company_home_candidate">${_list_recruitments[i].title}</a>
                     <div class="wage_copany_home_candidate">${_list_recruitments[i].min_salary}-${_list_recruitments[i].max_salary} triệu</div>
                     <div class="address_company_home_candidate">${_list_recruitments[i].min_salary}</div>
-                    <div class="experience_company_home_candidate">${_list_recruitments[i].experience} năm+</div>
+                    <div class="experience_company_home_candidate">${_list_recruitments[i].experience} +</div>
                     <img src="/css/style/image/ic_time.svg" alt="ic_time" class="ic_time_card_company">
                     <div class="time_card_company">Cập nhật gần nhất: ${creation_date}</div>
                 </div>
