@@ -112,11 +112,11 @@ module.exports = {
       }
     }
 
-    listJob=listJob.slice(0, number);
+    listJob = listJob.slice(0, number);
     for (let j = 0; j < listJob.length; j++) {
       var rs = await db.collection("employers").doc(listJob[j].belong_employer).get();
       listJob[j].nameEmployer = rs.data().name;
-      listJob[j].creation_date=new Date(listJob[j].creation_date.toDate().toDateString()).toLocaleString("VN");
+      listJob[j].creation_date = new Date(listJob[j].creation_date.toDate().toDateString()).toLocaleString("VN");
       listJob[j].avatarEmployer = rs.data().avatar;
     }
 
@@ -191,30 +191,34 @@ module.exports = {
 
     return curriculum_vitae.data();
   },
+  getReviewByID: async (id) => {
+    const reviews_collection = db.collection("reviews");
+    const review = await reviews_collection.doc(id).get();
+
+    return review.data();
+  },
   //moi
   getAllRecruitment: async (data) => {
     // const employer = await db.collection('employers');
-    const recruitment = await db.collection('recruitments');
+    const recruitment = await db.collection("recruitments");
     var list = await recruitment.get();
     var listJob = [];
     var job = null;
-    list.forEach(doc => {
+    list.forEach((doc) => {
       job = doc.data();
       job.doc = doc.id;
 
-      var arr = job.experience.split(' ');
+      var arr = job.experience.split(" ");
       job.experience = arr[0].toString();
-
-
 
       listJob.push(job);
     });
 
     for (let j = 0; j < listJob.length; j++) {
-      var rs = await db.collection('employers').doc(listJob[j].belong_employer).get();
+      var rs = await db.collection("employers").doc(listJob[j].belong_employer).get();
       listJob[j].nameEmployer = rs.data().name;
       listJob[j].avatarEmployer = rs.data().avatar;
-      listJob[j].creation_date=new Date(listJob[j].creation_date.toDate().toDateString()).toLocaleString("VN");
+      listJob[j].creation_date = new Date(listJob[j].creation_date.toDate().toDateString()).toLocaleString("VN");
       listJob[j].province = rs.data().province;
     }
     for (let i = 0; i < listJob.length; i++) {
@@ -242,7 +246,4 @@ module.exports = {
 
     return listJob;
   },
-
-
-
 };

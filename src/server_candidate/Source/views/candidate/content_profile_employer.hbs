@@ -74,7 +74,7 @@
             <img src="/css/style/image/ic_star.svg" id="evaluate_star3" alt="evaluate_star3">
             <img src="/css/style/image/ic_star.svg" id="evaluate_star4" alt="evaluate_star4">
             <img src="/css/style/image/ic_star.svg" id="evaluate_star5" alt="evaluate_star5">
-            <a id="btn_list_evaluate_company" href="#">Xem tất cả đánh giá</a>
+            <a id="btn_list_evaluate_company" href="">Xem tất cả đánh giá</a>
 
         </div>
 
@@ -143,16 +143,15 @@ accounting, payroll, healthcare, and apartment management business.
     // render profile
     $(".name_employer_view_profile").html(_info_employer.office)
     $(".hotline_profile_employer").html(`Hotline: ${_info_employer.phone}`)
-    $("#value_scale_company_detail_job").val()
     $(".logo_employer_view_profile").attr("src", _info_employer.avatar)
     $("#value_evaluate_total").html(_info_employer.rating)
-    $("#introduce_company_detail_job").text(_info_employer.avatar)
+    $("#introduce_company_detail_job").text(_info_employer.introduce || "")
     $("#value_scale_company_detail_job").html(_info_employer.email)
     $("#value_province_company_detail_job").html(_info_employer.district + ", " + _info_employer.province)
+    $("#btn_list_evaluate_company").attr("href", "/candidate/view_rating?id=" + _info_employer.idEmployer)
 
     // render list recruitments
     for (let i = 0; i < _list_recruitments.length; i++) {
-        console.log(_list_recruitments[i].id, _list_recruitments[i].status)
         if (_list_recruitments[i].status == "approved") {
             let _date = new Date(_list_recruitments[i].creation_date._seconds * 1000);
             let creation_date = _date.getDate() + "/" + (_date.getMonth() + 1) + "/" + _date.getFullYear()
