@@ -66,6 +66,25 @@ class EmployerController {
     }
   }
 
+  // [GET]//  edit_profile_employer
+  edit_profile_employer(req, res, next) {
+    try {
+      if (req.isAuthenticated()) {
+        res.render('contents/edit_profile_employer.hbs', {
+          layout: "main_employer_login",
+        });
+      } else {
+        res.redirect("/auth/sign_in");
+
+      }
+
+    } catch (error) {
+      next(error);
+    }
+  }
+
+
+
   // [GET] /list_rating
   async list_rating(req, res, next) {
     try {

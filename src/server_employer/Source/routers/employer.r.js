@@ -8,6 +8,8 @@ router.get("/profile", employerController.profile);
 // router.get("/edit_profile", employerController.edit_profile);
 router.get("/list_rating", employerController.list_rating);
 
+
+
 router.get("/manage_candidates_cvs", employerController.manage_candidates_cvs);
 router.get("/detail_cv_candidate", employerController.detail_cv_candidate);
 router.get("/profile_candidate", employerController.profile_candidate);
@@ -20,6 +22,9 @@ router.get("/add_recruitment", employerController.add_recruitment);
 router.post("/post_add_recruitment", employerController.post_add_recruitment);
 router.get("/edit_recruitment", employerController.edit_recruitment);
 router.post("/post_edit_recruitment", employerController.post_edit_recruitment);
+
+router.get('/edit_profile_employer', employerController.edit_profile_employer);
+
 
 router.get("/", employerController.homepage);
 
