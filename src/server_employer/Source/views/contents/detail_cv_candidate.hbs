@@ -8,10 +8,11 @@
             <div id="name_candidate_recruit" style="cursor: pointer;">Tên</div>
             <div id="status_profile_candidate_recruit">Trạng thái: Chờ duyệt</div>
             <div id="date_submit_profile_candidate_recruit">Ngày nộp hồ sơ: 22/01/2022</div>
-            <div id="button_change_status">
-                <input id="btn_accept_candidate" value="Chấp nhận" />
-                <input id="btn_reject_candidate" value="Từ chối" />
-            </div>
+            <form id="button_change_status" method="POST" action="/employer/post_detail_cv_candidate">
+                <input type="hidden" id="id_of_cv" name="id_cv" value="" />
+                <input type="submit" id="btn_accept_candidate" name="status_cv" value="Chấp nhận" />
+                <input type="submit" id="btn_reject_candidate" name="status_cv" value="Từ chối" />
+            </form>
         </div>
         <div id="info_profile_candidate_recruit">
             <div id="text_info_personal">Thông tin cá nhân</div>
@@ -59,4 +60,5 @@
         $(location).attr("href", "/employer/profile_candidate?id_candidate=" + cv_info.id_candidate)
     })
 
+    $("#id_of_cv").val(cv_info.id)
 </script>

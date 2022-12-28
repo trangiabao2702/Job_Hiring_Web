@@ -80,7 +80,7 @@
 
             $.each(items, function (i, item) {
                 $('#select_province_signin_recruit').append($('<option>', {
-                    value: item.name,
+                    value: item.code + "|||" + item.name,
                     text: item.name,
                     code: item.code,
                     class: 'op_select_province'

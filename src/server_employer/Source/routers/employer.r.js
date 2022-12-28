@@ -11,6 +11,7 @@ router.get("/list_rating", employerController.list_rating);
 router.get("/manage_candidates_cvs", employerController.manage_candidates_cvs);
 router.get("/detail_cv_candidate", employerController.detail_cv_candidate);
 router.get("/profile_candidate", employerController.profile_candidate);
+router.post("/post_detail_cv_candidate", employerController.post_detail_cv_candidate);
 
 router.get("/manage_recruitments", employerController.manage_recruitments);
 router.get("/detail_recruitment", employerController.detail_recruitment);
