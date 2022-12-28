@@ -130,4 +130,28 @@ module.exports = {
 
     return candidate.data();
   },
+  resetPassword: async (email, password, result) => {
+    const employerCollection = db.collection("employers");
+    const snapshot = await employerCollection.where("email", "==", email).get();
+    var docId = null;
+    snapshot.forEach((doc) => {
+      docId = doc.id;
+    });
+
+    var userUpdate = db.collection("employers").doc(docId);
+    var updateData = userUpdate.update({ password: password });
+    result(null, { email: email });
+  },
+  verify: async (email, result) => {
+    const candidatesCollection = db.collection("employers");
+    const snapshot = await candidatesCollection.where("email", "==", email).get();
+    var docId = null;
+    snapshot.forEach((doc) => {
+      docId = doc.id;
+    });
+
+    var userUpdate = db.collection("employers").doc(docId);
+    var updateData = userUpdate.update({ verify: true, verified_date: new Date() });
+    result(null, { email: email });
+  },
 };

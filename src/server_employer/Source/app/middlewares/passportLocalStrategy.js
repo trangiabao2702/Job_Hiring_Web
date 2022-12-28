@@ -31,6 +31,11 @@ module.exports = (app) => {
           if (!user) {
             return done(null, false);
           }
+
+          if(!user.verify || user.status !== 'approved') {
+            return done(null, false)
+          }
+
           const cmp = await bcrypt.compare(password, user.password);
           if (!cmp) {
             return done(null, false, { messageDanger: "Password entered is incorrect." });
