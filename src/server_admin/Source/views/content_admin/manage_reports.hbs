@@ -22,13 +22,13 @@
 
     for (let i = 0; i < _list_reports.length; i++) {
         if (_list_reports[i].id_reporter != "") {
-            if (_list_reports[i].status == "approved") {
-                _count_approved += 1
-                _list_approved.push(_list_reports[i])
-            }
-            else {
+            if (_list_reports[i].status == "pending") {
                 _count_pending += 1
                 _list_pending.push(_list_reports[i])
+            }
+            else {
+                _count_approved += 1
+                _list_approved.push(_list_reports[i])
             }
         }
     }

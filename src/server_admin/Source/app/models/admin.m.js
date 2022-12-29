@@ -196,4 +196,20 @@ module.exports = {
 
     return _list_reports;
   },
+  status_report: async (id, type) => {
+    db.collection("reports").doc(id).update({ status: type });
+  },
+  getReportsByStatus: async (status) => {
+    const rs = await db.collection("reports").get();
+
+    let _list_reports = [];
+    rs.forEach((doc) => {
+      if (doc.data().status == status) {
+        _list_reports.push(doc.data());
+        _list_reports[_list_reports.length - 1].id_report = doc.id;
+      }
+    });
+
+    return _list_reports;
+  },
 };

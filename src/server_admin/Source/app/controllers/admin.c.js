@@ -223,7 +223,14 @@ class Admin {
       _list_reports = req.body.list_pending_reports;
     }
 
-    _list_reports = JSON.parse(_list_reports);
+    if (_list_reports == undefined) {
+      var msg = req.flash("message");
+      _list_reports = JSON.parse(msg[0]);
+      // console.log(_list_reports);
+    } else {
+      _list_reports = JSON.parse(_list_reports);
+    }
+
     for (let i = 0; i < _list_reports.length; i++) {
       // get name of reporter
       const _info_reporter = await adminModel.getAccountByID(_list_reports[i].id_reporter, "candidate");
@@ -240,6 +247,18 @@ class Admin {
         list_reports: JSON.stringify(_list_reports),
       },
     });
+  }
+
+  async post_list_reports(req, res, next) {
+    const _status_report = req.body.status_report;
+    const _id_report = req.body.id_report;
+
+    const _change_status = await adminModel.status_report(_id_report, _status_report);
+    const _new_reports = await adminModel.getReportsByStatus("pending");
+
+    req.flash("message", JSON.stringify(_new_reports));
+
+    res.redirect("/admin/list_reports");
   }
 }
 
