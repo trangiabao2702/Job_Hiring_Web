@@ -1474,7 +1474,7 @@ pre {
 
 .dropdown {
   position: relative;
-  left: 1429px;
+  left: 1650px;
   top: 0px;
 
   background: #ffffff;
@@ -1543,7 +1543,7 @@ pre {
 }
 #dropdown_menu_recruit {
   position: absolute;
-  width: 300px;
+  width: 230px;
   height: 135px;
   top: 50px;
   background: #ffffff;
@@ -2079,10 +2079,10 @@ pre {
 
 .name_job_detail_job {
   position: absolute;
-  width: 317px;
+  width: 700px;
   height: 36px;
   left: 295px;
-  top: 67px;
+  top: 75px;
 
   font-family: "Poppins", sans-serif;
   font-style: normal;
@@ -3948,7 +3948,7 @@ pre {
   position: absolute;
   width: 120px;
   height: 47px;
-  left: 1085px;
+  left: 1306px;
   top: 13px;
   font-family: "Poppins", sans-serif;
   font-style: normal;
@@ -3972,7 +3972,7 @@ pre {
   position: absolute;
   width: 110px;
   height: 47px;
-  left: 1230px;
+  left: 1451px;
   top: 13px;
   font-family: "Poppins", sans-serif;
   font-style: normal;
@@ -3995,7 +3995,7 @@ pre {
   position: absolute;
   width: 48px;
   height: 48px;
-  left: 1365px;
+  left: 1586px;
   top: 12px;
 
   background: #88c2db;
@@ -4052,6 +4052,13 @@ pre {
   left: 3%;
   right: 81.04%;
   top: 18.06%;
+  bottom: 4.91%;
+}
+#logo_web_for_business {
+  position: absolute;
+  left: 9.7%;
+  right: 80.04%;
+  top: 23%;
   bottom: 4.91%;
 }
 #menu_manage_recruit_home_recruit {
@@ -4714,7 +4721,7 @@ tr:nth-child(odd) {
 #sex_edit_news {
   position: absolute;
   width: 169px;
-  height: 56px;
+  height: 60px;
   padding-left: 20px;
   left: 108px;
   top: 520px;
@@ -4744,7 +4751,7 @@ tr:nth-child(odd) {
 #experience_edit_news {
   position: absolute;
   width: 169px;
-  height: 56px;
+  height: 60px;
   padding-left: 20px;
   left: 594px;
   top: 520px;
@@ -4776,7 +4783,7 @@ tr:nth-child(odd) {
 
   position: absolute;
   width: 242px;
-  height: 56px;
+  height: 60px;
   left: 887px;
   top: 520px;
 
