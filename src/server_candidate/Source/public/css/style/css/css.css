@@ -2250,7 +2250,6 @@ overflow: hidden;
 
 .name_company_detail_job {
     position: absolute;
-    width: 148px;
     height: 36px;
     left: 295px;
     top: 115px;
@@ -2961,7 +2960,16 @@ overflow: hidden;
 
 #rectangle_infor_recruit {
     position: relative;
-    margin-left: 242px;
+    width: 1436px;
+    left:242px;
+    margin-top: 10px;
+    border-radius: 10px;
+    border: 1px solid #FFFFFF;
+    background-color: #FFFFFF;
+
+}
+#rectangle_infor_company {
+    position: relative;
     width: 1436px;
     margin-top: 10px;
     border-radius: 10px;
@@ -2969,6 +2977,7 @@ overflow: hidden;
     background-color: #FFFFFF;
 
 }
+
 
 #introduce_company_detail_job {
     margin-left: 131px;

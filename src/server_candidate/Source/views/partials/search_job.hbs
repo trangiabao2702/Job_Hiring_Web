@@ -57,7 +57,7 @@
                 }));
             $.each(items, function (i, item) {
                 $('#select_province_candidate').append($('<option>', {
-                    value: item.name,
+                    value: item.name+','+item.code,
                     text: item.name,
                     code: item.code,
                     class: 'op_select_province'

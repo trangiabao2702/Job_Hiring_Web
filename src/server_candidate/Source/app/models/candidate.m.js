@@ -188,8 +188,10 @@ module.exports = {
   getCVByID: async (id) => {
     const curriculum_vitaes_collection = db.collection("curriculum_vitaes");
     const curriculum_vitae = await curriculum_vitaes_collection.doc(id).get();
+    var rs=curriculum_vitae.data();
+    rs.submit_date=new Date(rs.submit_date.toDate().toDateString()).toLocaleString("VN");
 
-    return curriculum_vitae.data();
+    return rs;
   },
   getReviewByID: async (id) => {
     const reviews_collection = db.collection("reviews");
@@ -207,6 +209,9 @@ module.exports = {
   //moi
   getAllRecruitment: async (data) => {
     // const employer = await db.collection('employers');
+    var code=data.select_province.split(',');
+    var code_province=code[1];
+    console.log("code:",code_province);
     const recruitment = await db.collection("recruitments");
     var list = await recruitment.get();
     var listJob = [];
@@ -226,32 +231,35 @@ module.exports = {
       listJob[j].nameEmployer = rs.data().name;
       listJob[j].avatarEmployer = rs.data().avatar;
       listJob[j].creation_date = new Date(listJob[j].creation_date.toDate().toDateString()).toLocaleString("VN");
-      listJob[j].province = rs.data().province;
+      listJob[j].code_province = rs.data().code_province;
+      console.log("code_a:", listJob[j].code_province)
     }
+
+    var listRS=[];
     for (let i = 0; i < listJob.length; i++) {
+      var check=true;
       if (!listJob[i].title.includes(data.search)) {
-        const removed = listJob.splice(i, 1);
-        continue;
+        check=false;
       }
-      if (!listJob[i].province.includes(data.select_province)) {
-        const removed = listJob.splice(i, 1);
-        continue;
+      if (listJob[i].code_province!=code_province) {
+        check=false;
       }
       if (!listJob[i].working_form.includes(data.select_method_work)) {
-        const removed = listJob.splice(i, 1);
-        continue;
+        check=false;
       }
       if (data.select_experience < listJob[i].experience) {
-        const removed = listJob.splice(i, 1);
-        continue;
+        check=false;
       }
       if (data.select_salary > listJob[i].max_salary) {
-        const removed = listJob.splice(i, 1);
-        continue;
+        check=false;
+      }
+      if(check==true)
+      {
+        listRS.push(listJob[i]);
       }
     }
 
-    return listJob;
+    return listRS;
   },
   addReviews: async (e, id_employer) => {
     const collection_reviews = await db.collection("reviews");

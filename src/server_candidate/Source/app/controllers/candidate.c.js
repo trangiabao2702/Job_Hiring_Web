@@ -89,6 +89,7 @@ class Candidate {
     }
   }
   async postSearchJob(req, res, next) {
+    console.log(req.body);
     var listjob = await candidateModel.getAllRecruitment(req.body);
 
     var user = req.session.passport.user;
@@ -128,7 +129,7 @@ class Candidate {
 
         // get information of cv
         const _id_cv = req.query.id_cv;
-        const _info_cv = await candidateModel.getCVByID(_id_cv);
+        var _info_cv = await candidateModel.getCVByID(_id_cv);
         _info_cv.avatar_candidate = user.avatar;
 
         res.render("candidate/content_detail_cv.hbs", {

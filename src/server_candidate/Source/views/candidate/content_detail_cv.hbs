@@ -8,10 +8,7 @@
             <div id="name_candidate_recruit" style="cursor: pointer;">Tên</div>
             <div id="status_profile_candidate_recruit">Trạng thái: Chờ duyệt</div>
             <div id="date_submit_profile_candidate_recruit">Ngày nộp hồ sơ: 22/01/2022</div>
-            <div id="button_change_status">
-                <input id="btn_accept_candidate" value="Chấp nhận" />
-                <input id="btn_reject_candidate" value="Từ chối" />
-            </div>
+          
         </div>
         <div id="info_profile_candidate_recruit">
             <div id="text_info_personal">Thông tin cá nhân</div>
@@ -23,7 +20,7 @@
 
             {{!-- Chinh cai duoi nay thanh anh download + dua file cv cua ung vien vao --}}
             <img src="/css/style/image/ic_upload.svg" id="ic_CV" alt="ic_CV" />
-            <a id="CV_profile_candidate" href="b.docx">CV</a>
+            <a id="CV_profile_candidate" href="">CV</a>
         </div>
     </div>
 </div>
@@ -45,7 +42,7 @@
         // do nothing
     }
 
-    $("#date_submit_profile_candidate_recruit").html(`Ngày nộp hồ sơ: ${cv_info.name}`)
+    $("#date_submit_profile_candidate_recruit").html(`Ngày nộp hồ sơ: ${cv_info.submit_date}`)
 
     $("#date_of_birth_profile_candidate_recruit").html(`Email: ${cv_info.email}`)
     $("#sex_profile_candidate_recruit").html(`SĐT: ${cv_info.phone}`)
@@ -53,7 +50,7 @@
     $("#email_profile_candidate_recruit").html(`Giới thiệu: ${cv_info.introduce}`)
     // $("#address_profile_candidate_recruit").html(`${cv_info.name}`)
     // $("#name_candidate_recruit").html(`${cv_info.name}`)
-
+     $(".CV_profile_candidate").attr("href", `${cv_info.file_cv}`);
     // handle when click name of candidate -> go to profile of candidate
     $("#name_candidate_recruit").click(function () {
         $(location).attr("href", "/employer/profile_candidate?id_candidate=" + cv_info.id_candidate)
