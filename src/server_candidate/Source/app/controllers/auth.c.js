@@ -88,6 +88,10 @@ class Authencation {
             state: 'login',
             status: 'approved',
             creation_date: new Date(),
+            address:"",
+            gender:"",
+            phone:"",
+            date_of_birth: null
         }
 
         const userNew = await candidateModel.addACandidate(user); // user name này trả về thông tin firestore chớ k thấy data

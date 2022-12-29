@@ -285,5 +285,31 @@ module.exports = {
       });
 
     return 1;
+  },
+  profile: async id =>{
+    const collection_candidate=await db.collection("candidates");
+    const profile=await collection_candidate.doc(id).get();
+    var rs= profile.data();
+    if(rs.address=="")
+    {
+      rs.address="Chưa có";
+    }
+    if(rs.phone=="")
+    {
+      rs.phone="Chưa có";
+    }
+    if(rs.gender=="")
+    {
+      rs.gender="Chưa có";
+    }
+    if(rs.date_of_birth==null)
+    {
+      rs.date_of_birth="Chưa có";
+    }
+    else{
+      rs.date_of_birth=new Date(rs.date_of_birth.toDate().toDateString()).toLocaleString("VN");
+    }
+    
+    return rs;
   }
 };

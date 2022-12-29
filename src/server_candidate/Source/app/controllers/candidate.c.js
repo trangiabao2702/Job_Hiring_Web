@@ -153,7 +153,7 @@ class Candidate {
         var user = req.session.passport.user;
 
         // get information of employer
-        const _id_employer = req.query.id ;
+        const _id_employer = req.query.id;
         const _info_employer = await candidateModel.getEmployer(_id_employer);
 
         let _list_recruitments = [];
@@ -187,13 +187,13 @@ class Candidate {
         // get information of employer
         const _id_employer = req.query.id;
         const _info_employer = await candidateModel.getEmployer(_id_employer);
-       // console.log(_info_employer);
+        // console.log(_info_employer);
         let _list_reviews = [];
         for (let i = 0; i < _info_employer.list_reviews.length; i++) {
           _list_reviews.push(await candidateModel.getReviewByID(_info_employer.list_reviews[i]));
           _list_reviews[i].id = _info_employer.list_reviews[i];
         }
-        var length=_list_reviews.length;
+        var length = _list_reviews.length;
 
         res.render("candidate/content_view_rating.hbs", {
           layout: "main_candidate_login",
@@ -203,7 +203,7 @@ class Candidate {
             user: user,
             list_reviews: JSON.stringify(_list_reviews),
             not_record: false,
-        
+
           },
         });
       } else {
@@ -214,25 +214,46 @@ class Candidate {
     }
   }
   async evaluate_employer(req, res, next) {
-    var star=req.body.star;
-    var belong_candidate=req.session.passport.user.id;
-    var id_employer=req.body.id_employer;
-    var description=req.body.content;
-    var evaluate={belong_candidate,description,star};
+    var star = req.body.star;
+    var belong_candidate = req.session.passport.user.id;
+    var id_employer = req.body.id_employer;
+    var description = req.body.content;
+    var evaluate = { belong_candidate, description, star };
     console.log(id_employer);
-    const rs=await candidateModel.addReviews(evaluate,id_employer);
+    const rs = await candidateModel.addReviews(evaluate, id_employer);
     res.redirect('back');
   }
-  async report_recruitment(req,res,next){
-    var id_reporter=req.session.passport.user.id;
-    var id_reported=req.body.id_recruitments;
-    var description=req.body.content;
-    var status="pending";
-    var type="candidate";
-    var report={description,id_reported,id_reporter,status,type};
+  async report_recruitment(req, res, next) {
+    var id_reporter = req.session.passport.user.id;
+    var id_reported = req.body.id_recruitments;
+    var description = req.body.content;
+    var status = "pending";
+    var type = "candidate";
+    var report = { description, id_reported, id_reporter, status, type };
     console.log(id_reported);
-    const rs=await candidateModel.addReport(report);
+    const rs = await candidateModel.addReport(report);
     res.redirect('back');
+  }
+  async profile(req, res, next) {
+    try {
+      if (req.isAuthenticated()) {
+
+        var my_id = req.session.passport.user.id;
+        var profile = await candidateModel.profile(my_id);
+        res.render('candidate/my_profile.hbs', {
+          not_record: false,
+          data: {
+            user: profile
+          }
+          ,
+          layout: "main_candidate_login"
+        });
+      }else{
+        res.redirect("/auth/login");
+      }
+    } catch (error) {
+      next(error);
+    }
   }
 }
 

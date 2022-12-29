@@ -5263,7 +5263,7 @@ color: white;
     position: absolute;
 width: 1500px;
 height: 987px;
-left: 370px;
+left: 200px;
 top: 20px;
 
 background: #F2F2F2;
@@ -5290,6 +5290,24 @@ width: 241px;
 height: 45px;
 left: 330px;
 top: 40px;
+
+font-family: 'Poppins', sans-serif;
+font-style: normal;
+font-weight: 700;
+font-size: 30px;
+line-height: 45px;
+/* identical to box height */
+
+
+color: #0077B6;
+
+}
+#name_my_profile{
+    position: absolute;
+width: 241px;
+height: 30px;
+left: 330px;
+top: 90px;
 
 font-family: 'Poppins', sans-serif;
 font-style: normal;
@@ -5419,7 +5437,7 @@ color: #3D3D3D;
 #sex_profile_candidate_recruit{
     position: absolute;
     height: 30px;
-    left: 620px;
+    left: 700px;
     top: 100px;
     
     font-family: 'Poppins', sans-serif;
@@ -5435,7 +5453,7 @@ color: #3D3D3D;
 #phone_profile_candidate_recruit{
     position: absolute;
     height: 30px;
-    left: 620px;
+    left: 700px;
     top: 150px;
     
     font-family: 'Poppins', sans-serif;
@@ -5468,8 +5486,8 @@ color: #3D3D3D;
     position: absolute;
     width: 530px;
     height: 60px;
-    left:900px;
-    top: 100px;
+    left:70px;
+    top: 200px;
     
     font-family: 'Poppins', sans-serif;
     font-style: normal;
