@@ -10,8 +10,8 @@
                 Tin bị báo cáo</th>
             <th style="white-space: nowrap; overflow: hidden; text-overflow: ellipsis; text-align: left; width: 45%;">
                 Mô tả báo cáo</th>
-            <th style="white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">
-                Đã được xử lý</th>
+            <th style="white-space: nowrap; overflow: hidden; text-overflow: ellipsis; text-align: left;">
+                Tình trạng</th>
         </tr>
     </table>
 
@@ -44,16 +44,20 @@
                             id="name_job_modal_apply_company">{{data.recruitment.title}}</span> </span>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
-                <div>
+                <form action="/admin/post_list_reports" method="POST">
                     <div class="modal-body modal_body_evaluate">
                         <div id="text_content_modal_report">Nội dung báo cáo:</div>
                         <textarea name="content" class="form-control" id="content_report"></textarea>
                         <input type="text" name="id_recruitments" value="{{data.idDocRecruitment}}"
                             style="display: none;">
-                        {{!-- <button type="button" id="close_modal_report">Hủy</button>
-                        <button type="submit" id="submit_modal_report">Gửi</button> --}}
+                        <button type="submit" id="approved_modal_report">Duyệt</button>
+                        <button type="submit" id="denied_modal_report">Từ chối duyệt</button>
+
+                        <input type="hidden" id="id_report_hidden" name="id_report" value="">
+                        <input type="hidden" id="status_report_hidden" name="status_report" value="">
+                        <input type="hidden" id="list_reports_hidden" name="list_reports" value="">
                     </div>
-                </div>
+                </form>
             </div>
         </div>
     </div>
@@ -63,9 +67,11 @@
     const _list_reports = {{{ data.list_reports }}}
 
     for (let i = 0; i < _list_reports.length; i++) {
-        let _status = "✅"
-        if (_list_reports[i].status == "pending") {
-            _status = ""
+        let _status = "Chưa được xử lý"
+        if (_list_reports[i].status == "approved") {
+            _status = "Đã duyệt"
+        } else if (_list_reports[i].status == "denied") {
+            _status = "Từ chối duyệt"
         }
 
         $("#table_mamage_recruit").append(`
@@ -74,7 +80,7 @@
                 <td style="white-space: nowrap; overflow: hidden; text-overflow: ellipsis; text-align: left; width: 20%;">${_list_reports[i].reporter_name}</td>
                 <td style="white-space: nowrap; overflow: hidden; text-overflow: ellipsis; text-align: left; width: 20%;">${_list_reports[i].reported_title}</td>
                 <td style="white-space: nowrap; overflow: hidden; text-overflow: ellipsis; text-align: left; width: 45%;">${_list_reports[i].description}</td>
-                <td style="white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">${_status}</td>
+                <td style="white-space: nowrap; overflow: hidden; text-overflow: ellipsis; text-align: left;">${_status}</td>
             </tr>
         `)
         $("#content_home_admin").append(`
@@ -88,6 +94,19 @@
         $("#name_job_modal_apply_company").html(_list_reports[parseInt(_id_report_index[1])].reported_title)
         $("#content_report").text(_list_reports[parseInt(_id_report_index[1])].description)
 
+        $("#id_report_hidden").val(_id_report_index[0])
+        if (_list_reports[parseInt(_id_report_index[1])].status != "pending") {
+            $("#approved_modal_report").hide()
+            $("#denied_modal_report").hide()
+        }
+
         $(`#btn_modal_${_id_report_index[0]}`).click()
+    })
+
+    $("#approved_modal_report").click(function () {
+        $("#status_report_hidden").val("approved")
+    })
+    $("#denied_modal_report").click(function () {
+        $("#status_report_hidden").val("denied")
     })
 </script>
