@@ -55,6 +55,16 @@
             </select>
             <img src="/css/style/image/arrow_down.svg" alt="arrow_down" id="arrow_down_district_signin_recuit">
 
+            <select name="select_ward_signin_recruit" id="select_ward_signin_recruit" required="" disabled>
+                <option disabled selected value>Phường/Xã</option>
+            </select>
+            <img src="/css/style/image/arrow_down.svg" alt="arrow_down" id="arrow_down_ward_signin_recuit">
+
+            {{!-- <input id="province_company_recruit" name="address_company_recruit" type="hidden" value=""> --}}
+            <input type="text" name="street" id="select_street_signin_recruit" placeholder="Địa chỉ cụ thể"
+                required></input>
+
+
             {{!-- <input id="district_company_recruit" name="address_company_recruit" type="hidden" value=""> --}}
             <input type="checkbox" name="agree_signin_recruit" id="agree_signin_recruit"
                 onchange="this.setCustomValidity(validity.valueMissing ? 'Hãy đồng ý với điều khoản của chúng tôi để tạo tài khoản!' : '');">
@@ -70,6 +80,7 @@
 <script>
     const urlProvice = 'https://provinces.open-api.vn/api/';
     const urlDistrict = "https://provinces.open-api.vn/api/d/";
+    const urlWard = "https://provinces.open-api.vn/api/w/"
 
     fetch(urlProvice)
         .then((response) => {
@@ -124,6 +135,40 @@
             });
 
     });
+
+
+    $('#select_district_signin_recruit').on('change', function () {
+        fetch(urlWard)
+            .then((response) => {
+                return response.json();
+            })
+            .then((data) => {
+
+                $("#select_ward_signin_recruit option[class='op_select_province']").each(function () {
+                    $(this).remove();
+                });
+
+                let items = data;
+                let _this = this;
+                console.log($(_this))
+                let result = items.filter(function (item) {
+                    return parseInt(item.district_code) === parseInt($('option:selected', _this).attr("code"));
+                })
+
+                $('#select_ward_signin_recruit').prop("disabled", false);
+                $.each(result, function (i, item) {
+                    $('#select_ward_signin_recruit').append($('<option>', {
+                        value: item.name,
+                        text: item.name,
+                        code: item.code,
+                        class: 'op_select_province'
+                    }));
+                });
+            })
+            .catch(function (error) {
+                console.log(error);
+            });
+    })
 
 
     document.getElementById("agree_signin_recruit").setCustomValidity("Vui lòng cho biết rằng bạn chấp nhận các điều khoản và điều kiện!");

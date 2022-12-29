@@ -3716,7 +3716,7 @@ pre {
   position: absolute;
   height: 27px;
   left: 122px;
-  top: 717px;
+  top: 617px;
 
   font-family: "Poppins", sans-serif;
   font-style: normal;
@@ -3734,7 +3734,7 @@ pre {
   width: 1194px;
   height: 56px;
   left: 124px;
-  top: 748px;
+  top: 648px;
 
   background: #ffffff;
   border: 1px solid #939598;
@@ -3752,7 +3752,7 @@ pre {
   position: absolute;
   height: 27px;
   left: 122px;
-  top: 819px;
+  top: 719px;
 
   font-family: "Poppins", sans-serif;
   font-style: normal;
@@ -3770,7 +3770,7 @@ pre {
   width: 1194px;
   height: 56px;
   left: 124px;
-  top: 852px;
+  top: 752px;
 
   background: #ffffff;
   border: 1px solid #939598;
@@ -3787,7 +3787,7 @@ pre {
   position: absolute;
   height: 27px;
   left: 122px;
-  top: 923px;
+  top: 823px;
 
   font-family: "Poppins", sans-serif;
   font-style: normal;
@@ -3805,7 +3805,7 @@ pre {
   width: 1194px;
   height: 56px;
   left: 124px;
-  top: 852px;
+  top: 752px;
 
   background: #ffffff;
   border: 1px solid #939598;
@@ -3824,7 +3824,7 @@ pre {
   height: 56px;
   padding-left: 20px;
   left: 122px;
-  top: 956px;
+  top: 856px;
   border: 0.5px solid #939598;
   background: #ffffff;
   border-radius: 10px;
@@ -3840,7 +3840,7 @@ pre {
   width: 20px;
   height: 11.72px;
   left: 644px;
-  top: 978px;
+  top: 878px;
 }
 #select_district_signin_recruit {
   position: absolute;
@@ -3848,7 +3848,7 @@ pre {
   height: 56px;
   padding-left: 20px;
   left: 741px;
-  top: 956px;
+  top: 856px;
   border: 0.5px solid #939598;
   background: #ffffff;
   border-radius: 10px;
@@ -3864,7 +3864,48 @@ pre {
   width: 20px;
   height: 11.72px;
   left: 1266px;
-  top: 978px;
+  top: 878px;
+}
+#select_ward_signin_recruit {
+  position: absolute;
+  width: 575px;
+  height: 56px;
+  padding-left: 20px;
+  left: 122px;
+  top: 936px;
+  border: 0.5px solid #939598;
+  background: #ffffff;
+  border-radius: 10px;
+  font-family: "Poppins", sans-serif;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 18px;
+  line-height: 56px;
+  color: #494848;
+}
+#select_street_signin_recruit {
+  position: absolute;
+  width: 575px;
+  height: 56px;
+  padding-left: 20px;
+  left: 741px;
+  top: 936px;
+  border: 0.5px solid #939598;
+  background: #ffffff;
+  border-radius: 10px;
+  font-family: "Poppins", sans-serif;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 18px;
+  line-height: 56px;
+  color: #494848;
+}
+#arrow_down_ward_signin_recuit{
+  position: absolute;
+  width: 20px;
+  height: 11.72px;
+  left: 644px;
+  top: 958px;
 }
 #agree_signin_recruit {
   box-sizing: border-box;

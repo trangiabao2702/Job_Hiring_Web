@@ -128,6 +128,8 @@ class AuthController {
       const phone = req.body.phone_signin_recuit;
       const province_code = req.body.select_province_signin_recruit.split("|||");
       const district = req.body.select_district_signin_recruit;
+      const ward = req.body.select_ward_signin_recruit;
+      const street = req.body.street;
 
       const salt = bcrypt.genSaltSync(saltRounds);
       const pwHashed = bcrypt.hashSync(password, salt);
@@ -144,6 +146,8 @@ class AuthController {
         phone: phone,
         province: province_code[1],
         district: district,
+        ward: ward,
+        street: street,
         status: "pending",
         list_recruitments: [],
         list_reviews: [],
