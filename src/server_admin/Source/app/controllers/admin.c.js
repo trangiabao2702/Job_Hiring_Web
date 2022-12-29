@@ -215,18 +215,29 @@ class Admin {
     });
   }
 
-  list_reports(req, res, next) {
+  async list_reports(req, res, next) {
     let _list_reports = "";
     if (req.body.list_pending_reports == "") {
       _list_reports = req.body.list_approved_reports;
     } else {
       _list_reports = req.body.list_pending_reports;
     }
-    console.log(_list_reports);
+
+    _list_reports = JSON.parse(_list_reports);
+    for (let i = 0; i < _list_reports.length; i++) {
+      // get name of reporter
+      const _info_reporter = await adminModel.getAccountByID(_list_reports[i].id_reporter, "candidate");
+      _list_reports[i].reporter_name = _info_reporter.name;
+
+      // get title of reported recruitment
+      const _info_reported = await adminModel.detail_news(_list_reports[i].id_reported);
+      _list_reports[i].reported_title = _info_reported.title;
+    }
+
     res.render("content_admin/list_reports", {
       layout: "main_admin_login",
       data: {
-        list_reports: _list_reports,
+        list_reports: JSON.stringify(_list_reports),
       },
     });
   }

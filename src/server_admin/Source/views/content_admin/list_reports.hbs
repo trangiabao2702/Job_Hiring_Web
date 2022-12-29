@@ -11,15 +11,6 @@
             <th style="white-space: nowrap; overflow: hidden; text-overflow: ellipsis; text-align: left;">
                 Mô tả báo cáo</th>
         </tr>
-        {{!-- {{#each list}}
-        <tr onclick="window.location.href='http://localhost:3035/admin/manage_news/detail_news?id={{this.doc}}'">
-            <td>{{this.stt}}</td>
-            <td>{{this.title}}</td>
-            <td>{{this.nameEmployer}}</td>
-            <td>{{this.creation_date}}</td>
-            <td>{{this.numberCV}}</td>
-        </tr>
-        {{/each}} --}}
     </table>
 
     <nav aria-label="Page navigation example" id="nav_page_home_manage_recruit">
@@ -41,6 +32,42 @@
             </li>
         </ul>
     </nav>
+
+    <div class="modal fade" id="modal_evaluate_employer" tabindex="-1" aria-labelledby="modal_updateLabel"
+        aria-hidden="true">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <img src="/css/style/image/logo_company.svg" alt="logo_company"
+                        class="logo_employer_modal_evaluate">
+                    <div class="name_employer_modal_evaluate">VNG Games</div>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <form action="/candidate/evaluate_employer" method="post">
+                    <div class="modal-body modal_body_evaluate">
+                        <div id="text_evaluate_quality">Đánh giá chất lượng: </div>
+                        <img src="/css/style/image/ic_star_empty.svg" id="evaluate_modal_star1" alt="evaluate_star1"
+                            onclick="s(this.id)">
+                        <img src="/css/style/image/ic_star_empty.svg" id="evaluate_modal_star2" alt="evaluate_star2"
+                            onclick="s(this.id)">
+                        <img src="/css/style/image/ic_star_empty.svg" id="evaluate_modal_star3" alt="evaluate_star3"
+                            onclick="s(this.id)">
+                        <img src="/css/style/image/ic_star_empty.svg" id="evaluate_modal_star4" alt="evaluate_star4"
+                            onclick="s(this.id)">
+                        <img src="/css/style/image/ic_star_empty.svg" id="evaluate_modal_star5" alt="evaluate_star5"
+                            onclick="s(this.id)">
+                        <input type="text" name="star" value="5" id="result_star" style="display: none;">
+                        <div id="text_content_modal_evaluate">Nội dung:</div>
+                        <textarea name="content" class="form-control" id="content_evaluate" required
+                            placeholder="Đánh giá của bạn về nhà tuyển dụng"></textarea>
+                        <input type="text" name="id_employer" value="{{_id_employer}}" style="display: none;">
+                        <button type="button" id="close_modal_evaluate" data-bs-dismiss="modal">Hủy</button>
+                        <button type="submit" id="submit_modal_evaluate">Gửi</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
 </div>
 
 <script>
@@ -48,12 +75,20 @@
 
     for (let i = 0; i < _list_reports.length; i++) {
         $("#table_mamage_recruit").append(`
-            <tr id="${_list_reports[i].id_report}">
+            <tr id="${_list_reports[i].id_report}" class="row_report">
                 <td style="white-space: nowrap; overflow: hidden; text-overflow: ellipsis; width: 5%;">${i + 1}</td>
-                <td style="white-space: nowrap; overflow: hidden; text-overflow: ellipsis; text-align: left; width: 20%;">${_list_reports[i].id_reporter}</td>
-                <td style="white-space: nowrap; overflow: hidden; text-overflow: ellipsis; text-align: left; width: 20%;">${_list_reports[i].id_reported}</td>
+                <td style="white-space: nowrap; overflow: hidden; text-overflow: ellipsis; text-align: left; width: 20%;">${_list_reports[i].reporter_name}</td>
+                <td style="white-space: nowrap; overflow: hidden; text-overflow: ellipsis; text-align: left; width: 20%;">${_list_reports[i].reported_title}</td>
                 <td style="white-space: nowrap; overflow: hidden; text-overflow: ellipsis; text-align: left;">${_list_reports[i].description}</td>
             </tr>
         `)
+        $("#content_home_admin").append(`
+            <button type="button" id="btn_modal_${_list_reports[i].id_report}" class="btn_apply_to_company_detail_job" data-bs-toggle="modal" data-bs-target="#modal_evaluate_employer" hidden>Đánh giá</button>
+        `)
     }
+
+    $(".row_report").click(function () {
+        const _id_report = $(this).attr("id")
+        $(`#btn_modal_${_id_report}`).click()
+    })
 </script>
