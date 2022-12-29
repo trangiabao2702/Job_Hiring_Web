@@ -5,7 +5,7 @@
         <div id="head_profie_candidate_recruit">
             <img src="{{{ data.user.avatar }}}" id="avatar_profile_candidate_recruit"
                 alt="avatar_profile_candidate_recruit" />
-            <div id="name_candidate_recruit">{{{ data.user.office }}}</div>
+            <div id="name_candidate_recruit">{{{ data.user.name }}}</div>
             <div id="status_profile_candidate_recruit">SĐT: {{{ data.user.phone }}}</div>
             <div id="date_submit_profile_candidate_recruit">Email: {{{ data.user.email }}}</div>
             <a id="btn_accept_candidate"  href="/employer/edit_profile_employer">Chỉnh
@@ -18,7 +18,7 @@
             <img src="/css/style/image/ic_house.svg" alt="ic_house" id="ic_house_company_detail_job" />
             <div id="text_introduce_company_detail_job">Giới thiệu</div>
             <pre id="introduce_company_detail_job">
-                {{{ data.user.description }}}
+                {{{ data.user.description }}}   
             </pre>
 
             {{!-- <div id="rectangle_scale_compayny">

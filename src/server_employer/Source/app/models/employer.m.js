@@ -1,5 +1,6 @@
 const db = require("../../config/db/index"); // getDatabase
 const storage = require("../../config/db/storage"); // getStorage
+const path = require("path"); // getPath
 
 module.exports = {
   getAllEmployer: async () => {
@@ -154,4 +155,29 @@ module.exports = {
     var updateData = userUpdate.update({ verify: true, verified_date: new Date() });
     result(null, { email: email });
   },
+  async updateInfoEmployer(id_employer, employer, fileAvatar){
+
+    var signedURLArray = null;
+    if(fileAvatar){
+      const fileName = id_employer + path.extname(fileAvatar.originalname);
+      // await storage.bucket().file(`avatars/${fileName}`).delete();
+      await storage.bucket().file(`avatars/${fileName}`).createWriteStream().end(fileAvatar.buffer);
+  
+      const file = storage.bucket().file(`avatars/${fileName}`);
+      const signedURLconfig = { action: "read", expires: "01-01-2030" };
+      signedURLArray = await file.getSignedUrl(signedURLconfig);
+    }
+    // console.log(signedURLArray);
+    const doc = db.collection("employers").doc(id_employer);
+    // console.log(doc, fileAvatar, signedURLArray);
+    const rs = doc.update({
+      avatar: signedURLArray ? signedURLArray[0] : (await doc.get()).data().avatar,
+      name: employer.name,
+      phone: employer.phone,
+      street: employer.street,
+      description: employer.description
+    });
+
+    return rs;
+  }
 };
