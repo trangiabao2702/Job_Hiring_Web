@@ -182,7 +182,16 @@ module.exports = {
       .delete();
   },
   status_recruitment: async (id, type) => {
-    db.collection("recruitments").doc(id).update({ status: type });
+    await db.collection("recruitments").doc(id).update({ status: type });
+    const report_collection=db.collection("reports");
+    const report=await report_collection.where("id_reported", "==", id).get();
+    if(type=="deleted"||type=="locked")
+    {
+      report.forEach((doc) => {
+        db.collection("reports").doc(doc.id).update({ status: "approved" });
+      });
+    }
+   
   },
 
   getAllReports: async () => {

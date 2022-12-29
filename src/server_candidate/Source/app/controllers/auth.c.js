@@ -86,7 +86,7 @@ class Authencation {
             password: pwHashed,
             avatar: defaultAvt,
             state: 'login',
-            status: 'pending',
+            status: 'approved',
             creation_date: new Date(),
         }
 

@@ -1,16 +1,16 @@
 <div id="content_home_admin">
     <div id="text_recruitment_efficiency">Số lượng tin tuyển dụng: {{length}}</div>
-    <table id="table_mamage_recruit" style="width: 1333px;" rules="rows">
+    <table id="table_mamage_recruit" style="table-layout:fixed; width: 1333px;" rules="rows">
         <tr class="title_table_recruit">
-            <th style="white-space: nowrap; overflow: hidden; text-overflow: ellipsis; width: 5%;">
+            <th style="width: 5%;">
                 STT</th>
-            <th style="white-space: nowrap; overflow: hidden; text-overflow: ellipsis; text-align: left; width: 20%;">
+            <th style="text-align: left; width: 15%;">
                 Người báo cáo</th>
-            <th style="white-space: nowrap; overflow: hidden; text-overflow: ellipsis; text-align: left; width: 20%;">
+            <th style="text-align: left; width: 25%;">
                 Tin bị báo cáo</th>
-            <th style="white-space: nowrap; overflow: hidden; text-overflow: ellipsis; text-align: left; width: 45%;">
+            <th style="text-align: left; width: 40%;">
                 Mô tả báo cáo</th>
-            <th style="white-space: nowrap; overflow: hidden; text-overflow: ellipsis; text-align: left;">
+            <th style="text-align: left;">
                 Tình trạng</th>
         </tr>
     </table>
@@ -76,10 +76,10 @@
 
         $("#table_mamage_recruit").append(`
             <tr id="${_list_reports[i].id_report}|||index:${i}" class="row_report">
-                <td style="white-space: nowrap; overflow: hidden; text-overflow: ellipsis; width: 5%;">${i + 1}</td>
-                <td style="white-space: nowrap; overflow: hidden; text-overflow: ellipsis; text-align: left; width: 20%;">${_list_reports[i].reporter_name}</td>
-                <td style="white-space: nowrap; overflow: hidden; text-overflow: ellipsis; text-align: left; width: 20%;">${_list_reports[i].reported_title}</td>
-                <td style="white-space: nowrap; overflow: hidden; text-overflow: ellipsis; text-align: left; width: 45%;">${_list_reports[i].description}</td>
+                <td style="white-space: nowrap; overflow: hidden; text-overflow: ellipsis; ">${i + 1}</td>
+                <td style="white-space: nowrap; overflow: hidden; text-overflow: ellipsis; text-align: left; ">${_list_reports[i].reporter_name}</td>
+                <td style="white-space: nowrap; overflow: hidden; text-overflow: ellipsis; text-align: left; ">${_list_reports[i].reported_title}</td>
+                <td style="white-space: nowrap; overflow: hidden; text-overflow: ellipsis; text-align: left; ">${_list_reports[i].description}</td>
                 <td style="white-space: nowrap; overflow: hidden; text-overflow: ellipsis; text-align: left;">${_status}</td>
             </tr>
         `)
