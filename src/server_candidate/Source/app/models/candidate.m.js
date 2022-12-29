@@ -95,7 +95,8 @@ module.exports = {
   topJob: async (number) => {
     // const employer = await db.collection('employers');
     const recruitment = await db.collection("recruitments");
-    const list = await recruitment.get();
+    const list = await recruitment.where("status", "==", "approved").get();
+
     var listJob = [];
     var user = null;
     list.forEach((doc) => {
@@ -188,8 +189,8 @@ module.exports = {
   getCVByID: async (id) => {
     const curriculum_vitaes_collection = db.collection("curriculum_vitaes");
     const curriculum_vitae = await curriculum_vitaes_collection.doc(id).get();
-    var rs=curriculum_vitae.data();
-    rs.submit_date=new Date(rs.submit_date.toDate().toDateString()).toLocaleString("VN");
+    var rs = curriculum_vitae.data();
+    rs.submit_date = new Date(rs.submit_date.toDate().toDateString()).toLocaleString("VN");
 
     return rs;
   },
@@ -209,11 +210,11 @@ module.exports = {
   //moi
   getAllRecruitment: async (data) => {
     // const employer = await db.collection('employers');
-    var code=data.select_province.split(',');
-    var code_province=code[1];
-    console.log("code:",code_province);
+    var code = data.select_province.split(',');
+    var code_province = code[1];
+    console.log("code:", code_province);
     const recruitment = await db.collection("recruitments");
-    var list = await recruitment.get();
+    var list = await recruitment.where("status", "==", "approved").get();
     var listJob = [];
     var job = null;
     list.forEach((doc) => {
@@ -235,26 +236,27 @@ module.exports = {
       console.log("code_a:", listJob[j].code_province)
     }
 
-    var listRS=[];
+    var listRS = [];
     for (let i = 0; i < listJob.length; i++) {
-      var check=true;
+      var check = true;
       if (!listJob[i].title.includes(data.search)) {
-        check=false;
+        check = false;
       }
-      if (listJob[i].code_province!=code_province) {
-        check=false;
+      if (code_province != "0") {
+        if (listJob[i].code_province != code_province) {
+          check = false;
+        }
       }
       if (!listJob[i].working_form.includes(data.select_method_work)) {
-        check=false;
+        check = false;
       }
       if (data.select_experience < listJob[i].experience) {
-        check=false;
+        check = false;
       }
       if (data.select_salary > listJob[i].max_salary) {
-        check=false;
+        check = false;
       }
-      if(check==true)
-      {
+      if (check == true) {
         listRS.push(listJob[i]);
       }
     }
@@ -263,7 +265,7 @@ module.exports = {
   },
   addReviews: async (e, id_employer) => {
     const collection_reviews = await db.collection("reviews");
-    
+
     collection_reviews.add(e)
       .then(function (docRef) {
 
@@ -274,12 +276,12 @@ module.exports = {
 
     return 1;
   },
-  addReport: async (report)=>{
+  addReport: async (report) => {
     const collection_report = await db.collection("reports");
-    
+
     collection_report.add(report)
       .then(function (docRef) {
-        console.log("aaa",docRef.id);
+        console.log("aaa", docRef.id);
       });
 
     return 1;
