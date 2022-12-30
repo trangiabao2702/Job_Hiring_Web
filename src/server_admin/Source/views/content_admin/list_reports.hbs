@@ -50,8 +50,11 @@
                         <textarea name="content" class="form-control" id="content_report"></textarea>
                         <input type="text" name="id_recruitments" value="{{data.idDocRecruitment}}"
                             style="display: none;">
-                        <button type="submit" id="approved_modal_report">Duyệt</button>
-                        <button type="submit" id="denied_modal_report">Từ chối duyệt</button>
+                             <div class="modal-footer">
+                          <button type="submit" id="approved_modal_report" class="btn btn-primary" >Duyệt</button>
+                        <button type="submit" id="denied_modal_report"  class="btn btn-secondary" >Từ chối duyệt</button>
+                    </div>
+             
 
                         <input type="hidden" id="id_report_hidden" name="id_report" value="">
                         <input type="hidden" id="status_report_hidden" name="status_report" value="">

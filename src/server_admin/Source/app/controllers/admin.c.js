@@ -43,7 +43,9 @@ class Admin {
 
     res.render("content_admin/list_news", {
       layout: "main_admin_login",
-      list,
+      data: {
+        list_news: JSON.stringify(list),
+      },
       length,
     });
   }
@@ -53,7 +55,9 @@ class Admin {
 
     res.render("content_admin/list_news", {
       layout: "main_admin_login",
-      list,
+      data: {
+        list_news: JSON.stringify(list),
+      },
       length,
     });
   }
@@ -63,7 +67,9 @@ class Admin {
 
     res.render("content_admin/list_news", {
       layout: "main_admin_login",
-      list,
+      data: {
+        list_news: JSON.stringify(list),
+      },
       length,
     });
   }
@@ -72,7 +78,9 @@ class Admin {
     var length = list.length;
     res.render("content_admin/list_news", {
       layout: "main_admin_login",
-      list,
+      data: {
+        list_news: JSON.stringify(list),
+      },
       length,
     });
   }
@@ -104,21 +112,28 @@ class Admin {
     var list = await adminModel.getListAccount("approved");
     res.render("content_admin/list_account", {
       layout: "main_admin_login",
-      list,
+      data: {
+        list_account: JSON.stringify(list),
+      },
     });
   }
   async list_account_pending(req, res, next) {
     var list = await adminModel.getListAccount("pending");
     res.render("content_admin/list_account", {
       layout: "main_admin_login",
-      list,
+      
+      data: {
+        list_account: JSON.stringify(list),
+      },
     });
   }
   async list_account_locked(req, res, next) {
     var list = await adminModel.getListAccount("locked");
     res.render("content_admin/list_account", {
       layout: "main_admin_login",
-      list,
+      data: {
+        list_account: JSON.stringify(list),
+      },
     });
   }
   async detail_account(req, res, next) {
@@ -237,6 +252,7 @@ class Admin {
       _list_reports[i].reporter_name = _info_reporter.name;
 
       // get title of reported recruitment
+      console.log(_list_reports[i].id_reported);
       const _info_reported = await adminModel.detail_news(_list_reports[i].id_reported);
       _list_reports[i].reported_title = _info_reported.title;
     }

@@ -94,6 +94,7 @@ module.exports = {
       stt++;
       user.typeAccount = "Nhà tuyển dụng";
       user.type = "employer";
+      user.creation_date = new Date(user.creation_date.toDate().toDateString()).toLocaleString("VN");
       user.stt = stt;
       user.doc = doc.id;
       list.push(user);
@@ -152,6 +153,7 @@ module.exports = {
 
     const recruitment = await recruitmentCollection.doc(id).get();
     var rect = recruitment.data();
+    console.log(rect);
     var state = "";
     if (rect.status == "approved") {
       state = "Đã duyệt";

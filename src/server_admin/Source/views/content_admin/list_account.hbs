@@ -7,36 +7,71 @@
             <th>Ngày tạo</th>
             <th>Loại người dùng</th>
         </tr>
-        {{#each list}}
-        <tr onclick="window.location.href='http://localhost:3035/admin/manage_account/detail_account?id={{this.doc}}&&type={{this.type}}'">
+        {{!-- {{#each list}}
+        <tr
+            onclick="window.location.href='http://localhost:3035/admin/manage_account/detail_account?id={{this.doc}}&&type={{this.type}}'">
             <td>{{this.stt}}</td>
             <td>{{this.name}}</td>
             <td>{{this.email}}</td>
             <td>{{this.creation_date}}</td>
             <td>{{this.typeAccount}}</td>
         </tr>
-        {{/each}}
-       
+        {{/each}} --}}
+
 
     </table>
     <nav aria-label="Page navigation example" id="nav_page_home_manage_recruit">
         <ul class="pagination">
-            <li class="page-item">
-                <a class="page-link" href="#" aria-label="Previous">
-                    <span aria-hidden="true">&laquo;</span>
-                    <span class="sr-only">Previous</span>
-                </a>
-            </li>
-            <li class="page-item"><a class="page-link" href="#">1</a></li>
+            {{!-- <li class="page-item"><a class="page-link" href="#">1</a></li>
             <li class="page-item"><a class="page-link" href="#">2</a></li>
-            <li class="page-item"><a class="page-link" href="#">3</a></li>
-            <li class="page-item">
-                <a class="page-link" href="#" aria-label="Next">
-                    <span aria-hidden="true">&raquo;</span>
-                    <span class="sr-only">Next</span>
-                </a>
-            </li>
+            <li class="page-item"><a class="page-link" href="#">3</a></li> --}}
         </ul>
     </nav>
 
 </div>
+<script>
+    const list_account = {{{ data.list_account }}}
+    var numbers = [];
+    if (list_account.length % 8 == 0) {
+        for (let i = 1; i <= list_account.length / 8; i++) {
+            numbers.push(i);
+        }
+    } else {
+        for (let i = 1; i <= list_account.length / 8 + 1; i++) {
+            numbers.push(i);
+        }
+    }
+
+    for (let i = 0; i < numbers.length; i++) {
+
+        $(".pagination").append(`
+             <li class="page-item"><a class="page-link" onclick="page(this.id)" id="${numbers[i]}">${numbers[i]}</a></li>
+        `)
+    }
+    window.onload = page(1);
+
+    function page(page) {
+        var tr = $(".row_body");
+        for (i = 0; i < tr.length; i++) {
+            tr[i].remove();
+        }
+        page = parseInt(page);
+        var _list_account = list_account.slice(8 * (page - 1), 8 * (page - 1) + 8);
+        for (let i = 0; i < _list_account.length; i++) {
+
+            $("#table_mamage_recruit").append(`
+            <tr class="row_body" onclick="window.location.href='http://localhost:3035/admin/manage_account/detail_account?id=${_list_account[i].doc}&&type=${_list_account[i].type}'">
+                <td ">${_list_account[i].stt}</td>
+                <td ">${_list_account[i].name}</td>
+                <td  ">${_list_account[i].email}</td>
+                <td  ">${_list_account[i].creation_date}</td>
+                <td ">${_list_account[i].typeAccount}</td>
+            </tr>
+        `)
+        }
+    }
+
+
+
+
+</script>
