@@ -1,6 +1,6 @@
 <div class="side_left_home_recruit">
     <a id="menu_news_home_recruit" href="/employer" class="menu_item is_selected">Bảng tin
-        <img src="/css/style/image/ic_news.svg" id="ic_news_home_recruit" alt="ic_news_home_recruit">
+        <img src="/css/style/image/ic_news.svg" id="ic_news_home_recruit" alt="ic_news_home_recruit" class="non_filter">
     </a>
     <a id="menu_manage_recruit_home_recruit" href="/employer/manage_recruitments" class="menu_item">Quản lý tin tuyển
         dụng
@@ -18,5 +18,13 @@
 <style>
     .is_selected {
         color: #00B4D8 !important;
+    }
+
+    .on_filter {
+        filter: invert(52%) sepia(32%) saturate(3800%) hue-rotate(154deg) brightness(98%) contrast(102%) !important;
+    }
+
+    .non_filter {
+        filter: invert(16%) sepia(12%) saturate(0%) hue-rotate(130deg) brightness(107%) contrast(84%);
     }
 </style>

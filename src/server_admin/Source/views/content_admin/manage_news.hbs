@@ -1,23 +1,30 @@
 <div id="content_home_admin">
-                <a id="rectangle_news_posted" href="/admin/manage_news/list_news_approved">
-                    <div id="quantity_news_approved">{{numberNews.numberApproved}}</div>
-                    <div id="text_news_approved">Tin tuyển dụng đã duyệt</div>
-                    <img src="/css/style/image/ic_megaphone.svg" id="ic_megaphone_home_recruit" alt="ic_megaphone_home_recruit">
-                </a>
-                <a id="rectangle_candidate_received" href="/admin/manage_news/list_news_pending">
-                    <div id="quantity_news_unapproved">{{numberNews.numberPending}}</div>
-                    <div id="text_news_unapproved">Tin tuyển dụng chờ duyệt</div>
-                    <img src="/css/style/image/ic_candidate_recieve.svg" id="ic_receive_home_recruit" alt="ic_receive_home_recruit">
-                </a>
-                <a id="rectangle_candidate_new" href="/admin/manage_news/list_news_locked">
-                    <div id="quantity_account_banned">{{numberNews.numberLocked}}</div>
-                    <div id="text_account_banned">Tin tuyển dụng bị khóa</div>
-                    <img src="/css/style/image/ic_candidate_new.svg" id="ic_new_home_recruit" alt="ic_new_home_recruit">
-                </a>
-                <a id="rectangle_candidate_remove" href="/admin/manage_news/list_news_removed">
-                    <div id="quantity_account_unapproved">{{numberNews.numberRemove}}</div>
-                    <div id="text_account_unapproved">Tin tuyển dụng đã xóa</div>
-                    <img src="/css/style/image/ic_candidate_recieve.svg" id="ic_receive_home_recruit" alt="ic_receive_home_recruit">
-                </a>
-              
-           </div>
+    <a id="rectangle_news_posted" href="/admin/manage_news/list_news_approved">
+        <div id="quantity_news_approved">{{numberNews.numberApproved}}</div>
+        <div id="text_news_approved">Tin tuyển dụng đã duyệt</div>
+        <img src="/css/style/image/ic_megaphone.svg" id="ic_megaphone_home_recruit" alt="ic_megaphone_home_recruit">
+    </a>
+    <a id="rectangle_candidate_received" href="/admin/manage_news/list_news_pending">
+        <div id="quantity_news_unapproved">{{numberNews.numberPending}}</div>
+        <div id="text_news_unapproved">Tin tuyển dụng chờ duyệt</div>
+        <img src="/css/style/image/ic_candidate_recieve.svg" id="ic_receive_home_recruit" alt="ic_receive_home_recruit">
+    </a>
+    <a id="rectangle_candidate_new" href="/admin/manage_news/list_news_locked">
+        <div id="quantity_account_banned">{{numberNews.numberLocked}}</div>
+        <div id="text_account_banned">Tin tuyển dụng bị khóa</div>
+        <img src="/css/style/image/ic_candidate_new.svg" id="ic_new_home_recruit" alt="ic_new_home_recruit">
+    </a>
+    <a id="rectangle_candidate_remove" href="/admin/manage_news/list_news_removed">
+        <div id="quantity_account_unapproved">{{numberNews.numberRemove}}</div>
+        <div id="text_account_unapproved">Tin tuyển dụng đã xóa</div>
+        <img src="/css/style/image/ic_candidate_recieve.svg" id="ic_receive_home_recruit" alt="ic_receive_home_recruit">
+    </a>
+
+</div>
+
+<script>
+    $(".menu_item").removeClass("is_selected")
+    $("#menu_manage_news_home_admin").removeClass("non_selected").addClass("is_selected")
+    $(".on_filter").removeClass("on_filter")
+    $("#menu_manage_news_home_admin").children("#ic_manage_recruit_home_recruit").addClass("on_filter")
+</script>
