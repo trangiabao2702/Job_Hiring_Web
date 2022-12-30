@@ -4,169 +4,170 @@ const bcrypt = require("bcrypt");
 const saltRounds = 10;
 
 class AuthController {
-  // [GET] /sign_up
-  sign_up(req, res, next) {
-    res.render("contents/sign_up", {
-      layout: "main_employer_not_login",
-      message: req.flash("message"),
-      messageDanger: req.flash("messageDanger"),
-    });
-  }
-
-  // [GET] /sign_in
-  sign_in(req, res, next) {
-    res.render("contents/sign_in", {
-      layout: "main_employer_not_login",
-      message: req.flash("message"),
-      messageDanger: req.flash("messageDanger"),
-    });
-  }
-
-  // [GET] /forgot_pw
-  forgot_pw(req, res, next) {
-    res.render("contents/forgot_pw", {
-      layout: "main_employer_not_login",
-      message: req.flash("message"),
-      messageDanger: req.flash("messageDanger"),
-    });
-  }
-
-  // [GET] /account_authentication
-  account_authentication(req, res, next) {
-    res.render("contents/account_authentication", {
-      layout: "main_employer_not_login",
-    });
-  }
-
-  // [GET] /reset_password:email
-  reset_password(req, res, next) {
-    try {
-      console.log(1);
-      if (!req.params.email || !req.query.token) {
-        res.redirect('/auth/forget_password');
-      } else {
-        res.render('contents/reset_pw.hbs', {       
-          layout: "main_employer_not_login",
-          email: req.params.email, 
-          token: req.query.token });
-      }
-    } catch (error) {
-      next(error);
-    }
-
-  }
-
-  // [GET] verify
-  verify(req, res, next) {
-    bcrypt.compare(req.query.email, req.query.token, (err, result) => {
-      if (result === true) {
-        employerModel.verify(req.query.email, (err, result) => {
-          if (!err) {
-            res.render('contents/verify.hbs', { layout: false });
-          } else {
-            res.redirect('/500');
-          }
+    // [GET] /sign_up
+    sign_up(req, res, next) {
+        res.render("contents/sign_up", {
+            layout: "main_employer_not_login",
+            message: req.flash("message"),
+            messageDanger: req.flash("messageDanger"),
         });
-      } else {
-        res.redirect('/404');
-      }
-    })
-  }
-
-
-  // [GET] /authentication
-  authentication(req, res, next) {
-    res.render('contents/content_authentication.hbs',{
-      layout: "main_employer_not_login",
-    });
-
-  }
-
-  //[POST] /reset_password
-  async post_reset_password(req, res, next) {
-    try {
-
-      const { email, token, new_password } = req.body;
-      console.log(email, token, new_password);
-
-      if (!email || !token || !new_password) {
-        res.redirect('/auth/reset_password');
-      } else {
-        bcrypt.compare(email, token, (err, result) => {
-
-          if (result === true) {
-            bcrypt.hash(new_password, saltRounds).then(hashedPassword => {
-              employerModel.resetPassword(email, hashedPassword, (err, result) => {
-                if (!err) {
-                  req.flash("message", "Đổi mật khẩu thành công!");
-                  res.redirect('/auth/sign_in');
-                } else {
-                  res.redirect('/500');
-                }
-
-              });
-            })
-          } else {
-            res.redirect('/auth/reset_password');
-          }
-        })
-      }
-
-
-
-    } catch (error) {
-      next(error);
     }
-  }
 
-  //[POST] /sign_up
-  async postSignUp(req, res, next) {
-    try {
-      const name = req.body.name_company_signin_recuit;
-      const email = req.body.email_signin_recuit;
-      const password = req.body.password_signin_recruit;
-      const phone = req.body.phone_signin_recuit;
-      const province_code = req.body.select_province_signin_recruit.split("|||");
-      const district = req.body.select_district_signin_recruit;
-      const ward = req.body.select_ward_signin_recruit;
-      const street = req.body.street;
+    // [GET] /sign_in
+    sign_in(req, res, next) {
+        res.render("contents/sign_in", {
+            layout: "main_employer_not_login",
+            message: req.flash("message"),
+            messageDanger: req.flash("messageDanger"),
+        });
+    }
 
-      const salt = bcrypt.genSaltSync(saltRounds);
-      const pwHashed = bcrypt.hashSync(password, salt);
+    // [GET] /forgot_pw
+    forgot_pw(req, res, next) {
+        res.render("contents/forgot_pw", {
+            layout: "main_employer_not_login",
+            message: req.flash("message"),
+            messageDanger: req.flash("messageDanger"),
+        });
+    }
 
-      const defaultAvt = await employerModel.getAvatarFromStorage("avatarDefault.png");
+    // [GET] /account_authentication
+    account_authentication(req, res, next) {
+        res.render("contents/account_authentication", {
+            layout: "main_employer_not_login",
+        });
+    }
 
-      const _current_date = require("firebase-admin").firestore.Timestamp.fromDate(new Date());
+    // [GET] /reset_password:email
+    reset_password(req, res, next) {
+        try {
+            console.log(1);
+            if (!req.params.email || !req.query.token) {
+                res.redirect('/auth/forget_password');
+            } else {
+                res.render('contents/reset_pw.hbs', {
+                    layout: "main_employer_not_login",
+                    email: req.params.email,
+                    token: req.query.token
+                });
+            }
+        } catch (error) {
+            next(error);
+        }
 
-      const user = {
-        name: name,
-        email: email,
-        password: pwHashed,
-        avatar: defaultAvt,
-        phone: phone,
-        province: province_code[1],
-        district: district,
-        ward: ward,
-        street: street,
-        status: "pending",
-        list_recruitments: [],
-        list_reviews: [],
-        office: "",
-        rating: 0,
-        creation_date: _current_date,
-        code_province: province_code[0],
-        verify: false
-      };
+    }
 
-      const userNew = await employerModel.addEmployer(user);
+    // [GET] verify
+    verify(req, res, next) {
+        bcrypt.compare(req.query.email, req.query.token, (err, result) => {
+            if (result === true) {
+                employerModel.verify(req.query.email, (err, result) => {
+                    if (!err) {
+                        res.render('contents/verify.hbs', { layout: false });
+                    } else {
+                        res.redirect('/500');
+                    }
+                });
+            } else {
+                res.redirect('/404');
+            }
+        })
+    }
 
-      if (userNew) {
 
-        // send mail xác thực 
-        bcrypt.hash(user.email, parseInt(saltRounds)).then((hashEmail) => {
-          // console.log(`${process.env.APP_URL}/auth/verify?email=${user.email}&token=${hashEmail}`);
-          mailer.sendMail(user.email, `Email xác thực thông tin tài khoản nhà tuyển dụng ${user.name}`,
-            `
+    // [GET] /authentication
+    authentication(req, res, next) {
+        res.render('contents/content_authentication.hbs', {
+            layout: "main_employer_not_login",
+        });
+
+    }
+
+    //[POST] /reset_password
+    async post_reset_password(req, res, next) {
+        try {
+
+            const { email, token, new_password } = req.body;
+            console.log(email, token, new_password);
+
+            if (!email || !token || !new_password) {
+                res.redirect('/auth/reset_password');
+            } else {
+                bcrypt.compare(email, token, (err, result) => {
+
+                    if (result === true) {
+                        bcrypt.hash(new_password, saltRounds).then(hashedPassword => {
+                            employerModel.resetPassword(email, hashedPassword, (err, result) => {
+                                if (!err) {
+                                    req.flash("message", "Đổi mật khẩu thành công!");
+                                    res.redirect('/auth/sign_in');
+                                } else {
+                                    res.redirect('/500');
+                                }
+
+                            });
+                        })
+                    } else {
+                        res.redirect('/auth/reset_password');
+                    }
+                })
+            }
+
+
+
+        } catch (error) {
+            next(error);
+        }
+    }
+
+    //[POST] /sign_up
+    async postSignUp(req, res, next) {
+        try {
+            const name = req.body.name_company_signin_recuit;
+            const email = req.body.email_signin_recuit;
+            const password = req.body.password_signin_recruit;
+            const phone = req.body.phone_signin_recuit;
+            const province_code = req.body.select_province_signin_recruit.split("|||");
+            const district = req.body.select_district_signin_recruit;
+            const ward = req.body.select_ward_signin_recruit;
+            const street = req.body.street;
+
+            const salt = bcrypt.genSaltSync(saltRounds);
+            const pwHashed = bcrypt.hashSync(password, salt);
+
+            const defaultAvt = await employerModel.getAvatarFromStorage("avatarDefault.png");
+
+            const _current_date = require("firebase-admin").firestore.Timestamp.fromDate(new Date());
+
+            const user = {
+                name: name,
+                email: email,
+                password: pwHashed,
+                avatar: defaultAvt,
+                phone: phone,
+                province: province_code[1],
+                district: district,
+                ward: ward,
+                street: street,
+                status: "pending",
+                list_recruitments: [],
+                list_reviews: [],
+                office: "",
+                rating: 0,
+                creation_date: _current_date,
+                code_province: province_code[0],
+                verify: false
+            };
+
+            const userNew = await employerModel.addEmployer(user);
+
+            if (userNew) {
+
+                // send mail xác thực 
+                bcrypt.hash(user.email, parseInt(saltRounds)).then((hashEmail) => {
+                    // console.log(`${process.env.APP_URL}/auth/verify?email=${user.email}&token=${hashEmail}`);
+                    mailer.sendMail(user.email, `Email xác thực thông tin tài khoản nhà tuyển dụng ${user.name}`,
+                        `
                                   <!DOCTYPE HTML PUBLIC "-//W3C//DTD XHTML 1.0 Transitional //EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
               <html xmlns="http://www.w3.org/1999/xhtml" xmlns:v="urn:schemas-microsoft-com:vml" xmlns:o="urn:schemas-microsoft-com:office:office">
               <head>
@@ -517,66 +518,66 @@ class AuthController {
               </html>
 
           `)
-        })
+                })
 
-        req.flash("message", "Đăng ký thành công");
-        res.redirect("/auth/sign_in");
-      } else {
-        req.flash("messageDanger", "Tài khoản đã tồn tại");
-        res.redirect("/auth/sign_up");
-      }
-    } catch (error) {
-      next(error);
+                req.flash("message", "Đăng ký thành công");
+                res.redirect("/auth/sign_in");
+            } else {
+                req.flash("messageDanger", "Tài khoản đã tồn tại");
+                res.redirect("/auth/sign_up");
+            }
+        } catch (error) {
+            next(error);
+        }
     }
-  }
 
-  // [POST] /sign_in
-  postSignIn(req, res, next) {
-    try {
-    } catch (error) {
-      next(error);
+    // [POST] /sign_in
+    postSignIn(req, res, next) {
+        try {
+        } catch (error) {
+            next(error);
+        }
     }
-  }
 
-  // [POST] /logout
-  postLogout(req, res, next) {
-    try {
-      if (req.isAuthenticated()) {
-        req.logout((err) => {
-          if (err) {
-            return next(err);
-          }
-        });
-      }
-      res.redirect("/auth/sign_in");
-    } catch (error) {
-      next(error);
+    // [POST] /logout
+    postLogout(req, res, next) {
+        try {
+            if (req.isAuthenticated()) {
+                req.logout((err) => {
+                    if (err) {
+                        return next(err);
+                    }
+                });
+            }
+            res.redirect("/auth/sign_in");
+        } catch (error) {
+            next(error);
+        }
     }
-  }
 
-  // [POST] /porget_password
-  async post_forget_password(req, res, next) {
-    try {
-      const emailReset = req.body.email;
-      console.log(emailReset);
-      const user = await employerModel.getEmployerByEmail(emailReset);
+    // [POST] /porget_password
+    async post_forget_password(req, res, next) {
+        try {
+            const emailReset = req.body.email;
+            console.log(emailReset);
+            const user = await employerModel.getEmployerByEmail(emailReset);
 
 
-      if (!user) {
-        // không tồn tại user trên db
-        req.flash('messageDanger', 'Tài khoản không tồn tại trên JORE!');
-        res.redirect('/auth/forgot_pw');
-      } else if (!user.verify) {
-        req.flash('messageDanger', 'Bạn chưa xác thực tài khoản, hãy xác thực tài khoản trong mail để tiếp tục sử dụng!');
-        res.redirect('/auth/forgot_pw');
-      } else if (user.status !== 'approved') {
-        req.flash('messageDanger', 'Tài khoản chưa được JORE xác thực!');
-        res.redirect('/auth/forgot_pw');
-      } else {
-        bcrypt.hash(user.email, parseInt(saltRounds)).then((hashEmail) => {
-          console.log(`${process.env.APP_URL}/auth/reset_password/${user.email}?token=${hashEmail}`);
-          mailer.sendMail(user.email, `Reset mật khẩu`,
-            `
+            if (!user) {
+                // không tồn tại user trên db
+                req.flash('messageDanger', 'Tài khoản không tồn tại trên JORE!');
+                res.redirect('/auth/forgot_pw');
+            } else if (!user.verify) {
+                req.flash('messageDanger', 'Bạn chưa xác thực tài khoản, hãy xác thực tài khoản trong mail để tiếp tục sử dụng!');
+                res.redirect('/auth/forgot_pw');
+            } else if (user.status !== 'approved') {
+                req.flash('messageDanger', 'Tài khoản chưa được JORE xác thực!');
+                res.redirect('/auth/forgot_pw');
+            } else {
+                bcrypt.hash(user.email, parseInt(saltRounds)).then((hashEmail) => {
+                    console.log(`${process.env.APP_URL}/auth/reset_password/${user.email}?token=${hashEmail}`);
+                    mailer.sendMail(user.email, `Reset mật khẩu`,
+                        `
                                                 <!DOCTYPE HTML
                             PUBLIC "-//W3C//DTD XHTML 1.0 Transitional //EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
                         <html xmlns="http://www.w3.org/1999/xhtml" xmlns:v="urn:schemas-microsoft-com:vml"
@@ -1074,14 +1075,78 @@ class AuthController {
                         </html>
 
                 `)
-        });
-        res.redirect('/auth/authentication');
-      }
+                });
+                res.redirect('/auth/authentication');
+            }
 
-    } catch (error) {
-      next(error);
+        } catch (error) {
+            next(error);
+        }
     }
-  }
+
+    //[GET] /change_password
+    change_password(req, res, next) {
+        try {
+            if (req.isAuthenticated()) {
+                // get information of employer
+                const _employer = req.session.passport.user;
+
+                res.render("contents/change_password", {
+                    layout: "main_employer_login",
+                    data: {
+                        user: _employer,
+                    },
+                    message: req.flash("message"),
+                    messageDanger: req.flash("messageDanger"),
+                });
+            } else {
+                res.redirect("/auth/sign_in");
+            }
+        } catch (error) {
+            next(error);
+        }
+    }
+
+    // [POST] /change_password
+    async post_change_password(req, res, next) {
+        try {
+            if (req.isAuthenticated()) {
+                // get information of employer
+                const _employer = req.session.passport.user;
+
+                // console.log(req.body);
+
+                const password = req.body.password;
+                const new_password = req.body.newPassword;
+
+                const cmp = await bcrypt.compare(password, _employer.password);
+
+                if (!cmp) {
+                    req.flash('messageDanger', "Mật khẩu nhập không đúng !");
+                    res.status(200).redirect('/auth/change_password');
+                } else {
+
+                    const salt = bcrypt.genSaltSync(saltRounds);
+                    const pwHashed = bcrypt.hashSync(new_password, salt);
+
+                    const changeP = employerModel.changePassword(_employer.id, pwHashed);
+
+                    if (changeP) {
+                        req.flash('message', "Đổi mật khẩu thành công!");
+                    } else {
+                        req.flash('messageDanger', "Đổi mật khẩu không thành công!");
+                    }
+
+                    res.redirect('/auth/change_password');
+                }
+
+            } else {
+                res.redirect("/auth/sign_in");
+            }
+        } catch (error) {
+            next(error);
+        }
+    }
 
 }
 

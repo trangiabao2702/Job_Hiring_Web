@@ -26,7 +26,6 @@ router.post("/post_edit_recruitment", employerController.post_edit_recruitment);
 router.get('/edit_profile_employer', employerController.edit_profile_employer);
 router.post('/edit_profile_employer', upload.single("file"), employerController.post_edit_profile_employer);
 
-
 router.get("/", employerController.homepage);
 
 module.exports = router;
