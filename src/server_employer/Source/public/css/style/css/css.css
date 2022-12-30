@@ -67,7 +67,7 @@ pre {
   color: #000000;
 }
 
-#blog {
+#blog_header {
   position: absolute;
   left: 39.01%;
   right: 59.32%;
@@ -88,8 +88,8 @@ pre {
 #btn_login {
   box-sizing: border-box;
   position: absolute;
-  left: 56.88%;
-  right: 36.82%;
+  left: 75%;
+  right: 18.7%;
   top: 19.44%;
   bottom: 19.44%;
 
@@ -116,8 +116,8 @@ pre {
 }
 #btn_signin {
   position: absolute;
-  left: 65.26%;
-  right: 28.44%;
+  left: 83.38%;
+  right: 10.32%;
   top: 19.44%;
   bottom: 19.44%;
   border: 0.5px solid #0096c7;
@@ -1545,7 +1545,7 @@ pre {
 #dropdown_menu_recruit {
   position: absolute;
   width: 230px;
-  height: 135px;
+  height: 180px;
   top: 50px;
   background: #ffffff;
   box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.25);
@@ -1601,6 +1601,21 @@ pre {
   color: #3d3d3d;
   padding-left: 60px;
 }
+#change_password_employer{
+  position: relative;
+  height: 37px;
+  top: 10px;
+  background: #d7e4e8;
+
+  font-family: "Poppins", sans-serif;
+  font-style: normal;
+  font-weight: 600;
+  font-size: 14px;
+  line-height: 30px;
+  /* identical to box height */
+  color: #3d3d3d;
+  padding-left: 60px;
+}
 
 #ic_application_management_candidate {
   position: absolute;
@@ -1642,7 +1657,7 @@ pre {
 #logout_recruit {
   position: relative;
   height: 37px;
-  top: 10px;
+  top:15px;
   background: #d7e4e8;
 
   font-family: "Poppins", sans-serif;
