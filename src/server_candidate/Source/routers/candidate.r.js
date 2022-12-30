@@ -11,13 +11,15 @@ router.get("/detail_cv", CandidaterController.detail_cv);
 router.get("/profile_employer", CandidaterController.profile_employer);
 router.get("/view_rating", CandidaterController.view_rating);
 router.get("/profile", CandidaterController.profile);
-
+router.get('/edit_profile_candidate', CandidaterController.edit_profile_candidate);
 
 // post
 router.post("/search_job", CandidaterController.postSearchJob);
 router.post("/detail_job/upload_cv", upload.single("file"), CandidaterController.uploadCV);
 router.post("/evaluate_employer", CandidaterController.evaluate_employer);
 router.post("/report_recruitment", CandidaterController.report_recruitment);
+router.post('/edit_profile_candidate', upload.single("file"), CandidaterController.post_edit_profile_candidate);
+
 router.get("/", CandidaterController.home);
 
 

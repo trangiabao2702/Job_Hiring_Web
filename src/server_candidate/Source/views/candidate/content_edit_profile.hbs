@@ -1,0 +1,256 @@
+<div class="container-xl mt-4" style="margin-left: 360px; margin-right: 300px;">
+
+    <div class="card mb-4">
+        <div class="card-header" style="font-size: 1.4rem;">Cập nhật thông tin ứng viên</div>
+        <div class="card-body">
+            <form method="post" action="/candidate/edit_profile_candidate" enctype="multipart/form-data">
+                {{#if message}}
+                <div class="alert alert-success mt-2">
+                    {{message}}
+                </div>
+                {{/if}}
+
+                {{#if messageDanger}}
+                <div class="alert alert-danger mt-2">
+                    {{messageDanger}}
+                </div>
+                {{/if}}
+                <div class="mb-3">
+                    {{!-- <label class="small mb-1" for="inputLogo">Logo</label> --}}
+                    {{!-- <input id="inputLogo" type="file" value="logo" name="file" required> --}}
+                    {{!-- <img src="{{data.user.avatar}}" alt="Avatar cong ty" width="100px"> --}}
+                    <div class="image-area w-25"><img id="imageResult" width="100px" src="{{data.user.avatar}}" alt=""
+                            class="img-fluid rounded shadow-sm mx-auto d-block"></div>
+                    <input id="upload" type="file" onchange="readURL(this);" name="file" class="form-control border-0">
+                    <label for="upload" class="btn btn-light m-0 rounded-pill px-4" style="cursor: pointer;"> <i
+                            class="fa fa-cloud-upload mr-2 text-muted"></i><small
+                            class="text-uppercase font-weight-bold text-muted">Thay đổi ảnh đại diện</small></label>
+                </div>
+                <!-- name-->
+                <div class="mb-3">
+                    <label class="small mb-1" for="inputUsername">Tên của bạn</label>
+                    <input class="form-control" name="name" id="inputUsername" type="text"
+                        placeholder="Nhập tên công ty của bạn" value="{{data.user.name}}" disabled>
+                </div>
+                <!-- Form Row-->
+                <div class="row mb-3">
+
+                    {{#if data.user.verify}}
+                    <!-- Email-->
+                    <div class="col-md-6">
+                        <label class="small mb-1" for="inputEmail">Email</label>
+                        {{!-- <input class="form-control" id="inputEmail" type="text" placeholder="Nhập email của bạn"
+                            value="{{data.user.email}}" name="email" aria-describedby="basic-addon2" disabled>
+                        <span class="input-group-text" id="basic-addon2">@example.com</span> --}}
+                        <div class="input-group mb-3">
+                            <input type="text" id="inputEmail" class="form-control" placeholder="Nhập email của bạn"
+                                value="{{data.user.email}}" name="email" aria-label="Recipient's username"
+                                aria-describedby="basic-addon2" disabled>
+                            <span class="input-group-text text-primary" id="basic-addon2">Đã xác thực</span>
+                        </div>
+                    </div>
+                    {{else}}
+                    <!-- Email-->
+                    <!-- Email-->
+                    <div class="col-md-6">
+                        <label class="small mb-1" for="inputEmail">Email</label>
+                        {{!-- <input class="form-control" id="inputEmail" type="text" placeholder="Nhập email của bạn"
+                            value="{{data.user.email}}" name="email" aria-describedby="basic-addon2" disabled>
+                        <span class="input-group-text" id="basic-addon2">@example.com</span> --}}
+                        <div class="input-group mb-3">
+                            <input type="text" id="inputEmail" class="form-control" placeholder="Nhập email của bạn"
+                                value="{{data.user.email}}" name="email" aria-label="Recipient's username"
+                                aria-describedby="basic-addon2" disabled>
+                            <span class="input-group-text text-disable text-danger" id="basic-addon2">Chưa xác
+                                thực</span>
+                        </div>
+                    </div>
+                    {{/if}}
+                    <!-- Số điện thoại-->
+                    <div class="col-md-6">
+                        <label class="small mb-1" for="inputPhone">Số điện thoại</label>
+                        <input class="form-control" id="inputPhone" type="tel" placeholder="Nhấp số điện thoại của bạn"
+                            value="{{data.user.phone}}" name="phone">
+                    </div>
+                </div>
+                <!-- Form Row        -->
+                <div class="row gx-3 mb-3">
+                    <div class="col-md-6">
+                        <label class="small mb-1" for="date_of_birth">Ngày sinh</label>
+                        <input class="form-control" id="date_of_birth" name="date_of_birth" type="date"
+                            placeholder="Chọn ngày sinh của bạn" value="{{data.user.date_of_birth}}">
+                    </div>
+                    <div class="col-md-6">
+                        <label class="small mb-1" for="gender">Giới tính</label>
+                        <select name="gender" id="gender" class="form-control px-3 py-0"
+                            aria-label="Default select example">
+                            <option value="" selected disabled hidden>Chọn giới tính</option>
+                            <option value="Nam">Nam</option>
+                            <option value="Nữ">Nữ</option>
+                            <option value="Khác">Khác</option>
+                        </select>
+                    </div>
+                </div>
+
+                <!-- name-->
+                <div class="mb-3">
+                    <label class="small mb-1" for="address">Địa chỉ</label>
+                    <textarea class="form-control" name="address" id="address" type="text"
+                        placeholder="Nhập địa chỉ của bạn">{{data.user.address}}</textarea>
+                </div>
+                <!-- Save changes button-->
+                <button class="btn btn-primary" type="submit">Lưu</button>
+            </form>
+        </div>
+    </div>
+    {{!-- <div class="row">
+    </div> --}}
+</div>
+
+<style>
+    .img-account-profile {
+        height: 10rem;
+    }
+
+    .rounded-circle {
+        border-radius: 50% !important;
+    }
+
+    .card .card-header {
+        font-weight: 500;
+    }
+
+    .card-header:first-child {
+        border-radius: 0.35rem 0.35rem 0 0;
+    }
+
+    .card-header {
+        padding: 1rem 1.35rem;
+        margin-bottom: 0;
+        background-color: rgba(33, 40, 50, 0.03);
+        border-bottom: 1px solid rgba(33, 40, 50, 0.125);
+    }
+
+    .form-control,
+    .dataTable-input {
+        display: block;
+        width: 100%;
+        padding: 0.875rem 1.125rem;
+        font-size: 1.2rem;
+        font-weight: 400;
+        line-height: 1;
+        color: #69707a;
+        background-color: #fff;
+        background-clip: padding-box;
+        border: 1px solid #c5ccd6;
+        -webkit-appearance: none;
+        -moz-appearance: none;
+        appearance: none;
+        border-radius: 0.35rem;
+        transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+    }
+
+    .nav-borders .nav-link.active {
+        color: #0061f2;
+        border-bottom-color: #0061f2;
+    }
+
+    .nav-borders .nav-link {
+        color: #69707a;
+        border-bottom-width: 0.125rem;
+        border-bottom-style: solid;
+        border-bottom-color: transparent;
+        padding-top: 0.5rem;
+        padding-bottom: 0.5rem;
+        padding-left: 0;
+        padding-right: 0;
+        margin-left: 1rem;
+        margin-right: 1rem;
+    }
+
+    #upload {
+        opacity: 0;
+    }
+
+    #upload-label {
+        position: absolute;
+        top: 50%;
+        left: 1rem;
+        transform: translateY(-50%);
+    }
+
+    .image-area {
+        border: 2px dashed rgba(53, 48, 48, 0.7);
+        padding: 1rem;
+        position: relative;
+    }
+
+    .image-area::before {
+        content: 'Uploaded image result';
+        color: #fff;
+        font-weight: bold;
+        text-transform: uppercase;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        font-size: 1.2rem;
+        z-index: 1;
+    }
+
+    .image-area img {
+        z-index: 2;
+        position: relative;
+    }
+
+    body {
+        min-height: 100vh;
+        background-color: #757f9a;
+        background-image: linear-gradient(147deg, #757f9a 0%, #d7dde8 100%);
+    }
+</style>
+
+<script>
+
+    /*  ==========================================
+        SHOW UPLOADED IMAGE
+    * ========================================== */
+    function readURL(input) {
+        if (input.files && input.files[0]) {
+            var reader = new FileReader();
+
+            reader.onload = function (e) {
+                $('#imageResult')
+                    .attr('src', e.target.result);
+            };
+            reader.readAsDataURL(input.files[0]);
+        }
+    }
+
+    $(function () {
+        $('#upload').on('change', function () {
+            readURL(input);
+        });
+    });
+
+    /*  ==========================================
+        SHOW UPLOADED IMAGE NAME
+    * ========================================== */
+    var input = document.getElementById('upload');
+    var infoArea = document.getElementById('upload-label');
+
+    input.addEventListener('change', showFileName);
+    function showFileName(event) {
+        var input = event.srcElement;
+        var fileName = input.files[0].name;
+        infoArea.textContent = 'File name: ' + fileName;
+    }
+
+
+    $(function () {
+        $('#txtDate').datepicker({
+            format: "dd/mm/yyyy"
+        });
+    });
+
+</script>

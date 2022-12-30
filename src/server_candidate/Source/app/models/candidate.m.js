@@ -35,6 +35,7 @@ module.exports = {
     var user = null;
     snapshot.forEach((doc) => {
       user = doc.data();
+      user.id = doc.id;
     });
 
     return user;
@@ -286,30 +287,52 @@ module.exports = {
 
     return 1;
   },
-  profile: async id =>{
-    const collection_candidate=await db.collection("candidates");
-    const profile=await collection_candidate.doc(id).get();
-    var rs= profile.data();
-    if(rs.address=="")
-    {
-      rs.address="Chưa có";
+  profile: async id => {
+    const collection_candidate = await db.collection("candidates");
+    const profile = await collection_candidate.doc(id).get();
+    var rs = profile.data();
+    if (rs.address == "") {
+      rs.address = "Chưa có";
     }
-    if(rs.phone=="")
-    {
-      rs.phone="Chưa có";
+    if (rs.phone == "") {
+      rs.phone = "Chưa có";
     }
-    if(rs.gender=="")
-    {
-      rs.gender="Chưa có";
+    if (rs.gender == "") {
+      rs.gender = "Chưa có";
     }
-    if(rs.date_of_birth==null)
-    {
-      rs.date_of_birth="Chưa có";
+    if (rs.date_of_birth == null) {
+      rs.date_of_birth = "Chưa có";
     }
-    else{
-      rs.date_of_birth=new Date(rs.date_of_birth.toDate().toDateString()).toLocaleString("VN");
+    else {
+      rs.date_of_birth = new Date(rs.date_of_birth.toDate().toDateString()).toLocaleString("VN");
     }
-    
+
+    return rs;
+  },
+  async updateInfoCandidate(id_candidate, candidate, fileAvatar) {
+    var signedURLArray = null;
+    if (fileAvatar) {
+      const fileName = 'candidate_' + id_candidate + path.extname(fileAvatar.originalname);
+      // await storage.bucket().file(`avatars/${fileName}`).delete();
+      await storage.bucket().file(`avatars/${fileName}`).createWriteStream().end(fileAvatar.buffer);
+
+      const file = storage.bucket().file(`avatars/${fileName}`);
+      const signedURLconfig = { action: "read", expires: "01-01-2030" };
+      signedURLArray = await file.getSignedUrl(signedURLconfig);
+    }
+    // console.log(signedURLArray);
+    const doc = db.collection("candidates").doc(id_candidate);
+    // console.log(doc, fileAvatar, signedURLArray);
+
+    // console.log(candidate);
+    const rs = doc.update({
+      avatar: signedURLArray ? signedURLArray[0] : (await doc.get()).data().avatar,
+      phone: candidate.phone,
+      date_of_birth: new Date(candidate.date_of_birth),
+      gender: candidate.gender,
+      address: candidate.address,
+    });
+
     return rs;
   }
 };
