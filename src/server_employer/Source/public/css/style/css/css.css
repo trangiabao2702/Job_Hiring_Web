@@ -263,7 +263,7 @@ pre {
 .footer {
   position: relative;
   width: 1920px;
-  height: 339px;
+  height: 250px;
   top: 0px;
   background: #221f20;
 }
@@ -280,7 +280,7 @@ pre {
   position: absolute;
   left: 12.71%;
   right: 70.59%;
-  top: 30.85%;
+  top: 36.85%;
   bottom: 16.52%;
 
   font-family: "Poppins", sans-serif;
@@ -1502,6 +1502,7 @@ pre {
   height: 50px;
   left: 0px;
   top: 0px;
+  line-height: 40px;
   padding-left: 65px;
   background: #88c2db;
   border: none;
@@ -5408,4 +5409,112 @@ tr:nth-child(odd) {
 
   left: 160px;
   top: 150px;
+}
+#about_us{
+  position: absolute;
+left: 55.99%;
+right: 30.33%;
+top: 11.21%;
+bottom: 78.17%;
+
+font-family: 'Poppins', sans-serif;
+font-style: normal;
+font-weight: 700;
+font-size: 24px;
+line-height: 36px;
+/* identical to box height */
+
+
+color: #FFFFFF;
+
+}
+#leadership_team{
+  position: absolute;
+  left: 55.99%;
+  right: 30.94%;
+  top: 28%;
+  bottom: 50.15%;
+  
+  font-family: 'Poppins', sans-serif;
+  font-style: normal;
+  font-weight: 700;
+  font-size: 18px;
+  line-height: 27px;
+  /* identical to box height */
+  
+  
+  color: #BBBCC0;
+}
+#blog{
+  position: absolute;
+  left: 55.99%;
+  right: 30.94%;
+  top: 39%;
+  bottom: 50.15%;
+  
+  font-family: 'Poppins', sans-serif;
+  font-style: normal;
+  font-weight: 700;
+  font-size: 18px;
+  line-height: 27px;
+  /* identical to box height */
+  
+  
+  color: #BBBCC0;
+}
+#terms_of_use{
+  position: absolute;
+  left: 55.99%;
+  right: 30.94%;
+  top: 50%;
+  bottom: 50.15%;
+  
+  font-family: 'Poppins', sans-serif;
+  font-style: normal;
+  font-weight: 700;
+  font-size: 18px;
+  line-height: 27px;
+  /* identical to box height */
+  
+  
+  color: #BBBCC0;
+}
+#facebook{
+  position: absolute;
+  left: 70.99%;
+  top: 12%;
+}
+#text_version_footer {
+  position: absolute;
+  left: 70.99%;
+  right: 10%;
+  top: 39%;
+  bottom: 50.15%;
+  
+  font-family: 'Poppins', sans-serif;
+  font-style: normal;
+  font-weight: 700;
+  font-size: 18px;
+  line-height: 27px;
+  /* identical to box height */
+  
+  
+  color: #9fa0a3;
+}
+#contact_footer{
+  position: absolute;
+  left: 70.99%;
+  right: 10%;
+  top: 26%;
+  bottom: 50.15%;
+  
+  font-family: 'Poppins', sans-serif;
+  font-style: normal;
+  font-weight: 700;
+  font-size: 18px;
+  line-height: 27px;
+  /* identical to box height */
+  
+  
+  color: #BBBCC0;
 }
