@@ -1,5 +1,5 @@
 <div id="content_home_admin">
-    <div id="text_recruitment_efficiency">Số lượng tin tuyển dụng: {{length}}</div>
+    <div id="text_recruitment_efficiency">Số lượng báo cáo tin tuyển dụng: {{length}}</div>
     <table id="table_mamage_recruit" style="table-layout:fixed; width: 1333px;" rules="rows">
         <tr class="title_table_recruit">
             <th style="width: 5%;">
@@ -17,21 +17,11 @@
 
     <nav aria-label="Page navigation example" id="nav_page_home_manage_recruit">
         <ul class="pagination">
-            <li class="page-item">
-                <a class="page-link" href="#" aria-label="Previous">
-                    <span aria-hidden="true">&laquo;</span>
-                    <span class="sr-only">Previous</span>
-                </a>
-            </li>
+{{!--             
             <li class="page-item"><a class="page-link" href="#">1</a></li>
             <li class="page-item"><a class="page-link" href="#">2</a></li>
-            <li class="page-item"><a class="page-link" href="#">3</a></li>
-            <li class="page-item">
-                <a class="page-link" href="#" aria-label="Next">
-                    <span aria-hidden="true">&raquo;</span>
-                    <span class="sr-only">Next</span>
-                </a>
-            </li>
+            <li class="page-item"><a class="page-link" href="#">3</a></li> --}}
+    
         </ul>
     </nav>
 
@@ -68,9 +58,48 @@
 
 <script>
     const _list_reports = {{{ data.list_reports }}}
+  var numbers = [];
+    if (_list_reports.length % 8 == 0) {
+        for (let i = 1; i <= _list_reports.length / 8; i++) {
+            numbers.push(i);
+        }
+    } else {
+        for (let i = 1; i <= _list_reports.length / 8 + 1; i++) {
+            numbers.push(i);
+        }
+    }
+    if (numbers.length > 1) {
 
-    for (let i = 0; i < _list_reports.length; i++) {
-        let _status = "Chưa được xử lý"
+        for (let i = 0; i < numbers.length; i++) {
+
+            $(".pagination").append(`
+             <li class="page-item ${numbers[i]}"  ><a class="page-link" onclick="page(this.id)" id="${numbers[i]}">${numbers[i]}</a></li>
+        `)
+        }
+    }
+
+     window.onload = page(1);
+
+    function page(page) {
+        for (let i = 0; i < numbers.length; i++) {
+            if (numbers[i] == page) {
+                $('.' + page).addClass('active');
+
+            }
+            else {
+                $('.' + numbers[i]).removeClass('active');
+
+            }
+        }
+        var tr = $(".row_report");
+        for (i = 0; i < tr.length; i++) {
+            tr[i].remove();
+        }
+        page = parseInt(page);
+        var listReport = _list_reports.slice(8 * (page - 1), 8 * (page - 1) + 8);
+        for (let i = 0; i < listReport.length; i++) {
+
+           let _status = "Chưa được xử lý"
         if (_list_reports[i].status == "approved") {
             _status = "Đã duyệt"
         } else if (_list_reports[i].status == "denied") {
@@ -89,7 +118,10 @@
         $("#content_home_admin").append(`
             <button type="button" id="btn_modal_${_list_reports[i].id_report}" data-bs-toggle="modal" data-bs-target="#modal_report_recruitment" hidden></button>
         `)
+        }
+
     }
+
 
     $(".row_report").click(function () {
         const _id_report_index = $(this).attr("id").split("|||index:")

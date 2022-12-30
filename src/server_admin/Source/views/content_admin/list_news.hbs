@@ -17,17 +17,17 @@
             <td>{{this.numberCV}}</td>
         </tr>
         {{/each}}
-       --}}
+        --}}
 
 
     </table>
     <nav aria-label="Page navigation example" id="nav_page_home_manage_recruit">
         <ul class="pagination">
-       
+
             {{!-- <li class="page-item"><a class="page-link" href="#">1</a></li>
             <li class="page-item"><a class="page-link" href="#">2</a></li>
             <li class="page-item"><a class="page-link" href="#">3</a></li>
-      --}}
+            --}}
         </ul>
     </nav>
 
@@ -44,16 +44,27 @@
             numbers.push(i);
         }
     }
+    if (numbers.length > 1) {
+        for (let i = 0; i < numbers.length; i++) {
 
-    for (let i = 0; i < numbers.length; i++) {
-
-        $(".pagination").append(`
-             <li class="page-item"><a class="page-link" onclick="page(this.id)" id="${numbers[i]}">${numbers[i]}</a></li>
+            $(".pagination").append(`
+             <li class="page-item ${numbers[i]}"><a class="page-link" onclick="page(this.id)" id="${numbers[i]}">${numbers[i]}</a></li>
         `)
+        }
     }
     window.onload = page(1);
 
     function page(page) {
+         for (let i = 0; i < numbers.length; i++) {
+            if (numbers[i] == page) {
+                $('.' + page).addClass('active');
+
+            }
+            else {
+                $('.' + numbers[i]).removeClass('active');
+
+            }
+        }
         var tr = $(".row_body");
         for (i = 0; i < tr.length; i++) {
             tr[i].remove();

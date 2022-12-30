@@ -256,12 +256,13 @@ class Admin {
       const _info_reported = await adminModel.detail_news(_list_reports[i].id_reported);
       _list_reports[i].reported_title = _info_reported.title;
     }
-
+    var length=_list_reports.length;
     res.render("content_admin/list_reports", {
       layout: "main_admin_login",
       data: {
         list_reports: JSON.stringify(_list_reports),
       },
+      length
     });
   }
 
