@@ -64,9 +64,12 @@ module.exports = {
     const rs = recruitmentCollection.add(recruitment);
     return rs;
   },
-  removeRecruitment: async (recruitment) => {
-    const recruitmentDoc = db.collection("recruitments").doc(recruitment);
-    const rs = recruitmentDoc.delete();
+  removeRecruitment: async (id_recruitment) => {
+    const recruitmentDoc = db.collection("recruitments").doc(id_recruitment);
+    //const rs = recruitmentDoc.delete();
+    const rs = await recruitmentDoc.update({
+      status: "deleted",
+    });
     return recruitmentDoc.id;
   },
   updateRecruitment: async (new_info) => {
@@ -156,7 +159,6 @@ module.exports = {
     result(null, { email: email });
   },
   async updateInfoEmployer(id_employer, employer, fileAvatar) {
-
     var signedURLArray = null;
     if (fileAvatar) {
       const fileName = id_employer + path.extname(fileAvatar.originalname);
@@ -175,7 +177,7 @@ module.exports = {
       name: employer.name,
       phone: employer.phone,
       street: employer.street,
-      description: employer.description
+      description: employer.description,
     });
 
     return rs;
@@ -184,9 +186,9 @@ module.exports = {
     const doc = db.collection("employers").doc(id_employer);
     // console.log(doc, fileAvatar, signedURLArray);
     const rs = doc.update({
-      password: newPassword
+      password: newPassword,
     });
 
     return rs;
-  }
+  },
 };
