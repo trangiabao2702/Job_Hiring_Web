@@ -2117,7 +2117,7 @@ color:white;
     word-wrap: break-word;
     max-height: 25px;
     padding: 0 10px;
-    left: 260px;
+    left: 290px;
     top: 119px;
 
     text-align: center;
@@ -2134,7 +2134,7 @@ overflow: hidden;
 
 .experience_company_home_candidate {
     position: absolute;
-    width: 90px;
+    width: 120px;
     height: 25px;
     left: 152px;
     top: 119px;
@@ -5992,27 +5992,37 @@ color: #00B4D8;
     position: absolute;
     top: 60px;
     left: 15px;
+    width: 20px;
+    height: 20px;
   }
   #evaluate_candidate_star2 {
     position: absolute;
     top: 60px;
     left: 40px;
+    width: 20px;
+    height: 20px;
   }
   #evaluate_candidate_star3 {
     position: absolute;
     top: 60px;
+    width: 20px;
+    height: 20px;
     left: 65px;
   }
   
   #evaluate_candidate_star4 {
     position: absolute;
     top: 60px;
+    width: 20px;
+    height: 20px;
     left: 90px;
   }
   
   #evaluate_candidate_star5 {
     position: absolute;
     top: 60px;
+    width: 20px;
+    height: 20px;
     left: 115px;
   }
   

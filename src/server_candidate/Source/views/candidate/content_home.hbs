@@ -1,13 +1,55 @@
+<div class="rectangle_mid_1_candidate">
+  <input type="search" name="search" id="search_job_candidate" placeholder="Tên công việc">
+  <img src="/css/style/image/ic_search.svg" alt="ic_search_job_candidate" id="ic_search_job_candidate">
+  <select name="select_province" id="select_province_candidate">
+    <option selected value="Tất cả,0" class="op_select_province">Tỉnh/Thành phố</option>
+  </select>
+  <img src="/css/style/image/ic_select_province.svg" alt="ic_select_province_candidate"
+    id="ic_select_province_candidate">
+  <select name="select_method_work" id="select_method_work_candidate">
+    <option value="Full Time" class="op_select_method_work">Full Time</option>
+    <option value="Part Time" class="op_select_method_work">Part Time</option>
+    <option value="Remote" class="op_select_method_work">Remote</option>
+    <option value="all" class="op_select_method_work" selected>Hình thức làm việc</option>
+  </select>
+  <img src="/css/style/image/arrow_down.svg" alt="arrow_down" id="arrow_down_medthod_work">
+
+
+
+  <select name="select_experience" id="select_experience_candidate">
+    <option value="0" class="op_select_experience_work">Chưa có</option>
+    <option value="1" class="op_select_experience_work">1 năm</option>
+    <option value="2" class="op_select_experience_work">2 năm</option>
+    <option value="3" class="op_select_experience_work">3 năm</option>
+    <option value="4" class="op_select_experience_work">Hơn 3 năm</option>
+    <option value="100" class="op_select_experience_work" selected>Kinh nghiệm</option>
+  </select>
+  <img src="/css/style/image/arrow_down.svg" alt="arrow_down" id="arrow_down_experience_work">
+  <select name="select_salary" id="select_salary_candidate">
+    <option value="5" class="op_select_salary_work">&#8805; 5 triệu</option>
+    <option value="10" class="op_select_salary_work">&#8805; 10 triệu</option>
+    <option value="15" class="op_select_salary_work">&#8805; 15 triệu</option>
+    <option value="20" class="op_select_salary_work">&#8805; 20 triệu</option>
+    <option value="0" class="op_select_salary_work">Tất cả</option>
+    <option value="0" class="op_select_salary_work" selected>Mức lương</option>
+  </select>
+  <img src="/css/style/image/arrow_down.svg" alt="arrow_down" id="arrow_down_salary_work">
+  <button id="btn_search_candidate" onclick="search()">Tìm kiếm</button>
+</div>
 <div class="rectangle_mid_2_candidate">
   <div class="rectangle_content_job_search">
-    {{#if topJob}}
-       <div id="text_number_job_searched">Top công việc được quan tâm nhất</div>
+    <div id="text_number_job_searched" class="text_top_job">Top công việc được quan tâm nhất</div>
+    <div id="text_number_job_searched" class="text_search_job">Tìm thấy <div id="number_job_searched"></div> công việc phù hợp với yêu
+      cầu
+      của bạn.</div>
+
     <div class="d-flex flex-wrap card_company_searched_candidate">
-      {{#each topJob}}
+      {{!-- {{#each listjob}}
       <div class="item_company_candidate p-2 m-2">
         <img src="{{this.avatarEmployer}}" alt="logo" class="logo_company_home_candidate">
         <a class="title_recuit_company_home_candidate" href="/candidate/detail_job/{{this.doc}}">{{this.title}}</a>
-        <a class="name_company_home_candidate" href="http://localhost:3032/candidate/profile_employer?id={{this.belong_employer}}">{{this.nameEmployer}}</a>
+        <a class="name_company_home_candidate"
+          href="http://localhost:3032/candidate/profile_employer?id={{this.belong_employer}}">{{this.nameEmployer}}</a>
         <div class="wage_copany_home_candidate">{{this.min_salary}}-{{this.max_salary}} triệu</div>
         <div class="address_company_home_candidate">{{this.location}}</div>
         <div class="experience_company_home_candidate">3-5 năm</div>
@@ -16,50 +58,184 @@
 
         <img src="/css/style/image/ic_heart_empty.svg" alt="ic_heart" class="ic_heart_card_company">
       </div>
-      {{/each}}
-   
-
-    </div>
-    {{else}}
-        <div id="text_number_job_searched">Tìm thấy <div id="number_job_searched">{{length}}</div> công việc phù hợp với yêu cầu
-      của bạn.</div>
-         <div class="d-flex flex-wrap card_company_searched_candidate">
-      {{#each listjob}}
-      <div class="item_company_candidate p-2 m-2">
-        <img src="{{this.avatarEmployer}}" alt="logo" class="logo_company_home_candidate">
-        <a class="title_recuit_company_home_candidate" href="/candidate/detail_job/{{this.doc}}">{{this.title}}</a>
-        <a class="name_company_home_candidate" href="http://localhost:3032/candidate/profile_employer?id={{this.belong_employer}}">{{this.nameEmployer}}</a>
-        <div class="wage_copany_home_candidate">{{this.min_salary}}-{{this.max_salary}} triệu</div>
-        <div class="address_company_home_candidate">{{this.location}}</div>
-        <div class="experience_company_home_candidate">3-5 năm</div>
-        <img src="/css/style/image/ic_time.svg" alt="ic_time" class="ic_time_card_company">
-          <div class="time_card_company">Cập nhật gần nhất: {{this.creation_date}}</div>
-
-        <img src="/css/style/image/ic_heart_empty.svg" alt="ic_heart" class="ic_heart_card_company">
-      </div>
-      {{/each}}
-   
-
+      {{/each}} --}}
     </div>
     <nav aria-label="Page navigation example" id="nav_page_home_candidate">
       <ul class="pagination">
-        <li class="page-item">
-          <a class="page-link" href="#" aria-label="Previous">
-            <span aria-hidden="true">&laquo;</span>
-            <span class="sr-only">Previous</span>
-          </a>
-        </li>
-        <li class="page-item"><a class="page-link" href="#">1</a></li>
+
+        {{!-- <li class="page-item"><a class="page-link" href="#">1</a></li>
         <li class="page-item"><a class="page-link" href="#">2</a></li>
-        <li class="page-item"><a class="page-link" href="#">3</a></li>
-        <li class="page-item">
-          <a class="page-link" href="#" aria-label="Next">
-            <span aria-hidden="true">&raquo;</span>
-            <span class="sr-only">Next</span>
-          </a>
-        </li>
+        <li class="page-item"><a class="page-link" href="#">3</a></li> --}}
+
       </ul>
     </nav>
-     {{/if}}
   </div>
 </div>
+<script>
+
+  const urlProvice = 'https://provinces.open-api.vn/api/';
+
+  fetch(urlProvice)
+    .then((response) => {
+      return response.json();
+    })
+    .then((data) => {
+      let items = data;
+      $.each(items, function (i, item) {
+        $('#select_province_candidate').append($('<option>', {
+          value: item.name + ',' + item.code,
+          text: item.name,
+          code: item.code,
+          class: 'op_select_province'
+        }));
+      });
+    })
+    .catch(function (error) {
+      console.log(error);
+    });
+
+</script>
+<script>
+          $(".text_search_job").hide();
+
+  var _list_job = {{{ data.listjob }}};
+  var numbers = [];
+  var tr = $(".item_company_candidate");
+  for (i = 0; i < tr.length; i++) {
+    tr[i].remove();
+  }
+  for (let i = 0; i < _list_job.length; i++) {
+
+    $(".card_company_searched_candidate").append(`
+          <div class="item_company_candidate p-2 m-2">
+        <img src="${_list_job[i].avatarEmployer}" alt="logo" class="logo_company_home_candidate">
+        <a class="title_recuit_company_home_candidate" href="/candidate/detail_job/${_list_job[i].doc}">${_list_job[i].title}</a>
+        <a class="name_company_home_candidate" href="http://localhost:3032/candidate/profile_employer?id=${_list_job[i].belong_employer}">${_list_job[i].nameEmployer}</a>
+        <div class="wage_copany_home_candidate">${_list_job[i].min_salary}-${_list_job[i].max_salary} triệu</div>
+        <div class="address_company_home_candidate">${_list_job[i].location}</div>
+        <div class="experience_company_home_candidate">${_list_job[i].experience}</div>
+        <img src="/css/style/image/ic_time.svg" alt="ic_time" class="ic_time_card_company">
+          <div class="time_card_company">Cập nhật gần nhất: ${_list_job[i].creation_date}</div>
+
+        <img src="/css/style/image/ic_heart_empty.svg" alt="ic_heart" class="ic_heart_card_company">
+      </div>
+        `)
+  }
+
+  function page(page) {
+    console.log("zo")
+    for (let i = 0; i < numbers.length; i++) {
+      if (numbers[i] == page) {
+        $('.' + page).addClass('active');
+
+      }
+      else {
+        $('.' + numbers[i]).removeClass('active');
+
+      }
+    }
+    var tr = $(".item_company_candidate");
+    for (i = 0; i < tr.length; i++) {
+      tr[i].remove();
+    }
+    page = parseInt(page);
+    var list_job = _list_job.slice(6 * (page - 1), 6 * (page - 1) + 6);
+    for (let i = 0; i < list_job.length; i++) {
+
+      $(".card_company_searched_candidate").append(`
+          <div class="item_company_candidate p-2 m-2">
+        <img src="${list_job[i].avatarEmployer}" alt="logo" class="logo_company_home_candidate">
+        <a class="title_recuit_company_home_candidate" href="/candidate/detail_job/${list_job[i].doc}">${list_job[i].title}</a>
+        <a class="name_company_home_candidate" href="http://localhost:3032/candidate/profile_employer?id=${list_job[i].belong_employer}">${list_job[i].nameEmployer}</a>
+        <div class="wage_copany_home_candidate">${list_job[i].min_salary}-${list_job[i].max_salary} triệu</div>
+        <div class="address_company_home_candidate">${list_job[i].location}</div>
+        <div class="experience_company_home_candidate">${list_job[i].experience}</div>
+        <img src="/css/style/image/ic_time.svg" alt="ic_time" class="ic_time_card_company">
+          <div class="time_card_company">Cập nhật gần nhất: ${list_job[i].creation_date}</div>
+
+        <img src="/css/style/image/ic_heart_empty.svg" alt="ic_heart" class="ic_heart_card_company">
+      </div>
+        `)
+    }
+  }
+  function search() {
+    $.ajax({
+      url: '/candidate/search_job',
+      type: 'POST',
+      data: {
+        search: $("#search_job_candidate").val(),
+        select_province: $("#select_province_candidate").val(),
+        select_method_work: $("#select_method_work_candidate").val(),
+        select_experience: $("#select_experience_candidate").val(),
+        select_salary: $("#select_salary_candidate").val()
+      }
+
+    }).then(data => {
+      if (data.success) {
+        $(".text_top_job").hide();
+        $(".text_search_job").show();
+        _list_job = data.list_job;
+        $("#number_job_searched").html(_list_job.length);
+        console.log(1);
+        numbers = [];
+        if (_list_job.length % 6 == 0) {
+          for (let i = 1; i <= _list_job.length / 6; i++) {
+            numbers.push(i);
+          }
+        } else {
+          for (let i = 1; i <= _list_job.length / 6 + 1; i++) {
+            numbers.push(i);
+          }
+        }
+        if (numbers.length > 1) {
+
+          for (let i = 0; i < numbers.length; i++) {
+
+            $(".pagination").append(`
+             <li class="page-item ${numbers[i]}"  ><a class="page-link" onclick="page(this.id)" id="${numbers[i]}">${numbers[i]}</a></li>
+        `)
+          }
+        }
+        console.log("zo")
+        var page = 1;
+        for (let i = 0; i < numbers.length; i++) {
+          if (numbers[i] == page) {
+            $('.' + page).addClass('active');
+
+          }
+          else {
+            $('.' + numbers[i]).removeClass('active');
+
+          }
+        }
+        var tr = $(".item_company_candidate");
+        for (i = 0; i < tr.length; i++) {
+          tr[i].remove();
+        }
+        page = parseInt(page);
+        var list_job = _list_job.slice(6 * (page - 1), 6 * (page - 1) + 6);
+        for (let i = 0; i < list_job.length; i++) {
+
+          $(".card_company_searched_candidate").append(`
+          <div class="item_company_candidate p-2 m-2">
+        <img src="${list_job[i].avatarEmployer}" alt="logo" class="logo_company_home_candidate">
+        <a class="title_recuit_company_home_candidate" href="/candidate/detail_job/${list_job[i].doc}">${list_job[i].title}</a>
+        <a class="name_company_home_candidate" href="http://localhost:3032/candidate/profile_employer?id=${list_job[i].belong_employer}">${list_job[i].nameEmployer}</a>
+        <div class="wage_copany_home_candidate">${list_job[i].min_salary}-${list_job[i].max_salary} triệu</div>
+        <div class="address_company_home_candidate">${list_job[i].location}</div>
+        <div class="experience_company_home_candidate">${list_job[i].experience}</div>
+        <img src="/css/style/image/ic_time.svg" alt="ic_time" class="ic_time_card_company">
+          <div class="time_card_company">Cập nhật gần nhất: ${list_job[i].creation_date}</div>
+
+        <img src="/css/style/image/ic_heart_empty.svg" alt="ic_heart" class="ic_heart_card_company">
+      </div>
+        `)
+        }
+
+      }
+
+    })
+  }
+
+
+</script>

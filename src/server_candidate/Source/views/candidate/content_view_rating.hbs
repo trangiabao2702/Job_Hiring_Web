@@ -12,23 +12,14 @@
 
             <nav aria-label="Page navigation example" id="nav_page_list_evaluate_company">
                 <ul class="pagination">
-                    <li class="page-item">
-                        <a class="page-link" href="#" aria-label="Previous">
-                            <span aria-hidden="true">&laquo;</span>
-                            <span class="sr-only">Previous</span>
-                        </a>
-                    </li>
+                    {{!--
                     <li class="page-item"><a class="page-link" href="#">1</a></li>
                     <li class="page-item"><a class="page-link" href="#">2</a></li>
                     <li class="page-item"><a class="page-link" href="#">3</a></li>
-                    <li class="page-item">
-                        <a class="page-link" href="#" aria-label="Next">
-                            <span aria-hidden="true">&raquo;</span>
-                            <span class="sr-only">Next</span>
-                        </a>
-                    </li>
+                    --}}
                 </ul>
             </nav>
+            <div style="height: 30px;" display="none"></div>
         </div>
     </div>
 </div>
@@ -36,23 +27,72 @@
 <script>
     // const list_reviews = "{{{ data.user.list_reviews }}}"
     const list_rating = {{{ data.list_reviews }}}
+    var numbers = [];
+    if (list_rating.length % 5 == 0) {
+        for (let i = 1; i <= list_rating.length / 5; i++) {
+            numbers.push(i);
+        }
+    } else {
+        for (let i = 1; i <= list_rating.length / 5 + 1; i++) {
+            numbers.push(i);
+        }
+    }
+    if (numbers.length > 1) {
 
-    for (let i = 0; i < list_rating.length; i++) {
-        $("#list_item_rating").append(`
+        for (let i = 0; i < numbers.length; i++) {
+
+            $(".pagination").append(`
+             <li class="page-item ${numbers[i]}"  ><a class="page-link" onclick="page(this.id)" id="${numbers[i]}">${numbers[i]}</a></li>
+        `)
+        }
+    }
+    window.onload = page(1);
+
+    function page(page) {
+        for (let i = 0; i < numbers.length; i++) {
+            if (numbers[i] == page) {
+                $('.' + page).addClass('active');
+
+            }
+            else {
+                $('.' + numbers[i]).removeClass('active');
+
+            }
+        }
+        var tr = $(".item_evaluate");
+        for (i = 0; i < tr.length; i++) {
+            tr[i].remove();
+        }
+        page = parseInt(page);
+        var _list_review = list_rating.slice(5 * (page - 1), 5 * (page - 1) + 5);
+        for (let i = 0; i < _list_review.length; i++) {
+            var star = _list_review[i].star;
+
+            var str = "";
+            for (let i = 1; i <= 5; i++) {
+                if (i <= star) {
+                    str += `<img src="/css/style/image/ic_star.svg" id="evaluate_candidate_star${i}" alt="evaluate_star1" />`;
+                }
+                else {
+                    str += `<img src="/css/style/image/ic_star_empty.svg" id="evaluate_candidate_star${i}" alt="evaluate_star1" />`;
+                }
+            }
+            $("#list_item_rating").append(`
             <div class="item_evaluate">
-                <img src="${list_rating[i].avatar}" class="ic_avatar_evaluate" alt="ic_avatar_evaluate" />
-                <div class="name_candidate_evaluate" id="${list_rating[i].belong_candidate}">${list_rating[i].name}</div>
-                <img src="/css/style/image/ic_star.svg" id="evaluate_candidate_star1" alt="evaluate_star1" />
-                <img src="/css/style/image/ic_star.svg" id="evaluate_candidate_star2" alt="evaluate_star2" />
-                <img src="/css/style/image/ic_star.svg" id="evaluate_candidate_star3" alt="evaluate_star3" />
-                <img src="/css/style/image/ic_star.svg" id="evaluate_candidate_star4" alt="evaluate_star4" />
-                <img src="/css/style/image/ic_star.svg" id="evaluate_candidate_star5" alt="evaluate_star5" />
-                <div class="value_evaluate">${list_rating[i].description}</div>
+                <img src="${_list_review[i].avatar}" class="ic_avatar_evaluate" alt="ic_avatar_evaluate" />
+                <div class="name_candidate_evaluate" id="${_list_review[i].belong_candidate}">${_list_review[i].name}</div>
+                ${str}
+                <div class="value_evaluate">${_list_review[i].description}</div>
             </div>
         `)
+
+
+        }
     }
 
     $(".name_candidate_evaluate").click(function () {
         $(location).attr("href", "/employer/profile_candidate?id=" + $(this).attr("id"))
     })
+
+
 </script>

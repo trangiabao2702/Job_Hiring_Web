@@ -104,6 +104,14 @@ module.exports = {
     list.forEach((doc) => {
       user = doc.data();
       user.doc = doc.id;
+      if (user.experience == "0") {
+        user.experience = "Không yêu cầu"
+      }
+      else {
+        user.experience = "Ít nhất " + user.experience;
+
+
+      }
       listJob.push(user);
     });
     for (let i = 0; i < listJob.length - 1; i++) {
@@ -185,8 +193,15 @@ module.exports = {
   getDetailRecruitment: async (id_recruitment) => {
     const recruitments_collection = db.collection("recruitments");
     const recruitment = await recruitments_collection.doc(id_recruitment).get();
-
-    return recruitment.data();
+    var rs=recruitment.data();
+    if(rs.experience=="0")
+    {
+      rs.experience="Không yêu cầu";
+    }
+    else{
+      rs.experience="Ít nhất " + rs.experience;
+    }
+    return rs;
   },
   getCVByID: async (id) => {
     const curriculum_vitaes_collection = db.collection("curriculum_vitaes");
@@ -222,9 +237,10 @@ module.exports = {
     list.forEach((doc) => {
       job = doc.data();
       job.doc = doc.id;
-
-      var arr = job.experience.split(" ");
-      job.experience = arr[0].toString();
+      if (job.experience != "0") {
+        var arr = job.experience.split(" ");
+        job.experience = arr[0].toString();
+      }
 
       listJob.push(job);
     });
@@ -244,16 +260,27 @@ module.exports = {
       if (!listJob[i].title.includes(data.search)) {
         check = false;
       }
-      if (code_province != "0") {
+      if (code_province != 0) {
         if (listJob[i].code_province != code_province) {
           check = false;
         }
       }
-      if (!listJob[i].working_form.includes(data.select_method_work)) {
+      if (data.select_method_work != "all") {
+        if (!listJob[i].working_form.includes(data.select_method_work)) {
+          check = false;
+        }
+      }
+
+      if (parseInt(data.select_experience) < parseInt(listJob[i].experience)) {
         check = false;
       }
-      if (data.select_experience < listJob[i].experience) {
-        check = false;
+      else {
+        if (parseInt(listJob[i].experience) == 0) {
+          listJob[i].experience = "Không cần";
+        }
+        else {
+          listJob[i].experience = "Ít nhất " + listJob[i].experience + " năm";
+        }
       }
       if (data.select_salary > listJob[i].max_salary) {
         check = false;
@@ -345,4 +372,22 @@ module.exports = {
 
     return rs;
   },
+  getStar: async id =>{
+    const doc = await db.collection("reviews").doc(id).get();
+    var rs=doc.data();
+
+    // console.log(doc, fileAvatar, signedURLArray);
+
+    return rs.star;
+  },
+  updateView: async id =>{
+    const doc = await db.collection("recruitments").doc(id);
+    const view=(await doc.get()).data();
+    var newView=parseInt(view.views)+1;
+    
+    // console.log(doc, fileAvatar, signedURLArray);
+    const rs = doc.update({
+      views: newView,
+    });
+  }
 };

@@ -12,9 +12,10 @@ class Candidate {
                     layout: "main_candidate_login",
                     data: {
                         user: user,
+                        listjob:JSON.stringify(topJob),
                     },
-                    topJob,
-                    not_record: true,
+                    topJob:true,
+                    not_record: false,
                 });
             } else {
                 res.redirect("/auth/login");
@@ -28,6 +29,7 @@ class Candidate {
             if (req.isAuthenticated()) {
                 var user = req.session.passport.user;
                 var idDocRecruitment = req.params.id;
+                await candidateModel.updateView(idDocRecruitment);
                 const id_candidate = await candidateModel.getIDDocumentCandidates(user.email);
                 var recruitment = await candidateModel.getRecruitment(idDocRecruitment);
                 var belongEmployer = await candidateModel.getEmployer(recruitment.belong_employer);
@@ -93,15 +95,11 @@ class Candidate {
         var listjob = await candidateModel.getAllRecruitment(req.body);
 
         var user = req.session.passport.user;
-        res.render("candidate/content_home.hbs", {
-            layout: "main_candidate_login",
-            data: {
-                user: user,
-            },
-            listjob,
-            not_record: true,
-            length: listjob.length,
-        });
+         res.json({
+            success: true,
+            list_job: listjob
+        })
+        
     }
     async uploadCV(req, res, next) {
         try {
@@ -155,13 +153,21 @@ class Candidate {
                 // get information of employer
                 const _id_employer = req.query.id;
                 const _info_employer = await candidateModel.getEmployer(_id_employer);
-
+                var total_rating=0;
+                for(let i=0;i<_info_employer.list_reviews.length;i++)
+                {
+                    var star=await candidateModel.getStar(_info_employer.list_reviews[i]);
+                    total_rating+=parseInt(star);
+                }
+                
+                total_rating=total_rating/_info_employer.list_reviews.length;
+                console.log(total_rating);
+                total_rating=total_rating.toFixed(1);
                 let _list_recruitments = [];
                 for (let i = 0; i < _info_employer.list_recruitments.length; i++) {
                     _list_recruitments.push(await candidateModel.getDetailRecruitment(_info_employer.list_recruitments[i]));
                     _list_recruitments[i].id = _info_employer.list_recruitments[i];
                 }
-
                 res.render("candidate/content_profile_employer.hbs", {
                     layout: "main_candidate_login",
                     _id_employer,
@@ -171,6 +177,7 @@ class Candidate {
                         list_recruitments: JSON.stringify(_list_recruitments),
                         not_record: true,
                     },
+                    total_rating
                 });
             } else {
                 res.redirect("/auth/login");
