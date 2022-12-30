@@ -1058,6 +1058,70 @@ class Authencation {
         }
     }
 
+    //[GET] /change_password
+    change_password(req, res, next) {
+        try {
+            if (req.isAuthenticated()) {
+                // get information of employer
+                const user = req.session.passport.user;
+
+                res.render("candidate/change_password", {
+                    layout: "main_candidate_login",
+                    data: {
+                        user: user,
+                    },
+                    message: req.flash("message"),
+                    messageDanger: req.flash("messageDanger"),
+                });
+            } else {
+                res.redirect("/auth/sign_in");
+            }
+        } catch (error) {
+            next(error);
+        }
+    }
+
+    // [POST] /change_password
+    async post_change_password(req, res, next) {
+        try {
+            if (req.isAuthenticated()) {
+                // get information of employer
+                const user = req.session.passport.user;
+
+                // console.log(req.body);
+
+                const password = req.body.password;
+                const new_password = req.body.newPassword;
+
+                const cmp = await bcrypt.compare(password, user.password);
+
+                if (!cmp) {
+                    req.flash('messageDanger', "Mật khẩu nhập không đúng !");
+                    res.status(200).redirect('/auth/change_password');
+                } else {
+
+                    const salt = bcrypt.genSaltSync(saltRounds);
+                    const pwHashed = bcrypt.hashSync(new_password, salt);
+
+                    const changeP = candidateModel.changePassword(user.id, pwHashed);
+
+                    if (changeP) {
+                        req.flash('message', "Đổi mật khẩu thành công!");
+                    } else {
+                        req.flash('messageDanger', "Đổi mật khẩu không thành công!");
+                    }
+
+                    res.redirect('/auth/change_password');
+                }
+
+            } else {
+                res.redirect("/auth/sign_in");
+            }
+        } catch (error) {
+            next(error);
+        }
+    }
+
 }
 
 module.exports = new Authencation();

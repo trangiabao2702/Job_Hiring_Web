@@ -59,6 +59,7 @@ module.exports = {
     var user = null;
     snapshot.forEach((doc) => {
       user = doc.data();
+      user.id = doc.id;
     });
 
     return user;
@@ -334,5 +335,14 @@ module.exports = {
     });
 
     return rs;
-  }
+  },
+  async changePassword(id_candidate, newPassword) {
+    const doc = db.collection("candidates").doc(id_candidate);
+    // console.log(doc, fileAvatar, signedURLArray);
+    const rs = doc.update({
+      password: newPassword,
+    });
+
+    return rs;
+  },
 };

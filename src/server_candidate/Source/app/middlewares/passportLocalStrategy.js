@@ -20,16 +20,17 @@ module.exports = app => {
     });
 
     passport.use(new LocalStrategy({
+        passReqToCallback: true,
         usernameField: 'email',
         passwordField: 'password',
     },
-        async (email, password, done) => {
+        async (req, email, password, done) => {
             try {
                 const user = await candidateModel.getUserByEmailLogin(email);
                 if (!user) { return done(null, false); }
                 const cmp = await bcrypt.compare(password, user.password);
                 if (!cmp) {
-                    return done(null, false,  { messageDanger: 'Password entered is incorrect.' });
+                    return done(null, false,  req.flash('messageDanger', 'Sai tài khoản hoặc mật khẩu!'));
                 }
                 return done(null, user);
             } catch (error) {

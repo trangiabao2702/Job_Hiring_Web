@@ -10,16 +10,20 @@ router.get('/forget_password', authController.forget_password);
 router.get('/authentication', authController.authentication);
 router.get('/reset_password/:email', authController.reset_password);
 router.get('/verify', authController.verify);
+router.get('/change_password', authController.change_password );
 
 
 router.post('/logout', authController.postLogout);
 router.post('/signup', authController.postSignup);
 router.post('/login', passport.authenticate('local', {
     failureRedirect: '/auth/login',
+    failureFlash: true,
     successRedirect: '/candidate/home'
 }), authController.postLogin);
 router.post('/forget_password', authController.post_forget_password);
 router.post('/reset_password', authController.post_reset_password);
+router.post('/change_password', authController.post_change_password );
+
 
 // Authencation
 router.get('/google',
