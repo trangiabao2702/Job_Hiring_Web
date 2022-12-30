@@ -1,18 +1,25 @@
- <div id="content_home_admin">
-                <a id="rectangle_news_posted" href="/admin/manage_account/list_account_approved">
-                    <div id="quantity_account_approved">{{numberAccount.numberApproved}}</div>
-                    <div id="text_account_approved">Tài khoản đã được duyệt</div>
-                    <img src="/css/style/image/ic_megaphone.svg" id="ic_megaphone_home_recruit" alt="ic_megaphone_home_recruit">
-                </a>
-                <a id="rectangle_candidate_received" href="/admin/manage_account/list_account_pending">
-                    <div id="quantity_account_unapproved">{{numberAccount.numberPending}}</div>
-                    <div id="text_account_unapproved">Tài khoản đang chờ duyệt</div>
-                    <img src="/css/style/image/ic_candidate_recieve.svg" id="ic_receive_home_recruit" alt="ic_receive_home_recruit">
-                </a>
-                <a id="rectangle_candidate_new" href="/admin/manage_account/list_account_locked">
-                    <div id="quantity_account_banned">{{numberAccount.numberlocked}}</div>
-                    <div id="text_account_banned">Tài khoản bị khóa</div>
-                    <img src="/css/style/image/ic_candidate_new.svg" id="ic_new_home_recruit" alt="ic_new_home_recruit">
-                </a>
-              
+<div id="content_home_admin">
+    <a id="rectangle_news_posted" href="/admin/manage_account/list_account_approved">
+        <div id="quantity_account_approved">{{numberAccount.numberApproved}}</div>
+        <div id="text_account_approved">Tài khoản đã được duyệt</div>
+        <img src="/css/style/image/ic_megaphone.svg" id="ic_megaphone_home_recruit" alt="ic_megaphone_home_recruit">
+    </a>
+    <a id="rectangle_candidate_received" href="/admin/manage_account/list_account_pending">
+        <div id="quantity_account_unapproved">{{numberAccount.numberPending}}</div>
+        <div id="text_account_unapproved">Tài khoản đang chờ duyệt</div>
+        <img src="/css/style/image/ic_candidate_recieve.svg" id="ic_receive_home_recruit" alt="ic_receive_home_recruit">
+    </a>
+    <a id="rectangle_candidate_new" href="/admin/manage_account/list_account_locked">
+        <div id="quantity_account_banned">{{numberAccount.numberlocked}}</div>
+        <div id="text_account_banned">Tài khoản bị khóa</div>
+        <img src="/css/style/image/ic_candidate_new.svg" id="ic_new_home_recruit" alt="ic_new_home_recruit">
+    </a>
+
 </div>
+
+<script>
+    $(".menu_item").removeClass("is_selected")
+    $("#menu_manage_account_user_admin").removeClass("non_selected").addClass("is_selected")
+    $(".on_filter").removeClass("on_filter")
+    $("#menu_manage_account_user_admin").children("#ic_news_home_recruit").addClass("on_filter")
+</script>

@@ -14,6 +14,11 @@
 </form>
 
 <script>
+    $(".menu_item").removeClass("is_selected")
+    $("#menu_manage_report_home_admin").removeClass("non_selected").addClass("is_selected")
+    $(".on_filter").removeClass("on_filter")
+    $("#menu_manage_report_home_admin").children("#ic_manage_record_home_recruit").addClass("on_filter")
+
     const _list_reports = {{{ data.manage_reports }}}
     let _count_approved = 0
     let _count_pending = 0

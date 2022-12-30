@@ -8,7 +8,7 @@
             <div id="name_candidate_recruit">{{{ data.user.name }}}</div>
             <div id="status_profile_candidate_recruit">SĐT: {{{ data.user.phone }}}</div>
             <div id="date_submit_profile_candidate_recruit">Email: {{{ data.user.email }}}</div>
-            <a id="btn_accept_candidate"  href="/employer/edit_profile_employer">Chỉnh
+            <a id="btn_accept_candidate" href="/employer/edit_profile_employer">Chỉnh
                 sửa</a>
         </div>
 
@@ -49,3 +49,10 @@
         </div>
     </div>
 </div>
+
+<script>
+    $(".menu_item").removeClass("is_selected")
+    $("#menu_manage_record_home_recruit").addClass("is_selected")
+    $(".on_filter").removeClass("on_filter").addClass("non_filter")
+    $("#menu_manage_record_home_recruit").children("#ic_manage_record_home_recruit").addClass("on_filter")
+</script>

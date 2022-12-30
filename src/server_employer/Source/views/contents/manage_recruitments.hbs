@@ -39,6 +39,8 @@
 <script>
     $(".menu_item").removeClass("is_selected")
     $("#menu_manage_recruit_home_recruit").addClass("is_selected")
+    $(".on_filter").removeClass("on_filter")
+    $("#menu_manage_recruit_home_recruit").children("#ic_manage_recruit_home_recruit").addClass("on_filter")
 
     const list_recruitments = {{{ data.list_recruitments }}}
     const id_recruitments = {{{ data.id_recruitments }}}
