@@ -4541,6 +4541,16 @@ pre {
     background: #FCECEB;
     border-radius: 10px;
 }
+#rectangle_news_remove {
+    position: absolute;
+    width: 609px;
+    height: 188px;
+    left: 831px;
+    top: 346px;
+
+    background: #f1d9f7;
+    border-radius: 10px;
+}
 
 #rectangle_candidate_new {
     position: absolute;
@@ -5842,6 +5852,22 @@ tr:nth-child(odd) {
 
     color: #2EAC66;
 }
+#quantity_news_deleted {
+    position: absolute;
+    height: 34px;
+    left: 33px;
+    top: 42px;
+
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 600;
+    font-size: 28px;
+    line-height: 34px;
+    /* identical to box height */
+
+
+    color: #a046c4;
+}
 
 #text_account_unapproved {
     position: absolute;
@@ -5858,6 +5884,23 @@ tr:nth-child(odd) {
 
 
     color: #2EAC66;
+
+}
+#text_news_deleted {
+    position: absolute;
+    height: 34px;
+    left: 33px;
+    top: 99px;
+
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 600;
+    font-size: 28px;
+    line-height: 34px;
+    /* identical to box height */
+
+
+    color: #a046c4;
 
 }
 
