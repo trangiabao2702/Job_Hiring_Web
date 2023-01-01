@@ -292,14 +292,24 @@ module.exports = {
 
     return listRS;
   },
+  
   addReviews: async (e, id_employer) => {
     const collection_reviews = await db.collection("reviews");
-
+    var rating=parseFloat(e.star);
+    const collection_employer = await db.collection("employers").doc(id_employer).get();
+    var rs=collection_employer.data();
+    console.log(rs);
+    rating=(parseFloat(rs.rating)*rs.list_reviews.length+rating)/(rs.list_reviews.length+1);
+    rating=rating.toFixed(1);
+    console.log(rating);
+    rating=parseFloat(rating);
+    
     collection_reviews.add(e)
       .then(function (docRef) {
 
         db.collection("employers").doc(id_employer).update({
-          list_reviews: FieldValue.arrayUnion(docRef.id)
+          list_reviews: FieldValue.arrayUnion(docRef.id),
+          rating: rating
         });
       });
 

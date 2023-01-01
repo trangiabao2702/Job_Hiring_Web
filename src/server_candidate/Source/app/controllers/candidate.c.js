@@ -153,16 +153,8 @@ class Candidate {
                 // get information of employer
                 const _id_employer = req.query.id;
                 const _info_employer = await candidateModel.getEmployer(_id_employer);
-                var total_rating=0;
-                for(let i=0;i<_info_employer.list_reviews.length;i++)
-                {
-                    var star=await candidateModel.getStar(_info_employer.list_reviews[i]);
-                    total_rating+=parseInt(star);
-                }
-                
-                total_rating=total_rating/_info_employer.list_reviews.length;
-                console.log(total_rating);
-                total_rating=total_rating.toFixed(1);
+                var total_rating=_info_employer.rating;
+                console.log("a",total_rating);
                 let _list_recruitments = [];
                 for (let i = 0; i < _info_employer.list_recruitments.length; i++) {
                     _list_recruitments.push(await candidateModel.getDetailRecruitment(_info_employer.list_recruitments[i]));
@@ -228,7 +220,7 @@ class Candidate {
         var evaluate = { belong_candidate, description, star };
         console.log(id_employer);
         const rs = await candidateModel.addReviews(evaluate, id_employer);
-        res.redirect('back');
+        return res.redirect('http://localhost:3032/candidate/profile_employer?id='+id_employer);
     }
     async report_recruitment(req, res, next) {
         var id_reporter = req.session.passport.user.id;
