@@ -5,8 +5,7 @@
         <img src="/css/style/image/text_introduct_signin_recruit.svg" id="text_introduce_signin_recruit"
             alt="text_introduce_signin_recruit">
 
-        <form method="post" action="/auth/sign_up" class="needs-validation"
-            oninput='confirm_password_signin_recruit.setCustomValidity(confirm_password_signin_recruit.value != password_signin_recruit.value ? "Mật khẩu nhập lại không đúng !" : "")'>
+        <form method="post" action="/auth/sign_up" class="needs-validation" id="formSignUp">
 
             {{#if message}}
             <div class="alert alert-success mt-2">
@@ -173,6 +172,22 @@
 
     document.getElementById("agree_signin_recruit").setCustomValidity("Vui lòng cho biết rằng bạn chấp nhận các điều khoản và điều kiện!");
 
+
+
+    // validate pass
+    const confirm_password_signin_recuit = $('#confirm_password_signin_recuit');
+    const password_signin_recuit = $('#password_signin_recuit');
+    $("#formSignUp").on('input', function () {
+
+        confirm_password_signin_recuit.get(0).setCustomValidity(confirm_password_signin_recuit.val() != password_signin_recuit.val() ? "Mật khẩu nhập lại không đúng !" : "")
+
+        if (password_signin_recuit.val().length < 8) password_signin_recuit.get(0).setCustomValidity("Mật khẩu phải có ít nhất 8 ký tự!");
+        else if (!/\d/.test(password_signin_recuit.val())) password_signin_recuit.get(0).setCustomValidity("Mật khẩu phải có ít nhất một số (1, 2, ...)!");
+        else if (!/[a-zA-Z]/.test(password_signin_recuit.val())) password_signin_recuit.get(0).setCustomValidity("Mật khẩu phải có ít nhất một ký tự chữ cái (a, b, C, D, ...)!");
+        else if (!/[\W]/.test(password_signin_recuit.val())) password_signin_recuit.get(0).setCustomValidity("Mật khẩu phải có ít nhất một ký tự đặt biệt (@, $, ...)!");
+        else password_signin_recuit.get(0).setCustomValidity('');
+
+    })
 
 
 </script>
