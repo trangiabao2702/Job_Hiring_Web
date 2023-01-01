@@ -139,4 +139,18 @@
     const current_url = $(location).attr("href")
     const id_recruitment = current_url.slice(current_url.indexOf("?id=") + 4)
     $("#id_recruitment").val(id_recruitment)
+
+    if (_recruitment.status == "deleted") {
+        $(".delete_news_recruit").hide()
+    }
+
+    $(".delete_news_recruit").click(function (event) {
+        if (window.confirm('Bạn thực sự muốn xóa tin tuyển dụng này?')) {
+            // They clicked Yes
+        }
+        else {
+            // They clicked no
+            event.preventDefault()
+        }
+    })
 </script>
