@@ -69,7 +69,7 @@
                         <img src="/css/style/image/ic_time.svg" alt="ic_time" class="ic_time_card_application">
                         <div class="text_time_submit_record">Ngày nộp hồ sơ: ${_submit_date}</div>
                         <div class="text_status_application">${_status}</div>
-                        <div class="view_detail" id="${_list_cvs[i].id_cv}">Xem chi tiết</div>
+                        <div class="view_detail" onclick="viewDetail('${_list_cvs[i].id_cv}')">Xem chi tiết</div>
                     </div>
                 `)
                 _count_cvs += 1
@@ -108,9 +108,9 @@
         $(this).addClass("is_selected").removeClass("not_selected")
     })
 
-    $(".view_detail").click(function () {
-        $(location).attr("href", "/candidate/detail_cv?id_cv=" + $(this).attr("id"))
-    })
+    function viewDetail(id) {
+        $(location).attr("href", "/candidate/detail_cv?id_cv=" + id)
+    }
 </script>
 
 <style>
